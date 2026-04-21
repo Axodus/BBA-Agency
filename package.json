@@ -1,0 +1,37 @@
+{
+  "name": "bba-agency",
+  "version": "1.0.0",
+  "description": "Axodus Agency OS MVP scaffold",
+  "main": "dist/axodus/pipelines/campaign.flow.js",
+  "scripts": {
+    "dev": "ts-node axodus/pipelines/campaign.flow.ts",
+    "mcp": "ts-node axodus/tools/mcp-server.ts",
+    "memory:init": "ts-node axodus/memory/init.ts",
+    "test:agent": "ts-node axodus/utils/test-agent.ts",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Axodus/BBA-Agency.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Axodus/BBA-Agency/issues"
+  },
+  "homepage": "https://github.com/Axodus/BBA-Agency#readme",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.90.0",
+    "@types/node": "^25.6.0",
+    "chromadb": "^3.4.3",
+    "dotenv": "^17.4.2",
+    "mongodb": "^7.2.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3",
+    "uuid": "^14.0.0",
+    "zod": "^4.3.6"
+  }
+}
