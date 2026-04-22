@@ -161,6 +161,38 @@ export const TrendAnalystOutputSchema = z.object({
 });
 
 /**
+ * ── BrandStrategist Output ─────────────────────────────────
+ * Traduz ICP + trends em posicionamento acionavel para criacao
+ */
+export const BrandStrategistOutputSchema = z.object({
+  brand_positioning_statement: z
+    .string()
+    .min(20)
+    .describe("Frase clara de posicionamento da marca para este contexto"),
+  value_proposition: z
+    .string()
+    .min(20)
+    .describe("Promessa principal de valor em linguagem do ICP"),
+  differentiators: z
+    .array(z.string())
+    .min(2)
+    .describe("Diferenciais competitivos que sustentam o posicionamento"),
+  messaging_pillars: z
+    .array(z.string())
+    .min(3)
+    .describe("3-5 pilares de mensagem para guiar creative/copy"),
+  proof_points: z
+    .array(z.string())
+    .min(2)
+    .describe("Evidencias ou argumentos para sustentar a promessa"),
+  recommended_cta_angle: z
+    .string()
+    .min(10)
+    .describe("Angulo de CTA mais aderente a este ICP"),
+  confidence: z.number().min(0).max(1),
+});
+
+/**
  * ── Contract Validation Map ──────────────────────────────────
  * Mapa step → schema para validação automática no BaseAgent
  */
@@ -168,6 +200,7 @@ export const CONTRACT_MAP = {
   interpret: BriefOutputSchema,
   strategy: ICPOutputSchema,
   trends: TrendAnalystOutputSchema,
+  branding: BrandStrategistOutputSchema,
   ideation: IdeationOutputSchema,
   validation: ValidationOutputSchema,
   production: CopyOutputSchema,

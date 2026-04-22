@@ -1,7 +1,7 @@
 # AXODUS — Phase 4 Status
 
 **Data**: 22 de Abril de 2026  
-**Status**: 2 de 14 agentes implementados (14%)  
+**Status**: 4 de 14 agentes implementados (29%)  
 **Compilação**: ✅ 0 erros | ✅ Schema compliant
 
 ## ✅ Completado (Fase 4)
@@ -25,22 +25,25 @@
 - **Documentação**: `AUDIENCE_PROFILER_AGENT.md`
 - **Tools**: `["analytics-ga4", "meta-pixel", "vector-db"]`
 
-## ⏳ Próximas Fases (Em Ordem)
-
 ### Fase 4.3 — TrendAnalystAgent
 - **Role**: TrendAnalyst
 - **Step**: strategy
 - **Input**: core_problem + segment
 - **Output**: Trends com relevância scores
 - **Tools**: `["analytics-ga4", "vector-db"]`
-- **Prioridade**: ALTA (próxima esta semana)
+- **Status**: ✅ IMPLEMENTADO | ✅ COMPILANDO | ✅ TESTE DISPONÍVEL
+- **Teste**: `npm run test:trend`
 
 ### Fase 4.4 — BrandStrategistAgent
 - **Role**: BrandStrategist
-- **Step**: strategy
+- **Step**: branding
 - **Input**: ICP + trends
 - **Output**: Brand positioning statement
 - **Tools**: `["vector-db"]`
+- **Status**: ✅ IMPLEMENTADO | ✅ COMPILANDO | ✅ TESTE DISPONÍVEL
+- **Teste**: `npm run test:brand`
+
+## ⏳ Próximas Fases (Em Ordem)
 
 ### Fase 4.5 — CreativeDirectorAgent
 - **Role**: CreativeDirector (paralelo × 3)
@@ -103,16 +106,24 @@
 - **Step**: Coordena 1-7 em sequência
 - **Função**: Orquestra todo o pipeline de ponta a ponta
 - **Tools**: All
+- **Status funcional**: ⏳ PENDENTE (arquivo existe, mas ainda nao conta como fase validada)
+
+## ⚠️ Notas de Realidade
+
+- **Testes de diretivas**: 1 de 6 implementado (`test:contracts`). Os demais scripts ainda dependem de arquivos de teste ausentes.
+- **Orchestrator**: arquivo existe, mas a fase ainda nao deve ser considerada concluida.
+- **Pipeline E2E**: stub em `src/pipelines`, ainda nao fechado como fluxo ponta a ponta validado.
 
 ## 📊 Estatísticas
 
 | Métrica | Total | Completo | % |
 |---------|-------|----------|-----|
-| Agentes | 14 | 2 | 14% |
+| Agentes | 14 | 4 | 29% |
 | Arquivos | 18 | 18 | 100% |
 | Linhas de Código | ~2,800 | ~2,800 | 100% |
-| Schemas | 7 | 7 | 100% |
-| Testes | 12 | 2 | 17% |
+| Schemas | 8 | 8 | 100% |
+| Testes de agentes | 4 | 4 | 100% |
+| Testes de diretivas | 6 | 1 | 17% |
 
 ## 🧪 Scripts Disponíveis
 
@@ -123,10 +134,12 @@ npm run memory:init                    # Seed data
 # Agentes Fase 4
 npm run test:brief                     # BriefInterpreter
 npm run test:audience                  # AudienceProfiler ← NOVO
+npm run test:trend                     # TrendAnalyst
+npm run test:brand                     # BrandStrategist
 
 # Outros testes
 npm run test:agent                     # BaseAgent
-npm run test:contracts                 # Schema validation
+npm run test:contracts                 # Contract violation coverage (1/6)
 npm run test:permissions               # Access control
 npm run test:ideation                  # Parallel engines
 npm run test:memory                    # Episodic + Semantic
@@ -138,7 +151,7 @@ npm run test:cost                      # Token budgets
 
 | Camada | Status | Details |
 |--------|--------|---------|
-| Contract Validation (Zod) | ✅ | 7 schemas, 100% coverage |
+| Contract Validation (Zod) | ✅ | 8 schemas, 100% coverage |
 | Permission Matrix | ✅ | 14 agents, 9 tools, ACL enforced |
 | Auto-Correction Loop | ✅ | Max 2 attempts, graceful degradation |
 | HITL Gate | ✅ | Slack + console, approval tracking |
@@ -169,7 +182,7 @@ npm run test:cost                      # Token budgets
 
 | Data | Tarefa | Fases |
 |------|--------|-------|
-| Apr 22 | Implementar TrendAnalyst + BrandStrategist | 4.3 + 4.4 |
+| Apr 22 | Validar TrendAnalyst + implementar BrandStrategist | 4.3 + 4.4 |
 | Apr 29 | Implementar CreativeDirector (paralelo) | 4.5 |
 | May 6 | Implementar DataAnalyst + Copywriter | 4.6 + 4.7 |
 | May 13 | Implementar VisualDesigner + AdsSpecialist | 4.8 + 4.10 |
@@ -201,5 +214,4 @@ Para cada novo agente (Fase 4.3+):
 
 ---
 
-**Status Final**: 🟢 Fase 4.2 COMPLETA | Pronto para Fase 4.3
-
+**Status Final**: 🟢 Fases 4.1-4.4 de strategy implementadas | Proxima prioridade: ideation/validation

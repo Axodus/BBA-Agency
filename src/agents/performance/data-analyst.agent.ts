@@ -4,7 +4,7 @@ import { CampaignContext } from "../../types";
 export class DataAnalystAgent extends BaseAgent {
   role = "DataAnalyst";
   step = "validation" as const;
-  tools = ["analytics", "bigquery"];
+  tools = ["analytics-ga4", "bigquery"];
 
   buildSystemPrompt(): string {
     return `Voce e o DataAnalyst da agencia Axodus.
@@ -29,20 +29,17 @@ ${
 
 Avalie cada conceito e retorne JSON:
 {
-  "rankedConcepts": [
+  "ranked_concepts": [
     {
-      "conceptId": "string",
+      "concept_id": "uuid",
       "rank": 1,
-      "predictedCTR": "string",
-      "icpAdherence": 0,
-      "viralPotential": 0,
-      "benchmarkComparison": "string",
-      "risks": ["string"],
-      "validationScore": 0
+      "validation_score": 0,
+      "rationale": "string",
+      "benchmark_comparison": "string"
     }
   ],
   "recommendation": "string",
-  "killList": ["string"],
+  "kill_list": ["string"],
   "confidence": 0.0
 }`;
   }

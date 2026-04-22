@@ -4,7 +4,7 @@ import { CampaignContext } from "../../types";
 export class CopywriterAgent extends BaseAgent {
   role = "Copywriter";
   step = "production" as const;
-  tools = ["claude-sonnet", "figma"];
+  tools = ["vector-db"];
 
   buildSystemPrompt(): string {
     return `Voce e o Copywriter senior da agencia Axodus.
@@ -18,23 +18,24 @@ Responda sempre em JSON valido.`;
 ${JSON.stringify(context.selectedConcept, null, 2)}
 
 ICP: ${JSON.stringify(context.icp, null, 2)}
-Tom recomendado: ${context.constraints?.tone ?? "direto e confiante"}
+Brand strategy: ${JSON.stringify(context.brandStrategy, null, 2)}
+Tom recomendado: ${(context.constraints as any)?.tone ?? "direto e confiante"}
 Canais: ${context.brief.channels?.join(", ") ?? "nao informado"}
 
 Produza copy completo e retorne JSON:
 {
   "headline": "string",
   "subheadline": "string",
-  "bodyText": "string",
+  "body_text": "string",
   "cta": "string",
-  "videoScript": {
+  "video_script": {
     "hook": "string",
-    "problem": "string",
-    "solution": "string",
+    "body": "string",
+    "objection_handler": "string",
     "cta": "string"
   },
-  "socialCaption": "string",
-  "adVariants": ["string", "string", "string"],
+  "social_caption": "string",
+  "ad_variants": ["string", "string", "string"],
   "confidence": 0.0
 }`;
   }

@@ -37,6 +37,8 @@ async function main(): Promise<void> {
   console.log("RESULTADO FINAL");
   console.log("==================================");
   console.log("ICP:", JSON.stringify(result.icp, null, 2));
+  console.log("\nPrimary trend:", result.trends?.[0]?.name ?? "n/a");
+  console.log("Brand positioning:", result.brandStrategy?.brand_positioning_statement ?? "n/a");
   console.log("\nConceito selecionado:", result.selectedConcept?.title);
   console.log("Hook:", result.selectedConcept?.hook);
   console.log("\nAssets gerados:", result.assets?.length ?? 0);
@@ -46,7 +48,7 @@ async function main(): Promise<void> {
     console.log("\nCopy gerado:");
     console.log("Headline:", copy.headline);
     console.log("CTA:", copy.cta);
-    console.log("Video hook:", copy.videoScript?.hook);
+    console.log("Video hook:", copy.video_script?.hook ?? copy.videoScript?.hook);
   }
 }
 

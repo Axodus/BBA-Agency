@@ -53,6 +53,8 @@ export interface CampaignContext {
   id: string;
   brief: Brief;
   icp?: ICPProfile;
+  trends?: TrendInsight[];
+  brandStrategy?: BrandStrategy;
   concepts?: CreativeConcept[];
   selectedConcept?: CreativeConcept;
   assets?: Asset[];
@@ -76,6 +78,27 @@ export interface ICPProfile {
   buying_triggers?: string[];
   objections?: string[];
   confidence?: number;
+}
+
+export interface TrendInsight {
+  trend_id: string;
+  name: string;
+  description: string;
+  relevance_score: number;
+  relevance_rationale: string;
+  opportunity: string;
+  risk: string | null;
+  expected_timeline: string;
+}
+
+export interface BrandStrategy {
+  brand_positioning_statement: string;
+  value_proposition: string;
+  differentiators: string[];
+  messaging_pillars: string[];
+  proof_points: string[];
+  recommended_cta_angle: string;
+  confidence: number;
 }
 
 export interface CreativeConcept {
