@@ -5,9 +5,10 @@
 
 import { ChromaClient, Collection } from "chromadb";
 import { Db, MongoClient } from "mongodb";
-import { CampaignRecord, ICPProfile, CreativeConcept } from "../types/index";
+import { CampaignRecord } from "../types/index";
 import { MemoryError } from "../utils/errors";
-import { scoreTextSimilarity } from "../utils/text";
+import { deterministicEmbedding, scoreTextSimilarity } from "../utils/text";
+import { appEnv } from "../config/env";
 
 /**
  * ── MEMÓRIA EPISÓDICA ─────────────────────────────────────────
@@ -23,8 +24,23 @@ import { scoreTextSimilarity } from "../utils/text";
  * ── FALLBACK: In-Memory ─────────────────────────────────────
  * Fallback para ambientes sem MongoDB/ChromaDB
  */
-type StoredCampaign = CampaignRecord & { summary: string };
+type StoredCampaign = CampaignRecord & {
+  summary: string;
+  client?: string;
+  campaign_name?: string;
+  timestamp?: string;
+  sector?: string;
+};
 type AudienceInsight = { segment: string; insight: string };
+
+function buildChromaClient(rawUrl: string): ChromaClient {
+  const url = new URL(rawUrl);
+  return new ChromaClient({
+    ssl: url.protocol === "https:",
+    host: url.hostname,
+    port: url.port ? Number(url.port) : url.protocol === "https:" ? 443 : 80,
+  });
+}
 
 export class MemoryManager {
   private chroma: ChromaClient;
@@ -49,9 +65,10 @@ export class MemoryManager {
   private inMemoryAudience: AudienceInsight[] = [];
   private initialized = false;
   private initPromise?: Promise<void>;
+  private fallbackMode = true;
 
   constructor() {
-    this.chroma = new ChromaClient({ path: process.env.CHROMA_URL });
+    this.chroma = buildChromaClient(appEnv.chromaUrl);
   }
 
   async init() {
@@ -90,8 +107,12 @@ export class MemoryManager {
       await this.mongo.collection(this.SEMANTIC_DB).createIndex({ sector: 1, ctr: -1 });
       await this.mongo.collection(this.AUDIENCE_DB).createIndex({ segment: 1 });
 
-      console.log("[Memory] ✓ Initialized: episodic + semantic namespaces");
+      this.fallbackMode = false;
+      console.log(
+        `[Memory] ✓ Initialized: episodic + semantic namespaces (Mongo: ${appEnv.mongoUri} | Chroma: ${appEnv.chromaUrl})`
+      );
     } catch (err) {
+      this.fallbackMode = true;
       console.warn("[Memory] MongoDB/ChromaDB unavailable, using in-memory fallback.");
       if (err instanceof Error) {
         console.warn(`[Memory] Reason: ${err.message}`);
@@ -109,7 +130,7 @@ export class MemoryManager {
       if (!this.initialized) await this.init();
 
       const results = await this.episodicCollection.query({
-        queryTexts: [query],
+        queryEmbeddings: [deterministicEmbedding(query)],
         nResults: n,
         where: { client: client }, // Filtro de cliente
       });
@@ -124,8 +145,11 @@ export class MemoryManager {
       return docs;
     } catch (err) {
       console.warn("[Memory] Falling back to in-memory episodic recall.");
+      if (err instanceof Error) {
+        console.warn(`[Memory] Episodic recall reason: ${err.message}`);
+      }
       return this.inMemoryCampaigns
-        .filter(campaign => campaign.sector === client)
+        .filter(campaign => campaign.client === client)
         .map(campaign => ({
           campaign,
           score: scoreTextSimilarity(query, `${campaign.summary} ${campaign.hook} ${campaign.format}`),
@@ -163,11 +187,15 @@ export class MemoryManager {
       await this.episodicCollection.add({
         ids: [record.id],
         documents: [record.summary],
+        embeddings: [deterministicEmbedding(record.summary)],
         metadatas: [
           {
             client: record.client,
             hook: record.hook,
             format: record.format,
+            ctr: record.ctr,
+            conversion: record.conversion,
+            budget: record.budget,
             date: record.timestamp,
           },
         ],
@@ -182,6 +210,9 @@ export class MemoryManager {
       console.log(`[Memory] ✓ Episodic saved: ${record.campaign_name} for ${record.client}`);
     } catch (err) {
       console.warn("[Memory] Falling back to in-memory episodic save.");
+      if (err instanceof Error) {
+        console.warn(`[Memory] Episodic save reason: ${err.message}`);
+      }
       this.inMemoryCampaigns = this.inMemoryCampaigns.filter(item => item.id !== record.id);
       this.inMemoryCampaigns.push({
         ...record,
@@ -206,7 +237,7 @@ export class MemoryManager {
       if (filters?.format) where.format = filters.format;
 
       const results = await this.semanticCollection.query({
-        queryTexts: [query],
+        queryEmbeddings: [deterministicEmbedding(query)],
         nResults: n,
         where,
       });
@@ -221,6 +252,9 @@ export class MemoryManager {
       return docs;
     } catch (err) {
       console.warn("[Memory] Falling back to in-memory semantic recall.");
+      if (err instanceof Error) {
+        console.warn(`[Memory] Semantic recall reason: ${err.message}`);
+      }
       return this.inMemoryCampaigns
         .map(campaign => ({
           campaign,
@@ -267,6 +301,7 @@ export class MemoryManager {
       await this.semanticCollection.add({
         ids: [record.id],
         documents: [record.summary],
+        embeddings: [deterministicEmbedding(record.summary)],
         metadatas: [
           {
             sector: record.sector,
@@ -288,6 +323,9 @@ export class MemoryManager {
       return true;
     } catch (err) {
       console.warn("[Memory] Falling back to in-memory semantic save.");
+      if (err instanceof Error) {
+        console.warn(`[Memory] Semantic save reason: ${err.message}`);
+      }
       this.inMemoryCampaigns = this.inMemoryCampaigns.filter(item => item.id !== record.id);
       this.inMemoryCampaigns.push({
         ...record,
@@ -389,7 +427,7 @@ export class MemoryManager {
 
       if (this.episodicCollection) {
         const results = await this.episodicCollection.query({
-          queryTexts: [query],
+          queryEmbeddings: [deterministicEmbedding(query)],
           nResults: n,
         });
 
@@ -407,6 +445,9 @@ export class MemoryManager {
       }
     } catch (err) {
       console.warn("[Memory] Chroma query failed, falling back to local similarity.");
+      if (err instanceof Error) {
+        console.warn(`[Memory] Similar query reason: ${err.message}`);
+      }
     }
 
     // Fallback local
@@ -481,6 +522,51 @@ export class MemoryManager {
         top_performing_sector: null,
       };
     }
+  }
+
+  isUsingFallback(): boolean {
+    return this.fallbackMode;
+  }
+
+  async healthCheck(): Promise<{
+    mode: "fallback" | "connected";
+    mongo: boolean;
+    chroma: boolean;
+    mongoUri: string;
+    chromaUrl: string;
+  }> {
+    if (!this.initialized) {
+      await this.init();
+    }
+
+    const mongo =
+      !this.fallbackMode &&
+      !!this.mongoClient &&
+      !!(await this.mongoClient.db("admin").command({ ping: 1 }).catch(() => null));
+
+    const chroma =
+      !this.fallbackMode &&
+      !!(await this.chroma.listCollections().catch(() => null));
+
+    return {
+      mode: this.fallbackMode ? "fallback" : "connected",
+      mongo,
+      chroma,
+      mongoUri: appEnv.mongoUri,
+      chromaUrl: appEnv.chromaUrl,
+    };
+  }
+
+  async close(): Promise<void> {
+    if (this.mongoClient) {
+      await this.mongoClient.close().catch(() => undefined);
+      this.mongoClient = undefined;
+    }
+
+    this.initialized = false;
+    this.initPromise = undefined;
+    this.fallbackMode = true;
+    this.chroma = buildChromaClient(appEnv.chromaUrl);
   }
 }
 

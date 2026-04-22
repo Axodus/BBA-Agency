@@ -1,0 +1,22 @@
+services:
+  axodus-mongo:
+    image: mongo:7
+    container_name: axodus-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - axodus_mongo_data:/data/db
+
+  axodus-chroma:
+    image: chromadb/chroma:1.0.8
+    container_name: axodus-chroma
+    restart: unless-stopped
+    ports:
+      - "8001:8000"
+    volumes:
+      - axodus_chroma_data:/data
+
+volumes:
+  axodus_mongo_data:
+  axodus_chroma_data:

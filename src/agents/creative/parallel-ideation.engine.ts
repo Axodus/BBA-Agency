@@ -8,6 +8,7 @@ import { CampaignContext, CreativeConcept } from "../../types/index";
 import { CostAuditor } from "../../utils/cost-auditor";
 import { generateMockAgentPayload } from "../../utils/mock-agent";
 import { v4 as uuid } from "uuid";
+import { appEnv } from "../../config/env";
 
 interface IdeationInstance {
   temperature: number; // top_p
@@ -49,7 +50,7 @@ export class ParallelIdeationEngine {
 
   constructor(costAuditor?: CostAuditor) {
     this.costAuditor = costAuditor;
-    if (process.env.ANTHROPIC_API_KEY && !process.env.USE_MOCK_LLM) {
+    if (appEnv.anthropicApiKey && !appEnv.useMockLlm) {
       this.client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
     }
   }

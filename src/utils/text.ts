@@ -23,3 +23,27 @@ export function scoreTextSimilarity(a: string, b: string): number {
 
   return overlap / Math.max(aWords.size, bWords.size);
 }
+
+export function deterministicEmbedding(input: string, dimensions = 384): number[] {
+  const vector = new Array<number>(dimensions).fill(0);
+  const words = normalizeWords(input);
+
+  if (!words.length) {
+    return vector;
+  }
+
+  for (const word of words) {
+    for (let index = 0; index < word.length; index += 1) {
+      const code = word.charCodeAt(index);
+      const slot = (code + index * 31) % dimensions;
+      vector[slot] += 1;
+    }
+  }
+
+  const magnitude = Math.sqrt(vector.reduce((sum, value) => sum + value * value, 0));
+  if (magnitude === 0) {
+    return vector;
+  }
+
+  return vector.map((value) => Number((value / magnitude).toFixed(6)));
+}

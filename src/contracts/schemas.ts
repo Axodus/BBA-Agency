@@ -193,6 +193,128 @@ export const BrandStrategistOutputSchema = z.object({
 });
 
 /**
+ * ── CampaignPlanner Output ─────────────────────────────────
+ * Distribui canais, sequência de lançamento e métricas operacionais
+ */
+export const CampaignPlannerOutputSchema = z.object({
+  channel_plan: z.array(
+    z.object({
+      channel: z.string(),
+      objective: z.string(),
+      budget_allocation_pct: z.number().min(0).max(100),
+      primary_message: z.string(),
+    })
+  ).min(1),
+  timeline: z.array(z.string()).min(2),
+  launch_sequence: z.array(z.string()).min(2),
+  success_metrics: z.array(z.string()).min(2),
+  risks: z.array(z.string()),
+  confidence: z.number().min(0).max(1),
+});
+
+/**
+ * ── VisualDesigner Output ──────────────────────────────────
+ * Traduz conceito + copy em sistema visual e blueprints
+ */
+export const VisualDesignerOutputSchema = z.object({
+  creative_direction: z.string().min(20),
+  visual_system: z.object({
+    palette: z.array(z.string()).min(2),
+    typography: z.array(z.string()).min(1),
+    imagery_style: z.string(),
+    composition_rules: z.array(z.string()).min(2),
+  }),
+  asset_blueprints: z.array(
+    z.object({
+      asset_type: z.string(),
+      purpose: z.string(),
+      layout_notes: z.string(),
+    })
+  ).min(1),
+  production_notes: z.array(z.string()).min(2),
+  confidence: z.number().min(0).max(1),
+});
+
+/**
+ * ── MotionDesigner Output ───────────────────────────────────
+ * Traduz design em direção de movimento e key moments
+ */
+export const MotionDesignerOutputSchema = z.object({
+  motion_direction: z.string().min(20),
+  scene_beats: z.array(
+    z.object({
+      timestamp: z.string(),
+      visual: z.string(),
+      animation: z.string(),
+      objective: z.string(),
+    })
+  ).min(2),
+  transitions: z.array(z.string()).min(2),
+  audio_direction: z.string().min(10),
+  delivery_notes: z.array(z.string()).min(2),
+  confidence: z.number().min(0).max(1),
+});
+
+/**
+ * ── UXCreative Output ───────────────────────────────────────
+ * Organiza a experiência de conversão e remove fricção
+ */
+export const UXCreativeOutputSchema = z.object({
+  journey_goal: z.string().min(20),
+  page_blueprint: z.array(
+    z.object({
+      section: z.string(),
+      objective: z.string(),
+      primary_element: z.string(),
+      interaction_note: z.string(),
+    })
+  ).min(3),
+  interaction_principles: z.array(z.string()).min(2),
+  conversion_friction: z.array(z.string()).min(2),
+  experiment_hooks: z.array(z.string()).min(2),
+  confidence: z.number().min(0).max(1),
+});
+
+/**
+ * ── AdsSpecialist Output ───────────────────────────────────
+ * Define rollout por plataforma antes da execução real
+ */
+export const AdsSpecialistOutputSchema = z.object({
+  platforms: z.array(
+    z.object({
+      platform: z.string(),
+      campaign_objective: z.string(),
+      targeting_summary: z.string(),
+      budget: z.number().min(0),
+      launch_checklist: z.array(z.string()).min(2),
+    })
+  ).min(1),
+  approval_required: z.boolean(),
+  rollout_strategy: z.string().min(20),
+  monitoring_plan: z.array(z.string()).min(2),
+  confidence: z.number().min(0).max(1),
+});
+
+/**
+ * ── GrowthHacker Output ────────────────────────────────────
+ * Prioriza experimentos de crescimento pós-lançamento
+ */
+export const GrowthHackerOutputSchema = z.object({
+  experiments: z.array(
+    z.object({
+      name: z.string(),
+      hypothesis: z.string(),
+      metric: z.string(),
+      expected_impact: z.string(),
+      effort: z.enum(["low", "medium", "high"]),
+    })
+  ).min(2),
+  prioritization_rationale: z.string().min(20),
+  next_optimization_window: z.string().min(5),
+  confidence: z.number().min(0).max(1),
+});
+
+/**
  * ── Contract Validation Map ──────────────────────────────────
  * Mapa step → schema para validação automática no BaseAgent
  */
@@ -201,10 +323,16 @@ export const CONTRACT_MAP = {
   strategy: ICPOutputSchema,
   trends: TrendAnalystOutputSchema,
   branding: BrandStrategistOutputSchema,
+  planning: CampaignPlannerOutputSchema,
   ideation: IdeationOutputSchema,
   validation: ValidationOutputSchema,
   production: CopyOutputSchema,
+  design: VisualDesignerOutputSchema,
+  motion: MotionDesignerOutputSchema,
+  experience: UXCreativeOutputSchema,
   feedback: FeedbackOutputSchema,
+  deploy: AdsSpecialistOutputSchema,
+  optimization: GrowthHackerOutputSchema,
 } as const;
 
 export type ContractMap = typeof CONTRACT_MAP;

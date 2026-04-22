@@ -2,9 +2,15 @@ import { randomUUID } from "crypto";
 import {
   AgentRole,
   BrandStrategy,
+  CampaignPlan,
   CampaignContext,
   CreativeConcept,
+  DeploymentPlan,
+  DesignSpec,
+  GrowthExperimentPlan,
+  MotionSpec,
   TrendInsight,
+  UXCreativeSpec,
   ICPProfile,
 } from "../types";
 
@@ -271,6 +277,47 @@ export function generateMockAgentPayload(
       };
       return strategy as unknown as Record<string, unknown>;
     }
+    case "CampaignPlanner": {
+      const plan: CampaignPlan = {
+        channel_plan: [
+          {
+            channel: "LinkedIn",
+            objective: "Capturar demanda qualificada",
+            budget_allocation_pct: 45,
+            primary_message: "Clareza operacional e previsibilidade de pipeline",
+          },
+          {
+            channel: "Meta Ads",
+            objective: "Escalar alcance e retargeting",
+            budget_allocation_pct: 35,
+            primary_message: "Ganhe velocidade sem aumentar retrabalho",
+          },
+          {
+            channel: "Google",
+            objective: "Converter demanda ativa",
+            budget_allocation_pct: 20,
+            primary_message: "Automacao com prova concreta de resultado",
+          },
+        ],
+        timeline: [
+          "Semana 1: preparar criativos, tracking e setup de contas",
+          "Semana 2: lancar campanhas por canal prioritario",
+          "Semana 3: revisar sinais iniciais e ajustar verbas",
+        ],
+        launch_sequence: [
+          "Lancar LinkedIn com angulo de dor principal",
+          "Ativar Meta para ampliacao de alcance e retargeting",
+          "Abrir Google Search com termos de alta intencao",
+        ],
+        success_metrics: ["CTR por canal", "Trials iniciados", "Custo por trial qualificado"],
+        risks: [
+          "Diluir budget em muitos canais cedo demais",
+          "Subir mensagem sem prova suficiente para reduzir friccao",
+        ],
+        confidence: 0.75,
+      };
+      return plan as unknown as Record<string, unknown>;
+    }
     case "CreativeDirector":
       return {
         concepts: buildConcepts(context),
@@ -306,6 +353,176 @@ export function generateMockAgentPayload(
         ],
         confidence: 0.71,
       };
+    }
+    case "VisualDesigner": {
+      const design: DesignSpec = {
+        creative_direction:
+          "Visual limpo, orientado a comparacao de antes/depois e prova de velocidade operacional.",
+        visual_system: {
+          palette: ["#0F172A", "#F97316", "#E2E8F0"],
+          typography: ["JetBrains Mono", "Inter Tight"],
+          imagery_style: "Interface real misturada com highlights de ganho e comparacoes diretas.",
+          composition_rules: [
+            "Abrir cada peca com contraste forte entre caos e clareza",
+            "Dar protagonismo a numeros e provas acima de decoracao",
+          ],
+        },
+        asset_blueprints: [
+          {
+            asset_type: "carrossel",
+            purpose: "Educar e mover o ICP para considerar o trial",
+            layout_notes: "Slide 1 com dor, slide 2-4 com prova e slide final com CTA.",
+          },
+          {
+            asset_type: "video_30s",
+            purpose: "Interromper scroll com comparacao de velocidade",
+            layout_notes: "Primeiros 3s com hook visual, depois interface e prova objetiva.",
+          },
+        ],
+        production_notes: [
+          "Usar anotacoes e overlays para destacar economia de tempo.",
+          "Evitar visual genérico de IA futurista sem relacao com o produto.",
+        ],
+        confidence: 0.73,
+      };
+      return design as unknown as Record<string, unknown>;
+    }
+    case "MotionDesigner": {
+      const motion: MotionSpec = {
+        motion_direction:
+          "Animacao objetiva com primeiros 2 segundos de alto contraste, reforcando ganho de clareza e velocidade.",
+        scene_beats: [
+          {
+            timestamp: "0-2s",
+            visual: "Tela dividida entre caos e dashboard organizado",
+            animation: "Push-in rapido com highlights nos gargalos",
+            objective: "Parar o scroll e mostrar contraste",
+          },
+          {
+            timestamp: "2-8s",
+            visual: "Interface com anotacoes e ganhos de tempo",
+            animation: "Callouts em sequencia e transicoes secas",
+            objective: "Provar valor com leitura rapida",
+          },
+          {
+            timestamp: "8-15s",
+            visual: "CTA e reforco do beneficio principal",
+            animation: "Zoom leve com fechamento em marca e CTA",
+            objective: "Encaminhar para acao",
+          },
+        ],
+        transitions: [
+          "Hard cuts com overlays de numero",
+          "Wipes horizontais curtos entre comparacoes",
+        ],
+        audio_direction: "Base ritmada, moderna e precisa, com acentos nos momentos de prova.",
+        delivery_notes: [
+          "Evitar motion decorativo sem funcao de leitura.",
+          "Manter textos na tela com permanencia suficiente para mobile.",
+        ],
+        confidence: 0.72,
+      };
+      return motion as unknown as Record<string, unknown>;
+    }
+    case "UXCreative": {
+      const uxPlan: UXCreativeSpec = {
+        journey_goal:
+          "Levar o visitante da dor operacional para a percepcao de clareza e decisao de iniciar trial com minima friccao.",
+        page_blueprint: [
+          {
+            section: "Hero",
+            objective: "Deixar a promessa clara nos primeiros segundos",
+            primary_element: "Headline com prova e CTA principal",
+            interaction_note: "CTA visivel above the fold em mobile e desktop",
+          },
+          {
+            section: "Proof",
+            objective: "Sustentar a promessa com evidencia",
+            primary_element: "Antes/depois, numeros e prova social",
+            interaction_note: "Cards curtos e escaneaveis com hierarquia forte",
+          },
+          {
+            section: "Offer",
+            objective: "Remover duvida e facilitar a decisao",
+            primary_element: "Resumo do trial e CTA final",
+            interaction_note: "Formulario curto e reforco de baixo risco",
+          },
+        ],
+        interaction_principles: [
+          "Clareza acima de densidade de informacao",
+          "Prova e CTA sempre proximos um do outro",
+        ],
+        conversion_friction: [
+          "Excesso de explicacao tecnica antes de mostrar beneficio",
+          "Formulario inicial grande demais para trafego frio",
+        ],
+        experiment_hooks: [
+          "Hero com comparacao antes/depois",
+          "CTA com angulo de previsibilidade de trials",
+        ],
+        confidence: 0.73,
+      };
+      return uxPlan as unknown as Record<string, unknown>;
+    }
+    case "AdsSpecialist": {
+      const deployment: DeploymentPlan = {
+        platforms: [
+          {
+            platform: "Meta Ads",
+            campaign_objective: "Leads",
+            targeting_summary: "Retargeting e lookalikes de visitantes qualificados",
+            budget: Math.round((context.brief.budget ?? 0) * 0.55),
+            launch_checklist: [
+              "Validar pixel e eventos de trial",
+              "Confirmar naming convention e UTMs",
+            ],
+          },
+          {
+            platform: "Google Ads",
+            campaign_objective: "Search conversions",
+            targeting_summary: "Termos de alta intencao ligados a automacao e campanhas",
+            budget: Math.round((context.brief.budget ?? 0) * 0.45),
+            launch_checklist: [
+              "Separar ad groups por intencao",
+              "Definir negative keywords basicas",
+            ],
+          },
+        ],
+        approval_required: true,
+        rollout_strategy:
+          "Subir primeiro os conjuntos de maior intencao, validar tracking e so depois expandir volume.",
+        monitoring_plan: [
+          "Checar CTR, CPC e qualidade do trafego nas primeiras 24h",
+          "Revisar custo por trial e distribuicao de verba no dia 3",
+        ],
+        confidence: 0.74,
+      };
+      return deployment as unknown as Record<string, unknown>;
+    }
+    case "GrowthHacker": {
+      const growthPlan: GrowthExperimentPlan = {
+        experiments: [
+          {
+            name: "Teste de prova visual no primeiro frame",
+            hypothesis: "Mostrar comparacao antes/depois aumenta CTR e reduz bounce",
+            metric: "CTR",
+            expected_impact: "+10-20% em CTR",
+            effort: "low",
+          },
+          {
+            name: "Segmentacao por dor principal",
+            hypothesis: "Separar criativos por dor dominante melhora aderencia e conversao",
+            metric: "Conversion rate",
+            expected_impact: "+8-15% em conversao",
+            effort: "medium",
+          },
+        ],
+        prioritization_rationale:
+          "Os experimentos priorizam alto impacto com baixo custo de implementacao nas primeiras iteracoes.",
+        next_optimization_window: "72 horas apos o lancamento inicial",
+        confidence: 0.72,
+      };
+      return growthPlan as unknown as Record<string, unknown>;
     }
     case "AnalyticsAgent": {
       const ctr = context.metrics?.ctr ?? 0;

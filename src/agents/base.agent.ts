@@ -9,6 +9,7 @@ import { CampaignContext, AgentOutput, PipelineStep } from "../types/index";
 import { IAgent } from "../types/agent.interface";
 import { memory } from "../memory/memory.manager";
 import { CostAuditor } from "../utils/cost-auditor";
+import { appEnv } from "../config/env";
 import {
   validateAgentOutput,
   CONTRACT_MAP,
@@ -41,7 +42,7 @@ export abstract class BaseAgent implements IAgent {
   private contractAttempts = 0;
 
   constructor() {
-    if (process.env.ANTHROPIC_API_KEY && !process.env.USE_MOCK_LLM) {
+    if (appEnv.anthropicApiKey && !appEnv.useMockLlm) {
       this.client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
     }
     // workspace será inicializado após role ser definido
