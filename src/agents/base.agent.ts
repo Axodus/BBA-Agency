@@ -8,6 +8,7 @@ import { MessageParam, TextBlock } from "@anthropic-ai/sdk/resources/messages";
 import { CampaignContext, AgentOutput, PipelineStep } from "../types/index";
 import { IAgent } from "../types/agent.interface";
 import { memory } from "../memory/memory.manager";
+import { CostAuditor } from "../utils/cost-auditor";
 import {
   validateAgentOutput,
   CONTRACT_MAP,
@@ -36,6 +37,7 @@ export abstract class BaseAgent implements IAgent {
   protected client?: Anthropic;
   protected model: string = "claude-sonnet-4-20250514";
   protected workspace!: ReturnType<typeof createAgentWorkspace>;
+  private static costAuditor?: CostAuditor;
   private contractAttempts = 0;
 
   constructor() {
@@ -49,6 +51,10 @@ export abstract class BaseAgent implements IAgent {
     if (!this.workspace) {
       this.workspace = createAgentWorkspace(this.role);
     }
+  }
+
+  static setCostAuditor(auditor?: CostAuditor): void {
+    BaseAgent.costAuditor = auditor;
   }
 
   abstract buildSystemPrompt(): string;
@@ -65,6 +71,7 @@ export abstract class BaseAgent implements IAgent {
 
   async run(context: CampaignContext): Promise<AgentOutput> {
     console.log(`[${this.role}] ► Iniciando step: ${this.step}`);
+    this.contractAttempts = 0;
 
     try {
       this.validatePermissions();
@@ -84,13 +91,17 @@ export abstract class BaseAgent implements IAgent {
     };
 
     let data: Record<string, unknown>;
+    let usage = { input_tokens: 0, output_tokens: 0 };
 
     if (!this.client) {
       data = generateMockAgentPayload(this.role as any, enrichedContext);
+      usage = this.estimateMockUsage(enrichedContext, data);
       console.log(`[${this.role}] ✓ Modo mock ativo.`);
     } else {
       try {
-        data = await this.callClaude(enrichedContext);
+        const result = await this.callClaude(enrichedContext);
+        data = result.data;
+        usage = result.usage;
       } catch (err) {
         console.error(`[${this.role}] ✗ Erro ao chamar Claude:`, err);
         throw err;
@@ -107,6 +118,8 @@ export abstract class BaseAgent implements IAgent {
       }
     }
 
+    this.recordCost(usage.input_tokens, usage.output_tokens);
+
     const output: AgentOutput = {
       agentRole: this.role as any,
       step: this.step,
@@ -120,7 +133,10 @@ export abstract class BaseAgent implements IAgent {
     return output;
   }
 
-  private async callClaude(context: CampaignContext): Promise<Record<string, unknown>> {
+  private async callClaude(context: CampaignContext): Promise<{
+    data: Record<string, unknown>;
+    usage: { input_tokens: number; output_tokens: number };
+  }> {
     const systemPrompt = this.buildSystemPrompt();
     const userPrompt = this.buildUserPrompt(context);
 
@@ -142,15 +158,52 @@ export abstract class BaseAgent implements IAgent {
     }
 
     try {
-      return JSON.parse(textBlock.text);
+      return {
+        data: JSON.parse(textBlock.text),
+        usage: {
+          input_tokens: (response as any).usage?.input_tokens ?? 0,
+          output_tokens: (response as any).usage?.output_tokens ?? 0,
+        },
+      };
     } catch (err) {
       console.warn(`[${this.role}] Tentando extrair JSON de resposta não-estruturada...`);
       const jsonMatch = textBlock.text.match(/\{[\s\S]*\}/);
       if (jsonMatch) {
-        return JSON.parse(jsonMatch[0]);
+        return {
+          data: JSON.parse(jsonMatch[0]),
+          usage: {
+            input_tokens: (response as any).usage?.input_tokens ?? 0,
+            output_tokens: (response as any).usage?.output_tokens ?? 0,
+          },
+        };
       }
       throw err;
     }
+  }
+
+  private estimateMockUsage(
+    context: CampaignContext,
+    data: Record<string, unknown>
+  ): { input_tokens: number; output_tokens: number } {
+    const inputText = `${this.buildSystemPrompt()}\n${this.buildUserPrompt(context)}`;
+    const outputText = JSON.stringify(data);
+    return {
+      input_tokens: Math.max(1, Math.ceil(inputText.length / 4)),
+      output_tokens: Math.max(1, Math.ceil(outputText.length / 4)),
+    };
+  }
+
+  private recordCost(input_tokens: number, output_tokens: number): void {
+    if (!BaseAgent.costAuditor) {
+      return;
+    }
+
+    BaseAgent.costAuditor.record({
+      agent: this.role,
+      step: this.step,
+      input_tokens,
+      output_tokens,
+    });
   }
 
   private validateContract(data: unknown): {

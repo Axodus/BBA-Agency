@@ -82,6 +82,10 @@ export class HumanInTheLoop {
     return decision;
   }
 
+  async requestApproval(req: InterventionRequest): Promise<InterventionResult> {
+    return this.request(req);
+  }
+
   /**
    * ── NOTIFY HUMAN (Slack ou Console) ───────────────────────
    */
