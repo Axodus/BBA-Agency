@@ -27,10 +27,11 @@ async function testTrendAnalyst() {
   console.log("║      TEST: TrendAnalystAgent (Fase 4.3)                  ║");
   console.log("╚═══════════════════════════════════════════════════════════╝\n");
 
+  let exitCode = 0;
+  await memory.init();
   try {
     // ─ SETUP: Initialize memory ──────────────────────────────
     console.log("[SETUP] Inicializando memória...");
-    await memory.init();
     console.log("✓ Memória carregada\n");
 
     console.log("[SETUP] Criando instâncias dos agentes...");
@@ -163,13 +164,17 @@ Budget: R$ 20k para testar. Temos 3 meses até launch.`,
     console.log("✅ TEST PASSED — TrendAnalystAgent working correctly!");
     console.log("═══════════════════════════════════════════════════════════\n");
 
-    process.exit(0);
+    exitCode = 0;
   } catch (error) {
     console.error("\n❌ TEST FAILED:");
     console.error(error instanceof Error ? error.message : error);
     console.error("\nStack trace:", error);
-    process.exit(1);
+    exitCode = 1;
+  } finally {
+    await memory.close();
   }
+
+  process.exit(exitCode);
 }
 
 // Run test

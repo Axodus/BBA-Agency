@@ -88,6 +88,70 @@ O projeto **BBA-Agency** agora possui uma **estrutura simplificada** com um úni
 
 ---
 
+## OperaÃ§Ã£o de MemÃ³ria
+
+### PrÃ©-requisitos
+- Docker Desktop ou Docker Engine instalado
+
+### Subir a stack de memÃ³ria (MongoDB + ChromaDB)
+```bash
+pnpm memory:up
+# Aguarda ~5s para os containers iniciarem
+pnpm memory:init   # Seed inicial com dados de teste
+```
+
+### Verificar saÃºde
+```bash
+pnpm memory:health
+# Esperado: mode: "connected" | episodic_count, semantic_count
+```
+
+### Derrubar a stack
+```bash
+pnpm memory:down
+# Volumes sÃ£o preservados â€” dados nÃ£o sÃ£o perdidos
+```
+
+### VariÃ¡veis de ambiente relevantes
+| VariÃ¡vel | Default | DescriÃ§Ã£o |
+|---|---|---|
+| `MONGODB_URI` | `mongodb://localhost:27017/axodus` | URI do MongoDB |
+| `CHROMA_URL` | `http://localhost:8001` | URL do ChromaDB (8001, nÃ£o 8000) |
+| `USE_MOCK_LLM` | `true` | `false` para usar Claude real |
+
+### Fluxo completo de desenvolvimento
+```bash
+pnpm memory:up      # 1. Sobe memÃ³ria
+pnpm memory:init    # 2. Seed inicial
+pnpm dev            # 3. Roda pipeline E2E
+pnpm memory:down    # 4. Derruba ao finalizar
+```
+
+SequÃªncia de validaÃ§Ã£o apÃ³s as 3 tarefas
+```bash
+# 1. Confirmar que os testes legados agora encerram limpos
+pnpm test:brief && pnpm test:audience && pnpm test:brand
+
+# 2. Validar compilaÃ§Ã£o com os novos imports no Orchestrator
+pnpm typecheck
+
+# 3. Rodar pipeline completo (agora com 13 steps)
+pnpm memory:up && pnpm dev
+
+# Output esperado nos novos steps:
+# [Orchestrator] STEP 7b/13 -> CampaignPlanner
+# [Orchestrator] STEP 7c/13 -> VisualDesigner
+# [Orchestrator] STEP 7d/13 -> MotionDesigner
+# [Orchestrator] STEP 7e/13 -> UXCreative
+# [Orchestrator] STEP 8/13 -> HITL
+# [HITL] HUMAN INTERVENTION REQUIRED...
+# (auto-aprovado em 3s em demo mode)
+# [Orchestrator] STEP 9/13 -> AdsSpecialist
+# [Orchestrator] STEP 10/13 -> GrowthHacker
+```
+
+---
+
 ## 🛠️ Como Executar
 
 ```bash
@@ -126,7 +190,7 @@ USE_MOCK_LLM=true
 
 # Database
 MONGODB_URI=mongodb://localhost:27017/axodus
-CHROMA_URL=http://localhost:8000
+CHROMA_URL=http://localhost:8001
 
 # MCP & Tools
 FIGMA_ACCESS_TOKEN=

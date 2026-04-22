@@ -17,6 +17,7 @@ async function testBrandStrategist() {
   console.log("\n[TEST] BrandStrategistAgent");
 
   await memory.init();
+  try {
 
   const context: CampaignContext = {
     id: uuid(),
@@ -60,6 +61,9 @@ O desafio e evitar a percepcao de "mais uma ferramenta de automacao" e provar va
 
   console.log("[PASS] BrandStrategist schema valido");
   console.log(JSON.stringify(validation.data, null, 2));
+  } finally {
+    await memory.close();
+  }
 }
 
 testBrandStrategist().catch((error) => {
