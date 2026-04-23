@@ -11,6 +11,7 @@
     "memory:health": "ts-node --transpile-only src/utils/test-memory-namespaces.ts",
     "memory:up": "docker compose -f docker-compose.memory.yml up -d",
     "memory:down": "docker compose -f docker-compose.memory.yml down",
+    "tests": "npm run test:agent && npm run test:brief && npm run test:audience && npm run test:trend && npm run test:brand && npm run test:planner && npm run test:design && npm run test:motion && npm run test:ux && npm run test:ads && npm run test:growth && npm run test:contracts && npm run test:permissions && npm run test:ideation && npm run test:memory && npm run test:hitl && npm run test:cost", 
     "test:agent": "ts-node --transpile-only src/utils/test-agent.ts",
     "test:brief": "ts-node --transpile-only src/utils/test-brief-interpreter.ts",
     "test:audience": "ts-node --transpile-only src/utils/test-audience-profiler.ts",
@@ -28,6 +29,7 @@
     "test:memory": "ts-node --transpile-only src/utils/test-memory-namespaces.ts",
     "test:hitl": "ts-node --transpile-only src/utils/test-hitl-flow.ts",
     "test:cost": "ts-node --transpile-only src/utils/test-cost-overflow.ts",
+    "test:creative": "ts-node --transpile-only src/utils/test-creative-director.ts",
     "typecheck": "tsc --noEmit",
     "build": "tsc"
   },
