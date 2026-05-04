@@ -5,8 +5,10 @@
 
 import Anthropic from "@anthropic-ai/sdk";
 import { CampaignContext, CreativeConcept } from "../../types/index";
-import { IdeationOutputSchema, CreativeConceptSchema } from "../../contracts/schemas";
+import { CostAuditor } from "../../utils/cost-auditor";
+import { generateMockAgentPayload } from "../../utils/mock-agent";
 import { v4 as uuid } from "uuid";
+import { appEnv } from "../../config/env";
 
 interface IdeationInstance {
   temperature: number; // top_p
@@ -42,11 +44,15 @@ const IDEATION_INSTANCES: IdeationInstance[] = [
 ];
 
 export class ParallelIdeationEngine {
-  private client: Anthropic;
+  private client?: Anthropic;
   private model = "claude-sonnet-4-20250514";
+  private costAuditor?: CostAuditor;
 
-  constructor() {
-    this.client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+  constructor(costAuditor?: CostAuditor) {
+    this.costAuditor = costAuditor;
+    if (appEnv.anthropicApiKey && !appEnv.useMockLlm) {
+      this.client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+    }
   }
 
   /**
@@ -94,6 +100,10 @@ export class ParallelIdeationEngine {
     context: CampaignContext,
     instance: IdeationInstance
   ): Promise<CreativeConcept[]> {
+    if (!this.client) {
+      return this.runMockInstance(context, instance);
+    }
+
     const systemPrompt = this.buildSystemPrompt(instance);
     const userPrompt = this.buildPrompt(context, instance);
 
@@ -124,6 +134,7 @@ export class ParallelIdeationEngine {
 
       const raw = JSON.parse(jsonMatch[0]);
       const concepts = (raw.concepts ?? []) as any[];
+      this.recordUsage(instance, response.usage?.input_tokens ?? 0, response.usage?.output_tokens ?? 0);
 
       // Validar e mapear para CreativeConcept
       return concepts
@@ -147,6 +158,49 @@ export class ParallelIdeationEngine {
     } catch (err) {
       throw new Error(`[${instance.label}] ${(err as Error).message}`);
     }
+  }
+
+  private runMockInstance(
+    context: CampaignContext,
+    instance: IdeationInstance
+  ): CreativeConcept[] {
+    const payload = generateMockAgentPayload("CreativeDirector", context);
+    const concepts = ((payload.concepts as CreativeConcept[] | undefined) ?? []).slice(0, 2);
+    const labelOffset =
+      instance.label === "conservative" ? 0 : instance.label === "balanced" ? 1 : 2;
+
+    const output = concepts.map((concept, index) => ({
+      ...concept,
+      id: uuid(),
+      concept_id: uuid(),
+      title: `${concept.title} [${instance.label}]`,
+      viralScore: Math.max(0, Math.min(10, (concept.viralScore ?? concept.viral_score ?? 5) - 0.3 + labelOffset * 0.2 + index * 0.1)),
+      viral_score: Math.max(0, Math.min(10, (concept.viral_score ?? concept.viralScore ?? 5) - 0.3 + labelOffset * 0.2 + index * 0.1)),
+      temperature_used: instance.temperature,
+    }));
+
+    const inputTokens = Math.max(1, Math.ceil((this.buildSystemPrompt(instance) + this.buildPrompt(context, instance)).length / 4));
+    const outputTokens = Math.max(1, Math.ceil(JSON.stringify(output).length / 4));
+    this.recordUsage(instance, inputTokens, outputTokens);
+
+    return output;
+  }
+
+  private recordUsage(
+    instance: IdeationInstance,
+    input_tokens: number,
+    output_tokens: number
+  ): void {
+    if (!this.costAuditor) {
+      return;
+    }
+
+    this.costAuditor.record({
+      agent: `ParallelIdeation:${instance.label}`,
+      step: "ideation",
+      input_tokens,
+      output_tokens,
+    });
   }
 
   /**

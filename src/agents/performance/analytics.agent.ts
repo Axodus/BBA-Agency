@@ -6,7 +6,7 @@ import { AgentOutput, CampaignContext } from "../../types";
 export class AnalyticsAgent extends BaseAgent {
   role = "AnalyticsAgent";
   step = "feedback" as const;
-  tools = ["ga4", "meta-pixel"];
+  tools = ["analytics-ga4", "meta-pixel", "mongo-db", "vector-db"];
 
   buildSystemPrompt(): string {
     return `Voce e o AnalyticsAgent da agencia Axodus.
@@ -22,13 +22,13 @@ ICP targetado: ${JSON.stringify(context.icp, null, 2)}
 
 Analise e retorne JSON:
 {
-  "performanceSummary": "string",
-  "winnerHook": "string|null",
-  "loserHooks": ["string"],
-  "audienceInsights": ["string"],
-  "nextIterationRecommendations": ["string"],
-  "shouldScale": true,
-  "shouldKill": false,
+  "performance_summary": "string",
+  "winner_hook": "string|null",
+  "loser_hooks": ["string"],
+  "audience_insights": ["string"],
+  "next_iteration_recommendations": ["string"],
+  "should_scale": true,
+  "should_kill": false,
   "confidence": 0.0
 }`;
   }
@@ -42,7 +42,7 @@ Analise e retorne JSON:
         id: randomUUID(),
         client: context.brief.client,
         campaign_name: context.brief.client,
-        hook: data.winnerHook ?? context.selectedConcept.hook,
+        hook: data.winner_hook ?? data.winnerHook ?? context.selectedConcept.hook,
         format: context.selectedConcept.format,
         ctr: context.metrics.ctr ?? 0,
         conversion: context.metrics.conversion ?? 0,
@@ -51,8 +51,9 @@ Analise e retorne JSON:
         summary: `${context.brief.client} - ${context.selectedConcept.hook}`,
       });
 
-      if (context.icp?.segment && data.audienceInsights?.length > 0) {
-        await memory.saveAudienceInsights(context.icp.segment, data.audienceInsights);
+      const audienceInsights = data.audience_insights ?? data.audienceInsights ?? [];
+      if (context.icp?.segment && audienceInsights.length > 0) {
+        await memory.saveAudienceInsights(context.icp.segment, audienceInsights);
       }
 
       console.log("[AnalyticsAgent] Memoria atualizada com resultados.");

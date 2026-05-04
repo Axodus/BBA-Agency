@@ -9,6 +9,7 @@ const EnvSchema = z.object({
   CHROMA_URL: z.string().optional(),
   MCP_PORT: z.coerce.number().optional(),
   USE_MOCK_LLM: z.string().optional().default("true"),
+  AXODUS_MOCK_LLM: z.string().optional(),
 });
 
 const parsed = EnvSchema.parse(process.env);
@@ -19,9 +20,9 @@ export const appEnv = {
   metaAdsToken: parsed.META_ADS_TOKEN,
   notionToken: parsed.NOTION_TOKEN,
   mongoUri: parsed.MONGODB_URI ?? "mongodb://localhost:27017/axodus",
-  chromaUrl: parsed.CHROMA_URL ?? "http://localhost:8000",
+  chromaUrl: parsed.CHROMA_URL ?? "http://localhost:8001",
   mcpPort: parsed.MCP_PORT ?? 3100,
-  useMockLlm: parsed.USE_MOCK_LLM !== "false",
+  useMockLlm: (parsed.USE_MOCK_LLM ?? parsed.AXODUS_MOCK_LLM ?? "true") !== "false",
   anthropicModel: "claude-sonnet-4-20250514",
   mongoDbName: "axodus",
 };

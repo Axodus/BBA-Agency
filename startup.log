@@ -1,0 +1,13 @@
+
+> bba-agency@1.0.0 dev /opt/BBA-Agency
+> ts-node --transpile-only src/pipelines/campaign.flow.ts
+
+[Pipeline] Rodando em modo mock para LLM.
+
+[Orchestrator] Campanha 6ee33aac-75dd-4fd3-92c6-5348803ec310 iniciada
+[Orchestrator] Cliente: Axodus
+[Orchestrator] Goal: Gerar 100 trials em 30 dias
+
+[Orchestrator] STEP 1/9 -> BriefInterpreter
+[BriefInterpreter] ► Iniciando step: interpret
+ ELIFECYCLE  Command failed with exit code 1.

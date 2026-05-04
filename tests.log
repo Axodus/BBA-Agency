@@ -1,0 +1,833 @@
+
+> bba-agency@1.0.0 tests /opt/BBA-Agency
+> npm run test:agent && npm run test:brief && npm run test:audience && npm run test:trend && npm run test:brand && npm run test:planner && npm run test:design && npm run test:motion && npm run test:ux && npm run test:ads && npm run test:growth && npm run test:contracts && npm run test:permissions && npm run test:ideation && npm run test:memory && npm run test:hitl && npm run test:cost
+
+
+> bba-agency@1.0.0 test:agent
+> ts-node --transpile-only src/utils/test-agent.ts
+
+[Memory] ✓ Initialized: episodic + semantic namespaces (Mongo: mongodb://localhost:27017/axodus | Chroma: http://localhost:8001)
+[BriefInterpreter] ► Iniciando step: interpret
+[BriefInterpreter] ✓ Modo mock ativo.
+[BriefInterpreter] ✓ Concluído com confiança: 0.73
+{
+  "agentRole": "BriefInterpreter",
+  "step": "interpret",
+  "timestamp": "2026-04-22T19:34:40.430Z",
+  "data": {
+    "core_problem": "O cliente precisa transformar interesse em trials sem depender de operacao manual lenta ou narrativa vaga sobre IA.",
+    "target_audience_id": "c0a48b1e-b8e6-4802-9858-d15b59f63282",
+    "measurable_goal": {
+      "metric": "trials",
+      "target": "100",
+      "timeframe": "30 dias"
+    },
+    "brand_voice_constraints": [
+      "direto e orientado a performance",
+      "prova concreta acima de discurso aspiracional"
+    ],
+    "hidden_insights": [
+      "A mensagem precisa vender clareza operacional, nao apenas tecnologia.",
+      "O ticket mensal exige prova rapida de ROI para reduzir friccao de teste."
+    ],
+    "confidence": 0.73
+  },
+  "confidence": 0.73
+}
+
+> bba-agency@1.0.0 test:brief
+> ts-node --transpile-only src/utils/test-brief-interpreter.ts
+
+
+╔════════════════════════════════════════════════════════════╗
+║  AXODUS — BriefInterpreterAgent Test                       ║
+╚════════════════════════════════════════════════════════════╝
+
+[Setup] Inicializando memória...
+[Memory] ✓ Initialized: episodic + semantic namespaces (Mongo: mongodb://localhost:27017/axodus | Chroma: http://localhost:8001)
+✓ Memória carregada
+
+[Agent] Instância criada: BriefInterpreter
+
+[Brief] Contexto preparado:
+  Cliente: TechCorp SaaS
+  Goal: conversion
+  Budget: R$ 10000
+  Deadline: 2026-05-05
+
+[Execution] Executando BriefInterpreterAgent...
+
+[BriefInterpreter] ► Iniciando step: interpret
+[BriefInterpreter] ✓ Modo mock ativo.
+[BriefInterpreter] ✓ Concluído com confiança: 0.73
+╔════════════════════════════════════════════════════════════╗
+║  RESULTADO DA INTERPRETAÇÃO                               ║
+╚════════════════════════════════════════════════════════════╝
+
+Agent Role: BriefInterpreter
+Step: interpret
+Confidence: 73%
+Timestamp: 2026-04-22T19:34:43.386Z
+
+───── INTERPRETED BRIEF ─────
+
+🎯 CORE PROBLEM:
+   "O cliente precisa transformar interesse em trials sem depender de operacao manual lenta ou narrativa vaga sobre IA.
+"
+📊 MEASURABLE GOAL:
+   Metric: trials
+   Target: 100
+   Timeframe: 2026-05-05
+
+🎨 BRAND VOICE CONSTRAINTS:
+   • direto e orientado a performance
+   • prova concreta acima de discurso aspiracional
+
+💡 HIDDEN INSIGHTS:
+   • A mensagem precisa vender clareza operacional, nao apenas tecnologia.
+   • O ticket mensal exige prova rapida de ROI para reduzir friccao de teste.
+
+╔════════════════════════════════════════════════════════════╗
+║  SCHEMA VALIDATION                                         ║
+╚════════════════════════════════════════════════════════════╝
+
+✓ core_problem
+✓ target_audience_id
+✓ measurable_goal
+✓ brand_voice_constraints
+✓ hidden_insights
+✓ confidence
+
+✅ All required fields present!
+✅ Contract validation PASSED!
+
+╔════════════════════════════════════════════════════════════╗
+║  RAW JSON OUTPUT                                           ║
+╚════════════════════════════════════════════════════════════╝
+
+{
+  "core_problem": "O cliente precisa transformar interesse em trials sem depender de operacao manual lenta ou narrativa vaga sobre IA.",
+  "target_audience_id": "dd447623-1261-419b-8a7c-c397b04b5f6d",
+  "measurable_goal": {
+    "metric": "trials",
+    "target": "100",
+    "timeframe": "2026-05-05"
+  },
+  "brand_voice_constraints": [
+    "direto e orientado a performance",
+    "prova concreta acima de discurso aspiracional"
+  ],
+  "hidden_insights": [
+    "A mensagem precisa vender clareza operacional, nao apenas tecnologia.",
+    "O ticket mensal exige prova rapida de ROI para reduzir friccao de teste."
+  ],
+  "confidence": 0.73
+}
+
+✅ TEST PASSED — BriefInterpreterAgent working correctly!
+
+
+> bba-agency@1.0.0 test:audience
+> ts-node --transpile-only src/utils/test-audience-profiler.ts
+
+
+╔═══════════════════════════════════════════════════════════╗
+║     TEST: AudienceProfilerAgent (Fase 4.2)                ║
+╚═══════════════════════════════════════════════════════════╝
+
+[Memory] ✓ Initialized: episodic + semantic namespaces (Mongo: mongodb://localhost:27017/axodus | Chroma: http://localhost:8001)
+[SETUP] Inicializando memória...
+✓ Memória carregada
+
+[SETUP] Criando instâncias dos agentes...
+✓ Agentes criados
+
+[STEP 1] Preparando brief...
+[STEP 2] Executando BriefInterpreter...
+  → Interpretando core_problem, meta, restrições...
+
+[BriefInterpreter] ► Iniciando step: interpret
+[BriefInterpreter] ✓ Modo mock ativo.
+[BriefInterpreter] ✓ Concluído com confiança: 0.73
+✓ BriefInterpreter concluído
+  • core_problem: O cliente precisa transformar interesse em trials sem depender de operacao manual lenta ou narrativa vaga sobre IA.
+  • confidence: 0.73
+
+[STEP 3] Executando AudienceProfiler...
+  → Criando ICP baseado em core_problem...
+
+[AudienceProfiler] ► Iniciando step: strategy
+[AudienceProfiler] ✓ Modo mock ativo.
+[AudienceProfiler] ✓ Concluído com confiança: 0.69
+✓ AudienceProfiler concluído
+
+[VALIDATION] Validando ICPOutputSchema...
+✓ Schema validation PASSED
+
+═══════════════════════════════════════════════════════════
+📊 RESULTADO: ICP ESTRUTURADO
+═══════════════════════════════════════════════════════════
+
+📌 BRIEF INTERPRETADO:
+   Problem: O cliente precisa transformar interesse em trials sem depender de operacao manual lenta ou narrativa vaga sobre IA.
+   Goal: trials → 100
+
+👥 PERSONA IDENTIFICADA:
+   Segment: Gestores de marketing em empresas B2B de 50-500 funcionarios
+   Language: Direto, analitico e impaciente com jargao vazio.
+
+💔 PAIN POINTS:
+   • Campanhas lentas para sair do papel
+   • Falta de previsibilidade de trials
+   • Excesso de retrabalho operacional
+
+📱 COMPORTAMENTO:
+   Device: both
+   Platforms: LinkedIn, Google Search
+   Timing: Horario comercial e inicio da noite, quando revisam performance e backlog.
+
+🔥 BUYING TRIGGERS:
+   • Necessidade de bater meta trimestral
+   • Pressao para fazer mais sem contratar
+   • Cansaco com ferramentas que prometem IA sem impacto real
+
+🚧 OBJECTIONS TO OVERCOME:
+   • Receio de implementacao lenta
+   • Desconfianca sobre qualidade da automacao
+   • Duvida se o time realmente vai usar
+
+📊 Confidence: 0.69
+
+═══════════════════════════════════════════════════════════
+📄 RAW JSON OUTPUT:
+═══════════════════════════════════════════════════════════
+{
+  "audience_id": "452420d1-7977-4276-b8fe-d27e081539cb",
+  "segment": "Gestores de marketing em empresas B2B de 50-500 funcionarios",
+  "pain_points": [
+    "Campanhas lentas para sair do papel",
+    "Falta de previsibilidade de trials",
+    "Excesso de retrabalho operacional"
+  ],
+  "language": "Objetivo, orientado a ROI, velocity, CAC, pipeline e execucao.",
+  "language_profile": "Direto, analitico e impaciente com jargao vazio.",
+  "device": "both",
+  "platforms": [
+    "LinkedIn",
+    "Google Search"
+  ],
+  "timing": "Horario comercial e inicio da noite, quando revisam performance e backlog.",
+  "buying_triggers": [
+    "Necessidade de bater meta trimestral",
+    "Pressao para fazer mais sem contratar",
+    "Cansaco com ferramentas que prometem IA sem impacto real"
+  ],
+  "objections": [
+    "Receio de implementacao lenta",
+    "Desconfianca sobre qualidade da automacao",
+    "Duvida se o time realmente vai usar"
+  ],
+  "confidence": 0.69
+}
+
+═══════════════════════════════════════════════════════════
+✅ TEST PASSED — AudienceProfilerAgent working correctly!
+═══════════════════════════════════════════════════════════
+
+
+> bba-agency@1.0.0 test:trend
+> ts-node --transpile-only src/utils/test-trend-analyst.ts
+
+
+╔═══════════════════════════════════════════════════════════╗
+║      TEST: TrendAnalystAgent (Fase 4.3)                  ║
+╚═══════════════════════════════════════════════════════════╝
+
+[Memory] ✓ Initialized: episodic + semantic namespaces (Mongo: mongodb://localhost:27017/axodus | Chroma: http://localhost:8001)
+[SETUP] Inicializando memória...
+✓ Memória carregada
+
+[SETUP] Criando instâncias dos agentes...
+✓ Agentes criados
+
+[STEP 1] Preparando brief...
+[STEP 2] Executando BriefInterpreter...
+[BriefInterpreter] ► Iniciando step: interpret
+[BriefInterpreter] ✓ Modo mock ativo.
+[BriefInterpreter] ✓ Concluído com confiança: 0.73
+✓ BriefInterpreter concluído
+  • core_problem: O cliente precisa transformar interesse em trials sem depend...
+  • confidence: 0.73
+
+[STEP 3] Executando AudienceProfiler...
+[AudienceProfiler] ► Iniciando step: strategy
+[AudienceProfiler] ✓ Modo mock ativo.
+[AudienceProfiler] ✓ Concluído com confiança: 0.69
+✓ AudienceProfiler concluído
+  • segment: Gestores de marketing em empresas B2B de 50-500 fu...
+  • devices: both
+  • platforms: TikTok, Instagram, LinkedIn
+
+[STEP 4] Executando TrendAnalyst...
+  → Identificando trends relevantes para este contexto...
+
+[TrendAnalyst] ► Iniciando step: trends
+[TrendAnalyst] ✓ Modo mock ativo.
+[TrendAnalyst] ✓ Concluído com confiança: 0.76
+✓ TrendAnalyst concluído
+
+[VALIDATION] Validando TrendAnalystOutputSchema...
+✓ Schema validation PASSED
+
+═══════════════════════════════════════════════════════════
+📊 RESULTADO: TRENDS IDENTIFICADOS
+═══════════════════════════════════════════════════════════
+
+📌 CONTEXTO RESUMIDO:
+   Problem: O cliente precisa transformar interesse em trials sem depender de oper...
+   Segment: Gestores de marketing em empresas B2B de 50-500 fu...
+
+🎯 TRENDS IDENTIFICADOS:
+
+   1. Proof-led education content
+      Score: 9/10 — O segmento Gestores de marketing em empresas B2B de 50-500 funcionarios responde melhor quando ve transformacao concreta e aplicavel nas plataformas TikTok, Instagram, LinkedIn.
+      Opportunity: Mostrar antes/depois, portfolio de alunos ou ganhos praticos nas primeiras pecas da campanha.
+      Risk: Se a prova parecer fabricada, a campanha perde credibilidade rapidamente.
+      Timeline: Agora e pelos proximos 3 meses
+
+   2. Community-first trust loops
+      Score: 8/10 — A audiencia esta buscando reducao de risco e prefere sinais de confianca vindos de pares, nao apenas da marca.
+      Opportunity: Usar depoimentos de comunidade, bastidores e convites para micro-comunidades como ponte para conversao.
+      Risk: Ativacoes superficiais de comunidade soam oportunistas e reduzem engajamento.
+      Timeline: Em alta no trimestre atual
+
+   3. Short-form expertise packaging
+      Score: 7/10 — O problema envolve provar competencia com rapidez, e formatos curtos ajudam a mostrar valor antes do clique.
+      Opportunity: Transformar argumentos complexos em series curtas com hooks concretos e CTA de aprofundamento.
+      Risk: Simplificar demais pode reduzir a percepcao de profundidade tecnica.
+      Timeline: Pico imediato com alta saturacao em 2-4 meses
+
+🏆 PRIMARY TREND: Proof-led education content
+
+💥 KILLER COMBO: Combinar prova concreta de resultado com comunidade de pares para reduzir risco percebido e acelerar decisao.
+
+⚠️ WARNINGS (trends to avoid):
+   • Evitar trendjacking vazio sem ligacao direta com resultado real.
+   • Nao depender apenas de formatos curtos sem camada de prova ou aprofundamento.
+
+📊 Confidence: 0.76
+
+═══════════════════════════════════════════════════════════
+📄 RAW JSON OUTPUT:
+═══════════════════════════════════════════════════════════
+{
+  "trends": [
+    {
+      "trend_id": "767cb16c-1feb-4835-8c4d-80e1097f78ee",
+      "name": "Proof-led education content",
+      "description": "Conteudos que combinam aprendizado rapido com prova visual de resultado estao convertendo melhor em audiencias que desconfiam de promessas amplas.",
+      "relevance_score": 9,
+      "relevance_rationale": "O segmento Gestores de marketing em empresas B2B de 50-500 funcionarios responde melhor quando ve transformacao concreta e aplicavel nas plataformas TikTok, Instagram, LinkedIn.",
+      "opportunity": "Mostrar antes/depois, portfolio de alunos ou ganhos praticos nas primeiras pecas da campanha.",
+      "risk": "Se a prova parecer fabricada, a campanha perde credibilidade rapidamente.",
+      "expected_timeline": "Agora e pelos proximos 3 meses"
+    },
+    {
+      "trend_id": "f789e37b-c444-43dd-a9f8-ee21b852eca7",
+      "name": "Community-first trust loops",
+      "description": "Comunidades nichadas e recomendacao entre pares ganharam peso como mecanismo de validacao antes da compra.",
+      "relevance_score": 8,
+      "relevance_rationale": "A audiencia esta buscando reducao de risco e prefere sinais de confianca vindos de pares, nao apenas da marca.",
+      "opportunity": "Usar depoimentos de comunidade, bastidores e convites para micro-comunidades como ponte para conversao.",
+      "risk": "Ativacoes superficiais de comunidade soam oportunistas e reduzem engajamento.",
+      "expected_timeline": "Em alta no trimestre atual"
+    },
+    {
+      "trend_id": "390691ba-9b59-466c-af86-c7dce608e849",
+      "name": "Short-form expertise packaging",
+      "description": "Conteudos curtos que condensam know-how tecnico em formatos replicaveis estao vencendo disputas de atencao e gerando mais shares.",
+      "relevance_score": 7,
+      "relevance_rationale": "O problema envolve provar competencia com rapidez, e formatos curtos ajudam a mostrar valor antes do clique.",
+      "opportunity": "Transformar argumentos complexos em series curtas com hooks concretos e CTA de aprofundamento.",
+      "risk": "Simplificar demais pode reduzir a percepcao de profundidade tecnica.",
+      "expected_timeline": "Pico imediato com alta saturacao em 2-4 meses"
+    }
+  ],
+  "primary_trend": "Proof-led education content",
+  "killer_combo": "Combinar prova concreta de resultado com comunidade de pares para reduzir risco percebido e acelerar decisao.",
+  "warnings": [
+    "Evitar trendjacking vazio sem ligacao direta com resultado real.",
+    "Nao depender apenas de formatos curtos sem camada de prova ou aprofundamento."
+  ],
+  "confidence": 0.76
+}
+
+═══════════════════════════════════════════════════════════
+✅ TEST PASSED — TrendAnalystAgent working correctly!
+═══════════════════════════════════════════════════════════
+
+
+> bba-agency@1.0.0 test:brand
+> ts-node --transpile-only src/utils/test-brand-strategist.ts
+
+
+[TEST] BrandStrategistAgent
+[Memory] ✓ Initialized: episodic + semantic namespaces (Mongo: mongodb://localhost:27017/axodus | Chroma: http://localhost:8001)
+[BriefInterpreter] ► Iniciando step: interpret
+[BriefInterpreter] ✓ Modo mock ativo.
+[BriefInterpreter] ✓ Concluído com confiança: 0.73
+[AudienceProfiler] ► Iniciando step: strategy
+[AudienceProfiler] ✓ Modo mock ativo.
+[AudienceProfiler] ✓ Concluído com confiança: 0.69
+[TrendAnalyst] ► Iniciando step: trends
+[TrendAnalyst] ✓ Modo mock ativo.
+[TrendAnalyst] ✓ Concluído com confiança: 0.76
+[BrandStrategist] ► Iniciando step: branding
+[BrandStrategist] ✓ Modo mock ativo.
+[BrandStrategist] ✓ Concluído com confiança: 0.74
+[PASS] BrandStrategist schema valido
+{
+  "brand_positioning_statement": "Axodus e o sistema de campanha para times de marketing que precisam transformar estrategia em execucao veloz sem perder controle.",
+  "value_proposition": "A marca promete reduzir o caos operacional e acelerar aprendizado de campanha com um fluxo unico de criacao, validacao e iteracao.",
+  "differentiators": [
+    "Integra estrategia, criacao e feedback em um mesmo loop operacional.",
+    "Traduz prova de performance em decisao criativa, nao apenas em relatorio.",
+    "Ajuda equipes enxutas a escalar sem aumentar retrabalho manual."
+  ],
+  "messaging_pillars": [
+    "Velocidade com criterio",
+    "Clareza operacional em vez de complexidade",
+    "Prova concreta de ROI e aprendizado continuo"
+  ],
+  "proof_points": [
+    "Hooks e narrativas orientados por memoria de campanhas anteriores.",
+    "Validacao de conceitos antes da producao para reduzir desperdicio criativo.",
+    "Feedback loop que transforma performance em nova vantagem competitiva."
+  ],
+  "recommended_cta_angle": "Convide o ICP a ver como reduzir gargalos e ganhar previsibilidade ja na proxima campanha.",
+  "confidence": 0.74
+}
+
+> bba-agency@1.0.0 test:planner
+> ts-node --transpile-only src/utils/test-campaign-planner.ts
+
+
+[TEST] CampaignPlannerAgent
+[Memory] ✓ Initialized: episodic + semantic namespaces (Mongo: mongodb://localhost:27017/axodus | Chroma: http://localhost:8001)
+[BriefInterpreter] ► Iniciando step: interpret
+[BriefInterpreter] ✓ Modo mock ativo.
+[BriefInterpreter] ✓ Concluído com confiança: 0.73
+[AudienceProfiler] ► Iniciando step: strategy
+[AudienceProfiler] ✓ Modo mock ativo.
+[AudienceProfiler] ✓ Concluído com confiança: 0.69
+[TrendAnalyst] ► Iniciando step: trends
+[TrendAnalyst] ✓ Modo mock ativo.
+[TrendAnalyst] ✓ Concluído com confiança: 0.76
+[BrandStrategist] ► Iniciando step: branding
+[BrandStrategist] ✓ Modo mock ativo.
+[BrandStrategist] ✓ Concluído com confiança: 0.74
+[CampaignPlanner] ► Iniciando step: planning
+[CampaignPlanner] ✓ Modo mock ativo.
+[CampaignPlanner] ✓ Concluído com confiança: 0.75
+[PASS] CampaignPlanner schema valido
+{
+  "channel_plan": [
+    {
+      "channel": "LinkedIn",
+      "objective": "Capturar demanda qualificada",
+      "budget_allocation_pct": 45,
+      "primary_message": "Clareza operacional e previsibilidade de pipeline"
+    },
+    {
+      "channel": "Meta Ads",
+      "objective": "Escalar alcance e retargeting",
+      "budget_allocation_pct": 35,
+      "primary_message": "Ganhe velocidade sem aumentar retrabalho"
+    },
+    {
+      "channel": "Google",
+      "objective": "Converter demanda ativa",
+      "budget_allocation_pct": 20,
+      "primary_message": "Automacao com prova concreta de resultado"
+    }
+  ],
+  "timeline": [
+    "Semana 1: preparar criativos, tracking e setup de contas",
+    "Semana 2: lancar campanhas por canal prioritario",
+    "Semana 3: revisar sinais iniciais e ajustar verbas"
+  ],
+  "launch_sequence": [
+    "Lancar LinkedIn com angulo de dor principal",
+    "Ativar Meta para ampliacao de alcance e retargeting",
+    "Abrir Google Search com termos de alta intencao"
+  ],
+  "success_metrics": [
+    "CTR por canal",
+    "Trials iniciados",
+    "Custo por trial qualificado"
+  ],
+  "risks": [
+    "Diluir budget em muitos canais cedo demais",
+    "Subir mensagem sem prova suficiente para reduzir friccao"
+  ],
+  "confidence": 0.75
+}
+
+> bba-agency@1.0.0 test:design
+> ts-node --transpile-only src/utils/test-visual-designer.ts
+
+
+[TEST] VisualDesignerAgent
+[Memory] ✓ Initialized: episodic + semantic namespaces (Mongo: mongodb://localhost:27017/axodus | Chroma: http://localhost:8001)
+[BriefInterpreter] ► Iniciando step: interpret
+[BriefInterpreter] ✓ Modo mock ativo.
+[BriefInterpreter] ✓ Concluído com confiança: 0.73
+[AudienceProfiler] ► Iniciando step: strategy
+[AudienceProfiler] ✓ Modo mock ativo.
+[AudienceProfiler] ✓ Concluído com confiança: 0.69
+[TrendAnalyst] ► Iniciando step: trends
+[TrendAnalyst] ✓ Modo mock ativo.
+[TrendAnalyst] ✓ Concluído com confiança: 0.76
+[BrandStrategist] ► Iniciando step: branding
+[BrandStrategist] ✓ Modo mock ativo.
+[BrandStrategist] ✓ Concluído com confiança: 0.74
+[CreativeDirector] ► Iniciando step: ideation
+[CreativeDirector] ✓ Modo mock ativo.
+[CreativeDirector] ✓ Concluído com confiança: 0.74
+[Copywriter] ► Iniciando step: production
+[Copywriter] ✓ Modo mock ativo.
+[Copywriter] ✓ Concluído com confiança: 0.71
+[VisualDesigner] ► Iniciando step: design
+[VisualDesigner] ✓ Modo mock ativo.
+[VisualDesigner] ✓ Concluído com confiança: 0.73
+[PASS] VisualDesigner schema valido
+{
+  "creative_direction": "Visual limpo, orientado a comparacao de antes/depois e prova de velocidade operacional.",
+  "visual_system": {
+    "palette": [
+      "#0F172A",
+      "#F97316",
+      "#E2E8F0"
+    ],
+    "typography": [
+      "JetBrains Mono",
+      "Inter Tight"
+    ],
+    "imagery_style": "Interface real misturada com highlights de ganho e comparacoes diretas.",
+    "composition_rules": [
+      "Abrir cada peca com contraste forte entre caos e clareza",
+      "Dar protagonismo a numeros e provas acima de decoracao"
+    ]
+  },
+  "asset_blueprints": [
+    {
+      "asset_type": "carrossel",
+      "purpose": "Educar e mover o ICP para considerar o trial",
+      "layout_notes": "Slide 1 com dor, slide 2-4 com prova e slide final com CTA."
+    },
+    {
+      "asset_type": "video_30s",
+      "purpose": "Interromper scroll com comparacao de velocidade",
+      "layout_notes": "Primeiros 3s com hook visual, depois interface e prova objetiva."
+    }
+  ],
+  "production_notes": [
+    "Usar anotacoes e overlays para destacar economia de tempo.",
+    "Evitar visual genérico de IA futurista sem relacao com o produto."
+  ],
+  "confidence": 0.73
+}
+
+> bba-agency@1.0.0 test:motion
+> ts-node --transpile-only src/utils/test-motion-designer.ts
+
+
+[TEST] MotionDesignerAgent
+[Memory] ✓ Initialized: episodic + semantic namespaces (Mongo: mongodb://localhost:27017/axodus | Chroma: http://localhost:8001)
+[BriefInterpreter] ► Iniciando step: interpret
+[BriefInterpreter] ✓ Modo mock ativo.
+[BriefInterpreter] ✓ Concluído com confiança: 0.73
+[AudienceProfiler] ► Iniciando step: strategy
+[AudienceProfiler] ✓ Modo mock ativo.
+[AudienceProfiler] ✓ Concluído com confiança: 0.69
+[TrendAnalyst] ► Iniciando step: trends
+[TrendAnalyst] ✓ Modo mock ativo.
+[TrendAnalyst] ✓ Concluído com confiança: 0.76
+[BrandStrategist] ► Iniciando step: branding
+[BrandStrategist] ✓ Modo mock ativo.
+[BrandStrategist] ✓ Concluído com confiança: 0.74
+[CreativeDirector] ► Iniciando step: ideation
+[CreativeDirector] ✓ Modo mock ativo.
+[CreativeDirector] ✓ Concluído com confiança: 0.74
+[Copywriter] ► Iniciando step: production
+[Copywriter] ✓ Modo mock ativo.
+[Copywriter] ✓ Concluído com confiança: 0.71
+[VisualDesigner] ► Iniciando step: design
+[VisualDesigner] ✓ Modo mock ativo.
+[VisualDesigner] ✓ Concluído com confiança: 0.73
+[MotionDesigner] ► Iniciando step: motion
+[MotionDesigner] ✓ Modo mock ativo.
+[MotionDesigner] ✓ Concluído com confiança: 0.72
+[PASS] MotionDesigner schema valido
+
+> bba-agency@1.0.0 test:ux
+> ts-node --transpile-only src/utils/test-ux-creative.ts
+
+
+[TEST] UXCreativeAgent
+[Memory] ✓ Initialized: episodic + semantic namespaces (Mongo: mongodb://localhost:27017/axodus | Chroma: http://localhost:8001)
+[BriefInterpreter] ► Iniciando step: interpret
+[BriefInterpreter] ✓ Modo mock ativo.
+[BriefInterpreter] ✓ Concluído com confiança: 0.73
+[AudienceProfiler] ► Iniciando step: strategy
+[AudienceProfiler] ✓ Modo mock ativo.
+[AudienceProfiler] ✓ Concluído com confiança: 0.69
+[TrendAnalyst] ► Iniciando step: trends
+[TrendAnalyst] ✓ Modo mock ativo.
+[TrendAnalyst] ✓ Concluído com confiança: 0.76
+[BrandStrategist] ► Iniciando step: branding
+[BrandStrategist] ✓ Modo mock ativo.
+[BrandStrategist] ✓ Concluído com confiança: 0.74
+[CreativeDirector] ► Iniciando step: ideation
+[CreativeDirector] ✓ Modo mock ativo.
+[CreativeDirector] ✓ Concluído com confiança: 0.74
+[Copywriter] ► Iniciando step: production
+[Copywriter] ✓ Modo mock ativo.
+[Copywriter] ✓ Concluído com confiança: 0.71
+[UXCreative] ► Iniciando step: experience
+[UXCreative] ✓ Modo mock ativo.
+[UXCreative] ✓ Concluído com confiança: 0.73
+[PASS] UXCreative schema valido
+
+> bba-agency@1.0.0 test:ads
+> ts-node --transpile-only src/utils/test-ads-specialist.ts
+
+
+[TEST] AdsSpecialistAgent
+[Memory] ✓ Initialized: episodic + semantic namespaces (Mongo: mongodb://localhost:27017/axodus | Chroma: http://localhost:8001)
+[BriefInterpreter] ► Iniciando step: interpret
+[BriefInterpreter] ✓ Modo mock ativo.
+[BriefInterpreter] ✓ Concluído com confiança: 0.73
+[AudienceProfiler] ► Iniciando step: strategy
+[AudienceProfiler] ✓ Modo mock ativo.
+[AudienceProfiler] ✓ Concluído com confiança: 0.69
+[TrendAnalyst] ► Iniciando step: trends
+[TrendAnalyst] ✓ Modo mock ativo.
+[TrendAnalyst] ✓ Concluído com confiança: 0.76
+[BrandStrategist] ► Iniciando step: branding
+[BrandStrategist] ✓ Modo mock ativo.
+[BrandStrategist] ✓ Concluído com confiança: 0.74
+[CampaignPlanner] ► Iniciando step: planning
+[CampaignPlanner] ✓ Modo mock ativo.
+[CampaignPlanner] ✓ Concluído com confiança: 0.75
+[CreativeDirector] ► Iniciando step: ideation
+[CreativeDirector] ✓ Modo mock ativo.
+[CreativeDirector] ✓ Concluído com confiança: 0.74
+[AdsSpecialist] ► Iniciando step: deploy
+[AdsSpecialist] ✓ Modo mock ativo.
+[AdsSpecialist] ✓ Concluído com confiança: 0.74
+[PASS] AdsSpecialist schema valido
+{
+  "platforms": [
+    {
+      "platform": "Meta Ads",
+      "campaign_objective": "Leads",
+      "targeting_summary": "Retargeting e lookalikes de visitantes qualificados",
+      "budget": 13750,
+      "launch_checklist": [
+        "Validar pixel e eventos de trial",
+        "Confirmar naming convention e UTMs"
+      ]
+    },
+    {
+      "platform": "Google Ads",
+      "campaign_objective": "Search conversions",
+      "targeting_summary": "Termos de alta intencao ligados a automacao e campanhas",
+      "budget": 11250,
+      "launch_checklist": [
+        "Separar ad groups por intencao",
+        "Definir negative keywords basicas"
+      ]
+    }
+  ],
+  "approval_required": true,
+  "rollout_strategy": "Subir primeiro os conjuntos de maior intencao, validar tracking e so depois expandir volume.",
+  "monitoring_plan": [
+    "Checar CTR, CPC e qualidade do trafego nas primeiras 24h",
+    "Revisar custo por trial e distribuicao de verba no dia 3"
+  ],
+  "confidence": 0.74
+}
+
+> bba-agency@1.0.0 test:growth
+> ts-node --transpile-only src/utils/test-growth-hacker.ts
+
+
+[TEST] GrowthHackerAgent
+[Memory] ✓ Initialized: episodic + semantic namespaces (Mongo: mongodb://localhost:27017/axodus | Chroma: http://localhost:8001)
+[BriefInterpreter] ► Iniciando step: interpret
+[BriefInterpreter] ✓ Modo mock ativo.
+[BriefInterpreter] ✓ Concluído com confiança: 0.73
+[AudienceProfiler] ► Iniciando step: strategy
+[AudienceProfiler] ✓ Modo mock ativo.
+[AudienceProfiler] ✓ Concluído com confiança: 0.69
+[TrendAnalyst] ► Iniciando step: trends
+[TrendAnalyst] ✓ Modo mock ativo.
+[TrendAnalyst] ✓ Concluído com confiança: 0.76
+[BrandStrategist] ► Iniciando step: branding
+[BrandStrategist] ✓ Modo mock ativo.
+[BrandStrategist] ✓ Concluído com confiança: 0.74
+[CampaignPlanner] ► Iniciando step: planning
+[CampaignPlanner] ✓ Modo mock ativo.
+[CampaignPlanner] ✓ Concluído com confiança: 0.75
+[CreativeDirector] ► Iniciando step: ideation
+[CreativeDirector] ✓ Modo mock ativo.
+[CreativeDirector] ✓ Concluído com confiança: 0.74
+[AdsSpecialist] ► Iniciando step: deploy
+[AdsSpecialist] ✓ Modo mock ativo.
+[AdsSpecialist] ✓ Concluído com confiança: 0.74
+[GrowthHacker] ► Iniciando step: optimization
+[GrowthHacker] ✓ Modo mock ativo.
+[GrowthHacker] ✓ Concluído com confiança: 0.72
+[PASS] GrowthHacker schema valido
+{
+  "experiments": [
+    {
+      "name": "Teste de prova visual no primeiro frame",
+      "hypothesis": "Mostrar comparacao antes/depois aumenta CTR e reduz bounce",
+      "metric": "CTR",
+      "expected_impact": "+10-20% em CTR",
+      "effort": "low"
+    },
+    {
+      "name": "Segmentacao por dor principal",
+      "hypothesis": "Separar criativos por dor dominante melhora aderencia e conversao",
+      "metric": "Conversion rate",
+      "expected_impact": "+8-15% em conversao",
+      "effort": "medium"
+    }
+  ],
+  "prioritization_rationale": "Os experimentos priorizam alto impacto com baixo custo de implementacao nas primeiras iteracoes.",
+  "next_optimization_window": "72 horas apos o lancamento inicial",
+  "confidence": 0.72
+}
+
+> bba-agency@1.0.0 test:contracts
+> ts-node --transpile-only src/utils/test-contract-violation.ts
+
+[TEST] Contract violation detection
+[PASS] interpret rejects incomplete payload
+[PASS] strategy rejects malformed ICP
+[PASS] trends rejects empty trends list
+[PASS] branding rejects weak payload
+[PASS] Contract violation checks completed
+
+> bba-agency@1.0.0 test:permissions
+> ts-node --transpile-only src/utils/test-permission-denied.ts
+
+
+[TEST] Permission denied directive
+[BriefInterpreter] ► Iniciando step: interpret
+[PASS] PermissionDeniedError disparado corretamente
+Agent "BriefInterpreter" is not permitted to use tool "meta-ads-api"
+
+> bba-agency@1.0.0 test:ideation
+> ts-node --transpile-only src/utils/test-parallel-ideation.ts
+
+
+[TEST] ParallelIdeationEngine
+[Memory] ✓ Initialized: episodic + semantic namespaces (Mongo: mongodb://localhost:27017/axodus | Chroma: http://localhost:8001)
+[Ideation] 🔀 Disparando 3 instâncias paralelas...
+
+  ✓ conservative: 2 conceitos
+  ✓ balanced: 2 conceitos
+  ✓ experimental: 2 conceitos
+
+[Ideation] ✓ Total: 6 conceitos para convergência
+
+[PASS] Ideation paralela retornou 3 instancias e 6 conceitos
+
+> bba-agency@1.0.0 test:memory
+> ts-node --transpile-only src/utils/test-memory-namespaces.ts
+
+
+[TEST] Memory namespaces
+[Memory] ✓ Initialized: episodic + semantic namespaces (Mongo: mongodb://localhost:27017/axodus | Chroma: http://localhost:8001)
+[Memory] ✓ Episodic saved: Teste episodico for AxodusBBA
+[Memory] ✓ Semantic saved: "Hook semantico vencedor" (CTR: 5.10%)
+[PASS] Memory namespaces funcionando
+{
+  "mode": "connected",
+  "mongo": true,
+  "chroma": true,
+  "mongoUri": "mongodb://localhost:27017/axodus",
+  "chromaUrl": "http://localhost:8001"
+}
+
+> bba-agency@1.0.0 test:hitl
+> ts-node --transpile-only src/utils/test-hitl-flow.ts
+
+
+[TEST] HITL flow
+
+[HITL] ⚠️  Intervenção requerida para: approve-test-deploy
+       Campaign: hitl-test-001
+       Budget em risco: R$ 5000
+       Timeout: 5s
+
+[HITL] 📢 (Slack não configurado — fallback para console)
+
+╔════════════════════════════════════════════════════════════╗
+║  HUMAN INTERVENTION REQUIRED                              ║
+╠════════════════════════════════════════════════════════════╣
+║  Request ID: HITL-1776886531530-bg7f5j5oeee
+║  Campaign: hitl-test-001
+║  Action: approve-test-deploy
+║  Budget: R$ 5000
+╠════════════════════════════════════════════════════════════╣
+║  Summary: Teste automatizado do fluxo de aprovacao humana.
+╠════════════════════════════════════════════════════════════╣
+║  Payload:
+║  {
+║    "test": true
+║  }
+╠════════════════════════════════════════════════════════════╣
+║  (Em produção, notificação seria enviada para Slack)       ║
+║  (Simulando aprovação automática em 3 segundos...)         ║
+╚════════════════════════════════════════════════════════════╝
+
+[HITL] → Decisão: APPROVED
+[PASS] HITL flow aprovado em modo demo
+
+> bba-agency@1.0.0 test:cost
+> ts-node --transpile-only src/utils/test-cost-overflow.ts
+
+
+[TEST] Cost overflow
+[CostAuditor] StressTester @ validation: 225000 tokens (~R$ 8.66)
+[CostAuditor] 🚨 Token cost exceeded 1.0% of budget (8.7% used) // nao saiu no log, apenas no console 
+[PASS] CostExceededError disparado corretamente
+Token cost exceeded: 8.66 USD / 1.00 USD budget (ratio: 8.66%)
+
+
+### Mensagem de erro no fluxo (via console) 
+
+```
+[BriefInterpreter] ✗ Permissão negada: PermissionDeniedError: Agent "BriefInterpreter" is not permitted to use tool "meta-ads-api"
+    at RogueAgent.validatePermissions (/opt/BBA-Agency/src/agents/base.agent.ts:68:15)
+    at RogueAgent.run (/opt/BBA-Agency/src/agents/base.agent.ts:78:12)
+    at testPermissionDenied (/opt/BBA-Agency/src/utils/test-permission-denied.ts:28:17)
+    at Object.<anonymous> (/opt/BBA-Agency/src/utils/test-permission-denied.ts:51:1)
+    at Module._compile (node:internal/modules/cjs/loader:1812:14)
+    at Module.m._compile (/opt/BBA-Agency/node_modules/ts-node/src/index.ts:1618:23)
+    at node:internal/modules/cjs/loader:1943:10
+    at Object.require.extensions.<computed> [as .ts] (/opt/BBA-Agency/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12) {
+  code: 'PERMISSION_DENIED',
+  timestamp: 2026-04-22T19:35:23.424Z,
+  context: { agent: 'BriefInterpreter', tool: 'meta-ads-api' },
+  agent: 'BriefInterpreter',
+  tool: 'meta-ads-api'
+}
+```

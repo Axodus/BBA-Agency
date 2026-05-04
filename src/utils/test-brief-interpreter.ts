@@ -17,6 +17,8 @@ async function testBriefInterpreter() {
   // 1. Inicializar memória
   console.log("[Setup] Inicializando memória...");
   await memory.init();
+  let exitCode = 0;
+  try {
   console.log("✓ Memória carregada\n");
 
   // 2. Criar instância do agente
@@ -62,7 +64,8 @@ Queremos um copy que transmita "simplicidade" e "economiza tempo".
     output = await agent.run(testContext);
   } catch (err) {
     console.error("[ERROR] Falha ao executar agente:", err);
-    process.exit(1);
+    exitCode = 1;
+    return;
   }
 
   // 5. Analisar resultado
@@ -133,7 +136,8 @@ Queremos um copy que transmita "simplicidade" e "economiza tempo".
     console.log("✅ Contract validation PASSED!\n");
   } else {
     console.log("❌ Missing fields! Contract validation FAILED!\n");
-    process.exit(1);
+exitCode = 1;
+return;
   }
 
   // 7. Debug: Raw output JSON
@@ -141,6 +145,13 @@ Queremos um copy que transmita "simplicidade" e "economiza tempo".
   console.log("║  RAW JSON OUTPUT                                           ║");
   console.log("╚════════════════════════════════════════════════════════════╝\n");
   console.log(JSON.stringify(interpreted, null, 2));
+  } finally {
+    await memory.close();
+  }
+
+  if (exitCode !== 0) {
+    process.exit(exitCode);
+  }
 
   console.log("\n✅ TEST PASSED — BriefInterpreterAgent working correctly!\n");
 }

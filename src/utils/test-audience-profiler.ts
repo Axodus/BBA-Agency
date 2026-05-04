@@ -26,10 +26,11 @@ async function testAudienceProfiler() {
   console.log("║     TEST: AudienceProfilerAgent (Fase 4.2)                ║");
   console.log("╚═══════════════════════════════════════════════════════════╝\n");
 
+  let exitCode = 0;
+  await memory.init();
   try {
     // ─ SETUP: Initialize memory ──────────────────────────────
     console.log("[SETUP] Inicializando memória...");
-    await memory.init();
     console.log("✓ Memória carregada\n");
 
     console.log("[SETUP] Criando instâncias dos agentes...");
@@ -165,13 +166,17 @@ mas têm medo de complexidade ("Não tenho dev na minha agência").`,
     console.log("✅ TEST PASSED — AudienceProfilerAgent working correctly!");
     console.log("═══════════════════════════════════════════════════════════\n");
 
-    process.exit(0);
+    exitCode = 0;
   } catch (error) {
     console.error("\n❌ TEST FAILED:");
     console.error(error instanceof Error ? error.message : error);
     console.error("\nStack trace:", error);
-    process.exit(1);
+    exitCode = 1;
+  } finally {
+    await memory.close();
   }
+
+  process.exit(exitCode);
 }
 
 // Run test
