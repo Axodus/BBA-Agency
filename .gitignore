@@ -4,3 +4,4 @@ dist/
 .trash
 npm-debug.log*
 .backup_*
+.instructions
