@@ -33,3 +33,32 @@ BBA-Agency has normalized baseline instructions for planning and prototype work.
 - protocol execution;
 - treasury, trading, DEX, Marketplace, Mining, Lottery, or settlement flows.
 
+## Nucleus Maturity
+
+Current Level: L2
+Level Name: Validado
+Confidence: Medium
+Portfolio State: RECOVER
+
+Evidence:
+- Baseline `.instructions` and `STATUS.md` exist.
+- `.instructions/BUB_AGENTS.md` is present and not ignored by Git.
+- Older mock-mode permission/test evidence, Zod schemas, TypeScript contracts, and AxodusAPP read-only prototype route evidence were found.
+
+Main Blockers:
+- Current validation gate is undefined/unexecuted.
+- Production claim review is not complete.
+- Production campaign execution and production claims remain blocked.
+
+Next Target Level: L3
+
+Next Recommended Work:
+- Define a non-production validation gate.
+- Review production-like claims.
+- Run visual QA for prototype routes only when execution is allowed.
+
+Execution Boundaries:
+- Production execution: DISABLED
+- Treasury execution: DISABLED
+- Wallet signing: DISABLED
+- On-chain writes: DISABLED
