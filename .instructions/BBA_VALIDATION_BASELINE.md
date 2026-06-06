@@ -94,5 +94,5 @@ No BBA-REQ-01 validation command may require:
 | Current audit | COMPLETE | Created in BBA-REQ-01. |
 | Validation baseline | COMPLETE | Created in BBA-REQ-01. |
 | Current command execution | NOT_PRESENT | No tests/builds were run in BBA-REQ-01. |
-| Fixture baseline | NOT_PRESENT | Deferred to BBA-REQ-02. |
+| Fixture baseline | PRESENT | Created in BBA-REQ-02 at `.instructions/fixtures/bba-agency.mock-data.json`. |
 | L3 validation run | BLOCKED | Deferred to BBA-REQ-03. |

@@ -30,7 +30,15 @@
 
 ## BBA Recovery Next Tasks
 
-- BBA-REQ02-001 — Define mock/local operating model.
-- BBA-REQ02-002 — Create or map fixture baseline.
-- BBA-REQ02-003 — Map fixtures to schemas/contracts.
-- BBA-REQ02-004 — Prepare safe validation handoff for BBA-REQ-03.
+- BBA-REQ02-001 — Define mock/local operating model: COMPLETE
+- BBA-REQ02-002 — Create or map fixture baseline: COMPLETE
+- BBA-REQ02-003 — Map fixtures to schemas/contracts: COMPLETE
+- BBA-REQ02-004 — Prepare safe validation handoff for BBA-REQ-03: COMPLETE
+
+## BBA-REQ-03 Next Tasks
+
+- BBA-REQ03-001 — Validate mock fixture JSON syntax.
+- BBA-REQ03-002 — Record no-secret/no-token preflight.
+- BBA-REQ03-003 — Run approved local validation commands.
+- BBA-REQ03-004 — Document schema/contract validation gaps.
+- BBA-REQ03-005 — Create L3 recovery validation report.

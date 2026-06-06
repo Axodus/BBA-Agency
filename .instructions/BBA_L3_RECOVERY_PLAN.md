@@ -10,10 +10,10 @@ BBA-Agency reaches `L3 - Mock/Local` candidate when it has reproducible mock/loc
 
 | Evidence | Requirement | Current Status | Owner Request |
 | --- | --- | --- | --- |
-| Mock/local operating model | Define what runs locally, what remains mocked, and what is forbidden. | PARTIAL | BBA-REQ-02 |
-| Fixture baseline | Create or map mock briefs, audiences, campaign inputs, brand inputs, and expected non-production outputs. | MISSING | BBA-REQ-02 |
-| Schema/contract map | Link fixtures to `src/contracts` and `src/types`. | PARTIAL | BBA-REQ-02 |
-| Active schema coverage | Clarify the boundary between BBA-domain schemas and active agent `CONTRACT_MAP` validation. | PARTIAL | BBA-REQ-02/BBA-REQ-03 |
+| Mock/local operating model | Define what runs locally, what remains mocked, and what is forbidden. | PRESENT | BBA-REQ-02 |
+| Fixture baseline | Create or map mock briefs, audiences, campaign inputs, brand inputs, and expected non-production outputs. | PRESENT | BBA-REQ-02 |
+| Schema/contract map | Link fixtures to `src/contracts` and `src/types`. | PRESENT | BBA-REQ-02 |
+| Active schema coverage | Clarify the boundary between BBA-domain schemas and active agent `CONTRACT_MAP` validation. | PARTIAL | BBA-REQ-03 |
 | Safe validation command set | Classify and approve local commands. | PARTIAL | BBA-REQ-01/BBA-REQ-03 |
 | Local validation evidence | Execute approved safe commands and record results. | MISSING | BBA-REQ-03 |
 | Production boundary evidence | Confirm production execution remains disabled. | PRESENT | Maintain in every request |
@@ -77,8 +77,8 @@ The following remain disabled:
 | Request | Purpose | Status |
 | --- | --- | --- |
 | BBA-REQ-01 - Recovery Audit & Validation Baseline | Document current state, validation baseline, and L3 recovery plan. | COMPLETE |
-| BBA-REQ-02 - Mock/Local Model & Fixture Baseline | Create or map the mock/local operating model and fixtures. | NEXT |
-| BBA-REQ-03 - Safe Local Validation Execution | Run approved local validation and record evidence. | PENDING |
+| BBA-REQ-02 - Mock/Local Model & Fixture Baseline | Create or map the mock/local operating model and fixtures. | COMPLETE |
+| BBA-REQ-03 - Local Validation Evidence & L3 Recovery Report | Run approved local validation and record evidence. | NEXT |
 | BBA-REQ-04 - L3 Evidence Review & Closeout | Decide whether BBA-Agency can be marked L3 candidate. | PENDING |
 
 ## Acceptance Criteria For L3 Candidate

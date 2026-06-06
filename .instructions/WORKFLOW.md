@@ -34,3 +34,17 @@ Rules:
 - Historical validation claims do not replace current evidence.
 - Dev, MCP, memory-service, Docker, install, package update, campaign, billing, payment, CRM, external automation, or production API commands require separate approval.
 - Production-facing claims require evidence and review before public use.
+
+## Mock/Local Fixture Workflow
+
+1. Keep fixtures under `.instructions/fixtures` unless a product-source fixture path is explicitly approved.
+2. Use synthetic identifiers, `.invalid` domains, and mock-only labels.
+3. Map fixture records to BBA schemas and TypeScript contracts.
+4. Record permission and claim boundaries before validation.
+5. Hand off only approved local validation commands to BBA-REQ-03.
+
+Rules:
+- Fixtures are not production data.
+- Mock approval is not coordinator, governance, treasury, or publication approval.
+- Mock metrics are not performance claims.
+- Billing placeholders must not include prices, invoice numbers, payment links, or receivables.

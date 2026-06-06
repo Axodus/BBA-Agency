@@ -61,8 +61,8 @@ Audit date: 2026-06-06
 | `src/config/env.ts` | PRESENT | `USE_MOCK_LLM` defaults to mock mode unless explicitly disabled. |
 | `src/agents/base.agent.ts` | PRESENT | Contains mock LLM branch when live Anthropic client is inactive. |
 | `src/utils/test-*.ts` | PRESENT | Script-style test utilities exist and may provide mock/local evidence after safety classification. |
-| Dedicated fixture directory | NOT_PRESENT | No dedicated fixture baseline directory was detected. |
-| Mock/local fixture manifest | NOT_PRESENT | BBA-REQ-02 should create or map the fixture baseline. |
+| `.instructions/fixtures` | PRESENT | Created by BBA-REQ-02 for documentation-governance fixture evidence. |
+| `.instructions/fixtures/bba-agency.mock-data.json` | PRESENT | Synthetic mock/local fixture baseline created by BBA-REQ-02. |
 
 ## Tests And Specs Detected
 

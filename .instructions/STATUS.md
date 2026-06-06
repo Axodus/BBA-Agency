@@ -88,3 +88,32 @@ Execution state:
 
 Maturity note:
 BBA-REQ-01 does not claim L3 achieved. It creates the recovery audit, validation baseline, and L3 recovery plan required before the mock/local model and fixture baseline.
+
+## BBA-REQ-02 — Mock/Local Model & Fixture Baseline
+
+Status: COMPLETE
+
+Current maturity:
+L2 — Validado
+
+Target maturity:
+L3 — Mock/Local
+
+Mock/local evidence:
+- Mock/local operating model: COMPLETE
+- Fixture baseline: COMPLETE
+- Schema/contract alignment: COMPLETE
+- Permission and claim boundaries: COMPLETE
+- BBA-REQ-03 validation handoff: PROCEED_WITH_WARNINGS
+
+Execution state:
+- Runtime production execution: DISABLED
+- Real billing: DISABLED
+- External automation execution: DISABLED
+- Production campaigns: DISABLED
+- Client execution: DISABLED
+- Payment flows: DISABLED
+- Secrets usage: DISABLED
+
+Maturity note:
+BBA-REQ-02 creates mock/local evidence but does not execute validation and does not claim L3 achieved.
