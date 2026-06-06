@@ -62,3 +62,29 @@ Execution Boundaries:
 - Treasury execution: DISABLED
 - Wallet signing: DISABLED
 - On-chain writes: DISABLED
+
+## BBA-REQ-01 — Recovery Audit & Validation Baseline
+
+Status: COMPLETE
+
+Current maturity:
+L2 — Validado
+
+Target maturity:
+L3 — Mock/Local
+
+Recovery findings:
+- Current state audit: COMPLETE
+- Validation baseline: COMPLETE
+- L3 recovery plan: COMPLETE
+
+Execution state:
+- Runtime production execution: DISABLED
+- Real billing: DISABLED
+- External automation execution: DISABLED
+- Production campaigns: DISABLED
+- Payment flows: DISABLED
+- Secrets usage: DISABLED
+
+Maturity note:
+BBA-REQ-01 does not claim L3 achieved. It creates the recovery audit, validation baseline, and L3 recovery plan required before the mock/local model and fixture baseline.
