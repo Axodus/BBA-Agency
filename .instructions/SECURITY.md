@@ -47,3 +47,20 @@ Forbidden in fixtures:
 - production campaign IDs.
 
 BBA-REQ-02 fixture evidence is documentation-governance evidence only. It must not be used to execute campaigns, bill clients, dispatch CRM messages, call production APIs, or claim production readiness.
+
+## BBA-REQ-03 Validation Security Boundary
+
+BBA-REQ-03 validation used mock environment variables and removed known token variables from validation command environments.
+
+Still forbidden:
+
+- production automations;
+- campaign execution;
+- real client systems;
+- billing;
+- payment flows;
+- external APIs;
+- secrets;
+- dependency installs;
+- package changes;
+- production readiness claims.

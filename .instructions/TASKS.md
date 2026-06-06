@@ -37,8 +37,14 @@
 
 ## BBA-REQ-03 Next Tasks
 
-- BBA-REQ03-001 — Validate mock fixture JSON syntax.
-- BBA-REQ03-002 — Record no-secret/no-token preflight.
-- BBA-REQ03-003 — Run approved local validation commands.
-- BBA-REQ03-004 — Document schema/contract validation gaps.
-- BBA-REQ03-005 — Create L3 recovery validation report.
+- BBA-REQ03-001 — Validate mock fixture JSON syntax: COMPLETE
+- BBA-REQ03-002 — Record no-secret/no-token preflight: COMPLETE
+- BBA-REQ03-003 — Run approved local validation commands: COMPLETE
+- BBA-REQ03-004 — Document schema/contract validation gaps: COMPLETE
+- BBA-REQ03-005 — Create L3 recovery validation report: COMPLETE
+
+## BBA Post-REQ-03 Tasks
+
+- Pause further BBA work pending portfolio review.
+- Preserve L3 candidate boundary.
+- Do not proceed toward production without explicit coordinator approval.

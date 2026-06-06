@@ -28,11 +28,17 @@ Active objective: recover BBA-Agency from `L2 — Validado` toward `L3 — Mock/
 | --- | --- | --- |
 | BBA-REQ-01 — Recovery Audit & Validation Baseline | Document current state, validation baseline, blockers, and L3 recovery plan. | COMPLETE |
 | BBA-REQ-02 — Mock/Local Model & Fixture Baseline | Define mock/local operating model and fixture baseline. | COMPLETE |
-| BBA-REQ-03 — Local Validation Evidence & L3 Recovery Report | Run approved local validation only after fixture baseline and command classification. | NEXT |
-| BBA-REQ-04 — L3 Evidence Review & Closeout | Review evidence and decide whether BBA-Agency can be marked L3 candidate. | PENDING |
+| BBA-REQ-03 — Local Validation Evidence & L3 Recovery Report | Run approved local validation only after fixture baseline and command classification. | COMPLETE |
+| BBA-REQ-04 — L3 Evidence Review & Closeout | Portfolio-level review only if requested. | PAUSED |
 
 Execution policy:
 - Audit before fixtures.
 - Fixtures before validation execution.
 - Validation evidence before L3 candidate.
 - Production approval is outside this sprint.
+
+## BBA Recovery Sprint Result
+
+Result: `L3 candidate`
+
+BBA-Agency should pause after BBA-REQ-03 and return to portfolio balancing. Next recommended portfolio focus: `Lottery Recovery — L2 to L3`.

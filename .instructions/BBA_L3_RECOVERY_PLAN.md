@@ -78,8 +78,8 @@ The following remain disabled:
 | --- | --- | --- |
 | BBA-REQ-01 - Recovery Audit & Validation Baseline | Document current state, validation baseline, and L3 recovery plan. | COMPLETE |
 | BBA-REQ-02 - Mock/Local Model & Fixture Baseline | Create or map the mock/local operating model and fixtures. | COMPLETE |
-| BBA-REQ-03 - Local Validation Evidence & L3 Recovery Report | Run approved local validation and record evidence. | NEXT |
-| BBA-REQ-04 - L3 Evidence Review & Closeout | Decide whether BBA-Agency can be marked L3 candidate. | PENDING |
+| BBA-REQ-03 - Local Validation Evidence & L3 Recovery Report | Run approved local validation and record evidence. | COMPLETE |
+| BBA-REQ-04 - L3 Evidence Review & Closeout | Portfolio-level review only if requested. | PAUSED |
 
 ## Acceptance Criteria For L3 Candidate
 

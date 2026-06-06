@@ -2,20 +2,20 @@
 
 Updated: 2026-06-06
 
-## BBA-BLOCKER-001 — Current validation gate not executed
+## BBA-BLOCKER-001 — Current validation gate executed with warnings
 
 ID: `BBA-BLOCKER-001`
 Severity: High
-Status: OPEN
+Status: RESOLVED_WITH_WARNINGS
 
 Description:
-Current L3 validation evidence has not been executed. BBA-REQ-02 creates mock/local fixtures and handoff only.
+BBA-REQ-03 executed the approved local validation command set and recorded L3 candidate evidence.
 
 Impact:
-BBA-Agency cannot be marked L3 candidate until BBA-REQ-03 executes or blocks safe local validation.
+BBA-Agency can be treated as L3 candidate, but not production-ready.
 
 Resolution path:
-Execute `BBA-REQ-03 — Local Validation Evidence & L3 Recovery Report`.
+Keep schema-level warnings open and return to portfolio balancing.
 
 ## BBA-BLOCKER-002 — BBA-domain schemas not wired into active validation map
 
@@ -76,3 +76,18 @@ BBA content and fixtures cannot be used for public/prod communication.
 
 Resolution path:
 Create a claim review and evidence registry before public-facing content work.
+
+## BBA-BLOCKER-006 — BBA paused after L3 candidate
+
+ID: `BBA-BLOCKER-006`
+Severity: Medium
+Status: CONTROLLED
+
+Description:
+BBA-Agency should pause after L3 candidate evidence until portfolio review approves more BBA work.
+
+Impact:
+Prevents scope creep from mock/local validation into production-like campaign, billing, or client execution work.
+
+Resolution path:
+Return to portfolio balancing. Recommended next focus: Lottery Recovery — L2 to L3.

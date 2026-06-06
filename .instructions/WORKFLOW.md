@@ -48,3 +48,19 @@ Rules:
 - Mock approval is not coordinator, governance, treasury, or publication approval.
 - Mock metrics are not performance claims.
 - Billing placeholders must not include prices, invoice numbers, payment links, or receivables.
+
+## Local Validation Evidence Workflow
+
+1. Confirm BBA-REQ-03 handoff is `PROCEED` or `PROCEED_WITH_WARNINGS`.
+2. Record git status and current commit.
+3. Validate required documentation files.
+4. Validate fixture JSON syntax.
+5. Run only approved local validation commands with mock env and token variables removed.
+6. Record skipped commands and reasons.
+7. Assess L3 candidate evidence.
+8. Return to portfolio balancing.
+
+Rules:
+- Passing local validation does not authorize production.
+- L3 candidate does not authorize campaigns, billing, external automation, payments, or client execution.
+- Any stronger maturity claim requires a separate approved request.

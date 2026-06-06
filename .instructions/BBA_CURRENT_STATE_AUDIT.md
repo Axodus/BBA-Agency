@@ -102,6 +102,6 @@ No pre-existing `.instructions/reports` files were detected before BBA-REQ-01. H
 
 ## L3 Readiness Assessment
 
-Current assessment: `PARTIAL`
+Current assessment after BBA-REQ-03: `L3 candidate`
 
-BBA-Agency has L2 evidence and enough local structure to plan L3 recovery, but it is not yet an L3 candidate. L3 requires a documented mock/local operating model, a fixture baseline or explicit fixture map, current safe validation evidence, and continued production-disabled boundaries.
+BBA-Agency now has the mock/local operating model, fixture baseline, current safe validation evidence, and continued production-disabled boundaries required for L3 candidate classification. This supersedes the initial BBA-REQ-01 readiness assessment and does not authorize production readiness.
