@@ -1,0 +1,47 @@
+{
+  "classification": {
+    "assetType": "institutional_article",
+    "audience": "product and engineering leaders",
+    "risk": "medium",
+    "topics": ["governed publishing", "human authorization", "AI-assisted production"]
+  },
+  "brief": {
+    "objective": "Explain the reference workflow and its governance guarantees without implying production readiness.",
+    "tone": "institutional, precise, transparent",
+    "requiredDisclosures": [
+      "The demo uses synthetic data.",
+      "Editorial output is deterministic in the browser demo.",
+      "No external publishing connector is executed."
+    ]
+  },
+  "asset": {
+    "title": "From Governed Knowledge to an Auditable Institutional Asset",
+    "dek": "A reference workflow for policy-aware, AI-assisted publishing with explicit human authorization.",
+    "body": [
+      "Institutional publishing requires more than content generation. It requires traceable source material, applicable policies, specialist review, explicit authorization, and durable evidence of every decision.",
+      "The BBA Publisher Reference Demo models that lifecycle as a Mission. The Mission retrieves relevant policies, classifies the source, prepares an editorial brief, produces a draft Institutional Asset, and records review findings before a human can approve or reject release.",
+      "The browser demo intentionally replays a deterministic reference package. This keeps the build transparent and reproducible while allowing policy retrieval, workflow transitions, review handling, human authorization, and audit logging to execute locally.",
+      "The result is not a production publishing platform. It is an executable reference implementation showing how governed knowledge can become an auditable institutional asset."
+    ]
+  },
+  "review": {
+    "status": "warning",
+    "findings": [
+      {
+        "severity": "warning",
+        "code": "DISCLOSURE_REQUIRED",
+        "message": "Keep the deterministic-output disclosure visible in the final asset."
+      },
+      {
+        "severity": "info",
+        "code": "SOURCE_TRACEABLE",
+        "message": "All material claims are traceable to the provided source note."
+      },
+      {
+        "severity": "info",
+        "code": "NO_EXTERNAL_EXECUTION",
+        "message": "No external publication or connector execution is claimed."
+      }
+    ]
+  }
+}
