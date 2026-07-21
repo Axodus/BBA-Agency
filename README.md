@@ -1,236 +1,168 @@
-# BBA-Agency - Unificação dos Projetos Axodus e BBA Agency
+# BBA Agency
 
-## Status: Projeto Unificado e Funcional
+**One Mission. One governed Institutional Asset. Multiple channel-specific variants. Every decision auditable.**
 
-### ✅ Unificação Completa
+BBA Agency is an AI-first platform concept for governed institutional publishing.
 
-O projeto **BBA-Agency** agora possui uma **estrutura simplificada** com um único `package.json` e `node_modules` na raiz, eliminando a redundância de dependências e garantindo consistência em todo o workspace.
+The platform is designed to transform institutional knowledge into reviewed, reusable, channel-aware publication assets while keeping human authority, provenance, and auditability explicit.
 
----
+This repository contains the current BBA Publisher Reference Demo alongside earlier platform and campaign-oriented experiments. The demo is the recommended entry point for reviewers and contributors who want to understand the current product thesis.
 
-## 🔧 Alterações Realizadas
+## Why BBA Agency?
 
-### 1. **Backup dos Arquivos Originais**
-- Criados backups de `package.json`, `package-lock.json` e `node_modules` da raiz e de `src/`.
-- Arquivos redundantes movidos para `.backup_redundancias/` (para segurança).
+Institutional publishing is not only a content-generation problem. It requires a governed path from source knowledge to an approved canonical asset and then to channel-specific adaptations. BBA Agency models that path explicitly:
 
-### 2. **Mesclagem de Dependências e Scripts**
-- Unificados os arquivos `package.json` da raiz e de `src/` em um **único `package.json` na raiz**. 
-- **Dependências**: Mescladas sem conflitos de versão (todas as dependências de ambos os projetos estão instaladas).
-- **Scripts**: Unificados e organizados, com renomeação de scripts conflitantes (ex.: `dev` → `dev` para raiz, `dev:axodus` para o pipeline original de `src/`).
-
-### 3. **Atualização de Referências no Código**
-- **Scripts**: Atualizados para usar o `node_modules` da raiz (ex.: `ts-node src/pipelines/campaign.flow.ts`).
-- **`tsconfig.json`**: Ajustado para incluir `src/**/*.ts` e excluir `node_modules` e `dist`.
-- **Imports**: Verificados e garantidos que não há referências diretas a `src/node_modules` ou `../node_modules`.
-
-### 4. **Remoção de Redundâncias**
-- Arquivos `package.json`, `package-lock.json` e `node_modules` de `src/` foram movidos para `.backup_redundancias/` (para validação e segurança).
-
-### 5. **Validação da Integridade do Projeto**
-- **Compilação**: `npx tsc --noEmit` executado com sucesso (sem erros de TypeScript).
-- **Testes**: Scripts `test:agent`, `test:brief`, `test:audience`, `memory:init` executados com sucesso.
-- **Execução**: Pipeline (`npm run dev`) e servidor MCP (`npm run mcp`) funcionais.
-
----
-
-## 🚀 Funcionalidades Mantidas
-
-### Agentes
-- **Estratégia**: `BriefInterpreterAgent`, `AudienceProfilerAgent`, `TrendAnalystAgent`.
-- **Criativo**: `CreativeDirectorAgent`, `CopywriterAgent` (com `ParallelIdeationEngine`).
-- **Performance**: `AnalyticsAgent`, `DataAnalystAgent`.
-- **Orquestrador**: `OrchestratorAgent`.
-
-### Memória
-- **Híbrida**: Episódica (ChromaDB) + Semântica (MongoDB) + Fallback in-memory.
-- **Métodos**: `saveEpisodic`, `saveSemantic`, `getWinningHooks`, `getAudienceInsights`, `findSimilarCampaigns`.
-
-### Ferramentas
-- **MCP Server**: Integração com Figma, Notion, Ads APIs.
-- **Pipeline**: `campaign.flow.ts` (orquestração end-to-end de campanhas).
-- **Utils**: Mock LLM, validação de contratos, intervenções.
-
----
-
-## 📂 Estrutura do Projeto
-
+```text
+Governed knowledge
+→ Mission
+→ policy retrieval
+→ AI-assisted production
+→ core Institutional Asset
+→ human approval
+→ channel selection
+→ channel-specific adaptation
+→ independent variant review
+→ Distribution Package
+→ audit record
 ```
-/opt/BBA-Agency/
-├── package.json                # Único arquivo de dependências (raiz)
-├── node_modules/               # Único diretório de dependências (raiz)
+
+The design principle is simple: **AI executes; humans govern.**
+
+## Reference demo
+
+The hackathon reference implementation is a bounded, deterministic, browser-based workflow. It runs locally and demonstrates:
+
+- governed source knowledge and deterministic policy retrieval;
+- a structured Mission with explicit state transitions;
+- an AI Workforce representation for specialized roles;
+- a canonical Institutional Asset with human approval or rejection;
+- illustrative Channel Profiles for X, Medium, DEV Community, Forum / Community, and Telegram;
+- deterministic channel-specific adaptation with preserved lineage;
+- independent review and decision-making for each Channel Variant;
+- a Distribution Package with aggregate status;
+- a chronological Audit Timeline and complete JSON export.
+
+The demo does not connect to or publish on external platforms. Its channel constraints are illustrative configuration data, not guarantees about current third-party platform rules.
+
+## Product model
+
+The current BBA domain is organized around five concepts:
+
+| Concept | Meaning |
+| --- | --- |
+| **Mission** | The central unit of work. It carries the objective, source knowledge, policies, execution state, decisions, and resulting assets. |
+| **AI Workforce** | Specialized AI roles for research, policy retrieval, planning, composition, review, and distribution preparation. |
+| **Human Governance** | Authorized humans define objectives, approve or reject outputs, change direction, and retain decision authority. |
+| **Institutional Asset** | The canonical governed output of a Mission, such as an article, technical note, paper, newsletter, release, campaign, documentation, or educational material. |
+| **Distribution Package** | A structured set of channel-specific variants derived from an approved Institutional Asset, with independent review decisions and full lineage. |
+
+## Run the demo
+
+The demo loads JSON files and native ES modules over HTTP. Do not open `demo/index.html` directly with `file://`.
+
+```bash
+cd demo
+python -m http.server 8080
+```
+
+Then open [http://localhost:8080](http://localhost:8080).
+
+### Demo walkthrough
+
+1. Click **Run governed workflow**.
+2. Review the source, retrieved policies, Mission, and AI Workforce representation.
+3. Review and approve or reject the core Institutional Asset.
+4. Select distribution channels.
+5. Generate channel-specific variants.
+6. Review and decide each variant independently.
+7. Inspect the Distribution Package and Audit Timeline.
+8. Export the complete structured JSON record.
+
+For detailed operating notes and troubleshooting, see [`demo/README.md`](demo/README.md).
+
+## Validate the demo
+
+From the repository root:
+
+```bash
+node --check demo/src/app.js
+node --check demo/src/retrieval.js
+node --check demo/src/workflow.js
+node --check demo/src/audit.js
+node --check demo/src/channels.js
+node --check demo/src/adaptation.js
+node --check demo/src/review.js
+node --check demo/src/distribution.js
+
+python -m json.tool demo/data/sample-source.json >/dev/null
+python -m json.tool demo/data/policies.json >/dev/null
+python -m json.tool demo/data/reference-output.json >/dev/null
+python -m json.tool demo/data/channels.json >/dev/null
+```
+
+Then run the static server and complete these smoke scenarios:
+
+- core asset approval;
+- core asset rejection;
+- complete multichannel approval;
+- partial channel approval;
+- reset and second execution;
+- audit JSON export;
+- missing or invalid data-file failure.
+
+The demo has no build step and no external runtime dependency. When browser automation is unavailable, validation should be reported as static or manual rather than as cross-browser visual validation.
+
+## Repository structure
+
+```text
+BBA-Agency/
+├── README.md
+├── AGENTS.md
+├── demo/
+│   ├── index.html
+│   ├── styles.css
+│   ├── package.json
+│   ├── data/
+│   ├── docs/
+│   └── src/
+├── docs/
 ├── src/
-│   ├── agents/
-│   │   ├── base.agent.ts
-│   │   ├── strategy/
-│   │   ├── creative/
-│   │   ├── performance/
-│   │   └── orchestrator/
-│   ├── memory/
-│   │   ├── memory.manager.ts
-│   │   └── init.ts
-│   ├── tools/
-│   │   └── mcp-server.ts
-│   ├── pipelines/
-│   │   └── campaign.flow.ts
-│   ├── config/
-│   │   ├── env.ts
-│   │   └── permissions.ts
-│   ├── utils/
-│   │   ├── test-agent.ts
-│   │   ├── mock-agent.ts
-│   │   └── text.ts
-│   └── tsconfig.json
-├── .env.example
-├── tsconfig.json                # Configuração TypeScript (raiz)
-└── README.md                   # Documentação unificada
+├── package.json
+└── tsconfig.json
 ```
 
----
+The contents under `src/` include earlier platform and campaign-oriented experiments. They are not the same thing as the current reference demo and must not be presented as a completed BBA Platform implementation.
 
-## OperaÃ§Ã£o de MemÃ³ria
+## Development principles
 
-### PrÃ©-requisitos
-- Docker Desktop ou Docker Engine instalado
+- AI first, human governed.
+- Mission driven execution.
+- Institutional Assets as governed outputs.
+- Dynamic workflow with explicit state transitions.
+- Traceability before automation.
+- Channel adaptation instead of blind duplication.
+- No production-readiness claims without evidence.
+- Domain concepts remain separate from implementation details.
 
-### Subir a stack de memÃ³ria (MongoDB + ChromaDB)
-```bash
-pnpm memory:up
-# Aguarda ~5s para os containers iniciarem
-pnpm memory:init   # Seed inicial com dados de teste
-```
+Contributor and coding-agent instructions are defined in [`AGENTS.md`](AGENTS.md).
 
-### Verificar saÃºde
-```bash
-pnpm memory:health
-# Esperado: mode: "connected" | episodic_count, semantic_count
-```
+## Important disclosure
 
-### Derrubar a stack
-```bash
-pnpm memory:down
-# Volumes sÃ£o preservados â€” dados nÃ£o sÃ£o perdidos
-```
+GPT-5.6 was used during the reference build to reason over the product model and generate or validate sample editorial assets.
 
-### VariÃ¡veis de ambiente relevantes
-| VariÃ¡vel | Default | DescriÃ§Ã£o |
-|---|---|---|
-| `MONGODB_URI` | `mongodb://localhost:27017/axodus` | URI do MongoDB |
-| `CHROMA_URL` | `http://localhost:8001` | URL do ChromaDB (8001, nÃ£o 8000) |
-| `USE_MOCK_LLM` | `true` | `false` para usar Claude real |
+Codex was used to help design, implement, debug, validate, and document the reference workflow.
 
-### Fluxo completo de desenvolvimento
-```bash
-pnpm memory:up      # 1. Sobe memÃ³ria
-pnpm memory:init    # 2. Seed inicial
-pnpm dev            # 3. Roda pipeline E2E
-pnpm memory:down    # 4. Derruba ao finalizar
-```
+The browser demo replays deterministic reference data while executing policy retrieval, state transitions, channel adaptation, human decisions, and audit logging locally.
 
-SequÃªncia de validaÃ§Ã£o apÃ³s as 3 tarefas
-```bash
-# 1. Confirmar que os testes legados agora encerram limpos
-pnpm test:brief && pnpm test:audience && pnpm test:brand
+This repository must not be interpreted as a production-ready autonomous publishing platform. It does not claim autonomous publishing, live external connectors, a multi-tenant runtime, or multiple live autonomous agents.
 
-# 2. Validar compilaÃ§Ã£o com os novos imports no Orchestrator
-pnpm typecheck
+## Hackathon
 
-# 3. Rodar pipeline completo (agora com 13 steps)
-pnpm memory:up && pnpm dev
+The reference implementation was created for **OpenAI Build Week** and submitted on Devpost as **Axodus BBA Agency**.
 
-# Output esperado nos novos steps:
-# [Orchestrator] STEP 7b/13 -> CampaignPlanner
-# [Orchestrator] STEP 7c/13 -> VisualDesigner
-# [Orchestrator] STEP 7d/13 -> MotionDesigner
-# [Orchestrator] STEP 7e/13 -> UXCreative
-# [Orchestrator] STEP 8/13 -> HITL
-# [HITL] HUMAN INTERVENTION REQUIRED...
-# (auto-aprovado em 3s em demo mode)
-# [Orchestrator] STEP 9/13 -> AdsSpecialist
-# [Orchestrator] STEP 10/13 -> GrowthHacker
-```
+- Demo video: [youtu.be/kU0z4TbK-fQ](https://youtu.be/kU0z4TbK-fQ)
+- Devpost project: [Axodus BBA Agency](https://devpost.com/software/axodus-bba)
 
----
+## License
 
-## 🛠️ Como Executar
-
-```bash
-cd /opt/BBA-Agency
-
-# Instalar dependências (raiz)
-npm install
-
-# Inicializar memória
-npm run memory:init
-
-# Testar agentes
-npm run test:agent
-npm run test:brief
-npm run test:audience
-
-# Executar pipeline
-npm run dev
-
-# Iniciar servidor MCP
-npm run mcp
-```
-
----
-
-## ⚙️ Configuração
-
-Edite `.env` com as variáveis:
-
-```
-# Anthropic API
-ANTHROPIC_API_KEY=sk-ant-
-
-# Mock LLM (modo desenvolvimento)
-USE_MOCK_LLM=true
-
-# Database
-MONGODB_URI=mongodb://localhost:27017/axodus
-CHROMA_URL=http://localhost:8001
-
-# MCP & Tools
-FIGMA_ACCESS_TOKEN=
-META_ADS_TOKEN=
-NOTION_TOKEN=
-MCP_PORT=3100
-```
-
----
-
-## ✅ Validação
-
-| Comando               | Status |
-|-----------------------|--------|
-| `npx tsc --noEmit`    | ✅     |
-| `npm install`         | ✅*    |
-| `npm run memory:init` | ✅     |
-| `npm run test:agent`   | ✅     |
-| `npm run dev`         | ✅     |
-| `npm run mcp`         | ✅     |
-
-*Dependências já instaladas na raiz (validado manualmente).
-
----
-
-## 📝 Notas Técnicas
-
-- **Mock LLM**: Ativado por padrão em desenvolvimento (`USE_MOCK_LLM=true`).
-- **Memory Fallback**: Sistema funciona mesmo sem MongoDB/ChromaDB.
-- **Imports**: Todos os imports padronizados sem referências a `node_modules` redundantes.
-- **Scripts**: Unificados e funcionais (ex.: `dev`, `test:agent`, `memory:init`).
-- **Segurança**: Backups criados e arquivos redundantes movidos (não removidos definitivamente).
-
----
-
-## 🎯 Próximos Passos
-
-1. **Reinstalar dependências** na raiz para garantir consistência (caso ainda não tenha sido feito).
-2. **Remover definitivamente** os arquivos redundantes em `.backup_redundancias/` após validação final.
-3. **Implementar testes automatizados** para novas funcionalidades.
-4. **Adicionar monitoramento** de performance dos agentes.
-5. **Expandir integrações MCP** (Google Ads, Slack, etc.).
-6. **Documentar detalhadamente** cada agente e ferramenta.
+See the repository license and the license included under [`demo/`](demo/).
