@@ -1,11 +1,21 @@
-export function createAuditEvent({ missionId, action, actor, detail, state }) {
+export function createAuditEvent({ missionId, action, actor, detail, state, sequence = 1, actorType = 'system', channelId = null, entityId = null, payload = {} }) {
+  const eventId = globalThis.crypto?.randomUUID?.() ?? `evt-${Date.now()}-${Math.random().toString(16).slice(2)}`;
   return {
-    id: globalThis.crypto?.randomUUID?.() ?? `evt-${Date.now()}-${Math.random().toString(16).slice(2)}`,
+    id: eventId,
+    eventId,
     missionId,
+    sequence,
     action,
+    eventType: action,
+    actorType,
     actor,
+    actorId: actor,
+    actorLabel: actor,
     detail,
     state,
+    channelId,
+    entityId,
+    payload,
     timestamp: new Date().toISOString()
   };
 }

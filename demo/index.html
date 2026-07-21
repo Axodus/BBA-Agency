@@ -26,7 +26,7 @@
         <div>
           <span class="kicker">Reference workflow</span>
           <h2>Turn a technical note into a governed Institutional Asset.</h2>
-          <p>The demo executes policy retrieval, state transitions, structured review, human approval, and audit logging locally in your browser.</p>
+        <p>The demo executes policy retrieval, state transitions, structured review, channel adaptation, independent human decisions, and audit logging locally in your browser.</p>
         </div>
         <div class="hero-actions">
           <button id="runButton" class="button primary" disabled>Run governed workflow</button>
@@ -121,11 +121,11 @@
           <div class="panel-header">
             <div>
               <span class="panel-index">07</span>
-              <h3>Human Decision</h3>
+            <h3>Human Decision · Core Asset</h3>
             </div>
             <span id="decisionState" class="chip neutral">Required</span>
           </div>
-          <p class="decision-copy">An authorized human must decide whether this version can be released.</p>
+          <p class="decision-copy">An authorized human must approve the core Institutional Asset before any channel variant can be prepared.</p>
           <label class="field-label" for="decisionNote">Decision note</label>
           <textarea id="decisionNote" rows="4" placeholder="Optional rationale or required correction..."></textarea>
           <div class="decision-actions">
@@ -135,10 +135,58 @@
         </article>
       </section>
 
-      <section class="panel">
+      <section class="panel distribution-panel" aria-labelledby="distributionHeading">
         <div class="panel-header">
           <div>
             <span class="panel-index">08</span>
+            <h3 id="distributionHeading">Distribution Channels</h3>
+          </div>
+          <span id="channelSelectionStatus" class="chip neutral">0 selected</span>
+        </div>
+        <p id="channelNotice" class="decision-copy">Approve the core Institutional Asset to configure distribution.</p>
+        <div id="channelList" class="channel-list" aria-live="polite"></div>
+        <div class="profile-heading"><span class="label">Channel Profiles</span><span>Illustrative reference configuration</span></div>
+        <div id="channelProfileList" class="profile-list"></div>
+        <button id="generateVariantsButton" class="button primary" disabled>Generate channel variants</button>
+      </section>
+
+      <section id="variantsSection" class="panel variants-panel" aria-labelledby="variantsHeading" hidden>
+        <div class="panel-header">
+          <div>
+            <span class="panel-index">09</span>
+            <h3 id="variantsHeading">Channel Variants</h3>
+          </div>
+          <div class="variant-selector-wrap">
+            <label class="sr-only" for="variantChannelSelect">Select channel variant</label>
+            <select id="variantChannelSelect" aria-label="Select channel variant"></select>
+            <span id="variantState" class="chip warning">Awaiting review</span>
+          </div>
+        </div>
+        <div id="variantContent" class="variant-content"></div>
+        <div class="variant-review-grid">
+          <div>
+            <div class="panel-subheader"><span class="label">Variant Findings</span></div>
+            <div id="variantFindings" class="finding-list">No variant findings yet.</div>
+          </div>
+          <div class="decision-panel variant-decision-panel">
+            <div class="panel-subheader"><span class="label">Human Decision · Variant</span></div>
+            <label class="field-label" for="variantDecisionNote">Decision note</label>
+            <textarea id="variantDecisionNote" rows="3" placeholder="Optional rationale for this channel..."></textarea>
+            <div class="decision-actions">
+              <button id="approveVariantButton" class="button success" disabled>Approve variant</button>
+              <button id="rejectVariantButton" class="button danger" disabled>Reject variant</button>
+            </div>
+            <button id="approveAllButton" class="button secondary bulk-button" disabled>Approve all eligible variants</button>
+          </div>
+        </div>
+        <div class="package-heading"><span class="label">Distribution Package</span><span id="packageState" class="chip neutral">Not generated</span></div>
+        <div id="packageSummary" class="empty-state">The Distribution Package will appear after variants are generated.</div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <div>
+            <span class="panel-index">10</span>
             <h3>Audit Timeline</h3>
           </div>
           <button id="exportButton" class="button secondary small" disabled>Export audit JSON</button>
@@ -148,7 +196,7 @@
 
       <section class="disclosure">
         <strong>Build disclosure</strong>
-        <p>GPT-5.6 was used during the reference build to generate and validate the sample editorial assets. The browser demo replays a deterministic reference package while executing policy retrieval, workflow transitions, human approval, and audit logging locally.</p>
+        <p>GPT-5.6 was used during the reference build to generate and validate the sample editorial assets. This reference demo prepares channel-specific publication variants but does not connect to or publish on external platforms. Channel constraints are illustrative configuration data and may not reflect current platform limits.</p>
       </section>
     </main>
 

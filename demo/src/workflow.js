@@ -6,7 +6,14 @@ export const WorkflowState = Object.freeze({
   ASSET_GENERATED: 'asset_generated',
   REVIEW_COMPLETED: 'review_completed',
   APPROVED: 'approved',
-  REJECTED: 'rejected'
+  REJECTED: 'rejected',
+  CONFIGURING_DISTRIBUTION: 'configuring_distribution',
+  GENERATING_VARIANTS: 'generating_variants',
+  AWAITING_VARIANT_DECISIONS: 'awaiting_variant_decisions',
+  DISTRIBUTION_READY: 'distribution_ready',
+  VARIANT_PARTIALLY_APPROVED: 'variant_partially_approved',
+  DISTRIBUTION_REJECTED: 'distribution_rejected',
+  COMPLETED: 'completed'
 });
 
 const ALLOWED_TRANSITIONS = Object.freeze({
@@ -15,7 +22,13 @@ const ALLOWED_TRANSITIONS = Object.freeze({
   [WorkflowState.POLICIES_RETRIEVED]: [WorkflowState.MISSION_PLANNED],
   [WorkflowState.MISSION_PLANNED]: [WorkflowState.ASSET_GENERATED],
   [WorkflowState.ASSET_GENERATED]: [WorkflowState.REVIEW_COMPLETED],
-  [WorkflowState.REVIEW_COMPLETED]: [WorkflowState.APPROVED, WorkflowState.REJECTED]
+  [WorkflowState.REVIEW_COMPLETED]: [WorkflowState.APPROVED, WorkflowState.REJECTED],
+  [WorkflowState.APPROVED]: [WorkflowState.CONFIGURING_DISTRIBUTION],
+  [WorkflowState.CONFIGURING_DISTRIBUTION]: [WorkflowState.GENERATING_VARIANTS],
+  [WorkflowState.GENERATING_VARIANTS]: [WorkflowState.AWAITING_VARIANT_DECISIONS],
+  [WorkflowState.AWAITING_VARIANT_DECISIONS]: [WorkflowState.DISTRIBUTION_READY, WorkflowState.VARIANT_PARTIALLY_APPROVED, WorkflowState.DISTRIBUTION_REJECTED],
+  [WorkflowState.DISTRIBUTION_READY]: [WorkflowState.COMPLETED],
+  [WorkflowState.VARIANT_PARTIALLY_APPROVED]: [WorkflowState.COMPLETED]
 });
 
 export function createMission(source) {
@@ -52,7 +65,14 @@ export function stateLabel(state) {
     mission_planned: 'Mission planned',
     asset_generated: 'Asset generated',
     review_completed: 'Awaiting human decision',
-    approved: 'Approved for release',
-    rejected: 'Rejected for revision'
+    approved: 'Asset approved · distribution setup',
+    rejected: 'Rejected for revision',
+    configuring_distribution: 'Configuring distribution',
+    generating_variants: 'Generating channel variants',
+    awaiting_variant_decisions: 'Awaiting variant decisions',
+    distribution_ready: 'Distribution package ready',
+    variant_partially_approved: 'Partially approved for distribution',
+    distribution_rejected: 'Distribution rejected · revision required',
+    completed: 'Completed'
   })[state] ?? state;
 }
