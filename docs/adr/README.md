@@ -38,3 +38,6 @@ upstream documentation review process.
 - [ADR-IMP-0025 — Review canonical model](ADR-IMP-0025-REVIEW-CANONICAL-MODEL.md)
 - [ADR-IMP-0026 — Review session model](ADR-IMP-0026-REVIEW-SESSION-MODEL.md)
 - [ADR-IMP-0027 — Institutional Review outcomes](ADR-IMP-0027-INSTITUTIONAL-REVIEW-OUTCOMES.md)
+- [ADR-IMP-0028 — Publication canonical model](ADR-IMP-0028-PUBLICATION-CANONICAL-MODEL.md)
+- [ADR-IMP-0029 — Immutable Publication packages](ADR-IMP-0029-IMMUTABLE-PUBLICATION-PACKAGES.md)
+- [ADR-IMP-0030 — Publication ownership](ADR-IMP-0030-PUBLICATION-OWNERSHIP.md)

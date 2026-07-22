@@ -1,6 +1,6 @@
 # Bounded Context Map
 
-Status: ACCEPTED for EPIC-IMP-008 implementation.
+Status: ACCEPTED for EPIC-IMP-009 implementation.
 
 This local map records implementation boundaries for the Core. It does not
 replace the certified BBA Platform Architecture or Domain documentation.
@@ -28,7 +28,10 @@ replace the certified BBA Platform Architecture or Domain documentation.
                        Review implementation module
                                       │
                                       ▼
-                       future Publication, Connector
+                    Publication implementation module
+                                      │
+                                      ▼
+                              future Connector
 ```
 
 Rules:
@@ -71,6 +74,18 @@ Rules:
   Publication. Cross-context coordination uses ports and neutral references.
 - Review notifications occur after save. Notification failure remains visible
   and does not undo the in-memory persisted mutation.
+- Publication is an isolated implementation module for publication
+  preparation, Governance authorization snapshots and external outcome
+  observations.
+- Publication never approves content, executes Review, executes Governance,
+  mutates Assets, mutates Workflow, calls Connectors, or stores canonical Asset
+  content.
+- PublicationPackage is immutable from creation and contains only references.
+- PublicationVersion represents exactly one complete observed attempt across
+  all declared destinations. `PARTIAL` and `FAILED` remain
+  `AUTHORIZED_FOR_CONNECTOR`; only global `SUCCESS` promotes to `PUBLISHED`.
+- `ConnectorReference` is a neutral shared reference backed by `ConnectorId`;
+  it does not implement Connector behavior.
 - Asset graph checks and multi-Aggregate supersession are Application concerns
   exposed through ports; Assets never load other Assets from domain code.
 - `Capability` is a Value Object and `CapabilitySet` is immutable.

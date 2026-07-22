@@ -450,3 +450,58 @@ in the M0 report.
 | REQ-IMP-008-053 | ARCH-003 | Context map and traceability | map and this matrix | architecture review | ADR-IMP-0025 | DONE |
 | REQ-IMP-008-054 | GDE-081/082 | Public API and no lateral imports | barrels / bounded context test | typecheck/architecture test | ADR-IMP-0025 | DONE |
 | REQ-IMP-008-055 | GDE-080 | Epic completion evidence | `EPIC-IMP-008-REVIEW-REPORT.md` | Core/demo checks | — | DONE |
+| REQ-IMP-009-001 | ARCH-003/GDE-081 | Publication implementation module | `core/src/modules/publication/` | publication/architecture tests | ADR-IMP-0028 | DONE |
+| REQ-IMP-009-002 | GDE-076/082 | Publication identities | `shared/identity/Publication*.ts` | identity tests | ADR-IMP-0028 | DONE |
+| REQ-IMP-009-003 | GDE-076/082 | ConnectorReference backed by ConnectorId | `shared/references/ConnectorReference.ts` | identity/publication tests | ADR-IMP-0030 | DONE |
+| REQ-IMP-009-004 | GDE-081 | Publication references | `shared/references/Publication*.ts` | typecheck/identity tests | ADR-IMP-0028 | DONE |
+| REQ-IMP-009-005 | GDE-081 | Public Publication namespace | `modules/publication/index.ts` | typecheck | ADR-IMP-0028 | DONE |
+| REQ-IMP-009-006 | GDE-080 | Foundation tests | `publication.test.ts` | node:test | ADR-IMP-0028 | DONE |
+| REQ-IMP-009-007 | GDE-045 | Publication Aggregate | `domain/Publication.ts` | lifecycle tests | ADR-IMP-0028 | DONE |
+| REQ-IMP-009-008 | GDE-045 | Canonical lifecycle | `PublicationStatus` | lifecycle tests | ADR-IMP-0028 | DONE |
+| REQ-IMP-009-009 | GDE-045/049 | CreatePublication | `Publication.create()` / use case | package tests | ADR-IMP-0028/29 | DONE |
+| REQ-IMP-009-010 | GDE-049 | PreparePublication | application use case | eligibility tests | ADR-IMP-0028 | DONE |
+| REQ-IMP-009-011 | GDE-049 | AuthorizePublication | application use case | governance tests | ADR-IMP-0030 | DONE |
+| REQ-IMP-009-012 | GDE-049 | ArchivePublication | application use case | lifecycle tests | ADR-IMP-0030 | DONE |
+| REQ-IMP-009-013 | GDE-080 | Transition tests | `publication.test.ts` | invalid transition tests | ADR-IMP-0028 | DONE |
+| REQ-IMP-009-014 | GDE-079 | Immutable PublicationPackage | `PublicationPackage.ts` | immutability tests | ADR-IMP-0029 | DONE |
+| REQ-IMP-009-015 | GDE-079 | Package item pairing | `PublicationPackageItem` | pairing tests | ADR-IMP-0029 | DONE |
+| REQ-IMP-009-016 | GDE-079 | Destination model | `PublicationDestination` | destination tests | ADR-IMP-0029 | DONE |
+| REQ-IMP-009-017 | GDE-079 | Package Tenant boundary | `PublicationPackage.assertState()` | Tenant tests | ADR-IMP-0029 | DONE |
+| REQ-IMP-009-018 | GDE-079 | Exact destination coverage | `Publication.recordOutcome()` | outcome tests | ADR-IMP-0029 | DONE |
+| REQ-IMP-009-019 | GDE-079 | PublicationVersionNumber | `PublicationVersionNumber` | retry tests | ADR-IMP-0029 | DONE |
+| REQ-IMP-009-020 | GDE-079 | PublicationManifest snapshot | `PublicationManifest` | snapshot tests | ADR-IMP-0029 | DONE |
+| REQ-IMP-009-021 | GDE-079 | PublicationRecord semantics | `PublicationRecord` | record tests | ADR-IMP-0029/30 | DONE |
+| REQ-IMP-009-022 | GDE-079 | Record SUCCESS/FAILED invariants | `PublicationRecord` | record tests | ADR-IMP-0029 | DONE |
+| REQ-IMP-009-023 | GDE-079 | Result derivation | `PublicationVersion` | partial/failed/success tests | ADR-IMP-0028 | DONE |
+| REQ-IMP-009-024 | GDE-079 | Idempotent observationBatchKey | `Publication.recordOutcome()` | idempotency tests | ADR-IMP-0029 | DONE |
+| REQ-IMP-009-025 | GDE-081 | PublicationMissionPort | `ports/PublicationMissionPort.ts` | application tests | ADR-IMP-0004 | DONE |
+| REQ-IMP-009-026 | GDE-081 | PublicationReviewPort | `ports/PublicationReviewPort.ts` | eligibility tests | ADR-IMP-0027/30 | DONE |
+| REQ-IMP-009-027 | GDE-081 | PublicationGovernancePort | `ports/PublicationGovernancePort.ts` | authorization tests | ADR-IMP-0030 | DONE |
+| REQ-IMP-009-028 | GDE-081 | PublicationReferenceValidationPort | `ports/PublicationReferenceValidationPort.ts` | application tests | ADR-IMP-0030 | DONE |
+| REQ-IMP-009-029 | GDE-081 | PublicationConnectorEvidencePort | `ports/PublicationConnectorEvidencePort.ts` | outcome tests | ADR-IMP-0030 | DONE |
+| REQ-IMP-009-030 | GDE-049/081 | Eligibility snapshot | `PublicationEligibility.ts` | manifest tests | ADR-IMP-0028/30 | DONE |
+| REQ-IMP-009-031 | GDE-049/081 | Authorization snapshot | `PublicationAuthorization.ts` | manifest tests | ADR-IMP-0030 | DONE |
+| REQ-IMP-009-032 | GDE-081 | CreatePublication use case | `PublicationUseCases.ts` | application tests | ADR-IMP-0004/28 | DONE |
+| REQ-IMP-009-033 | GDE-081 | PreparePublication use case | `PublicationUseCases.ts` | eligibility tests | ADR-IMP-0004/28 | DONE |
+| REQ-IMP-009-034 | GDE-081 | AuthorizePublication use case | `PublicationUseCases.ts` | authorization tests | ADR-IMP-0004/30 | DONE |
+| REQ-IMP-009-035 | GDE-081 | RecordPublicationOutcome use case | `PublicationUseCases.ts` | outcome/idempotency tests | ADR-IMP-0004/29 | DONE |
+| REQ-IMP-009-036 | GDE-081 | ArchivePublication use case | `PublicationUseCases.ts` | lifecycle tests | ADR-IMP-0004/30 | DONE |
+| REQ-IMP-009-037 | GDE-083 | PublicationRepositoryPort | `ports/PublicationRepositoryPort.ts` | repository tests | ADR-IMP-0005 | DONE |
+| REQ-IMP-009-038 | GDE-083 | InMemoryPublicationRepository | `infrastructure/InMemoryPublicationRepository.ts` | repository tests | ADR-IMP-0005 | DONE |
+| REQ-IMP-009-039 | GDE-083 | Optimistic concurrency | repository save | concurrency tests | ADR-IMP-0005 | DONE |
+| REQ-IMP-009-040 | GDE-083 | Deep-frozen snapshots | `toSnapshot()` | snapshot tests | ADR-IMP-0029 | DONE |
+| REQ-IMP-009-041 | GDE-083 | Deterministic serialization | `serialize()` | serialization tests | ADR-IMP-0029 | DONE |
+| REQ-IMP-009-042 | GDE-083 | Rehydration | `Publication.rehydrate()` | reconstruction tests | ADR-IMP-0029 | DONE |
+| REQ-IMP-009-043 | GDE-083 | Append-only attempts | `PublicationVersion[]` | retry tests | ADR-IMP-0029 | DONE |
+| REQ-IMP-009-044 | GDE-083 | Repository contract coverage | `publication.test.ts` | repository tests | ADR-IMP-0005 | DONE |
+| REQ-IMP-009-045 | ARCH-025 | PublicationCreated | `PublicationEvents.ts` | event tests | ADR-IMP-0028 | DONE |
+| REQ-IMP-009-046 | ARCH-025 | PublicationPrepared | `PublicationEvents.ts` | event tests | ADR-IMP-0028 | DONE |
+| REQ-IMP-009-047 | ARCH-025 | PublicationAuthorized | `PublicationEvents.ts` | event tests | ADR-IMP-0030 | DONE |
+| REQ-IMP-009-048 | ARCH-025 | PublicationOutcomeRecorded | `PublicationEvents.ts` | event tests | ADR-IMP-0029 | DONE |
+| REQ-IMP-009-049 | ARCH-025 | PublicationPublished | `PublicationEvents.ts` | event order tests | ADR-IMP-0028 | DONE |
+| REQ-IMP-009-050 | ARCH-025 | PublicationArchived | `PublicationEvents.ts` | lifecycle tests | ADR-IMP-0030 | DONE |
+| REQ-IMP-009-051 | GDE-079 | Publication contracts | `contracts/Publication*.md` | document review | ADR-IMP-0028/29/30 | DONE |
+| REQ-IMP-009-052 | GDE-079 | Publication ADRs | ADR-IMP-0028..0030 | ADR review | ADR-IMP-0028/29/30 | DONE |
+| REQ-IMP-009-053 | ARCH-003 | Bounded context map | `BOUNDED-CONTEXT-MAP.md` | architecture test | ADR-IMP-0028 | DONE |
+| REQ-IMP-009-054 | GDE-081/082 | Public API and no lateral imports | barrels / bounded context test | typecheck/architecture test | ADR-IMP-0028/30 | DONE |
+| REQ-IMP-009-055 | GDE-080 | Epic completion evidence | `EPIC-IMP-009-PUBLICATION-REPORT.md` | Core/demo checks | — | DONE |
