@@ -7,9 +7,9 @@ It is intentionally independent from:
 - `demo/`, the deterministic browser reference implementation;
 - `src/`, preserved legacy experiments.
 
-The Core currently contains bootstrap metadata and architecture checks only. It
-does not yet implement Mission, Tenant, Governance, Workforce, Assets, APIs,
-Connectors, persistence, authentication, or publication.
+The Core now contains the Shared Kernel and Tenant Context foundations. It does
+not yet implement Mission, Governance, Workforce, Assets, APIs, Connectors,
+persistence, authentication, authorization, or publication.
 
 ## Toolchain
 
