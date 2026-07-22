@@ -7,3 +7,10 @@ do not replace the normative Documentation corpus.
 Each contract records responsibilities, invariants, accepted commands, emitted
 events, canonical states, permitted transitions, public API, dependencies,
 serialization, persistence port, validation, and deferred concerns.
+
+Current contracts:
+
+- [MissionAggregate](MissionAggregate.md)
+- [GovernanceAggregate](GovernanceAggregate.md)
+- [AuthorityAggregate](AuthorityAggregate.md)
+- [DecisionAggregate](DecisionAggregate.md)

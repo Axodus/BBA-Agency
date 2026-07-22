@@ -30,6 +30,66 @@ REQ: `REQ-IMP-000-011`
 `DONE` means the local artifact exists and its validation evidence is recorded
 in the M0 report.
 
+## EPIC-IMP-003 — Human Governance
+
+| Requirement | Source document | Invariant / responsibility | Code path | Test path | ADR | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+| REQ-IMP-003-001 | GDE-041 | Governance module ownership | `core/src/modules/governance/` | governance test | ADR-IMP-0010 | DONE |
+| REQ-IMP-003-002 | GDE-043 | Authority Aggregate | `domain/Authority.ts` | governance test | ADR-IMP-0011 | DONE |
+| REQ-IMP-003-003 | GDE-045 | Decision Aggregate | `domain/Decision.ts` | governance test | ADR-IMP-0010 | DONE |
+| REQ-IMP-003-004 | GDE-045 | Approval Entity | `domain/Approval.ts` | governance test | — | DONE |
+| REQ-IMP-003-005 | GDE-046 | Assignment reference | `shared/references/AssignmentReference.ts` | governance test | ADR-IMP-0011 | DONE |
+| REQ-IMP-003-006 | GDE-080 | Valid Aggregate creation | governance domain | governance test | — | DONE |
+| REQ-IMP-003-007 | ARCH-018 | Authority identity | `shared/identity/AuthorityId.ts` | identity/governance tests | — | DONE |
+| REQ-IMP-003-008 | GDE-043 | Authority level | `domain/AuthorityLevel.ts` | governance test | — | DONE |
+| REQ-IMP-003-009 | GDE-043 | Authority scope | `domain/AuthorityScope.ts` | governance test | — | DONE |
+| REQ-IMP-003-010 | GDE-048 | Authority lifecycle status | `domain/AuthorityStatus.ts` | governance test | ADR-IMP-0011 | DONE |
+| REQ-IMP-003-011 | GDE-048 | Protected lifecycle commands | `domain/Authority.ts` | governance test | ADR-IMP-0011 | DONE |
+| REQ-IMP-003-012 | GDE-080 | Lifecycle validation | Authority domain | governance test | — | DONE |
+| REQ-IMP-003-013 | GDE-046 | Assignment ownership | `domain/Assignment.ts` | governance test | ADR-IMP-0011 | DONE |
+| REQ-IMP-003-014 | GDE-046 | Assignment status | `domain/AssignmentStatus.ts` | governance test | ADR-IMP-0011 | DONE |
+| REQ-IMP-003-015 | GDE-046 | Temporal delegation | `domain/AssignmentPeriod.ts` | governance test | ADR-IMP-0011 | DONE |
+| REQ-IMP-003-016 | GDE-046 | Grant authority | `Authority.assign()` | governance test | ADR-IMP-0011 | DONE |
+| REQ-IMP-003-017 | GDE-046 | Revoke assignment | `Authority.revokeAssignment()` | governance test | ADR-IMP-0011 | DONE |
+| REQ-IMP-003-018 | GDE-046 | Expire assignment | `Authority.expireAssignment()` | governance test | ADR-IMP-0011 | DONE |
+| REQ-IMP-003-019 | GDE-046 | Overlap and invalid delegation rejection | Authority domain | governance test | ADR-IMP-0011 | DONE |
+| REQ-IMP-003-020 | GDE-045 | Decision type | `domain/DecisionType.ts` | governance test | — | DONE |
+| REQ-IMP-003-021 | GDE-045 | Decision status | `domain/DecisionStatus.ts` | governance test | — | DONE |
+| REQ-IMP-003-022 | GDE-045 | Create Decision | `Decision.create()` | governance test | ADR-IMP-0010 | DONE |
+| REQ-IMP-003-023 | GDE-045 | Approve Decision | `Decision.approve()` | governance test | — | DONE |
+| REQ-IMP-003-024 | GDE-045 | Reject Decision | `Decision.reject()` | governance test | — | DONE |
+| REQ-IMP-003-025 | GDE-045 | Finalize Decision | `Decision.finalize()` | governance test | — | DONE |
+| REQ-IMP-003-026 | GDE-045 | Approval outcome | `domain/ApprovalOutcome.ts` | governance test | — | DONE |
+| REQ-IMP-003-027 | GDE-045 | Decision validation | Decision domain | governance test | — | DONE |
+| REQ-IMP-003-028 | GDE-043 | Authority reference | `shared/references/AuthorityReference.ts` | governance test | ADR-IMP-0010 | DONE |
+| REQ-IMP-003-029 | GDE-045 | Decision reference | `shared/references/DecisionReference.ts` | governance test | ADR-IMP-0010 | DONE |
+| REQ-IMP-003-030 | GDE-045 | Approval reference | `shared/references/ApprovalReference.ts` | governance test | ADR-IMP-0010 | DONE |
+| REQ-IMP-003-031 | GDE-050 | Governance policy boundary | Governance README/contract | architecture test | — | DONE |
+| REQ-IMP-003-032 | GDE-049 | Authorized Mission command | `GovernanceAuthorizationPort.ts` | coordinator test | ADR-IMP-0010 | DONE |
+| REQ-IMP-003-033 | GDE-051 | Same-Tenant Decision | `DecisionAuthorizationService.ts` | governance test | ADR-IMP-0010 | DONE |
+| REQ-IMP-003-034 | GDE-081 | Mission/Governance integration boundary | Application ports/coordinator | coordinator test | ADR-IMP-0010 | DONE |
+| REQ-IMP-003-035 | GDE-081 | Authority repository port | `ports/AuthorityRepository.ts` | repository test | ADR-IMP-0004 | DONE |
+| REQ-IMP-003-036 | GDE-081 | Decision repository port | `ports/DecisionRepository.ts` | repository test | ADR-IMP-0004 | DONE |
+| REQ-IMP-003-037 | GDE-083 | In-memory Authority repository | `InMemoryAuthorityRepository.ts` | repository test | ADR-IMP-0005 | DONE |
+| REQ-IMP-003-038 | GDE-083 | In-memory Decision repository | `InMemoryDecisionRepository.ts` | repository test | ADR-IMP-0005 | DONE |
+| REQ-IMP-003-039 | GDE-082 | Application use cases | `governance/application/` | governance test | ADR-IMP-0004 | DONE |
+| REQ-IMP-003-040 | GDE-083 | Repository contracts | governance repositories | repository test | ADR-IMP-0005 | DONE |
+| REQ-IMP-003-041 | ARCH-025 | AuthorityCreated | `GovernanceEvents.ts` | event assertions | — | DONE |
+| REQ-IMP-003-042 | ARCH-025 | AssignmentGranted | `GovernanceEvents.ts` | event assertions | — | DONE |
+| REQ-IMP-003-043 | ARCH-025 | DecisionCreated | `GovernanceEvents.ts` | event assertions | — | DONE |
+| REQ-IMP-003-044 | ARCH-025 | DecisionApproved | `GovernanceEvents.ts` | event assertions | — | DONE |
+| REQ-IMP-003-045 | ARCH-025 | DecisionRejected | `GovernanceEvents.ts` | Decision tests | — | DONE |
+| REQ-IMP-003-046 | ARCH-025 | DecisionFinalized | `GovernanceEvents.ts` | event assertions | — | DONE |
+| REQ-IMP-003-047 | ARCH-025 | Governance audit metadata | `GovernanceAuditMetadata.ts` | serialization test | — | DONE |
+| REQ-IMP-003-048 | ARCH-025 | Tenant/Version/Evidence/Correlation/Causation | Governance events | governance test | — | DONE |
+| REQ-IMP-003-049 | GDE-041 | Governance contract | `contracts/GovernanceAggregate.md` | document review | ADR-IMP-0010 | DONE |
+| REQ-IMP-003-050 | GDE-045 | Decision contract | `contracts/DecisionAggregate.md` | document review | ADR-IMP-0010 | DONE |
+| REQ-IMP-003-051 | GDE-043 | Authority contract | `contracts/AuthorityAggregate.md` | document review | ADR-IMP-0011 | DONE |
+| REQ-IMP-003-052 | GDE-081 | Forbidden context dependencies | bounded context matrix | architecture test | ADR-IMP-0010 | DONE |
+| REQ-IMP-003-053 | GDE-079 | Traceability update | this matrix | `M3-HUMAN-GOVERNANCE-READY-REPORT.md` | — | DONE |
+| REQ-IMP-003-054 | GDE-079 | Public API review | governance barrels/README | typecheck | — | DONE |
+| REQ-IMP-003-055 | GDE-080 | Epic completion evidence | `M3-HUMAN-GOVERNANCE-READY-REPORT.md` | Core check | — | DONE |
+
 ## EPIC-IMP-001 — Shared Kernel and Tenant Context
 
 | Requirement | Source document | Invariant / responsibility | Code path | Test path | Status |

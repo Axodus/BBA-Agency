@@ -6,7 +6,7 @@ The normative source remains the governed corpus in the sibling
 execution controls and must not be treated as a replacement or public
 projection of that corpus.
 
-Current gate: `EPIC-IMP-002` / `M2 — Governed Mission`.
+Current gate: `EPIC-IMP-003` / `M3 — Human Governance Ready`.
 
 The Core is isolated in `core/`. The deterministic reference demo and legacy
 experiments are preserved and validated separately.
@@ -25,7 +25,9 @@ experiments are preserved and validated separately.
 - [M0 report](M0-REPOSITORY-READY-REPORT.md)
 - [Documentation gaps](documentation-gaps.md)
 - [Architecture baseline](architecture-baseline.md)
+- [Bounded Context Map](BOUNDED-CONTEXT-MAP.md)
 - [EPIC-IMP-001 report](EPIC-IMP-001-IMPLEMENTATION-REPORT.md)
 - [Aggregate contracts](contracts/README.md)
 - [Mission Aggregate contract](contracts/MissionAggregate.md)
 - [EPIC-IMP-002 report](EPIC-IMP-002-MISSION-CORE-REPORT.md)
+- [M3 Human Governance Ready report](M3-HUMAN-GOVERNANCE-READY-REPORT.md)

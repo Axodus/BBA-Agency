@@ -20,3 +20,5 @@ upstream documentation review process.
 - [ADR-IMP-0007 — M0 architecture baseline](ADR-IMP-0007-M0-ARCHITECTURE-BASELINE.md)
 - [ADR-IMP-0008 — Canonical Mission lifecycle](ADR-IMP-0008-CANONICAL-MISSION-LIFECYCLE.md)
 - [ADR-IMP-0009 — Mission Aggregate stability](ADR-IMP-0009-MISSION-AGGREGATE-STABILITY.md)
+- [ADR-IMP-0010 — Governance/Mission context boundary](ADR-IMP-0010-GOVERNANCE-MISSION-BOUNDARY.md)
+- [ADR-IMP-0011 — Governance lifecycle and Assignment ownership](ADR-IMP-0011-GOVERNANCE-LIFECYCLE-AND-ASSIGNMENT-OWNERSHIP.md)
