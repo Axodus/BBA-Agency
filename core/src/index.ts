@@ -12,3 +12,4 @@ export const coreBootstrap = Object.freeze({
 } as const);
 
 export * from "./shared/index.js";
+export * from "./modules/index.js";

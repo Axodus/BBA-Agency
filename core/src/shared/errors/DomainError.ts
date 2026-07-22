@@ -2,7 +2,8 @@ export type DomainErrorCode =
   | "domain_error"
   | "validation_error"
   | "invariant_violation"
-  | "tenant_violation";
+  | "tenant_violation"
+  | "concurrency_conflict";
 
 export abstract class DomainError extends Error {
   public readonly code: DomainErrorCode;

@@ -7,9 +7,10 @@ It is intentionally independent from:
 - `demo/`, the deterministic browser reference implementation;
 - `src/`, preserved legacy experiments.
 
-The Core now contains the Shared Kernel and Tenant Context foundations. It does
-not yet implement Mission, Governance, Workforce, Assets, APIs, Connectors,
-persistence, authentication, authorization, or publication.
+The Core now contains the Shared Kernel, Tenant Context, and Mission Aggregate
+foundations. It does not yet implement Human Governance, AI Workforce,
+Institutional Assets, APIs, Connectors, production persistence, authentication,
+authorization, or publication.
 
 ## Toolchain
 
@@ -32,5 +33,6 @@ pnpm --dir core architecture
 pnpm --dir core check
 ```
 
-The first domain implementation must be authorized by EPIC-IMP-001 after the
-M0 gate is marked PASS.
+Mission implementation is governed by EPIC-IMP-002 and the canonical Mission
+State Model. Full Human Governance and authority resolution remain assigned to
+EPIC-IMP-003.
