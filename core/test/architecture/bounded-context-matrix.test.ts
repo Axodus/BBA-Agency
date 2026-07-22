@@ -4,7 +4,7 @@ import { readFile, readdir } from "node:fs/promises";
 import { relative, resolve } from "node:path";
 
 const modulesRoot = resolve(import.meta.dirname, "../../src/modules");
-const contexts = new Set(["mission", "governance", "ai-workforce", "institutional-assets", "knowledge-policy", "workforce", "assets", "knowledge", "workflow", "publication", "connector"]);
+const contexts = new Set(["mission", "governance", "ai-workforce", "institutional-assets", "knowledge-policy", "workforce", "assets", "knowledge", "workflow", "review", "publication", "connector"]);
 const importPattern = /(?:from\s*|import\s*\(\s*)["']([^"']+)["']/gu;
 
 async function files(directory: string): Promise<string[]> {
@@ -125,6 +125,22 @@ test("Workflow domain and application remain coordination-only and infrastructur
   const forbidden = /(?:\/modules\/(?:mission|governance|ai-workforce|institutional-assets|knowledge-policy|review|publication|connector)|infrastructure|frontend)/u;
   for (const file of await files(workflowRoot)) {
     const relativeFile = relative(workflowRoot, file);
+    if (!relativeFile.startsWith("domain/") && !relativeFile.startsWith("application/")) continue;
+    const content = await readFile(file, "utf8");
+    for (const match of content.matchAll(importPattern)) {
+      const specifier = match[1] ?? "";
+      if (forbidden.test(specifier)) violations.push(`${relativeFile} -> ${specifier}`);
+    }
+  }
+  assert.deepEqual(violations, []);
+});
+
+test("Review domain and application remain assessment-only and infrastructure-free", async () => {
+  const reviewRoot = resolve(modulesRoot, "review");
+  const violations: string[] = [];
+  const forbidden = /(?:\/modules\/(?:mission|governance|ai-workforce|institutional-assets|knowledge-policy|workflow|publication|connector)|infrastructure|frontend)/u;
+  for (const file of await files(reviewRoot)) {
+    const relativeFile = relative(reviewRoot, file);
     if (!relativeFile.startsWith("domain/") && !relativeFile.startsWith("application/")) continue;
     const content = await readFile(file, "utf8");
     for (const match of content.matchAll(importPattern)) {
