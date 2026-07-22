@@ -71,6 +71,7 @@ Preserved:
 | --- | --- | --- |
 | ADR-IMP-0010 | Governance/Mission boundary and Application-only coordination | ACCEPTED |
 | ADR-IMP-0011 | Canonical Governance lifecycle, Suspension condition and Assignment ownership | ACCEPTED |
+| ADR-IMP-0012 | Global Authority conflict resolution deferred to EPIC-IMP-011 | DEFERRED |
 
 ## Validation
 
@@ -111,7 +112,9 @@ made about visual or cross-browser behavior. The demo was not modified.
 - Technical Authentication/Authorization is intentionally not implemented and
   remains outside this bounded context.
 - Cross-Aggregate delegation policy is not implemented; current Assignment
-  conflict detection is local to the owning Authority Aggregate.
+  conflict detection is local to the owning Authority Aggregate. This is an
+  intentional deferral recorded in [ADR-IMP-0012](../adr/ADR-IMP-0012-GLOBAL-AUTHORITY-CONFLICT-RESOLUTION.md)
+  for EPIC-IMP-011.
 - Future bounded contexts are reserved in the architecture matrix but do not
   yet contain implementation code.
 

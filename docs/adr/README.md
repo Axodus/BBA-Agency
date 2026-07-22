@@ -5,7 +5,7 @@ override the certified BBA Platform ADRs in the private Documentation corpus.
 
 ## Status taxonomy
 
-Allowed statuses are `PROPOSED`, `ACCEPTED`, `SUPERSEDED`, and `REJECTED`.
+Allowed statuses are `PROPOSED`, `ACCEPTED`, `DEFERRED`, `SUPERSEDED`, and `REJECTED`.
 An ADR may be `ACCEPTED` for implementation while remaining subject to the
 upstream documentation review process.
 
@@ -22,3 +22,4 @@ upstream documentation review process.
 - [ADR-IMP-0009 — Mission Aggregate stability](ADR-IMP-0009-MISSION-AGGREGATE-STABILITY.md)
 - [ADR-IMP-0010 — Governance/Mission context boundary](ADR-IMP-0010-GOVERNANCE-MISSION-BOUNDARY.md)
 - [ADR-IMP-0011 — Governance lifecycle and Assignment ownership](ADR-IMP-0011-GOVERNANCE-LIFECYCLE-AND-ASSIGNMENT-OWNERSHIP.md)
+- [ADR-IMP-0012 — Global Authority conflict resolution](ADR-IMP-0012-GLOBAL-AUTHORITY-CONFLICT-RESOLUTION.md)
