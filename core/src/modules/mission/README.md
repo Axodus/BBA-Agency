@@ -13,5 +13,5 @@ Version, commands, events, snapshots, and repository contracts.
 
 The module does not implement Human Governance, AI Workforce, Institutional
 Assets, Knowledge, Workflow, Publication, Connector, HTTP, database, or ORM
-behavior. Authority references carried by transitions are evidence inputs; full
-authority resolution belongs to EPIC-IMP-003.
+behavior. It stores only neutral Authority, Decision and Approval references;
+Governance authorization is resolved through the Application layer.

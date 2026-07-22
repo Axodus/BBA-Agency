@@ -2,8 +2,10 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   AgentId,
+  ApprovalId,
   AssetId,
   AssignmentId,
+  AuthorityId,
   ConnectorId,
   DecisionId,
   EvidenceId,
@@ -20,7 +22,9 @@ test("all canonical IDs are opaque, immutable value objects", () => {
     AssetId.deterministic("asset-a"),
     AgentId.deterministic("agent-a"),
     AssignmentId.deterministic("assignment-a"),
+    AuthorityId.deterministic("authority-a"),
     DecisionId.deterministic("decision-a"),
+    ApprovalId.deterministic("approval-a"),
     EvidenceId.deterministic("evidence-a"),
     ConnectorId.deterministic("connector-a")
   ];

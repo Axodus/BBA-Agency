@@ -1,6 +1,8 @@
 export { AgentId } from "./AgentId.js";
 export { AssetId } from "./AssetId.js";
 export { AssignmentId } from "./AssignmentId.js";
+export { ApprovalId } from "./ApprovalId.js";
+export { AuthorityId } from "./AuthorityId.js";
 export { ConnectorId } from "./ConnectorId.js";
 export { DecisionId } from "./DecisionId.js";
 export { EvidenceId } from "./EvidenceId.js";

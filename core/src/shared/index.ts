@@ -6,6 +6,7 @@ export * from "./evidence/index.js";
 export * from "./events/index.js";
 export * from "./identity/index.js";
 export * from "./lineage/index.js";
+export * from "./references/index.js";
 export * from "./tenant/index.js";
 export * from "./time/index.js";
 export * from "./valueobject/index.js";

@@ -19,6 +19,9 @@ export interface MissionSnapshot {
   readonly pausedFrom: MissionStatus | null;
   readonly statusReason: string | null;
   readonly archivedAt: string | null;
+  readonly authorityReferences: readonly JsonObject[];
+  readonly decisionReferences: readonly JsonObject[];
+  readonly approvalReferences: readonly JsonObject[];
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -45,6 +48,11 @@ function requireObjectArray(record: Record<string, unknown>, field: string): rea
     throw new ValidationError(`MissionSnapshot ${field} must be an object array`, { field });
   }
   return value as JsonObject[];
+}
+
+function optionalObjectArray(record: Record<string, unknown>, field: string): readonly JsonObject[] {
+  if (record[field] === undefined) return [];
+  return requireObjectArray(record, field);
 }
 
 function optionalStatus(record: Record<string, unknown>, field: string): MissionStatus | null {
@@ -93,7 +101,10 @@ export function parseMissionSnapshot(value: unknown): MissionSnapshot {
     outcome,
     pausedFrom: optionalStatus(value, "pausedFrom"),
     statusReason: statusReasonValue,
-    archivedAt: archivedAtValue
+    archivedAt: archivedAtValue,
+    authorityReferences: optionalObjectArray(value, "authorityReferences"),
+    decisionReferences: optionalObjectArray(value, "decisionReferences"),
+    approvalReferences: optionalObjectArray(value, "approvalReferences")
   };
 }
 

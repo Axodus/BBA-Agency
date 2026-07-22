@@ -12,12 +12,13 @@ barrel are internal implementation details.
 | Module | Public exports |
 | --- | --- |
 | `common` | `AuditMetadata`, `CorrelationId`, `CausationId`, JSON and timestamp utilities |
-| `identity` | `Identity`, `IdentityFactory`, `TenantId`, `MissionId`, `AssetId`, `AgentId`, `AssignmentId`, `DecisionId`, `EvidenceId`, `ConnectorId` |
+| `identity` | `Identity`, `IdentityFactory`, `TenantId`, `MissionId`, `AssetId`, `AgentId`, `AssignmentId`, `AuthorityId`, `DecisionId`, `ApprovalId`, `EvidenceId`, `ConnectorId` |
 | `tenant` | `TenantContext`, `TenantContextProvider`, `CurrentTenantPort`, tenant boundary rules |
 | `time` | `Clock`, `SystemClock`, `FakeClock` |
 | `version` | `Version` |
 | `lineage` | `LineageReference`, `LineageRelationship` |
 | `evidence` | `EvidenceReference` |
+| `references` | Tenant-bound Authority, Decision, Approval and Assignment references |
 | `errors` | `DomainError`, `ValidationError`, `InvariantViolation`, `TenantViolation` |
 | `events` | `DomainEvent` |
 | `entity` | `Entity` |

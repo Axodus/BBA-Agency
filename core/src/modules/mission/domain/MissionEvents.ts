@@ -4,6 +4,7 @@ import { DomainEvent } from "../../../shared/events/DomainEvent.js";
 import type { MissionId } from "../../../shared/identity/MissionId.js";
 import type { TenantId } from "../../../shared/identity/TenantId.js";
 import type { Version } from "../../../shared/version/Version.js";
+import type { AuthorityReference } from "../../../shared/references/AuthorityReference.js";
 
 export interface MissionEventProps {
   readonly missionId: MissionId;
@@ -67,14 +68,14 @@ export const MissionLineageRegistered = defineEvent("MissionLineageRegistered");
 
 export function missionDecisionPayload(
   actorReference: string,
-  authorityReference: string,
+  authorityReference: string | AuthorityReference,
   reason: string,
   evidenceIds: readonly string[],
   extra: JsonObject = {}
 ): JsonObject {
   return {
     actorReference,
-    authorityReference,
+    authorityReference: authorityReference.toString(),
     reason,
     evidenceIds: [...evidenceIds] as JsonValue[],
     ...extra

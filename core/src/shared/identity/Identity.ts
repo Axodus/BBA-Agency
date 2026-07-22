@@ -7,6 +7,8 @@ export type IdentityKind =
   | "asset"
   | "agent"
   | "assignment"
+  | "authority"
+  | "approval"
   | "decision"
   | "evidence"
   | "connector";

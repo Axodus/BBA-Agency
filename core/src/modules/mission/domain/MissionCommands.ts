@@ -3,6 +3,7 @@ import type { LineageReference } from "../../../shared/lineage/LineageReference.
 import type { MissionId } from "../../../shared/identity/MissionId.js";
 import type { TenantId } from "../../../shared/identity/TenantId.js";
 import type { Version } from "../../../shared/version/Version.js";
+import type { ApprovalReference, AuthorityReference, DecisionReference } from "../../../shared/references/index.js";
 import type { MissionIntent } from "./MissionIntent.js";
 import type { MissionMetadata } from "./MissionMetadata.js";
 import type { MissionOutcome } from "./MissionOutcome.js";
@@ -10,7 +11,9 @@ import type { MissionStatus } from "./MissionStatus.js";
 
 export interface MissionDecisionContext {
   readonly actorReference: string;
-  readonly authorityReference: string;
+  readonly authorityReference: string | AuthorityReference;
+  readonly decisionReference?: DecisionReference;
+  readonly approvalReference?: ApprovalReference;
   readonly reason: string;
   readonly occurredAt: string;
   readonly evidence: readonly EvidenceReference[];

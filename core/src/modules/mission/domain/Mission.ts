@@ -7,6 +7,8 @@ import { EvidenceReference, type EvidenceReferenceProps } from "../../../shared/
 import { EvidenceId } from "../../../shared/identity/EvidenceId.js";
 import { MissionId } from "../../../shared/identity/MissionId.js";
 import { TenantId } from "../../../shared/identity/TenantId.js";
+import { ApprovalReference, AuthorityReference, DecisionReference } from "../../../shared/references/index.js";
+import { assertSameTenant } from "../../../shared/tenant/tenantRules.js";
 import { LineageReference, type LineageReferenceProps, type LineageRelationship } from "../../../shared/lineage/LineageReference.js";
 import { Version } from "../../../shared/version/Version.js";
 import type {
@@ -63,6 +65,9 @@ interface RehydratedMissionState {
   readonly pausedFrom: MissionStatusType | null;
   readonly statusReason: string | null;
   readonly archivedAt: string | null;
+  readonly authorityReferences: readonly AuthorityReference[];
+  readonly decisionReferences: readonly DecisionReference[];
+  readonly approvalReferences: readonly ApprovalReference[];
 }
 
 function required(value: string, field: string): string {
@@ -93,6 +98,9 @@ function lineageFromSnapshot(snapshot: JsonObject): LineageReference {
   };
   return new LineageReference(props);
 }
+function authorityReferenceFromSnapshot(snapshot: JsonObject): AuthorityReference { return AuthorityReference.fromJSON({ id: String(snapshot.id), tenantId: String(snapshot.tenantId) }); }
+function decisionReferenceFromSnapshot(snapshot: JsonObject): DecisionReference { return DecisionReference.fromJSON({ id: String(snapshot.id), tenantId: String(snapshot.tenantId) }); }
+function approvalReferenceFromSnapshot(snapshot: JsonObject): ApprovalReference { return ApprovalReference.fromJSON({ id: String(snapshot.id), tenantId: String(snapshot.tenantId) }); }
 
 export class Mission extends AggregateRoot<MissionId> {
   private readonly missionTenantId: TenantId;
@@ -105,6 +113,9 @@ export class Mission extends AggregateRoot<MissionId> {
   private previousPausedStatus: MissionStatusType | null;
   private currentStatusReason: string | null;
   private missionArchivedAt: string | null;
+  private missionAuthorityReferences: AuthorityReference[];
+  private missionDecisionReferences: DecisionReference[];
+  private missionApprovalReferences: ApprovalReference[];
 
   private constructor(
     missionId: MissionId,
@@ -124,6 +135,9 @@ export class Mission extends AggregateRoot<MissionId> {
     this.previousPausedStatus = state.pausedFrom;
     this.currentStatusReason = state.statusReason;
     this.missionArchivedAt = state.archivedAt;
+    this.missionAuthorityReferences = [...state.authorityReferences];
+    this.missionDecisionReferences = [...state.decisionReferences];
+    this.missionApprovalReferences = [...state.approvalReferences];
     Object.defineProperty(this, "missionTenantId", { writable: false, configurable: false });
     Object.defineProperty(this, "missionIntent", { writable: false, configurable: false });
     this.assertStateInvariants();
@@ -144,6 +158,7 @@ export class Mission extends AggregateRoot<MissionId> {
       pausedFrom: null,
       statusReason: "Mission proposed",
       archivedAt: null
+      ,authorityReferences: [], decisionReferences: [], approvalReferences: []
     });
     for (const reference of mission.missionLineage) {
       if (reference.toJSON().targetId !== mission.id.toString()) {
@@ -177,6 +192,7 @@ export class Mission extends AggregateRoot<MissionId> {
       pausedFrom: snapshot.pausedFrom,
       statusReason: snapshot.statusReason,
       archivedAt: snapshot.archivedAt
+      ,authorityReferences: snapshot.authorityReferences.map(authorityReferenceFromSnapshot), decisionReferences: snapshot.decisionReferences.map(decisionReferenceFromSnapshot), approvalReferences: snapshot.approvalReferences.map(approvalReferenceFromSnapshot)
     });
   }
 
@@ -190,6 +206,9 @@ export class Mission extends AggregateRoot<MissionId> {
   public get pausedFrom(): MissionStatusType | null { return this.previousPausedStatus; }
   public get statusReason(): string | null { return this.currentStatusReason; }
   public get archivedAt(): string | null { return this.missionArchivedAt; }
+  public get authorityReferences(): readonly AuthorityReference[] { return [...this.missionAuthorityReferences]; }
+  public get decisionReferences(): readonly DecisionReference[] { return [...this.missionDecisionReferences]; }
+  public get approvalReferences(): readonly ApprovalReference[] { return [...this.missionApprovalReferences]; }
 
   public rename(command: RenameMissionCommand): void {
     this.assertContentMutable();
@@ -281,6 +300,7 @@ export class Mission extends AggregateRoot<MissionId> {
     }
     if (this.archivedAt !== null) throw new InvariantViolation("Mission is already archived");
     this.assertDecision(command);
+    this.registerGovernanceReferences(command);
     const nextEvidence = this.mergedDecisionEvidence(command.evidence);
     const nextMetadata = this.missionMetadata.touch(command.occurredAt);
     this.missionEvidence = nextEvidence;
@@ -338,7 +358,10 @@ export class Mission extends AggregateRoot<MissionId> {
       outcome: this.outcome?.toJSON() ?? null,
       pausedFrom: this.pausedFrom,
       statusReason: this.statusReason,
-      archivedAt: this.archivedAt
+      archivedAt: this.archivedAt,
+      authorityReferences: this.authorityReferences.map((reference) => reference.toJSON()),
+      decisionReferences: this.decisionReferences.map((reference) => reference.toJSON()),
+      approvalReferences: this.approvalReferences.map((reference) => reference.toJSON())
     });
   }
 
@@ -355,6 +378,7 @@ export class Mission extends AggregateRoot<MissionId> {
     this.assertNotArchived();
     this.assertDecision(decision);
     MissionLifecycle.assertTransition(this.status, target);
+    this.registerGovernanceReferences(decision);
     const nextEvidence = this.mergedDecisionEvidence(decision.evidence);
     const nextMetadata = this.missionMetadata.touch(decision.occurredAt);
     this.missionEvidence = nextEvidence;
@@ -381,12 +405,21 @@ export class Mission extends AggregateRoot<MissionId> {
 
   private assertDecision(decision: MissionDecisionContext): void {
     required(decision.actorReference, "actorReference");
-    required(decision.authorityReference, "authorityReference");
+    required(decision.authorityReference.toString(), "authorityReference");
     required(decision.reason, "decision reason");
     assertCanonicalTimestamp(decision.occurredAt, "occurredAt");
     if (decision.evidence.length === 0) {
       throw new InvariantViolation("A Mission transition requires Evidence");
     }
+    if (decision.authorityReference instanceof AuthorityReference) assertSameTenant(this.tenantId, decision.authorityReference);
+    if (decision.decisionReference !== undefined) assertSameTenant(this.tenantId, decision.decisionReference);
+    if (decision.approvalReference !== undefined) assertSameTenant(this.tenantId, decision.approvalReference);
+  }
+
+  private registerGovernanceReferences(decision: MissionDecisionContext): void {
+    if (decision.authorityReference instanceof AuthorityReference && !this.missionAuthorityReferences.some((item) => item.equals(decision.authorityReference))) this.missionAuthorityReferences = [...this.missionAuthorityReferences, decision.authorityReference];
+    if (decision.decisionReference !== undefined && !this.missionDecisionReferences.some((item) => item.equals(decision.decisionReference))) this.missionDecisionReferences = [...this.missionDecisionReferences, decision.decisionReference];
+    if (decision.approvalReference !== undefined && !this.missionApprovalReferences.some((item) => item.equals(decision.approvalReference))) this.missionApprovalReferences = [...this.missionApprovalReferences, decision.approvalReference];
   }
 
   private mergedDecisionEvidence(evidence: readonly EvidenceReference[]): EvidenceReference[] {
@@ -398,10 +431,14 @@ export class Mission extends AggregateRoot<MissionId> {
   private decisionPayload(decision: MissionDecisionContext, extra: JsonObject): JsonObject {
     return missionDecisionPayload(
       required(decision.actorReference, "actorReference"),
-      required(decision.authorityReference, "authorityReference"),
+      required(decision.authorityReference.toString(), "authorityReference"),
       required(decision.reason, "decision reason"),
       decision.evidence.map((reference) => reference.evidenceId.toString()),
-      extra
+      {
+        ...(decision.decisionReference === undefined ? {} : { decisionReference: decision.decisionReference.toJSON() }),
+        ...(decision.approvalReference === undefined ? {} : { approvalReference: decision.approvalReference.toJSON() }),
+        ...extra
+      }
     );
   }
 
