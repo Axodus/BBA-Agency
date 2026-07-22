@@ -1,6 +1,6 @@
 # Bounded Context Map
 
-Status: ACCEPTED for EPIC-IMP-006 implementation.
+Status: ACCEPTED for EPIC-IMP-007 implementation.
 
 This local map records implementation boundaries for the Core. It does not
 replace the certified BBA Platform Architecture or Domain documentation.
@@ -17,9 +17,15 @@ replace the certified BBA Platform Architecture or Domain documentation.
                                       │
                                       ▼
                               Knowledge & Policy
+                                      ▲
+                                      │
+                  Application Coordinators/Ports
                                       │
                                       ▼
-                    future Workflow, Review, Publication, Connector
+                    Workflow & Mission Orchestration
+                                      │
+                                      ▼
+                    future Review, Publication, Connector
 ```
 
 Rules:
@@ -39,6 +45,18 @@ Rules:
 - Knowledge organizes references; it never stores canonical Asset payload.
 - Policy describes institutional rules; it never executes them or encodes
   Workflow, Review, Publication, Connector or AI runtime behavior.
+- Workflow stores definitions and executions separately. `Workflow` owns
+  `StageDefinition` and `TaskDefinition`; `WorkflowExecution` owns
+  `StageExecution` and `TaskExecution`.
+- Workflow coordinates only by Shared References and ports. It never mutates
+  Mission, Governance, AI Workforce, Institutional Assets or Knowledge &
+  Policy Aggregates.
+- `TaskDefinition` never references `WorkAssignment`; `TaskExecution` may only
+  record an optional `WorkAssignmentReference` observed externally.
+- `TaskReady` is emitted only during Stage activation; external observations
+  cannot set a Task to `READY`.
+- Workflow never automatically selects the next Stage. `AdvanceStage` requires
+  an explicit target Stage and a closed `StageDisposition`.
 - Asset graph checks and multi-Aggregate supersession are Application concerns
   exposed through ports; Assets never load other Assets from domain code.
 - `Capability` is a Value Object and `CapabilitySet` is immutable.

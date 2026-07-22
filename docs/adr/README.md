@@ -32,3 +32,6 @@ upstream documentation review process.
 - [ADR-IMP-0019 — Knowledge canonical model](ADR-IMP-0019-KNOWLEDGE-CANONICAL-MODEL.md)
 - [ADR-IMP-0020 — Policy versioning](ADR-IMP-0020-POLICY-VERSIONING.md)
 - [ADR-IMP-0021 — Knowledge reference model](ADR-IMP-0021-KNOWLEDGE-REFERENCE-MODEL.md)
+- [ADR-IMP-0022 — Workflow canonical model](ADR-IMP-0022-WORKFLOW-CANONICAL-MODEL.md)
+- [ADR-IMP-0023 — Workflow execution separation](ADR-IMP-0023-WORKFLOW-EXECUTION-SEPARATION.md)
+- [ADR-IMP-0024 — Dependency graph validation](ADR-IMP-0024-DEPENDENCY-GRAPH-VALIDATION.md)

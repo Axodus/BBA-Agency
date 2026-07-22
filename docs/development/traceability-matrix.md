@@ -340,3 +340,58 @@ in the M0 report.
 | REQ-IMP-006-053 | GDE-079 | Bidirectional traceability | this matrix | report review | — | DONE |
 | REQ-IMP-006-054 | GDE-081/082 | No lateral context imports | bounded context test | `bounded-context-matrix.test.ts` | ADR-IMP-0021 | DONE |
 | REQ-IMP-006-055 | GDE-080 | Epic completion evidence | `EPIC-IMP-006-KNOWLEDGE-POLICY-REPORT.md` | Core check | — | DONE |
+| REQ-IMP-007-001 | ARCH-015 | Workflow module | `core/src/modules/workflow/` | workflow test | ADR-IMP-0022 | DONE |
+| REQ-IMP-007-002 | ARCH-015 | Workflow Aggregate | `domain/Workflow.ts` | aggregate tests | ADR-IMP-0022 | DONE |
+| REQ-IMP-007-003 | ARCH-015 | WorkflowExecution Aggregate | `domain/WorkflowExecution.ts` | execution tests | ADR-IMP-0023 | DONE |
+| REQ-IMP-007-004 | ARCH-015 | StageDefinition | `WorkflowDefinitions.ts` | definition tests | ADR-IMP-0022/24 | DONE |
+| REQ-IMP-007-005 | ARCH-015 | TaskDefinition | `WorkflowDefinitions.ts` | definition tests | ADR-IMP-0022/23 | DONE |
+| REQ-IMP-007-006 | GDE-080 | Basic Aggregate tests | `workflow.test.ts` | node:test | — | DONE |
+| REQ-IMP-007-007 | GDE-076/082 | WorkflowId | `shared/identity/WorkflowId.ts` | identity tests | ADR-IMP-0022 | DONE |
+| REQ-IMP-007-008 | GDE-076/082 | WorkflowExecutionId | `shared/identity/WorkflowExecutionId.ts` | identity tests | ADR-IMP-0023 | DONE |
+| REQ-IMP-007-009 | GDE-076/082 | StageId | `shared/identity/StageId.ts` | identity tests | ADR-IMP-0024 | DONE |
+| REQ-IMP-007-010 | GDE-076/082 | TaskId | `shared/identity/TaskId.ts` | identity tests | ADR-IMP-0023 | DONE |
+| REQ-IMP-007-011 | ARCH-015 | Workflow lifecycle | `WorkflowStatus.ts` | lifecycle tests | ADR-IMP-0022 | DONE |
+| REQ-IMP-007-012 | ARCH-015 | CreateWorkflow | `Workflow.create()` / use case | application tests | ADR-IMP-0022 | DONE |
+| REQ-IMP-007-013 | ARCH-015 | ActivateWorkflow | `Workflow.activate()` / use case | lifecycle tests | ADR-IMP-0022 | DONE |
+| REQ-IMP-007-014 | ARCH-015 | ArchiveWorkflow | `Workflow.archive()` / use case | lifecycle tests | ADR-IMP-0022 | DONE |
+| REQ-IMP-007-015 | ARCH-015 | Immutable ACTIVE definition | `Workflow.ts` | execution version test | ADR-IMP-0022/23 | DONE |
+| REQ-IMP-007-016 | ARCH-015 | WorkflowExecution lifecycle | `WorkflowExecutionStatus.ts` | execution tests | ADR-IMP-0023 | DONE |
+| REQ-IMP-007-017 | ARCH-015 | StartWorkflow | `WorkflowExecution.start()` / use case | start tests | ADR-IMP-0023 | DONE |
+| REQ-IMP-007-018 | ARCH-015 | AdvanceStage | `WorkflowExecution.advanceStage()` | stage tests | ADR-IMP-0024 | DONE |
+| REQ-IMP-007-019 | ARCH-015 | PauseWorkflow | `WorkflowExecution.pause()` | lifecycle tests | ADR-IMP-0023 | DONE |
+| REQ-IMP-007-020 | ARCH-015 | ResumeWorkflow | `WorkflowExecution.resume()` | lifecycle tests | ADR-IMP-0023 | DONE |
+| REQ-IMP-007-021 | ARCH-015 | CompleteWorkflow | `WorkflowExecution.complete()` | completion tests | ADR-IMP-0023 | DONE |
+| REQ-IMP-007-022 | ARCH-015 | CancelWorkflow | `WorkflowExecution.cancel()` | lifecycle tests | ADR-IMP-0023 | DONE |
+| REQ-IMP-007-023 | ARCH-015 | FailWorkflowExecution | `WorkflowExecution.fail()` | failure tests | ADR-IMP-0023 | DONE |
+| REQ-IMP-007-024 | ARCH-015 | StageDisposition | `StageDisposition.ts` | advance tests | ADR-IMP-0024 | DONE |
+| REQ-IMP-007-025 | ARCH-015 | StageExecution state | `WorkflowExecutionState.ts` | execution tests | ADR-IMP-0023 | DONE |
+| REQ-IMP-007-026 | ARCH-015 | TaskExecution state | `WorkflowExecutionState.ts` | task tests | ADR-IMP-0023 | DONE |
+| REQ-IMP-007-027 | ARCH-015 | TaskReady origin | `WorkflowExecution.activateStage()` | TaskReady tests | ADR-IMP-0023 | DONE |
+| REQ-IMP-007-028 | ARCH-015 | recordTaskState | use case / Aggregate method | task observation tests | ADR-IMP-0023 | DONE |
+| REQ-IMP-007-029 | ARCH-015 | RecordTaskFailure | use case / Aggregate method | failure tests | ADR-IMP-0023 | DONE |
+| REQ-IMP-007-030 | ARCH-015 | WorkflowReference | shared references | typecheck/tests | ADR-IMP-0022 | DONE |
+| REQ-IMP-007-031 | ARCH-015 | WorkflowExecutionReference | shared references | typecheck/tests | ADR-IMP-0023 | DONE |
+| REQ-IMP-007-032 | GDE-081 | MissionWorkflowPort | `ports/MissionWorkflowPort.ts` | application tests | ADR-IMP-0004 | DONE |
+| REQ-IMP-007-033 | GDE-081 | WorkflowGovernancePort | `ports/WorkflowGovernancePort.ts` | application tests | ADR-IMP-0004 | DONE |
+| REQ-IMP-007-034 | GDE-081 | WorkflowAssignmentPort | `ports/WorkflowAssignmentPort.ts` | task observation tests | ADR-IMP-0004 | DONE |
+| REQ-IMP-007-035 | GDE-081 | WorkflowAssetPort | `ports/WorkflowAssetPort.ts` | application tests | ADR-IMP-0004 | DONE |
+| REQ-IMP-007-036 | GDE-081 | WorkflowKnowledgePort | `ports/WorkflowKnowledgePort.ts` | application tests | ADR-IMP-0004 | DONE |
+| REQ-IMP-007-037 | GDE-081 | WorkflowDependencyGraphPort | `ports/WorkflowDependencyGraphPort.ts` | graph tests | ADR-IMP-0024 | DONE |
+| REQ-IMP-007-038 | GDE-083 | In-memory graph adapter | `InMemoryWorkflowDependencyGraph.ts` | graph tests | ADR-IMP-0024 | DONE |
+| REQ-IMP-007-039 | GDE-081/083 | WorkflowRepositoryPort | `ports/WorkflowRepository.ts` | repository contract | ADR-IMP-0005 | DONE |
+| REQ-IMP-007-040 | GDE-081/083 | WorkflowExecutionRepositoryPort | `ports/WorkflowExecutionRepository.ts` | repository contract | ADR-IMP-0005 | DONE |
+| REQ-IMP-007-041 | GDE-083 | InMemoryWorkflowRepository | `infrastructure/InMemoryWorkflowRepository.ts` | contract tests | ADR-IMP-0005 | DONE |
+| REQ-IMP-007-042 | GDE-083 | InMemoryWorkflowExecutionRepository | `infrastructure/InMemoryWorkflowExecutionRepository.ts` | contract tests | ADR-IMP-0005 | DONE |
+| REQ-IMP-007-043 | GDE-083 | Optimistic concurrency | repositories | concurrency tests | ADR-IMP-0005 | DONE |
+| REQ-IMP-007-044 | GDE-083 | Snapshots | `WorkflowSnapshot` / `WorkflowExecutionSnapshot` | snapshot tests | ADR-IMP-0023 | DONE |
+| REQ-IMP-007-045 | GDE-079 | Deterministic serialization | `toSnapshot()` | snapshot tests | ADR-IMP-0023 | DONE |
+| REQ-IMP-007-046 | GDE-083 | Rehydration | `rehydrate()` methods | snapshot tests | ADR-IMP-0023 | DONE |
+| REQ-IMP-007-047 | ARCH-025 | Workflow events | `WorkflowEvents.ts` | event assertions | ADR-IMP-0022/23 | DONE |
+| REQ-IMP-007-048 | ARCH-025 | TaskObserved event | `WorkflowEvents.ts` | task tests | ADR-IMP-0023 | DONE |
+| REQ-IMP-007-049 | ARCH-025 | WorkflowFailed event | `WorkflowEvents.ts` | failure tests | ADR-IMP-0023 | DONE |
+| REQ-IMP-007-050 | ARCH-025 | Complete audit metadata | `WorkflowDomainEvent` | event tests | ADR-IMP-0022/23 | DONE |
+| REQ-IMP-007-051 | GDE-079 | Workflow contracts | `contracts/Workflow*.md` | document review | ADR-IMP-0022/23 | DONE |
+| REQ-IMP-007-052 | GDE-079 | Stage and Task contracts | `contracts/Stage.md` / `Task.md` | document review | ADR-IMP-0023/24 | DONE |
+| REQ-IMP-007-053 | ARCH-003 | Bounded context map | `BOUNDED-CONTEXT-MAP.md` | architecture review | ADR-IMP-0022 | DONE |
+| REQ-IMP-007-054 | GDE-081/082 | No lateral imports | bounded context test | architecture test | ADR-IMP-0022 | DONE |
+| REQ-IMP-007-055 | GDE-080 | Epic completion evidence | `EPIC-IMP-007-WORKFLOW-REPORT.md` | Core check | — | DONE |
