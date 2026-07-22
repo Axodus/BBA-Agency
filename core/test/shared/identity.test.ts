@@ -16,7 +16,11 @@ import {
   MissionId,
   PolicyId,
   PolicyVersionId,
-  TenantId
+  StageId,
+  TaskId,
+  TenantId,
+  WorkflowExecutionId,
+  WorkflowId
 } from "../../src/shared/identity/index.js";
 
 test("all canonical IDs are opaque, immutable value objects", () => {
@@ -34,7 +38,11 @@ test("all canonical IDs are opaque, immutable value objects", () => {
     ConnectorId.deterministic("connector-a"),
     KnowledgeId.deterministic("knowledge-a"),
     PolicyId.deterministic("policy-a"),
-    PolicyVersionId.deterministic("policy-version-a")
+    PolicyVersionId.deterministic("policy-version-a"),
+    WorkflowId.deterministic("workflow-a"),
+    WorkflowExecutionId.deterministic("workflow-execution-a"),
+    StageId.deterministic("stage-a"),
+    TaskId.deterministic("task-a")
   ];
 
   assert.equal(new Set(ids.map((id) => id.toString())).size, ids.length);

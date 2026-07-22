@@ -12,3 +12,5 @@ export { KnowledgeReference } from "./KnowledgeReference.js";
 export { PolicyReference } from "./PolicyReference.js";
 export { TenantReference } from "./TenantReference.js";
 export { WorkAssignmentReference } from "./WorkAssignmentReference.js";
+export { WorkflowExecutionReference } from "./WorkflowExecutionReference.js";
+export { WorkflowReference } from "./WorkflowReference.js";

@@ -17,7 +17,11 @@ export type IdentityKind =
   | "knowledge"
   | "policy"
   | "policy_version"
-  | "work_assignment";
+  | "work_assignment"
+  | "workflow"
+  | "workflow_execution"
+  | "stage"
+  | "task";
 
 const CANONICAL_ID = /^([a-z][a-z0-9_]*)_([a-z0-9][a-z0-9._~-]*)$/u;
 const CANONICAL_TOKEN = /^[a-z0-9][a-z0-9._~-]*$/u;

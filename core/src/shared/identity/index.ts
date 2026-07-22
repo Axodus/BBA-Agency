@@ -17,3 +17,7 @@ export { PolicyId } from "./PolicyId.js";
 export { PolicyVersionId } from "./PolicyVersionId.js";
 export { TenantId } from "./TenantId.js";
 export { WorkAssignmentId } from "./WorkAssignmentId.js";
+export { StageId } from "./StageId.js";
+export { TaskId } from "./TaskId.js";
+export { WorkflowExecutionId } from "./WorkflowExecutionId.js";
+export { WorkflowId } from "./WorkflowId.js";
