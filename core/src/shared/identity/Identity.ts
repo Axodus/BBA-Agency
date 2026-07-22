@@ -26,7 +26,11 @@ export type IdentityKind =
   | "review_request"
   | "review_session"
   | "review_finding"
-  | "review_conclusion";
+  | "review_conclusion"
+  | "publication"
+  | "publication_package"
+  | "publication_version"
+  | "publication_record";
 
 const CANONICAL_ID = /^([a-z][a-z0-9_]*)_([a-z0-9][a-z0-9._~-]*)$/u;
 const CANONICAL_TOKEN = /^[a-z0-9][a-z0-9._~-]*$/u;

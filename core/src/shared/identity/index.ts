@@ -26,3 +26,7 @@ export { ReviewFindingId } from "./ReviewFindingId.js";
 export { ReviewId } from "./ReviewId.js";
 export { ReviewRequestId } from "./ReviewRequestId.js";
 export { ReviewSessionId } from "./ReviewSessionId.js";
+export { PublicationId } from "./PublicationId.js";
+export { PublicationPackageId } from "./PublicationPackageId.js";
+export { PublicationRecordId } from "./PublicationRecordId.js";
+export { PublicationVersionId } from "./PublicationVersionId.js";

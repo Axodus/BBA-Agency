@@ -17,3 +17,7 @@ export { WorkflowReference } from "./WorkflowReference.js";
 export { ReviewReference } from "./ReviewReference.js";
 export { ReviewRequestReference } from "./ReviewRequestReference.js";
 export { ReviewSessionReference } from "./ReviewSessionReference.js";
+export { ConnectorReference } from "./ConnectorReference.js";
+export { PublicationPackageReference } from "./PublicationPackageReference.js";
+export { PublicationReference } from "./PublicationReference.js";
+export { PublicationVersionReference } from "./PublicationVersionReference.js";
