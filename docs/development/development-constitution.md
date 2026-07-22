@@ -44,3 +44,10 @@ interfaces, Authority, Tenant isolation, Asset identity, or Lineage require an
 ADR or approved Change Control. Contributions remain scoped to one coherent
 REQ, include focused tests and documentation, and do not push, merge, release,
 or mutate remote state automatically.
+
+## Module public API rule
+
+Every REQ must document the module's public API explicitly: exported classes,
+interfaces, types, factories, and stable error contracts. Internal helpers and
+implementation details remain unexported unless an accepted ADR or a future
+REQ changes the boundary.

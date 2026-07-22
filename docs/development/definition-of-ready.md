@@ -9,6 +9,8 @@ A future REQ is `READY` only when this checklist is complete:
 - [ ] normative Foundation/Product/Domain/Architecture/Development sources;
 - [ ] dependencies and permitted files/directories;
 - [ ] input and output contracts;
+- [ ] **API Pública do Módulo**, including exported classes, interfaces, and
+      types versus internal implementation details;
 - [ ] states, transitions, invariants, and failure behavior;
 - [ ] Tenant, identity, Authority, Accountability, Stewardship, Lineage, and
       Evidence obligations;

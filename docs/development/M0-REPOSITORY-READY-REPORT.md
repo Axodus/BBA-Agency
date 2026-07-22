@@ -20,8 +20,10 @@ and six local ADRs were added. CI validates Core quality and demo static
 regression in separate jobs. The Core has no executable dependency on `demo/`
 or legacy `src/`. Existing demo and legacy files were preserved. The private
 normative corpus was available in the sibling Documentation checkout; the
-requested `BBAPLT-GDE-076-*` source was absent and is recorded as a gap. No
-domain aggregate or production capability was implemented in this Epic.
+`BBAPLT-GDE-076` reference resolves to the canonical file
+`BBAPLT-DEV-001-DEVELOPMENT-CONSTITUTION.md` and is recorded as a filename
+mapping. No domain aggregate or production capability was implemented in this
+Epic.
 
 ## REQs
 
@@ -117,14 +119,32 @@ was not modified and remains a deterministic local reference implementation.
 
 ## Risks and gaps
 
-- `BBAPLT-GDE-076-*.md` is absent from the inspected private corpus. The source
-  index records the gap without inventing a document.
+- The REQ's `BBAPLT-GDE-076-*.md` filename reference differs from the canonical
+  `BBAPLT-DEV-001-DEVELOPMENT-CONSTITUTION.md` path; the document ID and
+  manifest mapping were verified and recorded in `documentation-gaps.md`.
 - The private Documentation checkout is a sibling repository and is not
   included in a clean BBA-Agency clone.
 - Optional native build scripts from existing legacy dependencies are explicitly
   ignored in `pnpm-workspace.yaml`; M0 does not require those runtime builds.
 - M0 has no remote CI execution evidence; the workflow was parsed and reviewed
   locally, but GitHub Actions itself was not invoked.
+
+## Decision
+
+EPIC-IMP-000
+Status: `PASS`
+
+Milestone:
+`M0 — Repository Ready`
+
+Approved to proceed:
+`EPIC-IMP-001 — Shared Kernel and Tenant Context`
+
+Date:
+`2026-07-22`
+
+Approved by:
+`Implementation Review`
 
 ## Commits locais
 

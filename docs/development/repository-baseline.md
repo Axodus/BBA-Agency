@@ -45,8 +45,8 @@ that the legacy command suite validates the Core.
   native builds.
 - The private Documentation checkout is external to this repository and may be
   absent in a clean clone.
-- The requested `BBAPLT-GDE-076-*` source file is absent from the inspected
-  corpus.
+- The requested `BBAPLT-GDE-076-*` reference uses a different canonical file
+  name: `BBAPLT-DEV-001-DEVELOPMENT-CONSTITUTION.md` declares that document ID.
 
 ## Preservation result
 

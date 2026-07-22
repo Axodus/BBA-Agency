@@ -43,7 +43,8 @@ auditability documents.
 
 The implementation baseline consults:
 
-- `development/BBAPLT-DEV-001-DEVELOPMENT-CONSTITUTION.md`
+- `development/BBAPLT-DEV-001-DEVELOPMENT-CONSTITUTION.md` (`document_id:
+  BBAPLT-GDE-076`)
 - `development/BBAPLT-GDE-077-ENGINEERING-PRINCIPLES.md`
 - `development/BBAPLT-GDE-078-DEVELOPMENT-GLOSSARY-AND-TAXONOMY.md`
 - `development/BBAPLT-GDE-079-IMPLEMENTATION-TRACEABILITY-AND-ADR-PRACTICE.md`
@@ -52,10 +53,11 @@ The implementation baseline consults:
 - `development/BBAPLT-GDE-091` through `BBAPLT-GDE-100`
 - `development/BBAPLT-RPT-024-DEVELOPMENT-CANONICAL-REVIEW.md`
 
-The requested `BBAPLT-GDE-076-*.md` file was not present in the inspected
-corpus. This is recorded as a documentation gap, not replaced by an invented
-file. The supplied REQ also names `BBAPLT-GDE-091`, `095`, `096`, `097`, `098`,
-`099`, and `100`; all were located.
+The requested `BBAPLT-GDE-076-*.md` reference resolves by canonical document
+ID to `development/BBAPLT-DEV-001-DEVELOPMENT-CONSTITUTION.md`. The filename
+differs from the ID-based reference in the REQ; this mapping is recorded in
+`documentation-gaps.md`. The supplied REQ also names `BBAPLT-GDE-091`, `095`,
+`096`, `097`, `098`, `099`, and `100`; all were located.
 
 ## Local status rule
 
