@@ -60,3 +60,53 @@ in the M0 report.
 | REQ-IMP-001-024 | ARCH-022 | Directional lineage reference | `core/src/shared/lineage/LineageReference.ts` | `temporal-evidence.test.ts` | DONE |
 | REQ-IMP-001-025 | ARCH-025 | Audit metadata | `core/src/shared/common/AuditMetadata.ts` | `temporal-evidence.test.ts` | DONE |
 | REQ-IMP-001-026 | GDE-080, GDE-085 | Shared foundation contract tests | `core/test/shared/` | all shared tests | DONE |
+
+## EPIC-IMP-002 — Mission Core
+
+| Requirement | Source document | Invariant / responsibility | Code path | Test path | ADR | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+| REQ-IMP-002-001 | GDE-011, GDE-082 | Mission module ownership | `core/src/modules/mission/` | Mission architecture tests | ADR-IMP-0008 | DONE |
+| REQ-IMP-002-002 | BBA-ADR-0002, GDE-011 | Central Aggregate Root | `core/src/modules/mission/domain/Mission.ts` | `core/test/modules/mission/mission-domain.test.ts` | ADR-IMP-0008 | DONE |
+| REQ-IMP-002-003 | GDE-013 | Canonical Mission status | `core/src/modules/mission/domain/MissionStatus.ts` | lifecycle tests | ADR-IMP-0008 | DONE |
+| REQ-IMP-002-004 | GDE-011, GDE-014 | Mission metadata | `core/src/modules/mission/domain/MissionMetadata.ts` | creation tests | — | DONE |
+| REQ-IMP-002-005 | GDE-012, GDE-013 | Protected lifecycle | `core/src/modules/mission/domain/MissionLifecycle.ts` | lifecycle tests | ADR-IMP-0008 | DONE |
+| REQ-IMP-002-006 | GDE-080, GDE-082 | Complete creation | `core/src/modules/mission/domain/Mission.ts` | `core/test/modules/mission/mission-domain.test.ts` | — | DONE |
+| REQ-IMP-002-007 | GDE-011, GDE-013 | Create Mission in PROPOSED | `core/src/modules/mission/domain/Mission.ts` | domain/application tests | ADR-IMP-0008 | DONE |
+| REQ-IMP-002-008 | GDE-014 | Rename through Aggregate | `core/src/modules/mission/domain/Mission.ts` | command/application tests | — | DONE |
+| REQ-IMP-002-009 | GDE-014 | Description change through Aggregate | `core/src/modules/mission/domain/Mission.ts` | command tests | — | DONE |
+| REQ-IMP-002-010 | GDE-013 | Activate only from PREPARED | `core/src/modules/mission/domain/Mission.ts` | lifecycle/application tests | ADR-IMP-0008 | DONE |
+| REQ-IMP-002-011 | GDE-012, GDE-013 | Pause with accountable reason | `core/src/modules/mission/domain/Mission.ts` | command tests | — | DONE |
+| REQ-IMP-002-012 | GDE-013 | Explicit resume target | `core/src/modules/mission/domain/Mission.ts` | command tests | — | DONE |
+| REQ-IMP-002-013 | GDE-013, GDE-014 | Closure with learning | `core/src/modules/mission/domain/Mission.ts` | command/application tests | ADR-IMP-0008 | DONE |
+| REQ-IMP-002-014 | GDE-013 | Cancel mapped to STOPPED | `core/src/modules/mission/domain/Mission.ts` | command tests | ADR-IMP-0008 | DONE |
+| REQ-IMP-002-015 | ARCH-020 | Archive preserves terminal status | `core/src/modules/mission/domain/Mission.ts` | command tests | ADR-IMP-0008 | DONE |
+| REQ-IMP-002-016 | GDE-080 | Command validation | `core/test/modules/mission/` | command/domain tests | — | DONE |
+| REQ-IMP-002-017 | GDE-014, GDE-016 | Identity, Tenant, metadata, Version, status | `core/src/modules/mission/domain/Mission.ts` | domain/evidence tests | — | DONE |
+| REQ-IMP-002-018 | ARCH-025 | MissionCreated | `core/src/modules/mission/domain/MissionEvents.ts` | event tests | — | DONE |
+| REQ-IMP-002-019 | ARCH-025 | MissionRenamed | `core/src/modules/mission/domain/MissionEvents.ts` | event tests | — | DONE |
+| REQ-IMP-002-020 | GDE-013, ARCH-025 | MissionActivated | `core/src/modules/mission/domain/MissionEvents.ts` | event tests | — | DONE |
+| REQ-IMP-002-021 | GDE-013, ARCH-025 | MissionPaused | `core/src/modules/mission/domain/MissionEvents.ts` | event tests | — | DONE |
+| REQ-IMP-002-022 | GDE-014, ARCH-025 | MissionCompleted | `core/src/modules/mission/domain/MissionEvents.ts` | event tests | — | DONE |
+| REQ-IMP-002-023 | GDE-013, ARCH-025 | MissionCancelled | `core/src/modules/mission/domain/MissionEvents.ts` | event tests | ADR-IMP-0008 | DONE |
+| REQ-IMP-002-024 | ARCH-020, ARCH-025 | MissionArchived | `core/src/modules/mission/domain/MissionEvents.ts` | event tests | ADR-IMP-0008 | DONE |
+| REQ-IMP-002-025 | GDE-080, ARCH-025 | Ordered versioned events | `core/src/modules/mission/domain/MissionEvents.ts` | `core/test/modules/mission/mission-commands-events.test.ts` | — | DONE |
+| REQ-IMP-002-026 | ARCH-022, GDE-083 | Mission Version | `core/src/modules/mission/domain/Mission.ts` | version tests | — | DONE |
+| REQ-IMP-002-027 | GDE-082, GDE-085 | One increment per mutation | `core/src/modules/mission/domain/Mission.ts` | version/event tests | — | DONE |
+| REQ-IMP-002-028 | ARCH-022, ARCH-025 | Evidence preservation | `core/src/modules/mission/domain/Mission.ts` | evidence tests | — | DONE |
+| REQ-IMP-002-029 | ARCH-022 | Lineage preservation | `core/src/modules/mission/domain/Mission.ts` | lineage tests | — | DONE |
+| REQ-IMP-002-030 | GDE-083, GDE-085 | Optimistic Version check | `core/src/modules/mission/infrastructure/InMemoryMissionRepository.ts` | repository contract | ADR-IMP-0005 | DONE |
+| REQ-IMP-002-031 | GDE-080, GDE-083 | Stale-write rejection | in-memory adapter | repository contract | ADR-IMP-0005 | DONE |
+| REQ-IMP-002-032 | GDE-081, GDE-083 | Consumer-owned repository port | `core/src/modules/mission/ports/MissionRepository.ts` | repository contract | ADR-IMP-0004/5 | DONE |
+| REQ-IMP-002-033 | GDE-083 | In-memory reference adapter | `core/src/modules/mission/infrastructure/InMemoryMissionRepository.ts` | repository contract | ADR-IMP-0005 | DONE |
+| REQ-IMP-002-034 | GDE-083 | Optimistic save | in-memory adapter | repository contract | ADR-IMP-0005 | DONE |
+| REQ-IMP-002-035 | GDE-083, ARCH-024 | Tenant-scoped findById | in-memory adapter | repository contract | ADR-IMP-0005 | DONE |
+| REQ-IMP-002-036 | GDE-083, ARCH-024 | Tenant-scoped exists | in-memory adapter | repository contract | ADR-IMP-0005 | DONE |
+| REQ-IMP-002-037 | GDE-081, GDE-082 | Application use cases | `core/src/modules/mission/application/` | `core/test/modules/mission/mission-application.test.ts` | ADR-IMP-0004 | DONE |
+| REQ-IMP-002-038 | GDE-080, GDE-083 | Repository parity contract | in-memory adapter and port | `mission-repository-contract.test.ts` | ADR-IMP-0005 | DONE |
+| REQ-IMP-002-039 | ARCH-018, ARCH-022 | Versioned MissionSnapshot | `core/src/modules/mission/domain/MissionSnapshot.ts` | serialization tests | — | DONE |
+| REQ-IMP-002-040 | GDE-083 | Complete rehydration | `core/src/modules/mission/domain/MissionRehydration.ts` | serialization/repository tests | — | DONE |
+| REQ-IMP-002-041 | ARCH-022, GDE-085 | Deterministic serialization | `core/src/modules/mission/domain/MissionSnapshot.ts` | serialization tests | — | DONE |
+| REQ-IMP-002-042 | GDE-080 | Lossless reconstruction | Mission rehydration | `mission-serialization.test.ts` | — | DONE |
+| REQ-IMP-002-043 | GDE-083, GDE-085 | Snapshot compatibility refusal | Mission snapshot parser | `mission-serialization.test.ts` | — | DONE |
+| REQ-IMP-002-044 | GDE-079, GDE-082 | Explicit public API | Mission barrels and READMEs | architecture tests | ADR-IMP-0008 | DONE |
+| REQ-IMP-002-045 | GDE-081, GDE-082 | Context and infrastructure isolation | Mission source boundaries | `mission-boundaries.test.ts` | ADR-IMP-0003/4 | DONE |
