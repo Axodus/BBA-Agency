@@ -6,7 +6,7 @@ The normative source remains the governed corpus in the sibling
 execution controls and must not be treated as a replacement or public
 projection of that corpus.
 
-Current gate: `EPIC-IMP-003` / `M3 — Human Governance Ready`.
+Current gate: `EPIC-IMP-004` / `M4 — AI Workforce Ready`.
 
 The Core is isolated in `core/`. The deterministic reference demo and legacy
 experiments are preserved and validated separately.
@@ -31,3 +31,8 @@ experiments are preserved and validated separately.
 - [Mission Aggregate contract](contracts/MissionAggregate.md)
 - [EPIC-IMP-002 report](EPIC-IMP-002-MISSION-CORE-REPORT.md)
 - [M3 Human Governance Ready report](M3-HUMAN-GOVERNANCE-READY-REPORT.md)
+- [AI Workforce context contract](contracts/AIWorkforceContext.md)
+- [Agent Aggregate contract](contracts/AgentAggregate.md)
+- [Execution Aggregate contract](contracts/ExecutionAggregate.md)
+- [WorkAssignment contract](contracts/WorkAssignment.md)
+- [EPIC-IMP-004 report](EPIC-IMP-004-AI-WORKFORCE-REPORT.md)

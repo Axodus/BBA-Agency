@@ -23,3 +23,6 @@ upstream documentation review process.
 - [ADR-IMP-0010 — Governance/Mission context boundary](ADR-IMP-0010-GOVERNANCE-MISSION-BOUNDARY.md)
 - [ADR-IMP-0011 — Governance lifecycle and Assignment ownership](ADR-IMP-0011-GOVERNANCE-LIFECYCLE-AND-ASSIGNMENT-OWNERSHIP.md)
 - [ADR-IMP-0012 — Global Authority conflict resolution](ADR-IMP-0012-GLOBAL-AUTHORITY-CONFLICT-RESOLUTION.md)
+- [ADR-IMP-0013 — Governance Assignment and WorkAssignment boundary](ADR-IMP-0013-GOVERNANCE-AND-WORKFORCE-ASSIGNMENT-BOUNDARY.md)
+- [ADR-IMP-0014 — Agent lifecycle and derived availability](ADR-IMP-0014-AGENT-LIFECYCLE-AND-DERIVED-AVAILABILITY.md)
+- [ADR-IMP-0015 — Provider-neutral Workforce execution](ADR-IMP-0015-PROVIDER-NEUTRAL-WORKFORCE-EXECUTION.md)

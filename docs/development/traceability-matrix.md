@@ -170,3 +170,63 @@ in the M0 report.
 | REQ-IMP-002-043 | GDE-083, GDE-085 | Snapshot compatibility refusal | Mission snapshot parser | `mission-serialization.test.ts` | — | DONE |
 | REQ-IMP-002-044 | GDE-079, GDE-082 | Explicit public API | Mission barrels and READMEs | architecture tests | ADR-IMP-0008 | DONE |
 | REQ-IMP-002-045 | GDE-081, GDE-082 | Context and infrastructure isolation | Mission source boundaries | `mission-boundaries.test.ts` | ADR-IMP-0003/4 | DONE |
+
+## EPIC-IMP-004 — AI Workforce
+
+| Requirement | Source document | Invariant / responsibility | Code path | Test path | ADR | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+| REQ-IMP-004-001 | GDE-029 | AI Workforce module ownership | `core/src/modules/ai-workforce/` | workforce test | ADR-IMP-0015 | DONE |
+| REQ-IMP-004-002 | GDE-030 | Agent Aggregate | `domain/Agent.ts` | workforce test | ADR-IMP-0014/15 | DONE |
+| REQ-IMP-004-003 | GDE-035 | Execution Aggregate | `domain/Execution.ts` | workforce test | ADR-IMP-0015 | DONE |
+| REQ-IMP-004-004 | GDE-032 | Operational WorkAssignment Entity | `domain/WorkAssignment.ts` | workforce test | ADR-IMP-0013 | DONE |
+| REQ-IMP-004-005 | GDE-031 | Capability Value Object | `domain/Capability.ts` | workforce test | ADR-IMP-0015 | DONE |
+| REQ-IMP-004-006 | GDE-080 | Valid Aggregate creation | workforce domain | workforce test | — | DONE |
+| REQ-IMP-004-007 | ARCH-018 | Agent identity | `shared/identity/AgentId.ts` | identity/workforce tests | — | DONE |
+| REQ-IMP-004-008 | GDE-035 | Lifecycle and availability status | `domain/AgentStatus.ts` | workforce test | ADR-IMP-0014 | DONE |
+| REQ-IMP-004-009 | GDE-031 | Immutable CapabilitySet | `domain/Capability.ts` | workforce test | ADR-IMP-0015 | DONE |
+| REQ-IMP-004-010 | GDE-034 | Provision Agent | `Agent.provision()` | workforce test | ADR-IMP-0014 | DONE |
+| REQ-IMP-004-011 | GDE-034/035 | Protected Agent lifecycle | `Agent.activate/pause/resume/retire()` | workforce test | ADR-IMP-0014 | DONE |
+| REQ-IMP-004-012 | GDE-080 | Lifecycle validation | Agent domain | workforce test | — | DONE |
+| REQ-IMP-004-013 | GDE-032 | Operational WorkAssignment identity | `shared/identity/WorkAssignmentId.ts` | workforce test | ADR-IMP-0013 | DONE |
+| REQ-IMP-004-014 | GDE-035 | Assignment execution states | `domain/AssignmentStatus.ts` | workforce test | ADR-IMP-0013 | DONE |
+| REQ-IMP-004-015 | GDE-032/038 | Assign Agent | `Agent.assign()` | workforce/coordinator tests | ADR-IMP-0013 | DONE |
+| REQ-IMP-004-016 | GDE-035 | Cancel assignment transition | `WorkAssignment.cancel()` | domain tests | ADR-IMP-0013 | DONE |
+| REQ-IMP-004-017 | GDE-035 | Complete assignment transition | `WorkAssignment.complete()` | domain tests | ADR-IMP-0013 | DONE |
+| REQ-IMP-004-018 | GDE-038 | Assignment policy | `domain/AssignmentPolicy.ts` | workforce test | ADR-IMP-0013 | DONE |
+| REQ-IMP-004-019 | GDE-036 | Incompatible assignment prevention | Agent assignment guard | workforce test | ADR-IMP-0013 | DONE |
+| REQ-IMP-004-020 | GDE-035 | Execution status | `domain/ExecutionStatus.ts` | workforce test | ADR-IMP-0015 | DONE |
+| REQ-IMP-004-021 | GDE-035 | Start execution | `Execution.start()` | workforce test | ADR-IMP-0015 | DONE |
+| REQ-IMP-004-022 | GDE-037 | Complete execution | `Execution.complete()` | workforce test | ADR-IMP-0015 | DONE |
+| REQ-IMP-004-023 | GDE-035 | Fail execution | `Execution.fail()` | workforce test | ADR-IMP-0015 | DONE |
+| REQ-IMP-004-024 | GDE-035 | Cancel execution | `Execution.cancel()` | workforce test | ADR-IMP-0015 | DONE |
+| REQ-IMP-004-025 | GDE-033/037 | Structured ExecutionResult | `domain/ExecutionResult.ts` | workforce test | ADR-IMP-0015 | DONE |
+| REQ-IMP-004-026 | GDE-080 | Execution validation | Execution domain | workforce test | — | DONE |
+| REQ-IMP-004-027 | ARCH-018 | AgentReference | `shared/references/AgentReference.ts` | workforce test | ADR-IMP-0015 | DONE |
+| REQ-IMP-004-028 | ARCH-022 | ExecutionReference | `shared/references/ExecutionReference.ts` | serialization tests | ADR-IMP-0015 | DONE |
+| REQ-IMP-004-029 | ARCH-022 | WorkAssignmentReference | `shared/references/WorkAssignmentReference.ts` | workforce test | ADR-IMP-0013 | DONE |
+| REQ-IMP-004-030 | GDE-036 | Application coordinator | `application/AIWorkCoordinator.ts` | coordinator test | ADR-IMP-0015 | DONE |
+| REQ-IMP-004-031 | GDE-038/040 | Execution policy boundary | `domain/AssignmentPolicy.ts` | workforce test | ADR-IMP-0015 | DONE |
+| REQ-IMP-004-032 | ARCH-015/024 | Mission/Governance/Tenant references | neutral refs and port | coordinator/architecture tests | ADR-IMP-0013/15 | DONE |
+| REQ-IMP-004-033 | GDE-081 | Integration boundary tests | Application ports | coordinator test | ADR-IMP-0015 | DONE |
+| REQ-IMP-004-034 | GDE-081/083 | Agent repository port | `ports/AgentRepository.ts` | repository test | ADR-IMP-0004/5 | DONE |
+| REQ-IMP-004-035 | GDE-081/083 | Execution repository port | `ports/ExecutionRepository.ts` | repository test | ADR-IMP-0004/5 | DONE |
+| REQ-IMP-004-036 | GDE-083 | In-memory Agent repository | `InMemoryAgentRepository.ts` | repository test | ADR-IMP-0005 | DONE |
+| REQ-IMP-004-037 | GDE-083 | In-memory Execution repository | `InMemoryExecutionRepository.ts` | repository test | ADR-IMP-0005 | DONE |
+| REQ-IMP-004-038 | GDE-082 | Application use cases | `ai-workforce/application/` | coordinator/workforce tests | ADR-IMP-0004 | DONE |
+| REQ-IMP-004-039 | GDE-083 | Repository contracts | workforce repositories | repository test | ADR-IMP-0005 | DONE |
+| REQ-IMP-004-040 | ARCH-025 | AgentProvisioned | `domain/WorkforceEvents.ts` | event assertions | — | DONE |
+| REQ-IMP-004-041 | ARCH-025 | AgentAssigned | `domain/WorkforceEvents.ts` | event assertions | ADR-IMP-0013 | DONE |
+| REQ-IMP-004-042 | ARCH-025 | ExecutionStarted | `domain/WorkforceEvents.ts` | event assertions | ADR-IMP-0015 | DONE |
+| REQ-IMP-004-043 | ARCH-025 | ExecutionCompleted | `domain/WorkforceEvents.ts` | event assertions | ADR-IMP-0015 | DONE |
+| REQ-IMP-004-044 | ARCH-025 | ExecutionFailed | `domain/WorkforceEvents.ts` | event assertions | ADR-IMP-0015 | DONE |
+| REQ-IMP-004-045 | ARCH-025 | ExecutionCancelled | `domain/WorkforceEvents.ts` | event assertions | ADR-IMP-0015 | DONE |
+| REQ-IMP-004-046 | ARCH-025 | Workforce audit metadata | `domain/WorkforceAuditMetadata.ts` | serialization tests | ADR-IMP-0015 | DONE |
+| REQ-IMP-004-047 | ARCH-025 | Audit event metadata | Workforce events | workforce test | ADR-IMP-0015 | DONE |
+| REQ-IMP-004-048 | GDE-079 | Agent contract | `contracts/AgentAggregate.md` | document review | ADR-IMP-0014 | DONE |
+| REQ-IMP-004-049 | GDE-079 | Execution contract | `contracts/ExecutionAggregate.md` | document review | ADR-IMP-0015 | DONE |
+| REQ-IMP-004-050 | GDE-079 | WorkAssignment contract | `contracts/WorkAssignment.md` | document review | ADR-IMP-0013 | DONE |
+| REQ-IMP-004-051 | GDE-079 | Context contract | `contracts/AIWorkforceContext.md` | document review | ADR-IMP-0013/15 | DONE |
+| REQ-IMP-004-052 | GDE-081/082 | No lateral dependencies | bounded context tests | `bounded-context-matrix.test.ts` | ADR-IMP-0013/15 | DONE |
+| REQ-IMP-004-053 | ARCH-003 | Context map | `BOUNDED-CONTEXT-MAP.md` | architecture review | ADR-IMP-0013/15 | DONE |
+| REQ-IMP-004-054 | GDE-079 | Bidirectional traceability | this matrix | report review | — | DONE |
+| REQ-IMP-004-055 | GDE-080 | Epic completion evidence | `EPIC-IMP-004-AI-WORKFORCE-REPORT.md` | Core check | — | DONE |

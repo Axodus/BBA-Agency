@@ -14,3 +14,7 @@ Current contracts:
 - [GovernanceAggregate](GovernanceAggregate.md)
 - [AuthorityAggregate](AuthorityAggregate.md)
 - [DecisionAggregate](DecisionAggregate.md)
+- [AgentAggregate](AgentAggregate.md)
+- [ExecutionAggregate](ExecutionAggregate.md)
+- [WorkAssignment](WorkAssignment.md)
+- [AIWorkforceContext](AIWorkforceContext.md)
