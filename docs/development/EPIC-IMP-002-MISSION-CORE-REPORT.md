@@ -152,6 +152,9 @@ Preserved:
 The traceability and closeout report are committed separately after final gate
 validation.
 
+Before EPIC-IMP-003, `ADR-IMP-0009 — Mission Aggregate Stability` was added to
+make the lifecycle boundary explicit for Governance, Workflow, and Publication.
+
 ## Decision
 
 EPIC-IMP-002

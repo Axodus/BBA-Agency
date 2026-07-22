@@ -13,6 +13,7 @@ Owner: `Mission Context`
 - `BBAPLT-ARCH-018`, `020`, `022`, `024`, and `025`;
 - `BBAPLT-GDE-082`, `083`, and `085`;
 - `ADR-IMP-0008`.
+- `ADR-IMP-0009`.
 
 ## Responsibilities
 
@@ -63,6 +64,18 @@ values.
 
 The transition matrix is implemented only by `MissionLifecycle` and mirrors
 `BBAPLT-GDE-013`. No application use case or adapter may write status directly.
+
+## Stability boundary
+
+`ADR-IMP-0009` makes the lifecycle contract durable across future Epics:
+
+- Governance controls existing transitions but cannot add states;
+- Workflow orchestrates existing commands and events but cannot define or
+  mutate lifecycle meaning;
+- Publication consumes Mission context but cannot transition Mission as a side
+  effect;
+- a new state requires an upstream normative Domain change, local ADR,
+  compatibility analysis, traceability, and a new implementation gate.
 
 Key paths include:
 
