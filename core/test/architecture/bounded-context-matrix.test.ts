@@ -151,6 +151,22 @@ test("Review domain and application remain assessment-only and infrastructure-fr
   assert.deepEqual(violations, []);
 });
 
+test("Publication domain and application remain publication-only and infrastructure-free", async () => {
+  const publicationRoot = resolve(modulesRoot, "publication");
+  const violations: string[] = [];
+  const forbidden = /(?:\/modules\/(?:mission|governance|ai-workforce|institutional-assets|knowledge-policy|workflow|review|connector)|infrastructure|frontend)/u;
+  for (const file of await files(publicationRoot)) {
+    const relativeFile = relative(publicationRoot, file);
+    if (!relativeFile.startsWith("domain/") && !relativeFile.startsWith("application/")) continue;
+    const content = await readFile(file, "utf8");
+    for (const match of content.matchAll(importPattern)) {
+      const specifier = match[1] ?? "";
+      if (forbidden.test(specifier)) violations.push(`${relativeFile} -> ${specifier}`);
+    }
+  }
+  assert.deepEqual(violations, []);
+});
+
 test("shared references depend only on Shared Kernel primitives", async () => {
   const referencesRoot = resolve(import.meta.dirname, "../../../../src/shared/references");
   const violations: string[] = [];
