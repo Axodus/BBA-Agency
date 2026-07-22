@@ -16,6 +16,11 @@ import {
   MissionId,
   PolicyId,
   PolicyVersionId,
+  ReviewConclusionId,
+  ReviewFindingId,
+  ReviewId,
+  ReviewRequestId,
+  ReviewSessionId,
   StageId,
   TaskId,
   TenantId,
@@ -42,7 +47,12 @@ test("all canonical IDs are opaque, immutable value objects", () => {
     WorkflowId.deterministic("workflow-a"),
     WorkflowExecutionId.deterministic("workflow-execution-a"),
     StageId.deterministic("stage-a"),
-    TaskId.deterministic("task-a")
+    TaskId.deterministic("task-a"),
+    ReviewId.deterministic("review-a"),
+    ReviewRequestId.deterministic("review-request-a"),
+    ReviewSessionId.deterministic("review-session-a"),
+    ReviewFindingId.deterministic("review-finding-a"),
+    ReviewConclusionId.deterministic("review-conclusion-a")
   ];
 
   assert.equal(new Set(ids.map((id) => id.toString())).size, ids.length);

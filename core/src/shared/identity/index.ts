@@ -21,3 +21,8 @@ export { StageId } from "./StageId.js";
 export { TaskId } from "./TaskId.js";
 export { WorkflowExecutionId } from "./WorkflowExecutionId.js";
 export { WorkflowId } from "./WorkflowId.js";
+export { ReviewConclusionId } from "./ReviewConclusionId.js";
+export { ReviewFindingId } from "./ReviewFindingId.js";
+export { ReviewId } from "./ReviewId.js";
+export { ReviewRequestId } from "./ReviewRequestId.js";
+export { ReviewSessionId } from "./ReviewSessionId.js";

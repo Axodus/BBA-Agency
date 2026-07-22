@@ -14,3 +14,6 @@ export { TenantReference } from "./TenantReference.js";
 export { WorkAssignmentReference } from "./WorkAssignmentReference.js";
 export { WorkflowExecutionReference } from "./WorkflowExecutionReference.js";
 export { WorkflowReference } from "./WorkflowReference.js";
+export { ReviewReference } from "./ReviewReference.js";
+export { ReviewRequestReference } from "./ReviewRequestReference.js";
+export { ReviewSessionReference } from "./ReviewSessionReference.js";

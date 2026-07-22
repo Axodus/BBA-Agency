@@ -21,7 +21,12 @@ export type IdentityKind =
   | "workflow"
   | "workflow_execution"
   | "stage"
-  | "task";
+  | "task"
+  | "review"
+  | "review_request"
+  | "review_session"
+  | "review_finding"
+  | "review_conclusion";
 
 const CANONICAL_ID = /^([a-z][a-z0-9_]*)_([a-z0-9][a-z0-9._~-]*)$/u;
 const CANONICAL_TOKEN = /^[a-z0-9][a-z0-9._~-]*$/u;
