@@ -77,6 +77,24 @@ differs from the ID-based reference in the REQ; this mapping is recorded in
 `documentation-gaps.md`. The supplied REQ also names `BBAPLT-GDE-091`, `095`,
 `096`, `097`, `098`, `099`, and `100`; all were located.
 
+## Review implementation sources
+
+EPIC-IMP-008 additionally depends on:
+
+- `domain/BBAPLT-GDE-037-QUALITY-GATES-AND-REVIEW-OBLIGATIONS.md`;
+- `domain/BBAPLT-GDE-045-DECISION-AND-APPROVAL-MODEL.md`;
+- `domain/BBAPLT-GDE-049-GOVERNANCE-RULES.md`;
+- `architecture/BBAPLT-ARCH-003-BOUNDED-CONTEXT-ARCHITECTURE.md`;
+- `architecture/BBAPLT-ARCH-005-CANONICAL-INFORMATION-FLOW.md`;
+- `architecture/BBAPLT-ARCH-007-CANONICAL-INTERFACE-CONTRACTS.md`;
+- `architecture/BBAPLT-ARCH-008-CROSS-CONTEXT-INTERACTION-MATRIX.md`;
+- `architecture/BBAPLT-ARCH-025-AUDITABILITY-AND-TRACEABILITY.md`.
+
+The certified architecture assigns Review and Approval semantics to Human
+Governance. `ADR-IMP-0025` therefore records Review as an isolated
+implementation module without declaring a new canonical bounded context or
+transferring institutional Authority.
+
 ## Local status rule
 
 Every local traceability claim uses `PASS`, `FAIL`, `NOT_RUN`,

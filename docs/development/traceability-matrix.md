@@ -395,3 +395,58 @@ in the M0 report.
 | REQ-IMP-007-053 | ARCH-003 | Bounded context map | `BOUNDED-CONTEXT-MAP.md` | architecture review | ADR-IMP-0022 | DONE |
 | REQ-IMP-007-054 | GDE-081/082 | No lateral imports | bounded context test | architecture test | ADR-IMP-0022 | DONE |
 | REQ-IMP-007-055 | GDE-080 | Epic completion evidence | `EPIC-IMP-007-WORKFLOW-REPORT.md` | Core check | — | DONE |
+| REQ-IMP-008-001 | GDE-045/ARCH-003 | Isolated Review implementation module | `modules/review/` | Review/architecture tests | ADR-IMP-0025 | DONE |
+| REQ-IMP-008-002 | GDE-076/082 | Review canonical identities | `shared/identity/Review*.ts` | identity tests | ADR-IMP-0025 | DONE |
+| REQ-IMP-008-003 | ARCH-007 | Neutral Review references | `shared/references/Review*.ts` | typecheck/architecture tests | ADR-IMP-0025 | DONE |
+| REQ-IMP-008-004 | GDE-081 | Public Review namespace | `modules/index.ts` / Review barrels | public API tests | ADR-IMP-0025 | DONE |
+| REQ-IMP-008-005 | GDE-037 | Owned immutable ReviewRequest | `ReviewRequest.ts` | ownership/immutability tests | ADR-IMP-0025 | DONE |
+| REQ-IMP-008-006 | GDE-037/ARCH-024 | Immutable Tenant-bound ReviewScope | `ReviewScope.ts` | scope boundary tests | ADR-IMP-0025 | DONE |
+| REQ-IMP-008-007 | GDE-037 | Review request type and criteria | `ReviewTypes.ts` / `ReviewRequest.ts` | request validation tests | ADR-IMP-0025 | DONE |
+| REQ-IMP-008-008 | GDE-045 | Review Aggregate | `Review.ts` | aggregate tests | ADR-IMP-0025 | DONE |
+| REQ-IMP-008-009 | GDE-045 | Review statuses | `ReviewTypes.ts` | lifecycle tests | ADR-IMP-0025 | DONE |
+| REQ-IMP-008-010 | GDE-080 | Valid initial Aggregate | Review domain | basic Review tests | ADR-IMP-0025 | DONE |
+| REQ-IMP-008-011 | GDE-045 | CreateReview | `Review.create()` / use case | creation tests | ADR-IMP-0025 | DONE |
+| REQ-IMP-008-012 | GDE-037 | StartReview | `Review.start()` / use case | lifecycle/port tests | ADR-IMP-0025 | DONE |
+| REQ-IMP-008-013 | GDE-045/049 | CompleteReview | `Review.complete()` / use case | completion tests | ADR-IMP-0027 | DONE |
+| REQ-IMP-008-014 | GDE-049 | ArchiveReview | `Review.archive()` / use case | authorization tests | ADR-IMP-0027 | DONE |
+| REQ-IMP-008-015 | GDE-045 | Protected Review lifecycle | `Review.ts` | invalid transition tests | ADR-IMP-0025 | DONE |
+| REQ-IMP-008-016 | GDE-037 | ReviewSession entity | `ReviewSession.ts` | session tests | ADR-IMP-0026 | DONE |
+| REQ-IMP-008-017 | GDE-037 | ReviewSession statuses | `ReviewTypes.ts` | session lifecycle tests | ADR-IMP-0026 | DONE |
+| REQ-IMP-008-018 | GDE-037 | PlanSession | Aggregate/application | planned session tests | ADR-IMP-0026 | DONE |
+| REQ-IMP-008-019 | GDE-037 | OpenSession | Aggregate/application | active session tests | ADR-IMP-0026 | DONE |
+| REQ-IMP-008-020 | GDE-037 | CloseSession | Aggregate/application | closed session tests | ADR-IMP-0026 | DONE |
+| REQ-IMP-008-021 | GDE-037 | CancelSession | Aggregate/application | cancellation tests | ADR-IMP-0026 | DONE |
+| REQ-IMP-008-022 | GDE-049 | Single ACTIVE session | `Review.ts` | concurrency invariant test | ADR-IMP-0026 | DONE |
+| REQ-IMP-008-023 | GDE-080 | Session contract coverage | Review test suite | session tests | ADR-IMP-0026 | DONE |
+| REQ-IMP-008-024 | GDE-076/082 | ReviewFindingId | shared identity | identity tests | ADR-IMP-0026 | DONE |
+| REQ-IMP-008-025 | GDE-037 | FindingCategory | `ReviewTypes.ts` | Finding tests | ADR-IMP-0026 | DONE |
+| REQ-IMP-008-026 | GDE-037 | FindingSeverity | `ReviewTypes.ts` | Finding tests | ADR-IMP-0026 | DONE |
+| REQ-IMP-008-027 | GDE-037 | Immutable ReviewFinding | `ReviewFinding.ts` | immutability tests | ADR-IMP-0026 | DONE |
+| REQ-IMP-008-028 | GDE-037 | RecordFinding | Aggregate/application | ACTIVE session tests | ADR-IMP-0026 | DONE |
+| REQ-IMP-008-029 | ARCH-025 | Finding session ownership | `ReviewSession.ts` / `Review.ts` | ownership tests | ADR-IMP-0026 | DONE |
+| REQ-IMP-008-030 | GDE-080 | Finding contract coverage | Review test suite | Finding tests | ADR-IMP-0026 | DONE |
+| REQ-IMP-008-031 | GDE-076/082 | ReviewConclusionId and outcomes | shared identity / `ReviewTypes.ts` | identity/outcome tests | ADR-IMP-0027 | DONE |
+| REQ-IMP-008-032 | GDE-045 | Immutable ReviewConclusion | `ReviewConclusion.ts` | conclusion tests | ADR-IMP-0027 | DONE |
+| REQ-IMP-008-033 | GDE-045/049 | External completion authorization | `CompletionAuthorization` | Governance port tests | ADR-IMP-0027 | DONE |
+| REQ-IMP-008-034 | GDE-037 | CLOSED-only contribution | `Review.complete()` | cancelled contribution tests | ADR-IMP-0026/27 | DONE |
+| REQ-IMP-008-035 | GDE-045 | Conclusion is not Approval | Review outcome contract | all-outcome tests | ADR-IMP-0027 | DONE |
+| REQ-IMP-008-036 | GDE-080 | Conclusion contract coverage | Review test suite | conclusion tests | ADR-IMP-0027 | DONE |
+| REQ-IMP-008-037 | GDE-081 | Structural target validation port | `ReviewReferenceValidationPort.ts` | application port tests | ADR-IMP-0004/25 | DONE |
+| REQ-IMP-008-038 | GDE-081 | Mission validation port | `ReviewMissionPort.ts` | application port tests | ADR-IMP-0004/25 | DONE |
+| REQ-IMP-008-039 | GDE-081 | Governance authorization port | `ReviewGovernancePort.ts` | authorization tests | ADR-IMP-0004/27 | DONE |
+| REQ-IMP-008-040 | GDE-081 | Workflow notification port | `ReviewWorkflowPort.ts` | notification tests | ADR-IMP-0004/25 | DONE |
+| REQ-IMP-008-041 | GDE-081 | Publication outcome notification | `ReviewPublicationPort.ts` | post-save tests | ADR-IMP-0027 | DONE |
+| REQ-IMP-008-042 | GDE-080 | Port behavior and failure order | `ReviewUseCases.ts` | before/during/after-save tests | ADR-IMP-0027 | DONE |
+| REQ-IMP-008-043 | GDE-081/083 | ReviewRepository port | `ReviewRepository.ts` | repository contract tests | ADR-IMP-0005 | DONE |
+| REQ-IMP-008-044 | GDE-083 | InMemoryReviewRepository | `InMemoryReviewRepository.ts` | repository tests | ADR-IMP-0005 | DONE |
+| REQ-IMP-008-045 | GDE-083 | Optimistic concurrency | in-memory repository | concurrency test | ADR-IMP-0005 | DONE |
+| REQ-IMP-008-046 | GDE-083 | Deep-frozen snapshots | `Review.toSnapshot()` | snapshot tests | ADR-IMP-0025/26 | DONE |
+| REQ-IMP-008-047 | GDE-083 | Deterministic serialization/rehydration | `Review.serialize()` / `rehydrate()` | reconstruction tests | ADR-IMP-0025/26 | DONE |
+| REQ-IMP-008-048 | GDE-080/083 | Repository contract coverage | Review test suite | repository tests | ADR-IMP-0005 | DONE |
+| REQ-IMP-008-049 | ARCH-025 | Review domain events | `ReviewEvents.ts` | event sequence tests | ADR-IMP-0025/26 | DONE |
+| REQ-IMP-008-050 | ARCH-025 | Complete event audit metadata | `ReviewDomainEvent` | audit metadata tests | ADR-IMP-0025 | DONE |
+| REQ-IMP-008-051 | GDE-079 | Review contracts | `contracts/Review*.md` | document review | ADR-IMP-0025/26/27 | DONE |
+| REQ-IMP-008-052 | GDE-079 | Durable Review decisions | `ADR-IMP-0025..0027` | ADR review | ADR-IMP-0025/26/27 | DONE |
+| REQ-IMP-008-053 | ARCH-003 | Context map and traceability | map and this matrix | architecture review | ADR-IMP-0025 | DONE |
+| REQ-IMP-008-054 | GDE-081/082 | Public API and no lateral imports | barrels / bounded context test | typecheck/architecture test | ADR-IMP-0025 | DONE |
+| REQ-IMP-008-055 | GDE-080 | Epic completion evidence | `EPIC-IMP-008-REVIEW-REPORT.md` | Core/demo checks | — | DONE |

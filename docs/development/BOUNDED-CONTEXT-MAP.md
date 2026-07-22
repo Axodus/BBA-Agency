@@ -1,6 +1,6 @@
 # Bounded Context Map
 
-Status: ACCEPTED for EPIC-IMP-007 implementation.
+Status: ACCEPTED for EPIC-IMP-008 implementation.
 
 This local map records implementation boundaries for the Core. It does not
 replace the certified BBA Platform Architecture or Domain documentation.
@@ -25,7 +25,10 @@ replace the certified BBA Platform Architecture or Domain documentation.
                     Workflow & Mission Orchestration
                                       │
                                       ▼
-                    future Review, Publication, Connector
+                       Review implementation module
+                                      │
+                                      ▼
+                       future Publication, Connector
 ```
 
 Rules:
@@ -57,6 +60,17 @@ Rules:
   cannot set a Task to `READY`.
 - Workflow never automatically selects the next Stage. `AdvanceStage` requires
   an explicit target Stage and a closed `StageDisposition`.
+- Review is an isolated implementation module for institutional assessment;
+  certified canonical Authority, Decision and Approval remain owned by Human
+  Governance.
+- Review owns exactly one immutable ReviewRequest, ReviewSessions, Findings
+  and one optional non-binding ReviewConclusion.
+- Only CLOSED ReviewSessions contribute Finding IDs to ReviewConclusion.
+  CANCELLED session Findings remain auditable but do not contribute.
+- Review outcomes never alter Mission, Assets, Knowledge, Workflow or
+  Publication. Cross-context coordination uses ports and neutral references.
+- Review notifications occur after save. Notification failure remains visible
+  and does not undo the in-memory persisted mutation.
 - Asset graph checks and multi-Aggregate supersession are Application concerns
   exposed through ports; Assets never load other Assets from domain code.
 - `Capability` is a Value Object and `CapabilitySet` is immutable.

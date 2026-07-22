@@ -35,3 +35,6 @@ upstream documentation review process.
 - [ADR-IMP-0022 — Workflow canonical model](ADR-IMP-0022-WORKFLOW-CANONICAL-MODEL.md)
 - [ADR-IMP-0023 — Workflow execution separation](ADR-IMP-0023-WORKFLOW-EXECUTION-SEPARATION.md)
 - [ADR-IMP-0024 — Dependency graph validation](ADR-IMP-0024-DEPENDENCY-GRAPH-VALIDATION.md)
+- [ADR-IMP-0025 — Review canonical model](ADR-IMP-0025-REVIEW-CANONICAL-MODEL.md)
+- [ADR-IMP-0026 — Review session model](ADR-IMP-0026-REVIEW-SESSION-MODEL.md)
+- [ADR-IMP-0027 — Institutional Review outcomes](ADR-IMP-0027-INSTITUTIONAL-REVIEW-OUTCOMES.md)
