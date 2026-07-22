@@ -1,0 +1,14 @@
+packages:
+  - core
+
+# These are legacy optional build scripts. M0 does not execute runtime or
+# native dependency builds; the policy is explicit so plain `pnpm install`
+# remains reproducible without approving unrelated scripts.
+ignoredBuiltDependencies:
+  - onnxruntime-node
+  - protobufjs
+  - sharp
+allowBuilds:
+  onnxruntime-node: set this to true or false
+  protobufjs: set this to true or false
+  sharp: set this to true or false

@@ -1,0 +1,19 @@
+{
+  "name": "@bba/platform-core",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Isolated BBA Platform Core bootstrap workspace",
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "tsc -p tsconfig.test.json && node --test .tmp/test/test/smoke.test.js .tmp/test/test/architecture/core-isolation.test.js",
+    "lint": "node tools/quality-check.mjs --lint",
+    "format:check": "node tools/quality-check.mjs --format",
+    "architecture": "node tools/check-core-boundaries.mjs",
+    "check": "pnpm run typecheck && pnpm run test && pnpm run lint && pnpm run format:check && pnpm run architecture"
+  },
+  "devDependencies": {
+    "@types/node": "25.6.0",
+    "typescript": "6.0.3"
+  }
+}
