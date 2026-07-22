@@ -230,3 +230,58 @@ in the M0 report.
 | REQ-IMP-004-053 | ARCH-003 | Context map | `BOUNDED-CONTEXT-MAP.md` | architecture review | ADR-IMP-0013/15 | DONE |
 | REQ-IMP-004-054 | GDE-079 | Bidirectional traceability | this matrix | report review | — | DONE |
 | REQ-IMP-004-055 | GDE-080 | Epic completion evidence | `EPIC-IMP-004-AI-WORKFORCE-REPORT.md` | Core check | — | DONE |
+| REQ-IMP-005-001 | GDE-018 | Institutional Assets module | `core/src/modules/institutional-assets/` | institutional-assets test | ADR-IMP-0016 | DONE |
+| REQ-IMP-005-002 | GDE-018/019 | Canonical Asset Aggregate | `domain/Asset.ts` | Asset creation/lifecycle tests | ADR-IMP-0016 | DONE |
+| REQ-IMP-005-003 | GDE-023 | Asset owns immutable versions | `domain/AssetVersion.ts` | version tests | ADR-IMP-0017 | DONE |
+| REQ-IMP-005-004 | GDE-020 | Canonical meaning, no format | `domain/CanonicalContent.ts` | content validation test | ADR-IMP-0016 | DONE |
+| REQ-IMP-005-005 | GDE-019 | Asset metadata | `domain/AssetMetadata.ts` | creation test | ADR-IMP-0016 | DONE |
+| REQ-IMP-005-006 | GDE-080 | Valid Aggregate foundation | Institutional Assets domain | institutional-assets test | ADR-IMP-0016 | DONE |
+| REQ-IMP-005-007 | GDE-022 | Canonical lifecycle states | `domain/AssetStatus.ts` | lifecycle test | ADR-IMP-0016 | DONE |
+| REQ-IMP-005-008 | GDE-022 | Create in PROPOSED | `Asset.create()` / `createAsset()` | lifecycle/application tests | ADR-IMP-0016 | DONE |
+| REQ-IMP-005-009 | GDE-022 | Produce transition | `Asset.produce()` / `produceAsset()` | lifecycle/application tests | ADR-IMP-0016 | DONE |
+| REQ-IMP-005-010 | GDE-022/027 | Governed supersession | `supersedeAsset()` | supersession tests | ADR-IMP-0018 | DONE |
+| REQ-IMP-005-011 | GDE-022 | Archive published Asset | `Asset.archive()` / `archiveAsset()` | archive tests | ADR-IMP-0016 | DONE |
+| REQ-IMP-005-012 | GDE-080 | Protected lifecycle | `domain/Asset.ts` | lifecycle tests | ADR-IMP-0016 | DONE |
+| REQ-IMP-005-013 | GDE-023 | Monotonic version number | `domain/AssetVersionNumber.ts` | version test | ADR-IMP-0017 | DONE |
+| REQ-IMP-005-014 | GDE-023 | Append immutable version | `Asset.createVersion()` | version/application tests | ADR-IMP-0017 | DONE |
+| REQ-IMP-005-015 | GDE-023 | Supersede current pointer, not history | `Asset.currentVersionId` | prior snapshot test | ADR-IMP-0017 | DONE |
+| REQ-IMP-005-016 | GDE-023 | Single current version source | `Asset.currentAssetVersion` | version test | ADR-IMP-0017 | DONE |
+| REQ-IMP-005-017 | GDE-023 | Exactly one currentVersionId | `Asset.assertState()` | reconstruction test | ADR-IMP-0017 | DONE |
+| REQ-IMP-005-018 | GDE-080 | Versioning validation | Asset/AssetVersion | version tests | ADR-IMP-0017 | DONE |
+| REQ-IMP-005-019 | GDE-019 | Semantic classification | `domain/AssetClassification.ts` | classification test | ADR-IMP-0016 | DONE |
+| REQ-IMP-005-020 | GDE-019 | Sensitivity taxonomy | `AssetClassification.ts` | classification test | ADR-IMP-0016 | DONE |
+| REQ-IMP-005-021 | GDE-019 | Semantic category taxonomy | `ASSET_CATEGORIES` | classification test | ADR-IMP-0016 | DONE |
+| REQ-IMP-005-022 | GDE-019 | Normalized semantic tags | `AssetTag` | classification test | ADR-IMP-0016 | DONE |
+| REQ-IMP-005-023 | GDE-019 | Classification policy guard | `AssetClassification` constructor | classification test | ADR-IMP-0016 | DONE |
+| REQ-IMP-005-024 | GDE-080 | Classification validation | classification domain | classification test | ADR-IMP-0016 | DONE |
+| REQ-IMP-005-025 | GDE-027 | Immutable relationship | `domain/AssetRelationship.ts` | graph tests | ADR-IMP-0018 | DONE |
+| REQ-IMP-005-026 | GDE-027 | Four canonical relation types | `AssetRelationshipType` | graph tests | ADR-IMP-0018 | DONE |
+| REQ-IMP-005-027 | GDE-027/081 | Global graph policy at Application edge | graph port/use cases | graph tests | ADR-IMP-0018 | DONE |
+| REQ-IMP-005-028 | GDE-026/027 | Conditional acyclicity | `AssetRelationshipGraphPort` | cycle tests | ADR-IMP-0018 | DONE |
+| REQ-IMP-005-029 | GDE-019/027 | Intra-Tenant relationships | `AssetRelationship` | Tenant tests | ADR-IMP-0018 | DONE |
+| REQ-IMP-005-030 | GDE-080 | Relationship validation | graph adapter/use cases | graph tests | ADR-IMP-0018 | DONE |
+| REQ-IMP-005-031 | GDE-081/083 | Asset repository port | `ports/AssetRepository.ts` | repository contract test | ADR-IMP-0004/5 | DONE |
+| REQ-IMP-005-032 | GDE-083 | In-memory Asset repository | `InMemoryAssetRepository.ts` | repository contract test | ADR-IMP-0005 | DONE |
+| REQ-IMP-005-033 | GDE-082 | Asset application use cases | `application/AssetUseCases.ts` | application tests | ADR-IMP-0004/16/18 | DONE |
+| REQ-IMP-005-034 | GDE-023/083 | Complete snapshots | `AssetSnapshot` | round-trip test | ADR-IMP-0017 | DONE |
+| REQ-IMP-005-035 | GDE-079 | Deterministic serialization | `toSnapshot()` / Value Objects | serialization tests | ADR-IMP-0017 | DONE |
+| REQ-IMP-005-036 | GDE-083 | Full rehydration | `Asset.rehydrate()` | reconstruction test | ADR-IMP-0017 | DONE |
+| REQ-IMP-005-037 | GDE-083 | Repository contract | AssetRepository adapters | concurrency/Tenant tests | ADR-IMP-0005 | DONE |
+| REQ-IMP-005-038 | ARCH-025 | AssetCreated | `domain/AssetEvents.ts` | event assertions | ADR-IMP-0016 | DONE |
+| REQ-IMP-005-039 | ARCH-025 | AssetProduced | `domain/AssetEvents.ts` | lifecycle test | ADR-IMP-0016 | DONE |
+| REQ-IMP-005-040 | ARCH-025 | AssetVersionCreated | `domain/AssetEvents.ts` | version/event tests | ADR-IMP-0017 | DONE |
+| REQ-IMP-005-041 | ARCH-025 | AssetSuperseded | `domain/AssetEvents.ts` | supersession test | ADR-IMP-0018 | DONE |
+| REQ-IMP-005-042 | ARCH-025 | AssetArchived | `domain/AssetEvents.ts` | archive test | ADR-IMP-0016 | DONE |
+| REQ-IMP-005-043 | ARCH-025 | AssetRelationshipCreated | `domain/AssetEvents.ts` | graph test | ADR-IMP-0018 | DONE |
+| REQ-IMP-005-044 | ARCH-025 | Complete event audit metadata | `AssetDomainEvent` | event assertions | ADR-IMP-0016/17/18 | DONE |
+| REQ-IMP-005-045 | GDE-080 | Event validation | Asset events | institutional-assets test | ADR-IMP-0016/17/18 | DONE |
+| REQ-IMP-005-046 | GDE-079 | Asset contract | `contracts/AssetAggregate.md` | document review | ADR-IMP-0016 | DONE |
+| REQ-IMP-005-047 | GDE-079 | AssetVersion contract | `contracts/AssetVersion.md` | document review | ADR-IMP-0017 | DONE |
+| REQ-IMP-005-048 | GDE-079 | Relationship contract | `contracts/AssetRelationship.md` | document review | ADR-IMP-0018 | DONE |
+| REQ-IMP-005-049 | GDE-079 | Context contract | `contracts/InstitutionalAssetsContext.md` | document review | ADR-IMP-0016/17/18 | DONE |
+| REQ-IMP-005-050 | GDE-079 | Durable Asset decisions | `docs/adr/ADR-IMP-0016..0018` | ADR review | ADR-IMP-0016/17/18 | DONE |
+| REQ-IMP-005-051 | ARCH-003 | Context boundary map | `BOUNDED-CONTEXT-MAP.md` | architecture review | ADR-IMP-0016 | DONE |
+| REQ-IMP-005-052 | GDE-079 | Bidirectional traceability | this matrix | report review | — | DONE |
+| REQ-IMP-005-053 | GDE-081/082 | No lateral context imports | bounded context test | `bounded-context-matrix.test.ts` | ADR-IMP-0016 | DONE |
+| REQ-IMP-005-054 | GDE-079 | Explicit public module API | module indexes and README | typecheck/contract review | ADR-IMP-0016 | DONE |
+| REQ-IMP-005-055 | GDE-080 | Epic completion evidence | `EPIC-IMP-005-INSTITUTIONAL-ASSETS-REPORT.md` | Core check | — | DONE |

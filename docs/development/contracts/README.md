@@ -18,3 +18,7 @@ Current contracts:
 - [ExecutionAggregate](ExecutionAggregate.md)
 - [WorkAssignment](WorkAssignment.md)
 - [AIWorkforceContext](AIWorkforceContext.md)
+- [AssetAggregate](AssetAggregate.md)
+- [AssetVersion](AssetVersion.md)
+- [AssetRelationship](AssetRelationship.md)
+- [InstitutionalAssetsContext](InstitutionalAssetsContext.md)

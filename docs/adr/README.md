@@ -26,3 +26,6 @@ upstream documentation review process.
 - [ADR-IMP-0013 — Governance Assignment and WorkAssignment boundary](ADR-IMP-0013-GOVERNANCE-AND-WORKFORCE-ASSIGNMENT-BOUNDARY.md)
 - [ADR-IMP-0014 — Agent lifecycle and derived availability](ADR-IMP-0014-AGENT-LIFECYCLE-AND-DERIVED-AVAILABILITY.md)
 - [ADR-IMP-0015 — Provider-neutral Workforce execution](ADR-IMP-0015-PROVIDER-NEUTRAL-WORKFORCE-EXECUTION.md)
+- [ADR-IMP-0016 — Canonical Asset model](ADR-IMP-0016-CANONICAL-ASSET-MODEL.md)
+- [ADR-IMP-0017 — Immutable Asset versioning](ADR-IMP-0017-IMMUTABLE-ASSET-VERSIONING.md)
+- [ADR-IMP-0018 — Asset relationship graph](ADR-IMP-0018-ASSET-RELATIONSHIP-GRAPH.md)
