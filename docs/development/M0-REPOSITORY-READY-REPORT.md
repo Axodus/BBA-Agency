@@ -131,8 +131,7 @@ was not modified and remains a deterministic local reference implementation.
 - `ec43bf3` — `docs: add repository baseline and development gates`
 - `7e3c375` — `chore(core): scaffold isolated TypeScript workspace`
 - `29291fe` — `docs(adr): record initial core architecture decisions`
-- A final documentation closeout commit records this hash list and the M0
-  report update.
+- `8b392e4` — `docs: close M0 repository readiness`
 
 ## Próximo gate
 
