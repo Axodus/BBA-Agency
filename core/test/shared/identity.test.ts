@@ -12,7 +12,10 @@ import {
   EvidenceId,
   Identity,
   IdentityFactory,
+  KnowledgeId,
   MissionId,
+  PolicyId,
+  PolicyVersionId,
   TenantId
 } from "../../src/shared/identity/index.js";
 
@@ -28,7 +31,10 @@ test("all canonical IDs are opaque, immutable value objects", () => {
     DecisionId.deterministic("decision-a"),
     ApprovalId.deterministic("approval-a"),
     EvidenceId.deterministic("evidence-a"),
-    ConnectorId.deterministic("connector-a")
+    ConnectorId.deterministic("connector-a"),
+    KnowledgeId.deterministic("knowledge-a"),
+    PolicyId.deterministic("policy-a"),
+    PolicyVersionId.deterministic("policy-version-a")
   ];
 
   assert.equal(new Set(ids.map((id) => id.toString())).size, ids.length);

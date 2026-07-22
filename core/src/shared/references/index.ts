@@ -8,5 +8,7 @@ export { DecisionReference } from "./DecisionReference.js";
 export { ExecutionReference } from "./ExecutionReference.js";
 export { MissionReference } from "./MissionReference.js";
 export { InstitutionalActorReference } from "./InstitutionalActorReference.js";
+export { KnowledgeReference } from "./KnowledgeReference.js";
+export { PolicyReference } from "./PolicyReference.js";
 export { TenantReference } from "./TenantReference.js";
 export { WorkAssignmentReference } from "./WorkAssignmentReference.js";
