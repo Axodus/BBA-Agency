@@ -4,6 +4,7 @@ import {
   AgentId,
   ApprovalId,
   AssetId,
+  AssetVersionId,
   AssignmentId,
   AuthorityId,
   ConnectorId,
@@ -20,6 +21,7 @@ test("all canonical IDs are opaque, immutable value objects", () => {
     TenantId.deterministic("tenant-a"),
     MissionId.deterministic("mission-a"),
     AssetId.deterministic("asset-a"),
+    AssetVersionId.deterministic("asset-version-a"),
     AgentId.deterministic("agent-a"),
     AssignmentId.deterministic("assignment-a"),
     AuthorityId.deterministic("authority-a"),
@@ -33,7 +35,7 @@ test("all canonical IDs are opaque, immutable value objects", () => {
   for (const id of ids) {
     assert.equal(Object.isFrozen(id), true);
     assert.equal(typeof id.toJSON(), "string");
-    assert.match(id.toString(), /^[a-z]+_[a-z0-9]+$/u);
+    assert.match(id.toString(), /^[a-z][a-z0-9_]*_[a-z0-9]+$/u);
   }
   const firstTenantId = ids[0];
   assert.ok(firstTenantId instanceof TenantId);
