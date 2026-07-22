@@ -39,6 +39,24 @@ particularly depends on the architecture constitution, bounded contexts,
 canonical interfaces, information integrity and lineage, Tenant isolation, and
 auditability documents.
 
+## Mission Core sources
+
+EPIC-IMP-002 additionally depends on:
+
+- `domain/BBAPLT-GDE-011-MISSION-DOMAIN-OVERVIEW.md`;
+- `domain/BBAPLT-GDE-012-MISSION-LIFECYCLE.md`;
+- `domain/BBAPLT-GDE-013-MISSION-STATE-MODEL.md`;
+- `domain/BBAPLT-GDE-014-MISSION-RULES.md`;
+- `domain/BBAPLT-GDE-015-MISSION-POLICIES.md`;
+- `domain/BBAPLT-GDE-016-MISSION-CONSTRAINTS.md`;
+- `domain/BBAPLT-RPT-003-MISSION-DOMAIN-REVIEW.md`;
+- `architecture/BBAPLT-ARCH-020-INFORMATION-LIFECYCLE.md`;
+- `development/BBAPLT-GDE-082-BACKEND-DOMAIN-REALIZATION.md`;
+- `development/BBAPLT-GDE-083-BACKEND-PERSISTENCE-AND-DATA-ACCESS-CONTRACTS.md`.
+
+Where implementation labels differ from the canonical Mission State Model,
+`ADR-IMP-0008` records the realization without creating alternate Domain states.
+
 ## Development sources
 
 The implementation baseline consults:
