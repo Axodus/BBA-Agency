@@ -128,8 +128,11 @@ was not modified and remains a deterministic local reference implementation.
 
 ## Commits locais
 
-Not created yet. The implementation is ready for the required focused local
-commit closeout after final diff review.
+- `ec43bf3` — `docs: add repository baseline and development gates`
+- `7e3c375` — `chore(core): scaffold isolated TypeScript workspace`
+- `29291fe` — `docs(adr): record initial core architecture decisions`
+- A final documentation closeout commit records this hash list and the M0
+  report update.
 
 ## Próximo gate
 
