@@ -4,7 +4,7 @@ import { readFile, readdir } from "node:fs/promises";
 import { relative, resolve } from "node:path";
 
 const modulesRoot = resolve(import.meta.dirname, "../../src/modules");
-const contexts = new Set(["mission", "governance", "workforce", "assets", "knowledge", "workflow", "publication", "connector"]);
+const contexts = new Set(["mission", "governance", "ai-workforce", "workforce", "assets", "knowledge", "workflow", "publication", "connector"]);
 const importPattern = /(?:from\s*|import\s*\(\s*)["']([^"']+)["']/gu;
 
 async function files(directory: string): Promise<string[]> {
@@ -55,6 +55,34 @@ test("Governance domain and application do not depend on infrastructure or futur
       const specifier = match[1] ?? "";
       if (forbidden.test(specifier)) violations.push(`${relativeFile} -> ${specifier}`);
     }
+  }
+  assert.deepEqual(violations, []);
+});
+
+test("AI Workforce domain and application remain reference-only and infrastructure-free", async () => {
+  const workforceRoot = resolve(modulesRoot, "ai-workforce");
+  const violations: string[] = [];
+  const forbidden = /(?:\/modules\/(?:mission|governance|assets?|knowledge|workflow|publication|connector)|infrastructure|frontend)/u;
+  for (const file of await files(workforceRoot)) {
+    const relativeFile = relative(workforceRoot, file);
+    if (!relativeFile.startsWith("domain/") && !relativeFile.startsWith("application/")) continue;
+    const content = await readFile(file, "utf8");
+    for (const match of content.matchAll(importPattern)) {
+      const specifier = match[1] ?? "";
+      if (forbidden.test(specifier)) violations.push(`${relativeFile} -> ${specifier}`);
+    }
+  }
+  assert.deepEqual(violations, []);
+});
+
+test("AI Workforce keeps Mission coordination in neutral references and ports", async () => {
+  const workforceRoot = resolve(modulesRoot, "ai-workforce");
+  const violations: string[] = [];
+  for (const file of await files(workforceRoot)) {
+    const relativeFile = relative(workforceRoot, file);
+    if (!relativeFile.startsWith("domain/") && !relativeFile.startsWith("application/")) continue;
+    const content = await readFile(file, "utf8");
+    if (content.includes("modules/mission") || content.includes("modules/governance")) violations.push(relativeFile);
   }
   assert.deepEqual(violations, []);
 });

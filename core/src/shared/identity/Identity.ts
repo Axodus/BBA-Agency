@@ -11,7 +11,9 @@ export type IdentityKind =
   | "approval"
   | "decision"
   | "evidence"
-  | "connector";
+  | "connector"
+  | "execution"
+  | "work_assignment";
 
 const CANONICAL_ID = /^([a-z][a-z0-9_]*)_([a-z0-9][a-z0-9._~-]*)$/u;
 

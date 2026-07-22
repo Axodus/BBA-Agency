@@ -1,5 +1,9 @@
 export { ApprovalReference } from "./ApprovalReference.js";
 export { AssignmentReference } from "./AssignmentReference.js";
+export { AgentReference } from "./AgentReference.js";
 export { AuthorityReference } from "./AuthorityReference.js";
 export { DecisionReference } from "./DecisionReference.js";
+export { ExecutionReference } from "./ExecutionReference.js";
+export { MissionReference } from "./MissionReference.js";
 export { TenantReference } from "./TenantReference.js";
+export { WorkAssignmentReference } from "./WorkAssignmentReference.js";
