@@ -285,3 +285,58 @@ in the M0 report.
 | REQ-IMP-005-053 | GDE-081/082 | No lateral context imports | bounded context test | `bounded-context-matrix.test.ts` | ADR-IMP-0016 | DONE |
 | REQ-IMP-005-054 | GDE-079 | Explicit public module API | module indexes and README | typecheck/contract review | ADR-IMP-0016 | DONE |
 | REQ-IMP-005-055 | GDE-080 | Epic completion evidence | `EPIC-IMP-005-INSTITUTIONAL-ASSETS-REPORT.md` | Core check | — | DONE |
+| REQ-IMP-006-001 | GDE-028 | Knowledge & Policy module | `core/src/modules/knowledge-policy/` | knowledge-policy test | ADR-IMP-0019 | DONE |
+| REQ-IMP-006-002 | GDE-028 | Knowledge Aggregate | `domain/Knowledge.ts` | aggregate tests | ADR-IMP-0019 | DONE |
+| REQ-IMP-006-003 | GDE-028 | Policy Aggregate | `domain/Policy.ts` | aggregate tests | ADR-IMP-0020 | DONE |
+| REQ-IMP-006-004 | GDE-028 | Metadata Value Objects | `KnowledgeMetadata.ts` / `PolicyMetadata.ts` | creation tests | ADR-IMP-0019/20 | DONE |
+| REQ-IMP-006-005 | GDE-079 | Public namespaces | module barrels | typecheck | — | DONE |
+| REQ-IMP-006-006 | GDE-080 | Valid Aggregate foundation | Knowledge/Policy domain | knowledge-policy test | — | DONE |
+| REQ-IMP-006-007 | GDE-028 | Knowledge lifecycle states | `KnowledgeStatus.ts` | lifecycle test | ADR-IMP-0019 | DONE |
+| REQ-IMP-006-008 | GDE-028 | CreateKnowledge | `Knowledge.create()` / use case | creation/application tests | ADR-IMP-0019 | DONE |
+| REQ-IMP-006-009 | GDE-028 | CurateKnowledge | `Knowledge.curate()` / use case | lifecycle/application tests | ADR-IMP-0019 | DONE |
+| REQ-IMP-006-010 | GDE-028 | ArchiveKnowledge | `Knowledge.archive()` | lifecycle test | ADR-IMP-0019 | DONE |
+| REQ-IMP-006-011 | GDE-028 | SupersedeKnowledge | `Knowledge.supersede()` | lifecycle test coverage | ADR-IMP-0019 | DONE |
+| REQ-IMP-006-012 | GDE-080 | Knowledge lifecycle tests | `knowledge-policy.test.ts` | lifecycle test | ADR-IMP-0019 | DONE |
+| REQ-IMP-006-013 | GDE-029 | PolicyVersion | `domain/PolicyVersion.ts` | version tests | ADR-IMP-0020 | DONE |
+| REQ-IMP-006-014 | GDE-029 | PolicyRule Value Object | `domain/PolicyRule.ts` | policy rule tests | ADR-IMP-0020 | DONE |
+| REQ-IMP-006-015 | GDE-029 | Immutable PolicyRuleSet | `domain/PolicyRuleSet.ts` | immutability tests | ADR-IMP-0020 | DONE |
+| REQ-IMP-006-016 | GDE-029 | Policy lifecycle states | `PolicyStatus.ts` | creation tests | ADR-IMP-0020 | DONE |
+| REQ-IMP-006-017 | GDE-029 | CreatePolicy | `Policy.create()` / use case | creation/application tests | ADR-IMP-0020 | DONE |
+| REQ-IMP-006-018 | GDE-029 | CreatePolicyVersion | `Policy.createVersion()` / use case | version tests | ADR-IMP-0020 | DONE |
+| REQ-IMP-006-019 | GDE-080 | Policy tests | `knowledge-policy.test.ts` | policy tests | ADR-IMP-0020 | DONE |
+| REQ-IMP-006-020 | GDE-028/030 | Asset references only | Shared references | architecture/application tests | ADR-IMP-0021 | DONE |
+| REQ-IMP-006-021 | GDE-028/030 | Policy references only | `PolicyReference` | relationship tests | ADR-IMP-0021 | DONE |
+| REQ-IMP-006-022 | GDE-030 | KnowledgeRelationship types | `KnowledgeRelationship.ts` | relationship tests | ADR-IMP-0021 | DONE |
+| REQ-IMP-006-023 | GDE-030 | Relationship policy | relationship constructor rules | relationship tests | ADR-IMP-0021 | DONE |
+| REQ-IMP-006-024 | GDE-030 | Reject cross-Tenant references | Knowledge/Relationship invariants | Tenant tests | ADR-IMP-0021 | DONE |
+| REQ-IMP-006-025 | GDE-080 | Relationship tests | `knowledge-policy.test.ts` | relationship tests | ADR-IMP-0021 | DONE |
+| REQ-IMP-006-026 | GDE-081/083 | Knowledge repository port | `ports/KnowledgeRepository.ts` | repository contract | ADR-IMP-0004/5 | DONE |
+| REQ-IMP-006-027 | GDE-081/083 | Policy repository port | `ports/PolicyRepository.ts` | repository contract | ADR-IMP-0004/5 | DONE |
+| REQ-IMP-006-028 | GDE-081 | Reference validation port | `KnowledgeReferenceValidationPort.ts` | application test | ADR-IMP-0021 | DONE |
+| REQ-IMP-006-029 | GDE-083 | In-memory adapters | `infrastructure/` | repository/application tests | ADR-IMP-0005 | DONE |
+| REQ-IMP-006-030 | GDE-082 | Application use cases | `application/KnowledgePolicyUseCases.ts` | application tests | ADR-IMP-0004/19/20/21 | DONE |
+| REQ-IMP-006-031 | GDE-083 | Snapshots | `KnowledgeSnapshot` / `PolicySnapshot` | snapshot tests | ADR-IMP-0019/20 | DONE |
+| REQ-IMP-006-032 | GDE-079 | Serialization | `toSnapshot()` / Value Objects | snapshot tests | ADR-IMP-0019/20 | DONE |
+| REQ-IMP-006-033 | GDE-083 | Rehydration | `Knowledge.rehydrate()` / `Policy.rehydrate()` | snapshot tests | ADR-IMP-0019/20 | DONE |
+| REQ-IMP-006-034 | GDE-083 | Contract tests | repository adapters | concurrency/Tenant tests | ADR-IMP-0005 | DONE |
+| REQ-IMP-006-035 | ARCH-025 | KnowledgeCreated | `KnowledgePolicyEvents.ts` | event assertions | ADR-IMP-0019 | DONE |
+| REQ-IMP-006-036 | ARCH-025 | KnowledgeCurated | `KnowledgePolicyEvents.ts` | event assertions | ADR-IMP-0019 | DONE |
+| REQ-IMP-006-037 | ARCH-025 | PolicyCreated | `KnowledgePolicyEvents.ts` | event assertions | ADR-IMP-0020 | DONE |
+| REQ-IMP-006-038 | ARCH-025 | PolicyVersionCreated | `KnowledgePolicyEvents.ts` | event assertions | ADR-IMP-0020 | DONE |
+| REQ-IMP-006-039 | ARCH-025 | KnowledgeLinked | `KnowledgePolicyEvents.ts` | event assertions | ADR-IMP-0021 | DONE |
+| REQ-IMP-006-040 | ARCH-025 | Complete event metadata | `KnowledgePolicyDomainEvent` | event assertions | ADR-IMP-0019/20/21 | DONE |
+| REQ-IMP-006-041 | GDE-080 | Event tests | Knowledge/Policy events | knowledge-policy test | ADR-IMP-0019/20/21 | DONE |
+| REQ-IMP-006-042 | GDE-029 | PolicyRule excludes Workflow | `PolicyRule.ts` | validation/architecture tests | ADR-IMP-0020 | DONE |
+| REQ-IMP-006-043 | GDE-029 | PolicyRule excludes Review | `PolicyRule.ts` | validation/architecture tests | ADR-IMP-0020 | DONE |
+| REQ-IMP-006-044 | GDE-029 | PolicyRule excludes Publication | `PolicyRule.ts` | validation/architecture tests | ADR-IMP-0020 | DONE |
+| REQ-IMP-006-045 | GDE-029 | Institutional rule only | `PolicyRule.ts` | validation tests | ADR-IMP-0020 | DONE |
+| REQ-IMP-006-046 | GDE-029 | PolicyAuthorityContext | `PolicyAuthorityContext.ts` | creation/Tenant tests | ADR-IMP-0020 | DONE |
+| REQ-IMP-006-047 | GDE-080 | Policy decoupling tests | policy tests | knowledge-policy test | ADR-IMP-0020 | DONE |
+| REQ-IMP-006-048 | GDE-079 | Knowledge contract | `contracts/KnowledgeAggregate.md` | document review | ADR-IMP-0019/21 | DONE |
+| REQ-IMP-006-049 | GDE-079 | Policy contract | `contracts/PolicyAggregate.md` | document review | ADR-IMP-0020 | DONE |
+| REQ-IMP-006-050 | GDE-079 | Context contract | `contracts/KnowledgePolicyContext.md` | document review | ADR-IMP-0019/20/21 | DONE |
+| REQ-IMP-006-051 | GDE-079 | Durable Knowledge/Policy ADRs | `docs/adr/ADR-IMP-0019..0021` | ADR review | ADR-IMP-0019/20/21 | DONE |
+| REQ-IMP-006-052 | ARCH-003 | Context boundary map | `BOUNDED-CONTEXT-MAP.md` | architecture review | ADR-IMP-0019 | DONE |
+| REQ-IMP-006-053 | GDE-079 | Bidirectional traceability | this matrix | report review | — | DONE |
+| REQ-IMP-006-054 | GDE-081/082 | No lateral context imports | bounded context test | `bounded-context-matrix.test.ts` | ADR-IMP-0021 | DONE |
+| REQ-IMP-006-055 | GDE-080 | Epic completion evidence | `EPIC-IMP-006-KNOWLEDGE-POLICY-REPORT.md` | Core check | — | DONE |

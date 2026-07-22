@@ -1,6 +1,6 @@
 # Bounded Context Map
 
-Status: ACCEPTED for EPIC-IMP-005 implementation.
+Status: ACCEPTED for EPIC-IMP-006 implementation.
 
 This local map records implementation boundaries for the Core. It does not
 replace the certified BBA Platform Architecture or Domain documentation.
@@ -16,8 +16,10 @@ replace the certified BBA Platform Architecture or Domain documentation.
           └───────────────────┴── Application Coordinators/Ports ─────────┘
                                       │
                                       ▼
-                         future Knowledge, Workflow,
-                         Review, Publication, Connector
+                              Knowledge & Policy
+                                      │
+                                      ▼
+                    future Workflow, Review, Publication, Connector
 ```
 
 Rules:
@@ -31,6 +33,12 @@ Rules:
   it never imports a Mission or Governance Aggregate.
 - Institutional Assets stores only neutral Mission and human authority
   references; it never imports Mission, Governance or AI Workforce Aggregates.
+- Knowledge & Policy stores only neutral Asset, AssetVersion, Policy and human
+  authority references; it never imports Mission, Governance, AI Workforce or
+  Institutional Assets.
+- Knowledge organizes references; it never stores canonical Asset payload.
+- Policy describes institutional rules; it never executes them or encodes
+  Workflow, Review, Publication, Connector or AI runtime behavior.
 - Asset graph checks and multi-Aggregate supersession are Application concerns
   exposed through ports; Assets never load other Assets from domain code.
 - `Capability` is a Value Object and `CapabilitySet` is immutable.
