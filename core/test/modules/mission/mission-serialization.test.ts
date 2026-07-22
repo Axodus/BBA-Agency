@@ -10,6 +10,7 @@ test("Mission snapshot serialization is deterministic and rehydration is lossles
   advanceToActive(mission);
   mission.pause(decision("serialization-pause", 4));
   const serialized = mission.serialize();
+  const snapshot = mission.toSnapshot();
   const rehydrated = MissionRehydration.fromSerialized(serialized);
   assert.equal(rehydrated.serialize(), serialized);
   assert.deepEqual(rehydrated.toSnapshot(), mission.toSnapshot());
@@ -17,6 +18,9 @@ test("Mission snapshot serialization is deterministic and rehydration is lossles
   assert.equal(rehydrated.domainEvents.length, 0);
   assert.equal(rehydrated.id.equals(mission.id), true);
   assert.equal(rehydrated.tenantId.equals(mission.tenantId), true);
+  assert.equal(Object.isFrozen(snapshot), true);
+  assert.equal(Object.isFrozen(snapshot.evidence), true);
+  assert.equal(Object.isFrozen(snapshot.evidence[0]), true);
 });
 
 test("MissionSnapshot compatibility rejects unsupported or incomplete schemas", () => {

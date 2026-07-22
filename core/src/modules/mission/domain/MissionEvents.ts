@@ -1,5 +1,5 @@
 import type { JsonObject, JsonValue } from "../../../shared/common/serialization.js";
-import { deterministicHash } from "../../../shared/common/serialization.js";
+import { deepFreeze, deterministicHash } from "../../../shared/common/serialization.js";
 import { DomainEvent } from "../../../shared/events/DomainEvent.js";
 import type { MissionId } from "../../../shared/identity/MissionId.js";
 import type { TenantId } from "../../../shared/identity/TenantId.js";
@@ -31,7 +31,7 @@ export abstract class MissionDomainEvent extends DomainEvent {
       version: props.version
     });
     this.type = type;
-    this.payload = Object.freeze({ ...(props.payload ?? {}) });
+    this.payload = deepFreeze({ ...(props.payload ?? {}) });
     Object.freeze(this);
   }
 

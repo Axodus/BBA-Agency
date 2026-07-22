@@ -1,6 +1,6 @@
 import { AggregateRoot } from "../../../shared/aggregate/AggregateRoot.js";
 import { assertCanonicalTimestamp } from "../../../shared/common/timestamps.js";
-import type { JsonObject, JsonValue } from "../../../shared/common/serialization.js";
+import { deepFreeze, type JsonObject, type JsonValue } from "../../../shared/common/serialization.js";
 import { InvariantViolation } from "../../../shared/errors/InvariantViolation.js";
 import { ValidationError } from "../../../shared/errors/ValidationError.js";
 import { EvidenceReference, type EvidenceReferenceProps } from "../../../shared/evidence/EvidenceReference.js";
@@ -325,7 +325,7 @@ export class Mission extends AggregateRoot<MissionId> {
   }
 
   public toSnapshot(): MissionSnapshot {
-    return {
+    return deepFreeze({
       schemaVersion: MISSION_SNAPSHOT_SCHEMA_VERSION,
       missionId: this.id.toString(),
       tenantId: this.tenantId.toString(),
@@ -339,7 +339,7 @@ export class Mission extends AggregateRoot<MissionId> {
       pausedFrom: this.pausedFrom,
       statusReason: this.statusReason,
       archivedAt: this.archivedAt
-    };
+    });
   }
 
   public serialize(): string {
