@@ -119,6 +119,22 @@ test("Knowledge Policy domain and application remain reference-only and infrastr
   assert.deepEqual(violations, []);
 });
 
+test("Workflow domain and application remain coordination-only and infrastructure-free", async () => {
+  const workflowRoot = resolve(modulesRoot, "workflow");
+  const violations: string[] = [];
+  const forbidden = /(?:\/modules\/(?:mission|governance|ai-workforce|institutional-assets|knowledge-policy|review|publication|connector)|infrastructure|frontend)/u;
+  for (const file of await files(workflowRoot)) {
+    const relativeFile = relative(workflowRoot, file);
+    if (!relativeFile.startsWith("domain/") && !relativeFile.startsWith("application/")) continue;
+    const content = await readFile(file, "utf8");
+    for (const match of content.matchAll(importPattern)) {
+      const specifier = match[1] ?? "";
+      if (forbidden.test(specifier)) violations.push(`${relativeFile} -> ${specifier}`);
+    }
+  }
+  assert.deepEqual(violations, []);
+});
+
 test("shared references depend only on Shared Kernel primitives", async () => {
   const referencesRoot = resolve(import.meta.dirname, "../../../../src/shared/references");
   const violations: string[] = [];
