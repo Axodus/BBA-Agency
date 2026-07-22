@@ -1,0 +1,76 @@
+name: BBA Core Foundation
+
+on:
+  push:
+    paths:
+      - "core/**"
+      - "docs/development/**"
+      - "docs/adr/**"
+      - "pnpm-workspace.yaml"
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - ".github/workflows/core-foundation.yml"
+  pull_request:
+    paths:
+      - "core/**"
+      - "docs/development/**"
+      - "docs/adr/**"
+      - "pnpm-workspace.yaml"
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - ".github/workflows/core-foundation.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  core:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - name: Enable pnpm
+        run: corepack enable
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Typecheck Core
+        run: pnpm --dir core typecheck
+      - name: Test Core
+        run: pnpm --dir core test
+      - name: Lint Core
+        run: pnpm --dir core lint
+      - name: Format check Core
+        run: pnpm --dir core format:check
+      - name: Core boundary check
+        run: pnpm --dir core architecture
+
+  demo-static:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Check demo JavaScript
+        run: |
+          node --check demo/src/app.js
+          node --check demo/src/retrieval.js
+          node --check demo/src/workflow.js
+          node --check demo/src/audit.js
+          node --check demo/src/channels.js
+          node --check demo/src/adaptation.js
+          node --check demo/src/review.js
+          node --check demo/src/distribution.js
+      - name: Check demo JSON
+        run: |
+          python -m json.tool demo/data/sample-source.json >/dev/null
+          python -m json.tool demo/data/policies.json >/dev/null
+          python -m json.tool demo/data/reference-output.json >/dev/null
+          python -m json.tool demo/data/channels.json >/dev/null
