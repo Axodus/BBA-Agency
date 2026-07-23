@@ -41,3 +41,6 @@ upstream documentation review process.
 - [ADR-IMP-0028 — Publication canonical model](ADR-IMP-0028-PUBLICATION-CANONICAL-MODEL.md)
 - [ADR-IMP-0029 — Immutable Publication packages](ADR-IMP-0029-IMMUTABLE-PUBLICATION-PACKAGES.md)
 - [ADR-IMP-0030 — Publication ownership](ADR-IMP-0030-PUBLICATION-OWNERSHIP.md)
+- [ADR-IMP-0031 — Connector technical boundary](ADR-IMP-0031-CONNECTOR-TECHNICAL-BOUNDARY.md)
+- [ADR-IMP-0032 — Connector execution model](ADR-IMP-0032-CONNECTOR-EXECUTION-MODEL.md)
+- [ADR-IMP-0033 — External evidence ownership](ADR-IMP-0033-EXTERNAL-EVIDENCE-OWNERSHIP.md)

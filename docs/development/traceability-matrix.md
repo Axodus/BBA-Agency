@@ -30,6 +30,66 @@ REQ: `REQ-IMP-000-011`
 `DONE` means the local artifact exists and its validation evidence is recorded
 in the M0 report.
 
+## EPIC-IMP-010 — Connector Framework
+
+| Requirement | Source document | Invariant / responsibility | Code path | Test path | ADR | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+| REQ-IMP-010-001 | ARCH-003/GDE-081 | Connector module ownership | `core/src/modules/connector/` | connector tests | ADR-IMP-0031 | DONE |
+| REQ-IMP-010-002 | GDE-076/082 | Connector identities | `shared/identity/Connector*.ts` | identity tests | ADR-IMP-0031 | DONE |
+| REQ-IMP-010-003 | GDE-081 | Neutral references | `shared/references/Connector*Reference.ts` | identity tests | ADR-IMP-0031 | DONE |
+| REQ-IMP-010-004 | GDE-081 | Public Connector namespace | `modules/index.ts` | typecheck | ADR-IMP-0031 | DONE |
+| REQ-IMP-010-005 | GDE-080 | Technical metadata | `domain/ConnectorValues.ts` | metadata tests | ADR-IMP-0031/33 | DONE |
+| REQ-IMP-010-006 | GDE-080 | Foundation tests | `connector.test.ts` | node:test | ADR-IMP-0031 | DONE |
+| REQ-IMP-010-007 | GDE-045 | Connector Aggregate | `domain/Connector.ts` | lifecycle tests | ADR-IMP-0031 | DONE |
+| REQ-IMP-010-008 | GDE-045 | Connector lifecycle | `ConnectorStatus` | lifecycle tests | ADR-IMP-0031 | DONE |
+| REQ-IMP-010-009 | GDE-079 | Immutable capabilities | `ConnectorCapability` | capability tests | ADR-IMP-0032 | DONE |
+| REQ-IMP-010-010 | GDE-049 | RegisterConnector | `Connector.create()` | application tests | ADR-IMP-0031 | DONE |
+| REQ-IMP-010-011 | GDE-049 | Activate/Suspend | Connector use cases | lifecycle tests | ADR-IMP-0031/32 | DONE |
+| REQ-IMP-010-012 | GDE-049 | RetireConnector | Connector use case | lifecycle tests | ADR-IMP-0031 | DONE |
+| REQ-IMP-010-013 | GDE-080 | Lifecycle invariants | Connector domain | invalid transition tests | ADR-IMP-0031 | DONE |
+| REQ-IMP-010-014 | GDE-045 | ConnectorExecution Aggregate | `domain/ConnectorExecution.ts` | execution tests | ADR-IMP-0032 | DONE |
+| REQ-IMP-010-015 | GDE-045 | Execution lifecycle | `ConnectorExecutionStatus` | lifecycle tests | ADR-IMP-0032 | DONE |
+| REQ-IMP-010-016 | GDE-079 | Request metadata | `ConnectorRequestMetadata` | metadata tests | ADR-IMP-0031/33 | DONE |
+| REQ-IMP-010-017 | GDE-079 | Result metadata | `ConnectorResultMetadata` | result tests | ADR-IMP-0033 | DONE |
+| REQ-IMP-010-018 | GDE-079 | External evidence | `ExternalEvidenceSuccess/Failure` | evidence tests | ADR-IMP-0033 | DONE |
+| REQ-IMP-010-019 | GDE-079 | Terminal immutability | execution domain | terminal tests | ADR-IMP-0033 | DONE |
+| REQ-IMP-010-020 | GDE-080 | Tenant boundaries | Connector/Execution | Tenant tests | ADR-IMP-0031 | DONE |
+| REQ-IMP-010-021 | GDE-080 | Capability compatibility | `createExecution` | compatibility tests | ADR-IMP-0032 | DONE |
+| REQ-IMP-010-022 | GDE-080 | Idempotent execution request | execution repository | idempotency tests | ADR-IMP-0032 | DONE |
+| REQ-IMP-010-023 | GDE-081 | Connector Application use cases | `ConnectorUseCases.ts` | application tests | ADR-IMP-0032 | DONE |
+| REQ-IMP-010-024 | GDE-081 | Transport port | `ConnectorTransportPort.ts` | port tests | ADR-IMP-0032 | DONE |
+| REQ-IMP-010-025 | GDE-081 | Execution request port | `ConnectorExecutionRequestPort.ts` | architecture tests | ADR-IMP-0031 | DONE |
+| REQ-IMP-010-026 | GDE-081 | Observation delivery port | `ConnectorObservationDeliveryPort.ts` | application tests | ADR-IMP-0033 | DONE |
+| REQ-IMP-010-027 | GDE-081 | Configuration port | `ConnectorConfigurationPort.ts` | typecheck | ADR-IMP-0031 | DONE |
+| REQ-IMP-010-028 | GDE-081 | Audit port | `ConnectorAuditPort.ts` | typecheck | ADR-IMP-0033 | DONE |
+| REQ-IMP-010-029 | GDE-081 | No external Aggregate access | neutral DTOs | architecture tests | ADR-IMP-0031 | DONE |
+| REQ-IMP-010-030 | GDE-080 | Application ordering | `executeTransport` | ordering tests | ADR-IMP-0032/33 | DONE |
+| REQ-IMP-010-031 | GDE-085 | Visible post-save failure | observation delivery contract | application tests | ADR-IMP-0033 | DONE |
+| REQ-IMP-010-032 | GDE-083 | Connector repository | `ConnectorRepository.ts` | repository tests | ADR-IMP-0005 | DONE |
+| REQ-IMP-010-033 | GDE-083 | Execution repository | `ConnectorExecutionRepository.ts` | repository tests | ADR-IMP-0005 | DONE |
+| REQ-IMP-010-034 | GDE-083 | In-memory Connector adapter | `InMemoryConnectorRepository.ts` | contract tests | ADR-IMP-0005 | DONE |
+| REQ-IMP-010-035 | GDE-083 | In-memory Execution adapter | `InMemoryConnectorExecutionRepository.ts` | contract tests | ADR-IMP-0005 | DONE |
+| REQ-IMP-010-036 | GDE-083 | Optimistic concurrency | repository save | concurrency tests | ADR-IMP-0005 | DONE |
+| REQ-IMP-010-037 | GDE-083 | Deep-frozen snapshots | `toSnapshot()` | snapshot tests | ADR-IMP-0032 | DONE |
+| REQ-IMP-010-038 | GDE-083 | Deterministic serialization | `serialize()` | serialization tests | ADR-IMP-0032 | DONE |
+| REQ-IMP-010-039 | GDE-083 | Deterministic rehydration | `rehydrate()` | reconstruction tests | ADR-IMP-0032 | DONE |
+| REQ-IMP-010-040 | GDE-083 | Idempotency lookup | `findByIdempotencyKey()` | idempotency tests | ADR-IMP-0032 | DONE |
+| REQ-IMP-010-041 | ARCH-025 | ConnectorRegistered/Activated | `ConnectorEvents.ts` | event tests | ADR-IMP-0031 | DONE |
+| REQ-IMP-010-042 | ARCH-025 | ConnectorSuspended/Retired | `ConnectorEvents.ts` | event tests | ADR-IMP-0031 | DONE |
+| REQ-IMP-010-043 | ARCH-025 | ExecutionCreated/Started | `ConnectorEvents.ts` | event tests | ADR-IMP-0032 | DONE |
+| REQ-IMP-010-044 | ARCH-025 | ExecutionSucceeded | `ConnectorEvents.ts` | evidence tests | ADR-IMP-0033 | DONE |
+| REQ-IMP-010-045 | ARCH-025 | ExecutionFailed | `ConnectorEvents.ts` | failure tests | ADR-IMP-0033 | DONE |
+| REQ-IMP-010-046 | ARCH-025 | ExecutionCancelled | `ConnectorEvents.ts` | cancellation tests | ADR-IMP-0032 | DONE |
+| REQ-IMP-010-047 | ARCH-025 | Full audit metadata | Connector events | event tests | ADR-IMP-0033 | DONE |
+| REQ-IMP-010-048 | GDE-079 | Connector contracts | `contracts/Connector*.md` | document review | ADR-IMP-0031..33 | DONE |
+| REQ-IMP-010-049 | GDE-079 | Technical boundary ADR | ADR-IMP-0031 | ADR review | ADR-IMP-0031 | DONE |
+| REQ-IMP-010-050 | GDE-079 | Execution model ADR | ADR-IMP-0032 | ADR review | ADR-IMP-0032 | DONE |
+| REQ-IMP-010-051 | GDE-079 | Evidence ownership ADR | ADR-IMP-0033 | ADR review | ADR-IMP-0033 | DONE |
+| REQ-IMP-010-052 | ARCH-003 | Bounded context map | `BOUNDED-CONTEXT-MAP.md` | architecture tests | ADR-IMP-0031 | DONE |
+| REQ-IMP-010-053 | GDE-079 | Traceability update | this matrix | M10 report | ADR-IMP-0031 | DONE |
+| REQ-IMP-010-054 | GDE-081/082 | Public API and isolation | barrels / matrix test | typecheck/architecture | ADR-IMP-0031 | DONE |
+| REQ-IMP-010-055 | GDE-080 | M10 completion evidence | `EPIC-IMP-010-CONNECTOR-REPORT.md` | Core/demo checks | — | DONE |
+
 ## EPIC-IMP-003 — Human Governance
 
 | Requirement | Source document | Invariant / responsibility | Code path | Test path | ADR | Status |

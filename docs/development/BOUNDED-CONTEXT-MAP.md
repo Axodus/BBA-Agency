@@ -31,7 +31,7 @@ replace the certified BBA Platform Architecture or Domain documentation.
                     Publication implementation module
                                       │
                                       ▼
-                              future Connector
+                              Connector Framework
 ```
 
 Rules:
@@ -99,6 +99,13 @@ Rules:
   Governance, Mission or another bounded context.
 - `core/src/application/` is the only permitted cross-context coordination
   surface.
+- Connector is a technical boundary. Its domain and application use only
+  Shared Kernel, neutral references and local ports; it never imports an
+  institutional context.
+- `ConnectorOperationKey` is a local immutable value object, not an Operation
+  Aggregate. ConnectorExecution is one idempotent technical attempt.
+- Transport is called only by Application after a RUNNING execution is saved;
+  terminal observations are delivered only after terminal save succeeds.
 
 The architecture test validates the matrix for implemented contexts and keeps
 future context names reserved for later Epics.
