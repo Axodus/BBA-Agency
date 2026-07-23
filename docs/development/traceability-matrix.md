@@ -106,15 +106,15 @@ in the M0 report.
 | REQ-IMP-012-005 | GDE-081 | Command contexts | `ApplicationCommandContext` | API tests | ADR-IMP-0039 | DONE |
 | REQ-IMP-012-006 | GDE-081 | Query contexts | `QueryContext` | API tests | ADR-IMP-0039 | DONE |
 | REQ-IMP-012-007 | GDE-081 | Typed context ports | `ApplicationApiPorts.ts` | typecheck | ADR-IMP-0037 | DONE |
-| REQ-IMP-012-008 | GDE-081 | Mission API | Mission ports | typecheck | ADR-IMP-0037 | CONTRACT_ONLY |
-| REQ-IMP-012-009 | GDE-081 | Governance API | Governance ports | typecheck | ADR-IMP-0037 | CONTRACT_ONLY |
-| REQ-IMP-012-010 | GDE-081 | Workforce API | Workforce ports | typecheck | ADR-IMP-0037 | CONTRACT_ONLY |
-| REQ-IMP-012-011 | GDE-081 | Assets API | Asset ports | typecheck | ADR-IMP-0037 | CONTRACT_ONLY |
-| REQ-IMP-012-012 | GDE-081 | Knowledge Policy API | Knowledge Policy ports | typecheck | ADR-IMP-0037 | CONTRACT_ONLY |
-| REQ-IMP-012-013 | GDE-081 | Workflow API | Workflow ports | typecheck | ADR-IMP-0037 | CONTRACT_ONLY |
-| REQ-IMP-012-014 | GDE-081 | Review API | Review ports | typecheck | ADR-IMP-0037 | CONTRACT_ONLY |
-| REQ-IMP-012-015 | GDE-081 | Publication API | Publication ports | typecheck | ADR-IMP-0037 | CONTRACT_ONLY |
-| REQ-IMP-012-016 | GDE-081 | Connector existing operations | Connector ports | typecheck | ADR-IMP-0037 | CONTRACT_ONLY |
+| REQ-IMP-012-008 | GDE-081 | Mission API | `MissionApplicationApi` | `mission-application-api.test.ts` | ADR-IMP-0037 | DONE |
+| REQ-IMP-012-009 | Corrective M12 scope | Governance API expansion | EPIC-IMP-012B backlog | document review | ADR-IMP-0037 | NOT_APPLICABLE |
+| REQ-IMP-012-010 | Corrective M12 scope | Workforce API expansion | EPIC-IMP-012B backlog | document review | ADR-IMP-0037 | NOT_APPLICABLE |
+| REQ-IMP-012-011 | Corrective M12 scope | Assets API expansion | EPIC-IMP-012B backlog | document review | ADR-IMP-0037 | NOT_APPLICABLE |
+| REQ-IMP-012-012 | Corrective M12 scope | Knowledge Policy API expansion | EPIC-IMP-012B backlog | document review | ADR-IMP-0037 | NOT_APPLICABLE |
+| REQ-IMP-012-013 | Corrective M12 scope | Workflow API expansion | EPIC-IMP-012B backlog | document review | ADR-IMP-0037 | NOT_APPLICABLE |
+| REQ-IMP-012-014 | Corrective M12 scope | Review API expansion | EPIC-IMP-012B backlog | document review | ADR-IMP-0037 | NOT_APPLICABLE |
+| REQ-IMP-012-015 | Corrective M12 scope | Publication API expansion | EPIC-IMP-012B backlog | document review | ADR-IMP-0037 | NOT_APPLICABLE |
+| REQ-IMP-012-016 | Corrective M12 scope | Connector API expansion | EPIC-IMP-012B backlog | document review | ADR-IMP-0037 | NOT_APPLICABLE |
 | REQ-IMP-012-017 | GDE-081 | Request mappers | `ApplicationMappers.ts` | API tests | ADR-IMP-0037 | DONE |
 | REQ-IMP-012-018 | GDE-081 | Response mappers | `toAggregateDto` | API tests | ADR-IMP-0037 | DONE |
 | REQ-IMP-012-019 | GDE-080 | Validation before UoW | `ApplicationCommandRunner` | API tests | ADR-IMP-0039 | DONE |
@@ -135,7 +135,7 @@ in the M0 report.
 | REQ-IMP-012-034 | GDE-081 | No HTTP/framework imports | application tree | architecture test | ADR-IMP-0037 | DONE |
 | REQ-IMP-012-035 | GDE-081 | No ORM/database imports | application tree | architecture test | ADR-IMP-0037 | DONE |
 | REQ-IMP-012-036 | GDE-081 | Aggregates unchanged | domain modules | regression suite | ADR-IMP-0039 | DONE |
-| REQ-IMP-012-037 | GDE-080 | Connector scope | Connector API port | typecheck | ADR-IMP-0037 | DONE |
+| REQ-IMP-012-037 | Corrective M12 scope | Connector scope deferred | EPIC-IMP-012B backlog | document review | ADR-IMP-0037 | NOT_APPLICABLE |
 | REQ-IMP-012-038 | GDE-083 | M11 compatibility | `ApplicationTransactionFactory` | typecheck | ADR-IMP-0039 | DONE |
 | REQ-IMP-012-039 | GDE-080 | ID factory compatibility | application contracts | API tests | ADR-IMP-0038 | DONE |
 | REQ-IMP-012-040 | GDE-080 | No generated-ID retry | outcome contract | document review | ADR-IMP-0038 | DONE |
@@ -144,7 +144,7 @@ in the M0 report.
 | REQ-IMP-012-043 | GDE-081 | No handler commit control | handler contract | typecheck | ADR-IMP-0039 | DONE |
 | REQ-IMP-012-044 | GDE-081 | No handler provider access | handler contract | architecture review | ADR-IMP-0039 | DONE |
 | REQ-IMP-012-045 | GDE-081 | No transport serializer | DTO contracts | architecture test | ADR-IMP-0037 | DONE |
-| REQ-IMP-012-046 | GDE-081 | Existing use case compatibility | module applications | regression suite | ADR-IMP-0039 | PARTIAL |
+| REQ-IMP-012-046 | GDE-081 | Exposed use case compatibility | Mission application use cases | regression and API suite | ADR-IMP-0039 | DONE |
 | REQ-IMP-012-047 | GDE-080 | Tenant validation | context validation | API tests | ADR-IMP-0039 | DONE |
 | REQ-IMP-012-048 | GDE-080 | Actor context | context validation | API tests | ADR-IMP-0039 | DONE |
 | REQ-IMP-012-049 | GDE-080 | Correlation propagation | TransactionContext | typecheck | ADR-IMP-0039 | DONE |

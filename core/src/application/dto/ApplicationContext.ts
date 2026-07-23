@@ -7,4 +7,10 @@ export interface MutableCommandDto { readonly idempotencyKey: string; readonly r
 export interface OperationCommandDto extends MutableCommandDto { readonly targetId?: string; readonly payload: JsonObject; }
 export interface QueryDto { readonly targetId?: string; readonly filters?: JsonObject; }
 export interface AggregateDto { readonly aggregateType: string; readonly id: string; readonly tenantId: string; readonly version: number; readonly status?: string; readonly data: JsonObject; }
+export interface CommittedResourceReferenceDto { readonly resourceType: string; readonly resourceId: string; }
+export interface CommittedOperationResultDto {
+  readonly transactionId: string;
+  readonly status: "COMMITTED";
+  readonly resourceReferences: readonly CommittedResourceReferenceDto[];
+}
 export interface ApplicationResult<T> { readonly value: T; }

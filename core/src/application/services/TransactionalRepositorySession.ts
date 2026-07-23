@@ -1,4 +1,5 @@
 import type { TransactionContext } from "../../infrastructure/persistence/TransactionContext.js";
+import type { CanonicalPayloadDescriptor } from "../../infrastructure/persistence/PersistenceTypes.js";
 import type { PersistableAggregate, TransactionOutcome, UnitOfWorkPort } from "../../infrastructure/persistence/PersistencePorts.js";
 import type { MissionRepository } from "../../modules/mission/ports/MissionRepository.js";
 
@@ -10,8 +11,8 @@ export interface TransactionalRepositorySession {
 
 export interface ReadRepositorySession { readonly mission: Pick<MissionRepository, "findById" | "exists">; }
 
-export interface CommandTransaction { readonly repositories: TransactionalRepositorySession; commit(fingerprint: import("../../infrastructure/persistence/PersistenceTypes.js").CanonicalPayloadDescriptor): Promise<void>; rollback(): Promise<void>; outcome(): TransactionOutcome; }
-export interface CommandTransactionFactory { open(context: TransactionContext): CommandTransaction; }
+export interface CommandTransaction { readonly repositories: TransactionalRepositorySession; commit(fingerprint: CanonicalPayloadDescriptor): Promise<void>; rollback(): Promise<void>; outcome(): TransactionOutcome; committedFingerprint?(): CanonicalPayloadDescriptor | null; }
+export interface CommandTransactionFactory { open(context: TransactionContext): CommandTransaction; inspect?(transactionId: string): { readonly outcome: TransactionOutcome; readonly fingerprint: CanonicalPayloadDescriptor | null }; }
 export interface ReadRepositorySessionFactory { open(context: import("../dto/ApplicationContext.js").QueryContext): ReadRepositorySession; }
 
 export function createTransactionalSession(uow: UnitOfWorkPort, repositories: TransactionalRepositorySession): TransactionalRepositorySession { return Object.freeze({ ...repositories, context: uow.context }); }

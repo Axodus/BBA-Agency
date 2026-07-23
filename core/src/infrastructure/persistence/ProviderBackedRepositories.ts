@@ -36,7 +36,7 @@ import type { ConnectorExecutionRepository } from "../../modules/connector/ports
 
 export type RepositoryContextualizer<T> = T & { withContext(context: TransactionContext): T };
 
-function snapshotKey(type: string, tenantId: string, id: string): string { return `${type}|${tenantId}|${id}`; }
+function snapshotKey(type: string, tenantId: string, id: string): string { return `${tenantId}|${type}|${id}`; }
 function codec<T extends PersistableAggregate, S>(aggregateType: string, toSnapshot: (aggregate: T) => S, rehydrate: (snapshot: S) => T): AggregateSnapshotCodec<T, S> { return { aggregateType, getAggregateId: (aggregate) => aggregate.id.toString(), getTenantId: (aggregate) => { const candidate = aggregate as unknown as { tenantId: { toString(): string } }; return candidate.tenantId.toString(); }, getVersion: (aggregate) => aggregate.version.value, toSnapshot, rehydrate }; }
 
 export class ProviderBackedRepository<TAggregate extends PersistableAggregate, TSnapshot> {

@@ -7,8 +7,8 @@ export type QueryHandler<Q extends QueryDto, R> = (query: Q, context: QueryConte
 
 export class ApplicationQueryRunner {
   public constructor(private readonly sessions: ReadRepositorySessionFactory) {}
-  public async execute<Q extends QueryDto, R>(query: Q, context: QueryContext, handler: QueryHandler<Q, R>): Promise<R> {
-    try { validateQueryContext(context); return await handler(query, context, this.sessions.open(context)); }
+  public async execute<Q extends QueryDto, R>(query: Q, context: QueryContext, handler: QueryHandler<Q, R>, validate?: (query: Q, context: QueryContext) => void): Promise<R> {
+    try { validateQueryContext(context); validate?.(query, context); return await handler(query, context, this.sessions.open(context)); }
     catch (error) { if (error instanceof ApplicationError) throw error; throw new ApplicationError("APPLICATION_FAILURE", "Application query failed", {}, context.correlationId, { cause: error }); }
   }
 }

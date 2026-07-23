@@ -10,8 +10,8 @@ import type { CommandTransactionFactory, TransactionalRepositorySession } from "
 export interface ValidatedCommandContext extends ApplicationCommandContext { readonly transactionId: string; readonly payloadFingerprint: CanonicalPayloadDescriptor; }
 export type CommandHandler<C extends MutableCommandDto, R> = (command: C, context: ValidatedCommandContext, repositories: TransactionalRepositorySession) => Promise<R>;
 
-export function canonicalCommandFingerprint(command: MutableCommandDto & { readonly payload: JsonObject }): CanonicalPayloadDescriptor {
-  const canonicalPayload = stableSerialize({ reason: command.reason, payload: command.payload });
+export function canonicalCommandFingerprint(command: MutableCommandDto & { readonly payload: JsonObject; readonly targetId?: string }): CanonicalPayloadDescriptor {
+  const canonicalPayload = stableSerialize({ reason: command.reason, ...(command.targetId === undefined ? {} : { targetId: command.targetId }), payload: command.payload });
   return { algorithm: "application-command-canonical-v1", hashAlgorithm: "sha256", fingerprint: createHash("sha256").update(canonicalPayload).digest("hex") };
 }
 
@@ -27,12 +27,20 @@ function mapFailure(error: unknown, correlationId: string): ApplicationError {
   return new ApplicationError("APPLICATION_FAILURE", "Application command failed", {}, correlationId, { cause: error });
 }
 
+export interface CommandReplay<C, R> { resolve(transactionId: string, command: C, context: ApplicationCommandContext): Promise<R>; }
+
 export class ApplicationCommandRunner {
   public constructor(private readonly transactions: CommandTransactionFactory) {}
-  public async execute<C extends MutableCommandDto & { readonly payload: JsonObject }, R>(boundedContext: string, operationName: string, command: C, context: ApplicationCommandContext, handler: CommandHandler<C, R>): Promise<R> {
+  public async execute<C extends MutableCommandDto & { readonly payload: JsonObject }, R>(boundedContext: string, operationName: string, command: C, context: ApplicationCommandContext, handler: CommandHandler<C, R>, replay?: CommandReplay<C, R>): Promise<R> {
     validateCommandContext(context); validateMutableCommand(command);
     const fingerprint = canonicalCommandFingerprint(command);
     const transactionId = deriveTransactionId(context, boundedContext, operationName, command.idempotencyKey);
+    const inspected = this.transactions.inspect?.(transactionId);
+    if (inspected?.outcome === "COMMITTED") {
+      if (inspected.fingerprint?.fingerprint !== fingerprint.fingerprint) throw new ApplicationError("IDEMPOTENCY_CONFLICT", "Idempotency key was already committed with different content", {}, context.correlationId);
+      if (replay === undefined) throw new ApplicationError("APPLICATION_FAILURE", "Committed operation has no replay resolver", {}, context.correlationId);
+      return replay.resolve(transactionId, command, context);
+    }
     const validated = Object.freeze({ ...context, transactionId, payloadFingerprint: fingerprint });
     const persistenceContext = new TransactionContext({ transactionId, tenantId: context.tenantId, actor: context.actor.reference, correlationId: context.correlationId, ...(context.causationId === undefined ? {} : { causationId: context.causationId }), startedAt: new Date().toISOString() });
     const transaction = this.transactions.open(persistenceContext);
