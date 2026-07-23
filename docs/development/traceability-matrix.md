@@ -30,6 +30,71 @@ REQ: `REQ-IMP-000-011`
 `DONE` means the local artifact exists and its validation evidence is recorded
 in the M0 report.
 
+## EPIC-IMP-011 — Persistence and Auditability
+
+| Requirement | Source document | Invariant / responsibility | Code path | Test path | ADR | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+| REQ-IMP-011-001 | GDE-083 | Persistence boundary | `core/src/infrastructure/persistence/` | persistence tests | ADR-IMP-0034 | DONE |
+| REQ-IMP-011-002 | GDE-083 | Provider ports | `PersistencePorts.ts` | typecheck | ADR-IMP-0034 | DONE |
+| REQ-IMP-011-003 | GDE-083 | Transaction context | `TransactionContext.ts` | persistence tests | ADR-IMP-0034 | DONE |
+| REQ-IMP-011-004 | GDE-083 | Snapshot codec | `PersistenceTypes.ts` | rehydration tests | ADR-IMP-0035 | DONE |
+| REQ-IMP-011-005 | GDE-083 | Store contracts | `PersistencePorts.ts` | typecheck | ADR-IMP-0034/35/36 | DONE |
+| REQ-IMP-011-006 | GDE-080 | Deterministic serialization | `ReferencePersistenceProvider.ts` | persistence tests | ADR-IMP-0035 | DONE |
+| REQ-IMP-011-007 | GDE-080 | Tenant propagation | `TransactionContext.ts` | persistence tests | ADR-IMP-0034 | DONE |
+| REQ-IMP-011-008 | GDE-085 | Persistence errors | `shared/errors/Persistence*.ts` | typecheck | ADR-IMP-0034 | DONE |
+| REQ-IMP-011-009 | GDE-083 | Unit of Work | `ReferencePersistenceProvider.ts` | persistence tests | ADR-IMP-0034 | DONE |
+| REQ-IMP-011-010 | GDE-083 | Begin transaction | `PersistenceProviderPort.begin` | persistence tests | ADR-IMP-0034 | DONE |
+| REQ-IMP-011-011 | GDE-083 | Stage Aggregate | `ReferenceUnitOfWork.stage` | persistence tests | ADR-IMP-0034 | DONE |
+| REQ-IMP-011-012 | GDE-083 | Commit | `ReferenceUnitOfWork.commit` | persistence tests | ADR-IMP-0034 | DONE |
+| REQ-IMP-011-013 | GDE-083 | Rollback | `ReferenceUnitOfWork.rollback` | persistence tests | ADR-IMP-0034 | DONE |
+| REQ-IMP-011-014 | GDE-080 | Multi-Aggregate atomicity | `ReferencePersistenceProvider.applyCommit` | persistence tests | ADR-IMP-0034 | DONE |
+| REQ-IMP-011-015 | GDE-083 | Zero-event commit | `applyCommit` | persistence tests | ADR-IMP-0034 | DONE |
+| REQ-IMP-011-016 | GDE-080 | Event capture | `ReferenceUnitOfWork.stage` | persistence tests | ADR-IMP-0034 | DONE |
+| REQ-IMP-011-017 | GDE-080 | Post-commit cleanup | `applyCommit` | persistence tests | ADR-IMP-0034 | DONE |
+| REQ-IMP-011-018 | GDE-083 | Application scope | `UnitOfWorkFactory` | typecheck | ADR-IMP-0034 | DONE |
+| REQ-IMP-011-019 | GDE-083 | Append-only Event Store | `ReferencePersistenceProvider` | persistence tests | ADR-IMP-0035 | DONE |
+| REQ-IMP-011-020 | GDE-083 | Event sequence | `PersistedEvent` | persistence tests | ADR-IMP-0035 | DONE |
+| REQ-IMP-011-021 | GDE-083 | Transaction sequence | `transactionSequence` | persistence tests | ADR-IMP-0035 | DONE |
+| REQ-IMP-011-022 | GDE-083 | Event ordering | `applyCommit` | persistence tests | ADR-IMP-0035 | DONE |
+| REQ-IMP-011-023 | GDE-083 | Event immutability | `getEvents` | persistence tests | ADR-IMP-0035 | DONE |
+| REQ-IMP-011-024 | GDE-083 | Aggregate version | `aggregateVersion` | persistence tests | ADR-IMP-0034/35 | DONE |
+| REQ-IMP-011-025 | GDE-083 | Optimistic event concurrency | `applyCommit` | persistence tests | ADR-IMP-0035 | DONE |
+| REQ-IMP-011-026 | GDE-083 | Event Store query | `EventStorePort` | typecheck | ADR-IMP-0035 | DONE |
+| REQ-IMP-011-027 | GDE-083 | Snapshot dependency | `ProviderBackedRepository.findById` | persistence tests | ADR-IMP-0035 | DONE |
+| REQ-IMP-011-028 | GDE-083 | Snapshot checksum | `SnapshotRecord.checksum` | persistence tests | ADR-IMP-0035 | DONE |
+| REQ-IMP-011-029 | GDE-083 | Snapshot version | `SnapshotRecord.snapshotVersion` | persistence tests | ADR-IMP-0035 | DONE |
+| REQ-IMP-011-030 | GDE-083 | Deterministic rehydration | `AggregateSnapshotCodec` | persistence tests | ADR-IMP-0035 | DONE |
+| REQ-IMP-011-031 | GDE-083 | Audit Store | `AuditRecord` | persistence tests | ADR-IMP-0036 | DONE |
+| REQ-IMP-011-032 | GDE-083 | Audit identity | `AuditRecord.auditId` | typecheck | ADR-IMP-0036 | DONE |
+| REQ-IMP-011-033 | GDE-083 | Audit transaction context | `AuditRecord` | persistence tests | ADR-IMP-0036 | DONE |
+| REQ-IMP-011-034 | GDE-083 | Audit actor | `AuditRecord.actor` | persistence tests | ADR-IMP-0036 | DONE |
+| REQ-IMP-011-035 | GDE-083 | Audit Tenant | `AuditRecord.tenantId` | persistence tests | ADR-IMP-0036 | DONE |
+| REQ-IMP-011-036 | GDE-083 | Audit version | `AuditRecord.aggregateVersion` | persistence tests | ADR-IMP-0036 | DONE |
+| REQ-IMP-011-037 | GDE-083 | Audit evidence | `AuditRecord.evidence` | persistence tests | ADR-IMP-0036 | DONE |
+| REQ-IMP-011-038 | GDE-083 | Committed result | `AuditRecord.result` | persistence tests | ADR-IMP-0036 | DONE |
+| REQ-IMP-011-039 | GDE-083 | Audit immutability | `listAuditRecords` | persistence tests | ADR-IMP-0036 | DONE |
+| REQ-IMP-011-040 | GDE-083 | Audit not reconstruction source | `AuditStorePort` | architecture tests | ADR-IMP-0036 | DONE |
+| REQ-IMP-011-041 | GDE-083 | Outbox Store | `OutboxMessage` | persistence tests | ADR-IMP-0036 | DONE |
+| REQ-IMP-011-042 | GDE-083 | Eligible events only | `OutboxProjectionPort` | persistence tests | ADR-IMP-0036 | DONE |
+| REQ-IMP-011-043 | GDE-083 | Opaque payload reference | `createPayloadReference` | persistence tests | ADR-IMP-0036 | DONE |
+| REQ-IMP-011-044 | GDE-083 | Pending state | `OutboxStatus` | typecheck | ADR-IMP-0036 | DONE |
+| REQ-IMP-011-045 | GDE-083 | Append-only revision shape | `OutboxMessage.revision` | typecheck | ADR-IMP-0036 | DONE |
+| REQ-IMP-011-046 | GDE-083 | No dispatcher | persistence contracts | scope review | ADR-IMP-0036 | DONE |
+| REQ-IMP-011-047 | GDE-083 | No retry | persistence contracts | scope review | ADR-IMP-0036 | DONE |
+| REQ-IMP-011-048 | GDE-083 | No artificial events | `applyCommit` | persistence tests | ADR-IMP-0035/36 | DONE |
+| REQ-IMP-011-049 | GDE-083 | No artificial outbox | `applyCommit` | persistence tests | ADR-IMP-0036 | DONE |
+| REQ-IMP-011-050 | GDE-080 | Tenant-isolated stores | provider store queries | persistence tests | ADR-IMP-0034 | DONE |
+| REQ-IMP-011-051 | GDE-083 | Persistent repository adapter | `ProviderBackedRepositories.ts` | typecheck | ADR-IMP-0034 | DONE |
+| REQ-IMP-011-052 | GDE-083 | Repository factory | `createProviderBackedRepositories` | typecheck | ADR-IMP-0034 | DONE |
+| REQ-IMP-011-053 | GDE-083 | Asset multi-Aggregate facade | `ProviderBackedAssetUnitOfWork` | persistence tests | ADR-IMP-0034 | DONE |
+| REQ-IMP-011-054 | GDE-081 | Domain independence | `core/src/modules/**` | architecture test | ADR-IMP-0034 | DONE |
+| REQ-IMP-011-055 | GDE-080 | Repository copy isolation | `findById`/store clones | persistence tests | ADR-IMP-0035 | DONE |
+| REQ-IMP-011-056 | GDE-079 | Persistence documentation | `docs/development/contracts/` | document review | ADR-IMP-0034..36 | DONE |
+| REQ-IMP-011-057 | GDE-079 | Persistence ADRs | `docs/adr/ADR-IMP-0034..36` | ADR review | ADR-IMP-0034..36 | DONE |
+| REQ-IMP-011-058 | GDE-079 | Traceability | this matrix | report review | — | DONE |
+| REQ-IMP-011-059 | GDE-080 | Core and demo evidence | M11 report | validation commands | — | DONE |
+| REQ-IMP-011-060 | GDE-080 | M11 decision | M11 report | validation commands | ADR-IMP-0034 | DONE |
+
 ## EPIC-IMP-010 — Connector Framework
 
 | Requirement | Source document | Invariant / responsibility | Code path | Test path | ADR | Status |

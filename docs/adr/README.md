@@ -44,3 +44,6 @@ upstream documentation review process.
 - [ADR-IMP-0031 — Connector technical boundary](ADR-IMP-0031-CONNECTOR-TECHNICAL-BOUNDARY.md)
 - [ADR-IMP-0032 — Connector execution model](ADR-IMP-0032-CONNECTOR-EXECUTION-MODEL.md)
 - [ADR-IMP-0033 — External evidence ownership](ADR-IMP-0033-EXTERNAL-EVIDENCE-OWNERSHIP.md)
+- [ADR-IMP-0034 — Canonical persistence architecture](ADR-IMP-0034-CANONICAL-PERSISTENCE-ARCHITECTURE.md)
+- [ADR-IMP-0035 — Event Store and Snapshot strategy](ADR-IMP-0035-EVENT-STORE-AND-SNAPSHOT-STRATEGY.md)
+- [ADR-IMP-0036 — Audit and Outbox separation](ADR-IMP-0036-AUDIT-AND-OUTBOX-SEPARATION.md)

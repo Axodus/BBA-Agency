@@ -106,6 +106,11 @@ Rules:
   Aggregate. ConnectorExecution is one idempotent technical attempt.
 - Transport is called only by Application after a RUNNING execution is saved;
   terminal observations are delivered only after terminal save succeeds.
+- Persistence is an infrastructure boundary. Aggregates remain independent of
+  providers; Unit of Work coordinates snapshots, Event Store, Audit Store and
+  eligible Outbox entries atomically.
+- Snapshots are operationally required for M11 rehydration, while Event Store
+  remains append-only canonical history. Audit never reconstructs Aggregates.
 
 The architecture test validates the matrix for implemented contexts and keeps
 future context names reserved for later Epics.
