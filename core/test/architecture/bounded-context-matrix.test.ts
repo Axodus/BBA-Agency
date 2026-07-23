@@ -167,6 +167,22 @@ test("Publication domain and application remain publication-only and infrastruct
   assert.deepEqual(violations, []);
 });
 
+test("Connector domain and application remain technical and institution-free", async () => {
+  const connectorRoot = resolve(modulesRoot, "connector");
+  const violations: string[] = [];
+  const forbidden = /(?:\/modules\/(?:mission|governance|ai-workforce|institutional-assets|knowledge-policy|workflow|review|publication)|infrastructure|frontend|http|sdk|oauth|secret|token)/u;
+  for (const file of await files(connectorRoot)) {
+    const relativeFile = relative(connectorRoot, file);
+    if (!relativeFile.startsWith("domain/") && !relativeFile.startsWith("application/")) continue;
+    const content = await readFile(file, "utf8");
+    for (const match of content.matchAll(importPattern)) {
+      const specifier = match[1] ?? "";
+      if (forbidden.test(specifier)) violations.push(`${relativeFile} -> ${specifier}`);
+    }
+  }
+  assert.deepEqual(violations, []);
+});
+
 test("shared references depend only on Shared Kernel primitives", async () => {
   const referencesRoot = resolve(import.meta.dirname, "../../../../src/shared/references");
   const violations: string[] = [];
