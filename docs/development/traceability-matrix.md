@@ -95,6 +95,71 @@ in the M0 report.
 | REQ-IMP-011-059 | GDE-080 | Core and demo evidence | M11 report | validation commands | — | DONE |
 | REQ-IMP-011-060 | GDE-080 | M11 decision | M11 report | validation commands | ADR-IMP-0034 | DONE |
 
+## EPIC-IMP-012 — Application API
+
+| Requirement | Source document | Invariant / responsibility | Code path | Test path | ADR | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+| REQ-IMP-012-001 | GDE-081 | Application structure | `core/src/application/` | typecheck | ADR-IMP-0037 | DONE |
+| REQ-IMP-012-002 | GDE-081 | Commands | `application/dto/` | API tests | ADR-IMP-0037 | DONE |
+| REQ-IMP-012-003 | GDE-081 | Queries | `application/dto/` | API tests | ADR-IMP-0037 | DONE |
+| REQ-IMP-012-004 | GDE-081 | Neutral DTOs | `ApplicationContext.ts` | API tests | ADR-IMP-0037 | DONE |
+| REQ-IMP-012-005 | GDE-081 | Command contexts | `ApplicationCommandContext` | API tests | ADR-IMP-0039 | DONE |
+| REQ-IMP-012-006 | GDE-081 | Query contexts | `QueryContext` | API tests | ADR-IMP-0039 | DONE |
+| REQ-IMP-012-007 | GDE-081 | Typed context ports | `ApplicationApiPorts.ts` | typecheck | ADR-IMP-0037 | DONE |
+| REQ-IMP-012-008 | GDE-081 | Mission API | Mission ports | typecheck | ADR-IMP-0037 | CONTRACT_ONLY |
+| REQ-IMP-012-009 | GDE-081 | Governance API | Governance ports | typecheck | ADR-IMP-0037 | CONTRACT_ONLY |
+| REQ-IMP-012-010 | GDE-081 | Workforce API | Workforce ports | typecheck | ADR-IMP-0037 | CONTRACT_ONLY |
+| REQ-IMP-012-011 | GDE-081 | Assets API | Asset ports | typecheck | ADR-IMP-0037 | CONTRACT_ONLY |
+| REQ-IMP-012-012 | GDE-081 | Knowledge Policy API | Knowledge Policy ports | typecheck | ADR-IMP-0037 | CONTRACT_ONLY |
+| REQ-IMP-012-013 | GDE-081 | Workflow API | Workflow ports | typecheck | ADR-IMP-0037 | CONTRACT_ONLY |
+| REQ-IMP-012-014 | GDE-081 | Review API | Review ports | typecheck | ADR-IMP-0037 | CONTRACT_ONLY |
+| REQ-IMP-012-015 | GDE-081 | Publication API | Publication ports | typecheck | ADR-IMP-0037 | CONTRACT_ONLY |
+| REQ-IMP-012-016 | GDE-081 | Connector existing operations | Connector ports | typecheck | ADR-IMP-0037 | CONTRACT_ONLY |
+| REQ-IMP-012-017 | GDE-081 | Request mappers | `ApplicationMappers.ts` | API tests | ADR-IMP-0037 | DONE |
+| REQ-IMP-012-018 | GDE-081 | Response mappers | `toAggregateDto` | API tests | ADR-IMP-0037 | DONE |
+| REQ-IMP-012-019 | GDE-080 | Validation before UoW | `ApplicationCommandRunner` | API tests | ADR-IMP-0039 | DONE |
+| REQ-IMP-012-020 | GDE-080 | Query validation | `ApplicationQueryRunner` | API tests | ADR-IMP-0039 | DONE |
+| REQ-IMP-012-021 | GDE-083 | Transaction runner | `ApplicationCommandRunner` | API tests | ADR-IMP-0039 | DONE |
+| REQ-IMP-012-022 | GDE-083 | Restricted transactional session | `TransactionalRepositorySession` | typecheck/architecture | ADR-IMP-0039 | DONE |
+| REQ-IMP-012-023 | GDE-083 | Read-only session | `ReadRepositorySession` | API tests | ADR-IMP-0039 | DONE |
+| REQ-IMP-012-024 | GDE-083 | Commit after handler | command runner | API tests | ADR-IMP-0039 | DONE |
+| REQ-IMP-012-025 | GDE-083 | Rollback after failure | command runner | API tests | ADR-IMP-0039 | DONE |
+| REQ-IMP-012-026 | GDE-083 | Outcome-aware uncertainty | command transaction | typecheck | ADR-IMP-0039 | DONE |
+| REQ-IMP-012-027 | GDE-080 | Transaction identity derivation | `deriveTransactionId` | API tests | ADR-IMP-0038 | DONE |
+| REQ-IMP-012-028 | GDE-080 | Canonical fingerprint | `payloadFingerprint` | API tests | ADR-IMP-0038 | DONE |
+| REQ-IMP-012-029 | GDE-080 | Reason included | runner canonical payload | API tests | ADR-IMP-0038 | DONE |
+| REQ-IMP-012-030 | GDE-080 | Canonicalization version | `CanonicalPayloadDescriptor` | typecheck | ADR-IMP-0038 | DONE |
+| REQ-IMP-012-031 | GDE-085 | Stable application errors | `ApplicationError` | API tests | ADR-IMP-0037 | DONE |
+| REQ-IMP-012-032 | GDE-085 | Concurrency mapping | `mapFailure` | API tests | ADR-IMP-0039 | DONE |
+| REQ-IMP-012-033 | GDE-085 | Sanitized public errors | `ApplicationError.toJSON` | API tests | ADR-IMP-0037 | DONE |
+| REQ-IMP-012-034 | GDE-081 | No HTTP/framework imports | application tree | architecture test | ADR-IMP-0037 | DONE |
+| REQ-IMP-012-035 | GDE-081 | No ORM/database imports | application tree | architecture test | ADR-IMP-0037 | DONE |
+| REQ-IMP-012-036 | GDE-081 | Aggregates unchanged | domain modules | regression suite | ADR-IMP-0039 | DONE |
+| REQ-IMP-012-037 | GDE-080 | Connector scope | Connector API port | typecheck | ADR-IMP-0037 | DONE |
+| REQ-IMP-012-038 | GDE-083 | M11 compatibility | `ApplicationTransactionFactory` | typecheck | ADR-IMP-0039 | DONE |
+| REQ-IMP-012-039 | GDE-080 | ID factory compatibility | application contracts | API tests | ADR-IMP-0038 | DONE |
+| REQ-IMP-012-040 | GDE-080 | No generated-ID retry | outcome contract | document review | ADR-IMP-0038 | DONE |
+| REQ-IMP-012-041 | GDE-081 | Commands do not expose Aggregates | DTO contracts | API tests | ADR-IMP-0037 | DONE |
+| REQ-IMP-012-042 | GDE-081 | Queries do not mutate | query runner | API tests | ADR-IMP-0039 | DONE |
+| REQ-IMP-012-043 | GDE-081 | No handler commit control | handler contract | typecheck | ADR-IMP-0039 | DONE |
+| REQ-IMP-012-044 | GDE-081 | No handler provider access | handler contract | architecture review | ADR-IMP-0039 | DONE |
+| REQ-IMP-012-045 | GDE-081 | No transport serializer | DTO contracts | architecture test | ADR-IMP-0037 | DONE |
+| REQ-IMP-012-046 | GDE-081 | Existing use case compatibility | module applications | regression suite | ADR-IMP-0039 | PARTIAL |
+| REQ-IMP-012-047 | GDE-080 | Tenant validation | context validation | API tests | ADR-IMP-0039 | DONE |
+| REQ-IMP-012-048 | GDE-080 | Actor context | context validation | API tests | ADR-IMP-0039 | DONE |
+| REQ-IMP-012-049 | GDE-080 | Correlation propagation | TransactionContext | typecheck | ADR-IMP-0039 | DONE |
+| REQ-IMP-012-050 | GDE-080 | Causation propagation | TransactionContext | typecheck | ADR-IMP-0039 | DONE |
+| REQ-IMP-012-051 | GDE-081 | Application barrels | `application/index.ts` | typecheck | ADR-IMP-0037 | DONE |
+| REQ-IMP-012-052 | GDE-079 | API documentation | `contracts/ApplicationApi.md` | document review | ADR-IMP-0037 | DONE |
+| REQ-IMP-012-053 | GDE-079 | Pipeline documentation | `contracts/ApplicationPipeline.md` | document review | ADR-IMP-0039 | DONE |
+| REQ-IMP-012-054 | GDE-079 | Error documentation | `contracts/ApplicationErrors.md` | document review | ADR-IMP-0037 | DONE |
+| REQ-IMP-012-055 | GDE-079 | Application ADRs | ADR-IMP-0037..39 | ADR review | ADR-IMP-0037..39 | DONE |
+| REQ-IMP-012-056 | GDE-080 | Core validation | M12 report | validation commands | — | DONE |
+| REQ-IMP-012-057 | GDE-080 | Demo preservation | M12 report | demo checks | — | DONE |
+| REQ-IMP-012-058 | GDE-080 | Legacy preservation | M12 report | git status | — | DONE |
+| REQ-IMP-012-059 | GDE-080 | Traceability | this matrix | report review | — | DONE |
+| REQ-IMP-012-060 | GDE-080 | M12 decision | M12 report | validation commands | ADR-IMP-0037 | DONE |
+
 ## EPIC-IMP-010 — Connector Framework
 
 | Requirement | Source document | Invariant / responsibility | Code path | Test path | ADR | Status |

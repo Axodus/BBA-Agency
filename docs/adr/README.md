@@ -47,3 +47,6 @@ upstream documentation review process.
 - [ADR-IMP-0034 — Canonical persistence architecture](ADR-IMP-0034-CANONICAL-PERSISTENCE-ARCHITECTURE.md)
 - [ADR-IMP-0035 — Event Store and Snapshot strategy](ADR-IMP-0035-EVENT-STORE-AND-SNAPSHOT-STRATEGY.md)
 - [ADR-IMP-0036 — Audit and Outbox separation](ADR-IMP-0036-AUDIT-AND-OUTBOX-SEPARATION.md)
+- [ADR-IMP-0037 — Application transport neutrality](ADR-IMP-0037-APPLICATION-TRANSPORT-NEUTRALITY.md)
+- [ADR-IMP-0038 — Application idempotency fingerprinting](ADR-IMP-0038-IDEMPOTENCY-FINGERPRINTING.md)
+- [ADR-IMP-0039 — Application transaction sessions](ADR-IMP-0039-APPLICATION-TRANSACTION-SESSIONS.md)
