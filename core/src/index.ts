@@ -14,3 +14,4 @@ export const coreBootstrap = Object.freeze({
 export * from "./shared/index.js";
 export * from "./application/index.js";
 export * from "./modules/index.js";
+export * as Persistence from "./infrastructure/persistence/index.js";

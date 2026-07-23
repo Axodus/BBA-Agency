@@ -3,7 +3,10 @@ export type DomainErrorCode =
   | "validation_error"
   | "invariant_violation"
   | "tenant_violation"
-  | "concurrency_conflict";
+  | "concurrency_conflict"
+  | "persistence_failure"
+  | "persistence_conflict"
+  | "post_commit_failure";
 
 export abstract class DomainError extends Error {
   public readonly code: DomainErrorCode;
