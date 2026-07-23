@@ -30,3 +30,5 @@ export { PublicationId } from "./PublicationId.js";
 export { PublicationPackageId } from "./PublicationPackageId.js";
 export { PublicationRecordId } from "./PublicationRecordId.js";
 export { PublicationVersionId } from "./PublicationVersionId.js";
+export { ConnectorCapabilityId } from "./ConnectorCapabilityId.js";
+export { ConnectorExecutionId } from "./ConnectorExecutionId.js";

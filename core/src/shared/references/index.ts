@@ -21,3 +21,5 @@ export { ConnectorReference } from "./ConnectorReference.js";
 export { PublicationPackageReference } from "./PublicationPackageReference.js";
 export { PublicationReference } from "./PublicationReference.js";
 export { PublicationVersionReference } from "./PublicationVersionReference.js";
+export { ConnectorCapabilityReference } from "./ConnectorCapabilityReference.js";
+export { ConnectorExecutionReference } from "./ConnectorExecutionReference.js";

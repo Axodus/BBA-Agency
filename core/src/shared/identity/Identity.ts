@@ -13,6 +13,8 @@ export type IdentityKind =
   | "decision"
   | "evidence"
   | "connector"
+  | "connector_capability"
+  | "connector_execution"
   | "execution"
   | "knowledge"
   | "policy"
