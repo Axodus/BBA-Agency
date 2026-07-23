@@ -1,8 +1,8 @@
 import type { DomainEvent } from "../../shared/events/DomainEvent.js";
 import type { TransactionContext } from "./TransactionContext.js";
-import type { AggregateSnapshotCodec, AuditRecord, OutboxMessage, OutboxProjectionPort, PersistedEvent, SnapshotRecord } from "./PersistenceTypes.js";
+import type { AggregateSnapshotCodec, AuditRecord, CanonicalPayloadDescriptor, OutboxMessage, OutboxProjectionPort, PersistedEvent, SnapshotRecord } from "./PersistenceTypes.js";
 
-export type TransactionOutcome = "COMMITTED" | "NOT_FOUND";
+export type TransactionOutcome = "NOT_FOUND" | "COMMITTED" | "FAILED_FINAL" | "UNKNOWN";
 export interface SnapshotStorePort { getSnapshot(key: string): SnapshotRecord | null; listSnapshots(aggregateType: string, tenantId: string): readonly SnapshotRecord[]; }
 export interface EventStorePort { getEvents(aggregateType: string, tenantId: string, aggregateId: string): readonly PersistedEvent[]; }
 export interface AuditStorePort { listAuditRecords(tenantId: string): readonly AuditRecord[]; }
@@ -11,7 +11,7 @@ export interface PersistableAggregate { readonly id: { toString(): string }; rea
 export interface UnitOfWorkPort {
   readonly context: TransactionContext;
   stage<TAggregate, TSnapshot>(aggregate: TAggregate & PersistableAggregate, codec: AggregateSnapshotCodec<TAggregate, TSnapshot>, expectedVersion: number): void;
-  commit(): Promise<void>;
+  commit(payloadFingerprint?: CanonicalPayloadDescriptor): Promise<void>;
   rollback(): Promise<void>;
 }
 export type UnitOfWork = UnitOfWorkPort;
@@ -22,6 +22,7 @@ export type OutboxStore = OutboxStorePort;
 export interface PersistenceProviderPort extends SnapshotStorePort, EventStorePort, AuditStorePort, OutboxStorePort {
   begin(context: TransactionContext): UnitOfWorkPort;
   getTransactionOutcome(transactionId: string): TransactionOutcome;
+  getTransactionFingerprint(transactionId: string): CanonicalPayloadDescriptor | null;
   isInvalidated(aggregate: PersistableAggregate): boolean;
   withOutboxProjection(projection: OutboxProjectionPort): PersistenceProviderPort;
 }

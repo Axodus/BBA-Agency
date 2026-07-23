@@ -2,6 +2,7 @@ import type { JsonObject } from "../../shared/common/serialization.js";
 import type { DomainEvent } from "../../shared/events/DomainEvent.js";
 
 export interface TransactionContextProps { readonly transactionId: string; readonly tenantId: string; readonly actor: string; readonly correlationId: string; readonly causationId?: string; readonly startedAt: string; }
+export interface CanonicalPayloadDescriptor { readonly algorithm: "application-command-canonical-v1"; readonly hashAlgorithm: "sha256"; readonly fingerprint: string; }
 
 export interface AggregateSnapshotCodec<TAggregate, TSnapshot> {
   readonly aggregateType: string;
