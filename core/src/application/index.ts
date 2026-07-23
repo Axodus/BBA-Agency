@@ -9,4 +9,6 @@ export * from "./queries/index.js";
 export * from "./bindings/ApplicationBindingTypes.js";
 export * from "./bindings/ApplicationBindingRegistry.js";
 export * from "./bindings/MissionBindings.js";
+export * from "./bindings/GovernanceBindings.js";
 export { MissionApplicationApi } from "./bindings/MissionApplicationApi.js";
+export { GovernanceApplicationApi } from "./bindings/GovernanceApplicationApi.js";

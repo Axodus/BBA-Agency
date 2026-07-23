@@ -160,6 +160,17 @@ in the M0 report.
 | REQ-IMP-012-059 | GDE-080 | Traceability | this matrix | report review | — | DONE |
 | REQ-IMP-012-060 | GDE-080 | M12 decision | M12 report | validation commands | ADR-IMP-0037 | DONE |
 
+## EPIC-IMP-012B.1 — Governance Application API
+
+| Requirement | Source document | Invariant / responsibility | Code path | Test path | ADR | Status |
+| --- | --- | --- | --- | --- | --- |
+| REQ-IMP-012B.1-001 | GDE-081 | Typed Governance command surface | `GovernanceCommandApiPort` | `governance-application-api.test.ts` | ADR-IMP-0037 | DONE |
+| REQ-IMP-012B.1-002 | GDE-081 | Typed Governance query surface | `GovernanceQueryApiPort` | `GovernanceApplicationApi` | `governance-application-api.test.ts` | DONE |
+| REQ-IMP-012B.1-003 | GDE-083 | Existing M11 repository composition | `ApplicationTransactionFactory` | application API tests | ADR-IMP-0039 | DONE |
+| REQ-IMP-012B.1-004 | GDE-080 | Idempotent command replay | `GovernanceBindings` | governance application API tests | ADR-IMP-0038 | DONE |
+| REQ-IMP-012B.1-005 | GDE-081 | Read-only Governance queries | `ReadRepositorySession` | governance application API tests | ADR-IMP-0039 | DONE |
+| REQ-IMP-012B.1-006 | GDE-080 | No domain or transport expansion | `core/src/application/` | architecture and regression suites | ADR-IMP-0037 | DONE |
+
 ## EPIC-IMP-010 — Connector Framework
 
 | Requirement | Source document | Invariant / responsibility | Code path | Test path | ADR | Status |

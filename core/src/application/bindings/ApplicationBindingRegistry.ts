@@ -22,7 +22,7 @@ export function executeBoundCommand<Request extends OperationCommandDto, Result>
   return runner.execute(descriptor.boundedContext, descriptor.operationName, command, context, descriptor.handler, replay).then((result) => descriptor.responseMapper(result));
 }
 
-export function executeBoundQuery<Query extends QueryDto, Result, Response extends AggregateDto | null | readonly AggregateDto[]>(descriptor: QueryBindingDescriptor<Query, Result, Response>, runner: ApplicationQueryRunner, request: Query, context: QueryContext): Promise<Response> {
+export function executeBoundQuery<Query extends QueryDto, Result, Response>(descriptor: QueryBindingDescriptor<Query, Result, Response>, runner: ApplicationQueryRunner, request: Query, context: QueryContext): Promise<Response> {
   const query = descriptor.requestMapper(request);
   return runner.execute(query, context, descriptor.handler, descriptor.validator).then((result) => descriptor.responseMapper(result));
 }

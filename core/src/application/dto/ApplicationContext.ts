@@ -14,3 +14,49 @@ export interface CommittedOperationResultDto {
   readonly resourceReferences: readonly CommittedResourceReferenceDto[];
 }
 export interface ApplicationResult<T> { readonly value: T; }
+
+export interface GovernanceCommandRequestDto extends OperationCommandDto {}
+export interface CreateAuthorityRequestDto extends GovernanceCommandRequestDto {}
+export interface AssignAuthorityRequestDto extends GovernanceCommandRequestDto {}
+export interface CreateDecisionRequestDto extends GovernanceCommandRequestDto {}
+export interface ApproveDecisionRequestDto extends GovernanceCommandRequestDto {}
+export interface RejectDecisionRequestDto extends GovernanceCommandRequestDto {}
+export interface FinalizeDecisionRequestDto extends GovernanceCommandRequestDto {}
+export interface GetAuthorityRequestDto extends QueryDto {}
+export interface GetDecisionRequestDto extends QueryDto {}
+
+export interface GovernanceReferenceDto { readonly id: string; readonly tenantId: string; }
+export interface AuthorityAssignmentDto {
+  readonly assignmentId: string;
+  readonly delegateReference: string;
+  readonly scope: JsonObject;
+  readonly period: { readonly startsAt: string; readonly endsAt: string };
+  readonly status: string;
+}
+export interface AuthorityDto {
+  readonly authorityId: string;
+  readonly tenantId: string;
+  readonly actorReference: string;
+  readonly level: string;
+  readonly scope: JsonObject;
+  readonly status: string;
+  readonly version: number;
+  readonly assignments: readonly AuthorityAssignmentDto[];
+}
+export interface DecisionApprovalDto {
+  readonly approvalId: string;
+  readonly outcome: string;
+  readonly authorityReference: GovernanceReferenceDto;
+  readonly assignmentReference?: GovernanceReferenceDto;
+}
+export interface DecisionDto {
+  readonly decisionId: string;
+  readonly tenantId: string;
+  readonly missionId: string;
+  readonly decisionType: string;
+  readonly status: string;
+  readonly version: number;
+  readonly authorityReference: GovernanceReferenceDto;
+  readonly assignmentReference?: GovernanceReferenceDto;
+  readonly approval?: DecisionApprovalDto;
+}

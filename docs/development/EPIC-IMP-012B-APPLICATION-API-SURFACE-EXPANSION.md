@@ -1,6 +1,6 @@
 # EPIC-IMP-012B — Application API Surface Expansion
 
-Status: BACKLOG  
+Status: INCREMENTAL — B.1 GOVERNANCE PASS  
 Origin: M12 corrective scope decision  
 Dependency: EPIC-IMP-012 = PASS
 
@@ -40,3 +40,80 @@ No operation is approved merely because it is exported by a module.
 
 The ordering and exact methods remain subject to institutional demand and a
 separate Definition of Ready review.
+
+## B.1 — Governance Application API
+
+Status: PASS  
+Date: 2026-07-23
+
+This increment exposes only the Governance operations explicitly declared by
+the public Application API. It does not expand the inventory into an automatic
+public-surface gate and does not alter Domain, Governance Aggregates, existing
+use-case semantics, M11 persistence, `demo/`, or legacy `src/`.
+
+| API Port | Operation | Kind | Existing use case / read capability | Status |
+| --- | --- | --- | --- | --- |
+| GovernanceCommandApiPort | `createAuthority` | Command | `CreateAuthority` | EXECUTABLE |
+| GovernanceCommandApiPort | `assignAuthority` | Command | `AssignAuthority` | EXECUTABLE |
+| GovernanceCommandApiPort | `createDecision` | Command | `CreateDecision` | EXECUTABLE |
+| GovernanceCommandApiPort | `approveDecision` | Command | `ApproveDecision` | EXECUTABLE |
+| GovernanceCommandApiPort | `rejectDecision` | Command | `RejectDecision` | EXECUTABLE |
+| GovernanceCommandApiPort | `finalizeDecision` | Command | `FinalizeDecision` | EXECUTABLE |
+| GovernanceQueryApiPort | `getAuthority` | Query | `AuthorityRepository.findById` | EXECUTABLE |
+| GovernanceQueryApiPort | `getDecision` | Query | `DecisionRepository.findById` | EXECUTABLE |
+
+Commands use the approved M12 transaction pipeline and return the uniform
+`CommittedOperationResultDto`. Replay consults the M11 transaction outcome,
+validates the canonical fingerprint, and returns the same resource-reference
+result without executing the handler again. Queries use only
+`ReadRepositorySession` and return read projections without snapshots, events,
+Evidence, Lineage, or provider records.
+
+The M12 session composition is extended additively with typed Authority and
+Decision repository views. Both use the existing provider-backed M11 adapters
+and the same Unit of Work; no new persistence mechanism, collaborator fallback,
+or permissive adapter was introduced.
+
+## Coverage
+
+| Bounded Context | Commands | Queries | Coverage |
+| --- | ---: | ---: | --- |
+| Mission | 4 / 4 | 1 / 1 | 100% |
+| Governance | 6 / 6 | 2 / 2 | 100% |
+| AI Workforce | Not Started | Not Started | Not Started |
+| Institutional Assets | Not Started | Not Started | Not Started |
+| Knowledge/Policy | Not Started | Not Started | Not Started |
+| Workflow | Not Started | Not Started | Not Started |
+| Review | Not Started | Not Started | Not Started |
+| Publication | Not Started | Not Started | Not Started |
+| Connector | Not Started | Not Started | Not Started |
+
+## Evidence
+
+`core/test/application/governance-application-api.test.ts` proves binding for
+every declared Governance method, the use-case path, a single successful
+commit, rollback on stale optimistic concurrency, validation before Unit of
+Work opening, idempotent replay without a second audit record, and read-only
+queries. Core validation is recorded in the B.1 completion evidence.
+
+| Command | Result |
+| --- | --- |
+| `pnpm --dir core check` | PASS |
+| `git diff --check` | PASS |
+| deterministic demo syntax and JSON checks | PASS |
+| local commits | BLOCKED — `.git/index.lock` is on a read-only filesystem |
+
+```text
+EPIC-IMP-012B.1 — Governance: PASS
+
+Mission: 100%
+Governance: 100%
+
+AI Workforce: Not Started
+Institutional Assets: Not Started
+Knowledge/Policy: Not Started
+Workflow: Not Started
+Review: Not Started
+Publication: Not Started
+Connector: Not Started
+```
