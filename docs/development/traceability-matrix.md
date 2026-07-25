@@ -171,6 +171,17 @@ in the M0 report.
 | REQ-IMP-012B.1-005 | GDE-081 | Read-only Governance queries | `ReadRepositorySession` | governance application API tests | ADR-IMP-0039 | DONE |
 | REQ-IMP-012B.1-006 | GDE-080 | No domain or transport expansion | `core/src/application/` | architecture and regression suites | ADR-IMP-0037 | DONE |
 
+## EPIC-IMP-012B.2 — AI Workforce Application API
+
+| Requirement | Source document | Invariant / responsibility | Code path | Test path | ADR | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+| REQ-IMP-012B.2-001 | GDE-081 | Typed AI Workforce Command surface | `AIWorkforceCommandApiPort` | `ai-workforce-application-api.test.ts` | ADR-IMP-0037 | DONE |
+| REQ-IMP-012B.2-002 | GDE-081 | Typed AI Workforce Query surface | `AIWorkforceQueryApiPort` | `ai-workforce-application-api.test.ts` | ADR-IMP-0037 | DONE |
+| REQ-IMP-012B.2-003 | GDE-083 | Agent and Execution session composition | `ApplicationTransactionFactory` | `ai-workforce-application-api.test.ts` | ADR-IMP-0039 | DONE |
+| REQ-IMP-012B.2-004 | GDE-080 | Generic committed replay | `ApplicationBindingRegistry` | `ai-workforce-application-api.test.ts` | ADR-IMP-0038 | DONE |
+| REQ-IMP-012B.2-005 | GDE-081 | Read-only Workforce queries | `ReadRepositorySession` | `ai-workforce-application-api.test.ts` | ADR-IMP-0039 | DONE |
+| REQ-IMP-012B.2-006 | GDE-080 | Atomic Agent and Execution start | `AIWorkforceBindings` | `ai-workforce-application-api.test.ts` | ADR-IMP-0039 | DONE |
+
 ## EPIC-IMP-010 — Connector Framework
 
 | Requirement | Source document | Invariant / responsibility | Code path | Test path | ADR | Status |
