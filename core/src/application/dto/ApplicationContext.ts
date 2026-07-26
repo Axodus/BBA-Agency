@@ -25,6 +25,45 @@ export interface FinalizeDecisionRequestDto extends GovernanceCommandRequestDto 
 export interface GetAuthorityRequestDto extends QueryDto {}
 export interface GetDecisionRequestDto extends QueryDto {}
 
+export interface AIWorkforceCommandRequestDto extends OperationCommandDto {}
+export interface ProvisionAgentRequestDto extends AIWorkforceCommandRequestDto {}
+export interface AssignAgentRequestDto extends AIWorkforceCommandRequestDto {}
+export interface StartExecutionRequestDto extends AIWorkforceCommandRequestDto {}
+export interface CompleteExecutionRequestDto extends AIWorkforceCommandRequestDto {}
+export interface GetAgentRequestDto extends QueryDto {}
+export interface GetExecutionRequestDto extends QueryDto {}
+
+export interface ProvisionAgentResponseDto extends CommittedOperationResultDto {}
+export interface AssignAgentResponseDto extends CommittedOperationResultDto {}
+export interface StartExecutionResponseDto extends CommittedOperationResultDto {}
+export interface CompleteExecutionResponseDto extends CommittedOperationResultDto {}
+
+export interface AgentCapabilityDto { readonly name: string; readonly scope: string; readonly qualityCriteria: readonly string[]; readonly limitations: readonly string[]; }
+export interface AgentDto {
+  readonly agentId: string;
+  readonly tenantId: string;
+  readonly name: string;
+  readonly purpose: string;
+  readonly definitionVersion: string;
+  readonly lifecycleStatus: string;
+  readonly status: string;
+  readonly availability: string;
+  readonly capabilities: readonly AgentCapabilityDto[];
+  readonly assignments: readonly JsonObject[];
+  readonly version: number;
+}
+export interface ExecutionDto {
+  readonly executionId: string;
+  readonly tenantId: string;
+  readonly missionReference: GovernanceReferenceDto;
+  readonly agentReference: GovernanceReferenceDto;
+  readonly workAssignmentReference: GovernanceReferenceDto;
+  readonly status: string;
+  readonly result: JsonObject | null;
+  readonly failure: string | null;
+  readonly version: number;
+}
+
 export interface GovernanceReferenceDto { readonly id: string; readonly tenantId: string; }
 export interface AuthorityAssignmentDto {
   readonly assignmentId: string;

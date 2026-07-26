@@ -10,7 +10,7 @@ export type ReplayResolution<C, R> =
   | { readonly kind: "FULL_CONFIRMED_RESULT"; readonly resolver: CommittedResultResolver<C, R>; }
   | { readonly kind: "CONFIRMED_REFERENCE"; readonly resolver: CommittedReferenceResolver<C>; };
 export interface ConfirmedReferenceResult { readonly transactionId: string; readonly resourceIds: readonly string[]; readonly status: "COMMITTED"; }
-export interface CommandBindingDescriptor<Request extends MutableCommandDto, Result, Response> {
+export interface CommandBindingDescriptor<Request extends MutableCommandDto, Result, Response, Repositories = TransactionalRepositorySession> {
   readonly boundedContext: string;
   readonly exportName: string;
   readonly operationName: string;
@@ -19,11 +19,13 @@ export interface CommandBindingDescriptor<Request extends MutableCommandDto, Res
   readonly useCaseExport: string;
   readonly requestMapper: (request: Request) => MutableCommandDto & { readonly payload: import("../../shared/common/serialization.js").JsonObject };
   readonly validator: (command: MutableCommandDto & { readonly payload: import("../../shared/common/serialization.js").JsonObject }, context: ApplicationCommandContext) => void;
-  readonly handler: (command: MutableCommandDto & { readonly payload: import("../../shared/common/serialization.js").JsonObject }, context: ValidatedCommandContext, repositories: TransactionalRepositorySession) => Promise<Result>;
-  readonly replay: ReplayResolution<Request, Result>;
+  readonly handler: (command: MutableCommandDto & { readonly payload: import("../../shared/common/serialization.js").JsonObject }, context: ValidatedCommandContext, repositories: Repositories) => Promise<Result>;
+  readonly repositorySelector?: (repositories: TransactionalRepositorySession) => Repositories;
+  readonly replay?: ReplayResolution<Request, Result>;
+  readonly confirmedResourceType?: string;
   readonly responseMapper: (result: Result) => Response;
 }
-export interface QueryBindingDescriptor<Query extends QueryDto, Result, Response> {
+export interface QueryBindingDescriptor<Query extends QueryDto, Result, Response, Repositories = ReadRepositorySession> {
   readonly boundedContext: string;
   readonly exportName: string;
   readonly operationName: string;
@@ -31,6 +33,7 @@ export interface QueryBindingDescriptor<Query extends QueryDto, Result, Response
   readonly repositoryView: ReadRepositoryViewDescriptor;
   readonly requestMapper: (request: Query) => QueryDto;
   readonly validator: (query: QueryDto, context: QueryContext) => void;
-  readonly handler: (query: QueryDto, context: QueryContext, repositories: ReadRepositorySession) => Promise<Result>;
+  readonly handler: (query: QueryDto, context: QueryContext, repositories: Repositories) => Promise<Result>;
+  readonly repositorySelector?: (repositories: ReadRepositorySession) => Repositories;
   readonly responseMapper: (result: Result) => Response;
 }

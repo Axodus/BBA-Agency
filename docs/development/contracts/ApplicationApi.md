@@ -1,8 +1,8 @@
 # Application API Contract
 
-The M12 Application layer exposes one intentionally small, transport-neutral
-public surface: the Mission Command and Query ports declared in
-`ApplicationApiPorts.ts`.
+The M12 Application layer exposes an intentionally small, transport-neutral
+public surface: the Mission, Governance and AI Workforce Command and Query
+ports declared in `ApplicationApiPorts.ts`.
 
 Commands receive an explicit `ApplicationCommandContext` and a mutable command
 containing `reason` and `idempotencyKey`. Every successful first execution and

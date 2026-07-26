@@ -1,4 +1,4 @@
-import type { AggregateDto, ApplicationCommandContext, ApproveDecisionRequestDto, AssignAuthorityRequestDto, AuthorityDto, CommittedOperationResultDto, CreateAuthorityRequestDto, CreateDecisionRequestDto, DecisionDto, FinalizeDecisionRequestDto, GetAuthorityRequestDto, GetDecisionRequestDto, OperationCommandDto, QueryContext, QueryDto, RejectDecisionRequestDto } from "../dto/ApplicationContext.js";
+import type { AggregateDto, AgentDto, ApplicationCommandContext, ApproveDecisionRequestDto, AssignAgentRequestDto, AssignAgentResponseDto, AssignAuthorityRequestDto, AuthorityDto, CommittedOperationResultDto, CompleteExecutionRequestDto, CompleteExecutionResponseDto, CreateAuthorityRequestDto, CreateDecisionRequestDto, DecisionDto, ExecutionDto, FinalizeDecisionRequestDto, GetAgentRequestDto, GetAuthorityRequestDto, GetDecisionRequestDto, GetExecutionRequestDto, OperationCommandDto, ProvisionAgentRequestDto, ProvisionAgentResponseDto, QueryContext, QueryDto, RejectDecisionRequestDto, StartExecutionRequestDto, StartExecutionResponseDto } from "../dto/ApplicationContext.js";
 
 export interface MissionCommandApiPort {
   createMission(command: OperationCommandDto, context: ApplicationCommandContext): Promise<CommittedOperationResultDto>;
@@ -20,4 +20,16 @@ export interface GovernanceCommandApiPort {
 export interface GovernanceQueryApiPort {
   getAuthority(query: GetAuthorityRequestDto, context: QueryContext): Promise<AuthorityDto | null>;
   getDecision(query: GetDecisionRequestDto, context: QueryContext): Promise<DecisionDto | null>;
+}
+
+export interface AIWorkforceCommandApiPort {
+  provisionAgent(command: ProvisionAgentRequestDto, context: ApplicationCommandContext): Promise<ProvisionAgentResponseDto>;
+  assignAgent(command: AssignAgentRequestDto, context: ApplicationCommandContext): Promise<AssignAgentResponseDto>;
+  startExecution(command: StartExecutionRequestDto, context: ApplicationCommandContext): Promise<StartExecutionResponseDto>;
+  completeExecution(command: CompleteExecutionRequestDto, context: ApplicationCommandContext): Promise<CompleteExecutionResponseDto>;
+}
+
+export interface AIWorkforceQueryApiPort {
+  getAgent(query: GetAgentRequestDto, context: QueryContext): Promise<AgentDto | null>;
+  getExecution(query: GetExecutionRequestDto, context: QueryContext): Promise<ExecutionDto | null>;
 }

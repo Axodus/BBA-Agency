@@ -105,7 +105,7 @@ function api(provider: ReferencePersistenceProvider): GovernanceApplicationApi {
 }
 
 test("every declared Governance API method has one executable binding", () => {
-  const source = readFileSync(new URL("../../src/application/ports/ApplicationApiPorts.ts", import.meta.url), "utf8");
+  const source = readFileSync(new URL("../../../../src/application/ports/ApplicationApiPorts.ts", import.meta.url), "utf8");
   const declarations = [...source.matchAll(/\b(createAuthority|assignAuthority|createDecision|approveDecision|rejectDecision|finalizeDecision|getAuthority|getDecision)\s*\(/gu)]
     .map((match) => match[1]);
   assert.deepEqual([...new Set(declarations)].sort(), Object.keys(governanceBindings).sort());
@@ -159,7 +159,7 @@ test("Governance commands use M12 transactions, replay safely, and preserve all 
 
   const auditBeforeConflict = provider.listAuditRecords(tenantId).length;
   await assert.rejects(
-    application.assignAuthority({ ...assignAuthorityCommand(0), idempotencyKey: "stale-assign", payload: { ...assignAuthorityCommand(0).payload, assignmentId: "assignment_governance_stale" } }, context),
+    application.assignAuthority({ ...assignAuthorityCommand(0), idempotencyKey: "stale-assign", payload: { ...assignAuthorityCommand(0).payload, assignmentId: "assignment_governance_stale", delegateReference: "different_reviewer_governance" } }, context),
     (error: { readonly code?: string }) => error.code === "CONCURRENCY_CONFLICT"
   );
   assert.equal(provider.listAuditRecords(tenantId).length, auditBeforeConflict);
@@ -188,7 +188,7 @@ test("Governance validation rejects invalid commands before opening a Unit of Wo
   let opened = 0;
   const application = new GovernanceApplicationApi(
     new ApplicationCommandRunner({ open: () => { opened += 1; throw new Error("Unit of Work must not open"); } }),
-    new ApplicationQueryRunner({ open: () => ({ mission: {} as ReadRepositorySession["mission"], authority: {} as ReadRepositorySession["authority"], decision: {} as ReadRepositorySession["decision"] }) })
+    new ApplicationQueryRunner({ open: () => ({ mission: {} as ReadRepositorySession["mission"], authority: {} as ReadRepositorySession["authority"], decision: {} as ReadRepositorySession["decision"], agent: {} as ReadRepositorySession["agent"], execution: {} as ReadRepositorySession["execution"] }) })
   );
   assert.throws(
     () => application.createAuthority({ idempotencyKey: "invalid-authority", reason: "Invalid authority", payload: {} }, context),

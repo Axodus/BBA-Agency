@@ -4,11 +4,15 @@ import type { PersistableAggregate, TransactionOutcome, UnitOfWorkPort } from ".
 import type { MissionRepository } from "../../modules/mission/ports/MissionRepository.js";
 import type { AuthorityRepository } from "../../modules/governance/ports/AuthorityRepository.js";
 import type { DecisionRepository } from "../../modules/governance/ports/DecisionRepository.js";
+import type { AgentRepository } from "../../modules/ai-workforce/ports/AgentRepository.js";
+import type { ExecutionRepository } from "../../modules/ai-workforce/ports/ExecutionRepository.js";
 
 export interface TransactionalRepositorySession {
   readonly mission: MissionRepository;
   readonly authority: AuthorityRepository;
   readonly decision: DecisionRepository;
+  readonly agent: AgentRepository;
+  readonly execution: ExecutionRepository;
   readonly context: TransactionContext;
   stageAggregate<TAggregate extends PersistableAggregate, TSnapshot>(aggregate: TAggregate, expectedVersion: number, codec: { readonly aggregateType: string; getAggregateId(value: TAggregate): string; getTenantId(value: TAggregate): string; getVersion(value: TAggregate): number; toSnapshot(value: TAggregate): TSnapshot; rehydrate(snapshot: TSnapshot): TAggregate }): void;
 }
@@ -17,6 +21,8 @@ export interface ReadRepositorySession {
   readonly mission: Pick<MissionRepository, "findById" | "exists">;
   readonly authority: Pick<AuthorityRepository, "findById" | "exists">;
   readonly decision: Pick<DecisionRepository, "findById" | "exists">;
+  readonly agent: Pick<AgentRepository, "findById" | "exists">;
+  readonly execution: Pick<ExecutionRepository, "findById" | "exists">;
 }
 
 export interface CommandTransaction { readonly repositories: TransactionalRepositorySession; commit(fingerprint: CanonicalPayloadDescriptor): Promise<void>; rollback(): Promise<void>; outcome(): TransactionOutcome; committedFingerprint?(): CanonicalPayloadDescriptor | null; }

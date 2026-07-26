@@ -52,7 +52,7 @@ test("command failure rolls back and does not expose internal error details", as
 });
 
 test("query runner uses a read session and never opens a transaction", async () => {
-  let opened = 0; const session: ReadRepositorySession = { mission: {} as ReadRepositorySession["mission"], authority: {} as ReadRepositorySession["authority"], decision: {} as ReadRepositorySession["decision"] };
+  let opened = 0; const session: ReadRepositorySession = { mission: {} as ReadRepositorySession["mission"], authority: {} as ReadRepositorySession["authority"], decision: {} as ReadRepositorySession["decision"], agent: {} as ReadRepositorySession["agent"], execution: {} as ReadRepositorySession["execution"] };
   const sessions: ReadRepositorySessionFactory = { open: () => { opened += 1; return session; } };
   const runner = new ApplicationQueryRunner(sessions); const queryContext: QueryContext = { tenantId: "tenant_test", correlationId: "correlation_test" };
   const result = await runner.execute({ targetId: "mission_test" }, queryContext, async (query) => ({ id: query.targetId }));

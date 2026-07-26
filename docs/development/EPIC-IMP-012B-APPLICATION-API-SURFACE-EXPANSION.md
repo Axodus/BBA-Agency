@@ -1,6 +1,6 @@
 # EPIC-IMP-012B — Application API Surface Expansion
 
-Status: INCREMENTAL — B.1 GOVERNANCE PASS  
+Status: INCREMENTAL — B.2 AI WORKFORCE PASS
 Origin: M12 corrective scope decision  
 Dependency: EPIC-IMP-012 = PASS
 
@@ -43,7 +43,7 @@ separate Definition of Ready review.
 
 ## B.1 — Governance Application API
 
-Status: PASS  
+Status: PASS
 Date: 2026-07-23
 
 This increment exposes only the Governance operations explicitly declared by
@@ -80,7 +80,7 @@ or permissive adapter was introduced.
 | --- | ---: | ---: | --- |
 | Mission | 4 / 4 | 1 / 1 | 100% |
 | Governance | 6 / 6 | 2 / 2 | 100% |
-| AI Workforce | Not Started | Not Started | Not Started |
+| AI Workforce | 4 / 4 | 2 / 2 | 100% |
 | Institutional Assets | Not Started | Not Started | Not Started |
 | Knowledge/Policy | Not Started | Not Started | Not Started |
 | Workflow | Not Started | Not Started | Not Started |
@@ -116,4 +116,37 @@ Workflow: Not Started
 Review: Not Started
 Publication: Not Started
 Connector: Not Started
+
 ```
+
+## B.2 — AI Workforce Application API
+
+Status: PASS
+Date: 2026-07-23
+
+This increment exposes only the four AI Workforce Commands and two Queries
+declared for this sprint. Commands use the existing M12 transaction pipeline
+and the generic confirmed replay path; no AI-specific replay resolver
+reconstructs Agent or Execution details. Queries use only the typed
+`ReadRepositorySession` views.
+
+`GovernanceWorkAuthorizationPort` is a mandatory composition dependency with no
+permissive fallback. `assignAgent` preserves the existing coordinator
+authorization semantics inside the Unit of Work. `startExecution` uses one
+Unit of Work for the Agent mutation and Execution creation, followed by one
+commit and one audit/outbox sequence.
+
+| API Port | Operation | Kind | Existing use case / read capability | Status |
+| --- | --- | --- | --- | --- |
+| AIWorkforceCommandApiPort | `provisionAgent` | Command | `provisionAgent` | EXECUTABLE |
+| AIWorkforceCommandApiPort | `assignAgent` | Command | `AIWorkCoordinator.assign` | EXECUTABLE |
+| AIWorkforceCommandApiPort | `startExecution` | Command | `AIWorkCoordinator.start` | EXECUTABLE |
+| AIWorkforceCommandApiPort | `completeExecution` | Command | `completeExecution` | EXECUTABLE |
+| AIWorkforceQueryApiPort | `getAgent` | Query | `AgentRepository.findById` | EXECUTABLE |
+| AIWorkforceQueryApiPort | `getExecution` | Query | `ExecutionRepository.findById` | EXECUTABLE |
+
+Evidence is recorded in `core/test/application/ai-workforce-application-api.test.ts`.
+The test covers bindings, DTO mapping and validation, authorization rejection,
+single transaction behavior, atomic Agent/Execution start, generic replay,
+read-only projections and context propagation. Domain, M11, `demo/` and
+legacy `src/` remain unchanged.

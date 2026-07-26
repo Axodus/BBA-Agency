@@ -22,8 +22,8 @@ export function deriveTransactionId(context: ApplicationCommandContext, boundedC
 function mapFailure(error: unknown, correlationId: string): ApplicationError {
   if (error instanceof ApplicationError) return error;
   const candidate = error as { readonly code?: string; readonly message?: string };
-  if (candidate.code === "concurrency_conflict") return new ApplicationError("CONCURRENCY_CONFLICT", "Optimistic concurrency conflict", {}, correlationId, { cause: error });
-  if (candidate.code === "validation_error" || candidate.code === "invariant_violation" || candidate.code === "tenant_violation") return new ApplicationError("VALIDATION_FAILED", candidate.message ?? "Application validation failed", {}, correlationId, { cause: error });
+  if (candidate.code === "concurrency_conflict" || candidate.code === "persistence_conflict") return new ApplicationError("CONCURRENCY_CONFLICT", "Optimistic concurrency conflict", {}, correlationId, { cause: error });
+  if (candidate.code === "validation_error" || candidate.code === "invariant_violation" || candidate.code === "tenant_violation" || candidate.code === "persistence_failure") return new ApplicationError("VALIDATION_FAILED", candidate.message ?? "Application validation failed", {}, correlationId, { cause: error });
   return new ApplicationError("APPLICATION_FAILURE", "Application command failed", {}, correlationId, { cause: error });
 }
 

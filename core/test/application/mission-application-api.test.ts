@@ -204,7 +204,7 @@ test("Mission API validates before opening a Unit of Work", async () => {
       }
     }),
     new ApplicationQueryRunner({
-      open: () => ({ mission: {} as ReadRepositorySession["mission"], authority: {} as ReadRepositorySession["authority"], decision: {} as ReadRepositorySession["decision"] })
+      open: () => ({ mission: {} as ReadRepositorySession["mission"], authority: {} as ReadRepositorySession["authority"], decision: {} as ReadRepositorySession["decision"], agent: {} as ReadRepositorySession["agent"], execution: {} as ReadRepositorySession["execution"] })
     })
   );
   assert.throws(
