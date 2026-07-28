@@ -5,3 +5,7 @@ dist/
 npm-debug.log*
 .backup_*
 .instructions
+/.pnpm-store
+/clients/typescript/.tmp
+/core/.tmp
+/transport/http/.tmp
