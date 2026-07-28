@@ -1,0 +1,36 @@
+:root {
+  --bba-font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --bba-bg: #f5f7fa; --bba-surface: #ffffff; --bba-surface-raised: #ffffff; --bba-text: #172033; --bba-muted: #61708a;
+  --bba-border: #d8deea; --bba-primary: #284ee7; --bba-primary-contrast: #ffffff; --bba-focus: #7090ff;
+  --bba-positive: #19734b; --bba-warning: #8a5700; --bba-danger: #b42318; --bba-shadow: 0 12px 35px rgb(22 35 60 / 10%);
+  font-family: var(--bba-font); color: var(--bba-text); background: var(--bba-bg);
+}
+:root[data-theme="dark"] {
+  --bba-bg: #0d1220; --bba-surface: #151c2d; --bba-surface-raised: #1b2438; --bba-text: #edf2ff; --bba-muted: #aab6cd;
+  --bba-border: #34415b; --bba-primary: #91a7ff; --bba-primary-contrast: #11182a; --bba-focus: #a7b7ff; --bba-positive: #75d6ab; --bba-warning: #f3c268; --bba-danger: #ff9b91;
+}
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; min-height: 100vh; background: var(--bba-bg); color: var(--bba-text); }
+button, input { font: inherit; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--bba-focus); outline-offset: 2px; }
+.bba-button { border: 1px solid transparent; border-radius: .65rem; min-height: 2.65rem; padding: .65rem 1rem; font-weight: 700; cursor: pointer; }
+.bba-button--primary { background: var(--bba-primary); color: var(--bba-primary-contrast); }
+.bba-button--secondary { background: var(--bba-surface); border-color: var(--bba-border); color: var(--bba-text); }
+.bba-button--ghost { background: transparent; color: var(--bba-text); }
+.bba-input { width: 100%; min-height: 2.65rem; border: 1px solid var(--bba-border); border-radius: .65rem; padding: .65rem .8rem; color: var(--bba-text); background: var(--bba-surface); }
+.bba-field { display: grid; gap: .4rem; }
+.bba-field label { font-weight: 700; }
+.bba-field__message { min-height: 1.25rem; color: var(--bba-muted); font-size: .875rem; }
+.bba-field__message--error { color: var(--bba-danger); }
+.bba-card { padding: 1.25rem; border: 1px solid var(--bba-border); border-radius: 1rem; background: var(--bba-surface); box-shadow: var(--bba-shadow); }
+.bba-badge { display: inline-flex; border-radius: 999px; padding: .25rem .6rem; background: var(--bba-bg); color: var(--bba-muted); font-size: .78rem; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; }
+.bba-badge--positive { color: var(--bba-positive); }.bba-badge--warning { color: var(--bba-warning); }
+.bba-alert { border: 1px solid currentColor; border-radius: .75rem; padding: 1rem; display: grid; gap: .35rem; }.bba-alert--danger { color: var(--bba-danger); }.bba-alert--info { color: var(--bba-primary); }
+.bba-spinner { display: inline-flex; align-items: center; gap: .6rem; color: var(--bba-muted); }.bba-spinner__mark { width: 1rem; height: 1rem; border: 2px solid var(--bba-border); border-top-color: var(--bba-primary); border-radius: 50%; animation: bba-spin .8s linear infinite; }
+.bba-empty { padding: 2rem; text-align: center; color: var(--bba-muted); }.bba-empty strong { display: block; color: var(--bba-text); margin-bottom: .35rem; }
+.bba-nav-link { display: flex; padding: .7rem .85rem; border-radius: .6rem; text-decoration: none; color: var(--bba-muted); }.bba-nav-link--active { background: var(--bba-bg); color: var(--bba-text); font-weight: 800; }
+.bba-skip-link { position: fixed; z-index: 100; left: 1rem; top: -5rem; background: var(--bba-primary); color: var(--bba-primary-contrast); padding: .75rem 1rem; border-radius: .5rem; }.bba-skip-link:focus { top: 1rem; }
+.bba-drawer__overlay { position: fixed; inset: 0; background: rgb(5 10 20 / 65%); z-index: 40; }.bba-drawer__content { position: fixed; z-index: 41; inset: 0 auto 0 0; width: min(22rem, 88vw); padding: 1.25rem; background: var(--bba-surface-raised); box-shadow: var(--bba-shadow); }.bba-drawer__body { margin: 1.25rem 0; }
+@keyframes bba-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }

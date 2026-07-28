@@ -7,6 +7,12 @@ dist/
 /transport/http/.tmp/
 /clients/typescript/dist/
 /clients/typescript/.tmp/
+/apps/*/dist/
+/apps/*/.tmp/
+/apps/*/playwright-report/
+/apps/*/test-results/
+/packages/*/dist/
+/packages/*/.tmp/
 .env
 .trash
 npm-debug.log*

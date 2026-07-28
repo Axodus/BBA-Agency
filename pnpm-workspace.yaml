@@ -1,4 +1,6 @@
 packages:
+  - apps/*
+  - packages/*
   - core
   - transport/*
   - clients/*
@@ -11,6 +13,7 @@ ignoredBuiltDependencies:
   - protobufjs
   - sharp
 allowBuilds:
+  msw: true
   onnxruntime-node: true
   protobufjs: true
   sharp: true

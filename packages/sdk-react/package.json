@@ -1,0 +1,23 @@
+{
+  "name": "@bba/sdk-react",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/index.ts" },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run",
+    "lint": "node ../../tools/workspace-quality-check.mjs --lint src test",
+    "format:check": "node ../../tools/workspace-quality-check.mjs --format src test",
+    "architecture": "node tools/check-boundaries.mjs",
+    "check": "pnpm run typecheck && pnpm run test && pnpm run lint && pnpm run format:check && pnpm run architecture"
+  },
+  "dependencies": {
+    "@bba/api-client": "workspace:*",
+    "@tanstack/react-query": "5.101.4"
+  },
+  "peerDependencies": { "react": "19.2.8" },
+  "devDependencies": {
+    "@testing-library/react": "16.3.2", "@types/react": "19.2.17", "jsdom": "30.0.0", "msw": "2.15.0", "typescript": "6.0.3", "vitest": "4.1.10"
+  }
+}
