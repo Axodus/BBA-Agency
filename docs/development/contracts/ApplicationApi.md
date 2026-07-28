@@ -2,7 +2,10 @@
 
 The M12 Application layer exposes an intentionally small, transport-neutral
 public surface: the Mission, Governance and AI Workforce Command and Query
-ports declared in `ApplicationApiPorts.ts`.
+ports declared in `ApplicationApiPorts.ts`. Institutional Assets additionally
+exposes the executable `createAsset`, `registerAsset`, `retireAsset`,
+`getAsset` and `listAssets` surface. `assignAsset` remains blocked until an
+approved application use case exists.
 
 Commands receive an explicit `ApplicationCommandContext` and a mutable command
 containing `reason` and `idempotencyKey`. Every successful first execution and

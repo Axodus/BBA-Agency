@@ -1,6 +1,6 @@
 import type { PersistenceProviderPort, PersistableAggregate, TransactionOutcome, UnitOfWorkPort } from "./PersistencePorts.js";
 import { TransactionContext } from "./TransactionContext.js";
-import { ProviderBackedAgentRepository, ProviderBackedAuthorityRepository, ProviderBackedDecisionRepository, ProviderBackedExecutionRepository, ProviderBackedMissionRepository } from "./ProviderBackedRepositories.js";
+import { ProviderBackedAgentRepository, ProviderBackedAssetRepository, ProviderBackedAuthorityRepository, ProviderBackedDecisionRepository, ProviderBackedExecutionRepository, ProviderBackedKnowledgeRepository, ProviderBackedMissionRepository, ProviderBackedPolicyRepository } from "./ProviderBackedRepositories.js";
 import type { CommandTransaction, CommandTransactionFactory, ReadRepositorySession, ReadRepositorySessionFactory, TransactionalRepositorySession } from "../../application/services/TransactionalRepositorySession.js";
 import type { QueryContext } from "../../application/dto/ApplicationContext.js";
 
@@ -12,7 +12,9 @@ class ReferenceCommandTransaction implements CommandTransaction {
     const decision = new ProviderBackedDecisionRepository(provider, context).withUnitOfWork(uow);
     const agent = new ProviderBackedAgentRepository(provider, context).withUnitOfWork(uow);
     const execution = new ProviderBackedExecutionRepository(provider, context).withUnitOfWork(uow);
-    this.repositories = Object.freeze({ mission, authority, decision, agent, execution, context, stageAggregate: <TAggregate extends PersistableAggregate, TSnapshot>(aggregate: TAggregate, expectedVersion: number, codec: { readonly aggregateType: string; getAggregateId(value: TAggregate): string; getTenantId(value: TAggregate): string; getVersion(value: TAggregate): number; toSnapshot(value: TAggregate): TSnapshot; rehydrate(snapshot: TSnapshot): TAggregate }) => uow.stage(aggregate, codec, expectedVersion) }) as TransactionalRepositorySession;
+    const asset = new ProviderBackedAssetRepository(provider, context).withUnitOfWork(uow);
+    const knowledge = new ProviderBackedKnowledgeRepository(provider, context).withUnitOfWork(uow); const policy = new ProviderBackedPolicyRepository(provider, context).withUnitOfWork(uow);
+    this.repositories = Object.freeze({ mission, authority, decision, agent, execution, asset, knowledge, policy, context, stageAggregate: <TAggregate extends PersistableAggregate, TSnapshot>(aggregate: TAggregate, expectedVersion: number, codec: { readonly aggregateType: string; getAggregateId(value: TAggregate): string; getTenantId(value: TAggregate): string; getVersion(value: TAggregate): number; toSnapshot(value: TAggregate): TSnapshot; rehydrate(snapshot: TSnapshot): TAggregate }) => uow.stage(aggregate, codec, expectedVersion) }) as unknown as TransactionalRepositorySession;
   }
   public async commit(fingerprint: import("./PersistenceTypes.js").CanonicalPayloadDescriptor): Promise<void> { await this.uow.commit(fingerprint); }
   public async rollback(): Promise<void> { await this.uow.rollback(); }
@@ -34,7 +36,10 @@ export class ReferenceReadRepositorySessionFactory implements ReadRepositorySess
       authority: new ProviderBackedAuthorityRepository(this.provider),
       decision: new ProviderBackedDecisionRepository(this.provider),
       agent: new ProviderBackedAgentRepository(this.provider),
-      execution: new ProviderBackedExecutionRepository(this.provider)
+      execution: new ProviderBackedExecutionRepository(this.provider),
+      asset: new ProviderBackedAssetRepository(this.provider),
+      knowledge: new ProviderBackedKnowledgeRepository(this.provider),
+      policy: new ProviderBackedPolicyRepository(this.provider)
     });
   }
 }

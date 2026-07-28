@@ -14,3 +14,7 @@ export * from "./bindings/AIWorkforceBindings.js";
 export { MissionApplicationApi } from "./bindings/MissionApplicationApi.js";
 export { GovernanceApplicationApi } from "./bindings/GovernanceApplicationApi.js";
 export { AIWorkforceApplicationApi } from "./bindings/AIWorkforceApplicationApi.js";
+export * from "./bindings/InstitutionalAssetsBindings.js";
+export { InstitutionalAssetsApplicationApi } from "./bindings/InstitutionalAssetsApplicationApi.js";
+export * from "./bindings/KnowledgePolicyBindings.js";
+export { KnowledgePolicyApplicationApi } from "./bindings/KnowledgePolicyApplicationApi.js";

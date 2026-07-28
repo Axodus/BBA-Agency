@@ -6,6 +6,9 @@ import type { AuthorityRepository } from "../../modules/governance/ports/Authori
 import type { DecisionRepository } from "../../modules/governance/ports/DecisionRepository.js";
 import type { AgentRepository } from "../../modules/ai-workforce/ports/AgentRepository.js";
 import type { ExecutionRepository } from "../../modules/ai-workforce/ports/ExecutionRepository.js";
+import type { AssetRepository } from "../../modules/institutional-assets/ports/AssetRepository.js";
+import type { KnowledgeRepository } from "../../modules/knowledge-policy/ports/KnowledgeRepository.js";
+import type { PolicyRepository } from "../../modules/knowledge-policy/ports/PolicyRepository.js";
 
 export interface TransactionalRepositorySession {
   readonly mission: MissionRepository;
@@ -13,6 +16,9 @@ export interface TransactionalRepositorySession {
   readonly decision: DecisionRepository;
   readonly agent: AgentRepository;
   readonly execution: ExecutionRepository;
+  readonly asset: AssetRepository;
+  readonly knowledge: KnowledgeRepository;
+  readonly policy: PolicyRepository;
   readonly context: TransactionContext;
   stageAggregate<TAggregate extends PersistableAggregate, TSnapshot>(aggregate: TAggregate, expectedVersion: number, codec: { readonly aggregateType: string; getAggregateId(value: TAggregate): string; getTenantId(value: TAggregate): string; getVersion(value: TAggregate): number; toSnapshot(value: TAggregate): TSnapshot; rehydrate(snapshot: TSnapshot): TAggregate }): void;
 }
@@ -23,6 +29,9 @@ export interface ReadRepositorySession {
   readonly decision: Pick<DecisionRepository, "findById" | "exists">;
   readonly agent: Pick<AgentRepository, "findById" | "exists">;
   readonly execution: Pick<ExecutionRepository, "findById" | "exists">;
+  readonly asset: Pick<AssetRepository, "findById" | "exists" | "listByTenant">;
+  readonly knowledge: Pick<KnowledgeRepository, "findById" | "exists" | "listByTenant">;
+  readonly policy: Pick<PolicyRepository, "findById" | "exists" | "listByTenant">;
 }
 
 export interface CommandTransaction { readonly repositories: TransactionalRepositorySession; commit(fingerprint: CanonicalPayloadDescriptor): Promise<void>; rollback(): Promise<void>; outcome(): TransactionOutcome; committedFingerprint?(): CanonicalPayloadDescriptor | null; }

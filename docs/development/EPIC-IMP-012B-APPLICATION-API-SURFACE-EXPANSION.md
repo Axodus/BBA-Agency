@@ -1,6 +1,6 @@
 # EPIC-IMP-012B — Application API Surface Expansion
 
-Status: INCREMENTAL — B.2 AI WORKFORCE PASS
+Status: INCREMENTAL — B.3 INSTITUTIONAL ASSETS PARTIAL; B.4 REMAINING CONTEXTS IN PROGRESS
 Origin: M12 corrective scope decision  
 Dependency: EPIC-IMP-012 = PASS
 
@@ -81,7 +81,7 @@ or permissive adapter was introduced.
 | Mission | 4 / 4 | 1 / 1 | 100% |
 | Governance | 6 / 6 | 2 / 2 | 100% |
 | AI Workforce | 4 / 4 | 2 / 2 | 100% |
-| Institutional Assets | Not Started | Not Started | Not Started |
+| Institutional Assets | 3 / 3 executable | 2 / 2 | 100% executable; 1 planned blocked |
 | Knowledge/Policy | Not Started | Not Started | Not Started |
 | Workflow | Not Started | Not Started | Not Started |
 | Review | Not Started | Not Started | Not Started |
@@ -150,3 +150,11 @@ The test covers bindings, DTO mapping and validation, authorization rejection,
 single transaction behavior, atomic Agent/Execution start, generic replay,
 read-only projections and context propagation. Domain, M11, `demo/` and
 legacy `src/` remain unchanged.
+
+## B.3 — Institutional Assets Application API
+
+Status: PARTIAL for implementation closeout. Coverage is `5 / 5` executable
+and `5 / 6` planned. The surface contains `createAsset`, nominal alias
+`registerAsset`, `retireAsset`, `getAsset` and `listAssets`. `assignAsset`
+remains BLOCKED because no approved executable use case exists; it is not
+included in the runtime port.

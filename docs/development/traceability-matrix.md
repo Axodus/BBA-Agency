@@ -182,6 +182,16 @@ in the M0 report.
 | REQ-IMP-012B.2-005 | GDE-081 | Read-only Workforce queries | `ReadRepositorySession` | `ai-workforce-application-api.test.ts` | ADR-IMP-0039 | DONE |
 | REQ-IMP-012B.2-006 | GDE-080 | Atomic Agent and Execution start | `AIWorkforceBindings` | `ai-workforce-application-api.test.ts` | ADR-IMP-0039 | DONE |
 
+## EPIC-IMP-012B.3 — Institutional Assets Application API
+
+| Requirement | Source document | Invariant / responsibility | Code path | Test path | ADR | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+| REQ-IMP-012B.3-001 | GDE-081 | Typed Asset command surface | `InstitutionalAssetsCommandApiPort` | `institutional-assets-application-api.test.ts` | ADR-IMP-0037 | DONE |
+| REQ-IMP-012B.3-002 | GDE-081 | Typed Asset query surface | `InstitutionalAssetsQueryApiPort` | `institutional-assets-application-api.test.ts` | ADR-IMP-0037 | DONE |
+| REQ-IMP-012B.3-003 | GDE-080 | Generic Asset replay | `InstitutionalAssetsBindings` | `institutional-assets-application-api.test.ts` | ADR-IMP-0038 | DONE |
+| REQ-IMP-012B.3-004 | GDE-081 | Read-only Asset projections | `ReadRepositorySession.asset` | `institutional-assets-application-api.test.ts` | ADR-IMP-0039 | DONE |
+| REQ-IMP-012B.3-005 | GDE-081 | `assignAsset` blocked without use case | inventory and API contract | document review | ADR-IMP-0037 | BLOCKED |
+
 ## EPIC-IMP-010 — Connector Framework
 
 | Requirement | Source document | Invariant / responsibility | Code path | Test path | ADR | Status |
