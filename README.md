@@ -134,7 +134,11 @@ BBA-Agency/
 │   ├── data/
 │   ├── docs/
 │   └── src/
-├── docs/
+├── .rag/
+│   ├── development/
+│   ├── architecture/
+│   ├── adr/
+│   └── plans/
 ├── src/
 ├── package.json
 └── tsconfig.json
@@ -157,7 +161,7 @@ Contributor and coding-agent instructions are defined in [`AGENTS.md`](AGENTS.md
 
 ## Frontend foundation
 
-The standalone web foundation lives in `apps/bba-web` and consumes the generated TypeScript SDK exclusively through `@bba/sdk-react`. It currently provides the responsive application shell and a read-only Mission lookup slice. See [`docs/architecture/EPIC-IMP-014-FRONTEND-FOUNDATION.md`](docs/architecture/EPIC-IMP-014-FRONTEND-FOUNDATION.md) for package boundaries, local-session constraints, and validation commands.
+The standalone web foundation lives in `apps/bba-web` and consumes the generated TypeScript SDK exclusively through `@bba/sdk-react`. It currently provides the responsive application shell and a read-only Mission lookup slice. See [EPIC-IMP-014 Frontend Foundation](.rag/architecture/EPIC-IMP-014-FRONTEND-FOUNDATION.md) for package boundaries, local-session constraints, and validation commands.
 
 ## Important disclosure
 
