@@ -1,4 +1,5 @@
 import * as Dialog from "@radix-ui/react-dialog";
+import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import { type ComponentPropsWithoutRef, type ReactNode, useId } from "react";
 import { Link as RouterLink, NavLink as RouterNavLink, type LinkProps, type NavLinkProps } from "react-router-dom";
 
@@ -13,6 +14,9 @@ export function Button({ className, variant = "primary", ...props }: ComponentPr
 export function Input({ className, ...props }: ComponentPropsWithoutRef<"input">) {
   return <input className={classes("bba-input", className)} {...props} />;
 }
+export function Textarea({ className, ...props }: ComponentPropsWithoutRef<"textarea">) { return <textarea className={classes("bba-input", "bba-textarea", className)} {...props} />; }
+export function Select({ className, ...props }: ComponentPropsWithoutRef<"select">) { return <select className={classes("bba-input", className)} {...props} />; }
+export function Checkbox({ label, ...props }: ComponentPropsWithoutRef<"input"> & { readonly label: string }) { return <label className="bba-checkbox"><input type="checkbox" {...props} /><span>{label}</span></label>; }
 
 export function Field({ label, hint, error, id: providedId, children }: { readonly label: string; readonly hint?: string; readonly error?: string; readonly id?: string; readonly children: ReactNode }) {
   const generatedId = useId();
@@ -47,6 +51,10 @@ export function NavLink({ className, ...props }: NavLinkProps) {
 }
 export function SkipLink({ targetId = "main-content" }: { readonly targetId?: string }) { return <a className="bba-skip-link" href={`#${targetId}`}>Pular para o conteúdo principal</a>; }
 
-export function Drawer({ trigger, title, description, children }: { readonly trigger: ReactNode; readonly title: string; readonly description?: string; readonly children: ReactNode }) {
-  return <Dialog.Root><Dialog.Trigger asChild>{trigger}</Dialog.Trigger><Dialog.Portal><Dialog.Overlay className="bba-drawer__overlay" /><Dialog.Content className="bba-drawer__content"><Dialog.Title>{title}</Dialog.Title>{description === undefined ? null : <Dialog.Description>{description}</Dialog.Description>}<div className="bba-drawer__body">{children}</div><Dialog.Close asChild><Button variant="ghost" aria-label="Fechar navegação">Fechar</Button></Dialog.Close></Dialog.Content></Dialog.Portal></Dialog.Root>;
+export function Drawer({ trigger, title, description, children, open, onOpenChange }: { readonly trigger?: ReactNode; readonly title: string; readonly description?: string; readonly children: ReactNode; readonly open?: boolean; onOpenChange?(open: boolean): void }) {
+  return <Dialog.Root {...(open === undefined ? {} : { open })} {...(onOpenChange === undefined ? {} : { onOpenChange })}>{trigger === undefined ? null : <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>}<Dialog.Portal><Dialog.Overlay className="bba-drawer__overlay" /><Dialog.Content className="bba-drawer__content"><Dialog.Title>{title}</Dialog.Title>{description === undefined ? null : <Dialog.Description>{description}</Dialog.Description>}<div className="bba-drawer__body">{children}</div><Dialog.Close asChild><Button variant="ghost" aria-label="Fechar navegação">Fechar</Button></Dialog.Close></Dialog.Content></Dialog.Portal></Dialog.Root>;
+}
+
+export function ConfirmationDialog({ trigger, title, description, confirmLabel, onConfirm }: { readonly trigger: ReactNode; readonly title: string; readonly description: ReactNode; readonly confirmLabel: string; onConfirm(): void }) {
+  return <AlertDialog.Root><AlertDialog.Trigger asChild>{trigger}</AlertDialog.Trigger><AlertDialog.Portal><AlertDialog.Overlay className="bba-drawer__overlay" /><AlertDialog.Content className="bba-confirmation"><AlertDialog.Title>{title}</AlertDialog.Title><AlertDialog.Description asChild><div>{description}</div></AlertDialog.Description><div className="bba-confirmation__actions"><AlertDialog.Cancel asChild><Button variant="secondary">Voltar</Button></AlertDialog.Cancel><AlertDialog.Action asChild><Button onClick={onConfirm}>{confirmLabel}</Button></AlertDialog.Action></div></AlertDialog.Content></AlertDialog.Portal></AlertDialog.Root>;
 }

@@ -4,7 +4,7 @@ import { createContext, type ReactNode, useContext, useEffect, useMemo, useState
 import { createBbaQueryClient } from "../client/query-client.js";
 import type { AuthAdapter, CorrelationIdProvider, SdkRuntimeState, WorkspaceAdapter } from "./contracts.js";
 
-interface ReadySdkRuntime {
+export interface ReadySdkRuntime {
   readonly client: Client;
   readonly tenantId: string;
 }

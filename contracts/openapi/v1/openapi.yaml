@@ -9666,6 +9666,9 @@
           "outcome": {
             "$ref": "#/components/schemas/JsonValue"
           },
+          "expectedVersion": {
+            "$ref": "#/components/schemas/JsonValue"
+          },
           "reason": {
             "$ref": "#/components/schemas/JsonValue"
           },
@@ -9740,6 +9743,9 @@
             "$ref": "#/components/schemas/JsonValue"
           },
           "outcome": {
+            "$ref": "#/components/schemas/JsonValue"
+          },
+          "expectedVersion": {
             "$ref": "#/components/schemas/JsonValue"
           },
           "reason": {
@@ -9839,6 +9845,9 @@
           "outcome": {
             "$ref": "#/components/schemas/JsonValue"
           },
+          "expectedVersion": {
+            "$ref": "#/components/schemas/JsonValue"
+          },
           "reason": {
             "$ref": "#/components/schemas/JsonValue"
           },
@@ -9913,6 +9922,9 @@
             "$ref": "#/components/schemas/JsonValue"
           },
           "outcome": {
+            "$ref": "#/components/schemas/JsonValue"
+          },
+          "expectedVersion": {
             "$ref": "#/components/schemas/JsonValue"
           },
           "reason": {
@@ -9991,6 +10003,9 @@
           "outcome": {
             "$ref": "#/components/schemas/JsonValue"
           },
+          "expectedVersion": {
+            "$ref": "#/components/schemas/JsonValue"
+          },
           "reason": {
             "$ref": "#/components/schemas/JsonValue"
           },
@@ -10065,6 +10080,9 @@
             "$ref": "#/components/schemas/JsonValue"
           },
           "outcome": {
+            "$ref": "#/components/schemas/JsonValue"
+          },
+          "expectedVersion": {
             "$ref": "#/components/schemas/JsonValue"
           },
           "reason": {

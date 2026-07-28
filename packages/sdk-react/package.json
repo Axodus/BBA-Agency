@@ -10,7 +10,9 @@
     "lint": "node ../../tools/workspace-quality-check.mjs --lint src test",
     "format:check": "node ../../tools/workspace-quality-check.mjs --format src test",
     "architecture": "node tools/check-boundaries.mjs",
-    "check": "pnpm run typecheck && pnpm run test && pnpm run lint && pnpm run format:check && pnpm run architecture"
+    "inventory:generate": "node tools/generate-product-inventory.mjs",
+    "inventory:check": "node tools/check-product-inventory.mjs",
+    "check": "pnpm run inventory:check && pnpm run typecheck && pnpm run test && pnpm run lint && pnpm run format:check && pnpm run architecture"
   },
   "dependencies": {
     "@bba/api-client": "workspace:*",

@@ -307,6 +307,7 @@ export type GovernanceCreateAuthorityData = {
     authorityReference?: JsonValue;
     assignmentReference?: JsonValue;
     outcome?: JsonValue;
+    expectedVersion?: JsonValue;
     reason?: JsonValue;
     occurredAt?: JsonValue;
     evidence?: JsonValue;
@@ -333,6 +334,7 @@ export type GovernanceAssignAuthorityData = {
     authorityReference?: JsonValue;
     assignmentReference?: JsonValue;
     outcome?: JsonValue;
+    expectedVersion?: JsonValue;
     reason?: JsonValue;
     occurredAt?: JsonValue;
     evidence?: JsonValue;
@@ -364,6 +366,7 @@ export type GovernanceCreateDecisionData = {
     authorityReference?: JsonValue;
     assignmentReference?: JsonValue;
     outcome?: JsonValue;
+    expectedVersion?: JsonValue;
     reason?: JsonValue;
     occurredAt?: JsonValue;
     evidence?: JsonValue;
@@ -390,6 +393,7 @@ export type GovernanceApproveDecisionData = {
     authorityReference?: JsonValue;
     assignmentReference?: JsonValue;
     outcome?: JsonValue;
+    expectedVersion?: JsonValue;
     reason?: JsonValue;
     occurredAt?: JsonValue;
     evidence?: JsonValue;
@@ -416,6 +420,7 @@ export type GovernanceRejectDecisionData = {
     authorityReference?: JsonValue;
     assignmentReference?: JsonValue;
     outcome?: JsonValue;
+    expectedVersion?: JsonValue;
     reason?: JsonValue;
     occurredAt?: JsonValue;
     evidence?: JsonValue;
@@ -442,6 +447,7 @@ export type GovernanceFinalizeDecisionData = {
     authorityReference?: JsonValue;
     assignmentReference?: JsonValue;
     outcome?: JsonValue;
+    expectedVersion?: JsonValue;
     reason?: JsonValue;
     occurredAt?: JsonValue;
     evidence?: JsonValue;

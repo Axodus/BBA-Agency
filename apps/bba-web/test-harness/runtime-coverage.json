@@ -1,0 +1,11 @@
+{
+  "mission": "core/test/application/mission-application-api.test.ts",
+  "governance": "core/test/application/governance-application-api.test.ts",
+  "ai-workforce": "core/test/application/ai-workforce-application-api.test.ts",
+  "institutional-assets": "core/test/application/institutional-assets-application-api.test.ts",
+  "knowledge-policy": "core/test/application/knowledge-policy-application-api.test.ts",
+  "workflow": "core/test/application/workflow-application-api.test.ts",
+  "review": "core/test/application/review-application-api.test.ts",
+  "publication": "core/test/application/publication-application-api.test.ts",
+  "connector": "core/test/application/connector-application-api.test.ts"
+}

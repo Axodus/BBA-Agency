@@ -28,7 +28,7 @@ export function createBbaClient(configuration: ClientConfiguration): Client {
     const tenantId = configuration.getTenantId();
     if (tenantId !== undefined) headers.set("X-Tenant-Id", tenantId);
     const correlationId = configuration.getCorrelationId?.();
-    if (correlationId !== undefined) headers.set("X-Correlation-Id", correlationId);
+    if (correlationId !== undefined && !headers.has("X-Correlation-Id")) headers.set("X-Correlation-Id", correlationId);
     return new Request(request, { headers });
   });
   return client;

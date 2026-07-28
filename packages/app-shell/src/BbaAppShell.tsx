@@ -30,7 +30,7 @@ export function BbaAppShell({ runtime }: { readonly runtime: ShellRuntimeState }
   const location = useLocation();
   const main = useRef<HTMLElement>(null);
   useEffect(() => {
-    const item = navigationItems.find((candidate) => candidate.path === location.pathname || (candidate.path === "/missions" && location.pathname.startsWith("/missions/")));
+    const item = navigationItems.find((candidate) => candidate.path === location.pathname || (candidate.path !== undefined && candidate.path !== "/" && location.pathname.startsWith(`${candidate.path}/`)));
     document.title = `${item?.label ?? "BBA Agency"} · BBA Agency`;
     if (location.hash === "") main.current?.focus({ preventScroll: true });
   }, [location]);

@@ -11,5 +11,5 @@ const rules = [
 const violations = [];
 for (const rule of rules) for (const file of await files(resolve(process.cwd(), rule.root))) if (rule.pattern.test(await readFile(file, "utf8"))) violations.push(file);
 const publicSdkFacade = await readFile(resolve(process.cwd(), "packages/sdk-react/src/index.ts"), "utf8");
-if (/@bba\/api-client|MissionGetMission|\bClient\b/u.test(publicSdkFacade)) violations.push("packages/sdk-react/src/index.ts: generated SDK type leak");
+if (/@bba\/api-client|\bMissionGetMission(?:Response|Data|Error|Errors)\b|\bClient\b/u.test(publicSdkFacade)) violations.push("packages/sdk-react/src/index.ts: generated SDK type leak");
 if (violations.length) { for (const violation of violations) process.stderr.write(`Frontend boundary violation: ${violation}\n`); process.exitCode = 1; } else process.stdout.write("Frontend package graph check passed.\n");

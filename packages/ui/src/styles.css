@@ -19,6 +19,7 @@ a { color: inherit; }
 .bba-button--secondary { background: var(--bba-surface); border-color: var(--bba-border); color: var(--bba-text); }
 .bba-button--ghost { background: transparent; color: var(--bba-text); }
 .bba-input { width: 100%; min-height: 2.65rem; border: 1px solid var(--bba-border); border-radius: .65rem; padding: .65rem .8rem; color: var(--bba-text); background: var(--bba-surface); }
+.bba-textarea { min-height: 7rem; resize: vertical; }.bba-checkbox { display: inline-flex; align-items: center; gap: .55rem; }.bba-checkbox input { width: 1.1rem; height: 1.1rem; }
 .bba-field { display: grid; gap: .4rem; }
 .bba-field label { font-weight: 700; }
 .bba-field__message { min-height: 1.25rem; color: var(--bba-muted); font-size: .875rem; }
@@ -32,5 +33,6 @@ a { color: inherit; }
 .bba-nav-link { display: flex; padding: .7rem .85rem; border-radius: .6rem; text-decoration: none; color: var(--bba-muted); }.bba-nav-link--active { background: var(--bba-bg); color: var(--bba-text); font-weight: 800; }
 .bba-skip-link { position: fixed; z-index: 100; left: 1rem; top: -5rem; background: var(--bba-primary); color: var(--bba-primary-contrast); padding: .75rem 1rem; border-radius: .5rem; }.bba-skip-link:focus { top: 1rem; }
 .bba-drawer__overlay { position: fixed; inset: 0; background: rgb(5 10 20 / 65%); z-index: 40; }.bba-drawer__content { position: fixed; z-index: 41; inset: 0 auto 0 0; width: min(22rem, 88vw); padding: 1.25rem; background: var(--bba-surface-raised); box-shadow: var(--bba-shadow); }.bba-drawer__body { margin: 1.25rem 0; }
+.bba-confirmation { position: fixed; z-index: 50; top: 50%; left: 50%; transform: translate(-50%, -50%); width: min(34rem, calc(100vw - 2rem)); padding: 1.25rem; border-radius: 1rem; background: var(--bba-surface-raised); box-shadow: var(--bba-shadow); }.bba-confirmation__actions { display: flex; justify-content: flex-end; gap: .75rem; margin-top: 1.25rem; }
 @keyframes bba-spin { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }

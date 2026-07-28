@@ -16,6 +16,7 @@
     "check": "pnpm run typecheck && pnpm run test && pnpm run lint && pnpm run format:check"
   },
   "dependencies": {
+    "@radix-ui/react-alert-dialog": "1.1.23",
     "@radix-ui/react-dialog": "1.1.23",
     "react-router-dom": "7.18.1"
   },
