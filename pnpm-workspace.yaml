@@ -8,7 +8,7 @@ ignoredBuiltDependencies:
   - onnxruntime-node
   - protobufjs
   - sharp
- allowBuilds:
+allowBuilds:
   onnxruntime-node: true
   protobufjs: true
   sharp: true
