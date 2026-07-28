@@ -15,6 +15,7 @@ const contexts = [
 ];
 
 const exclusions = new Set(["executeTransport"]);
+const plannedBlocked = [{ boundedContext: "institutional-assets", exportName: "assignAsset", category: "PLANNED_PUBLIC_OPERATION", status: "BLOCKED" }];
 const operationPattern = /(?:export\s+\{\s*([^}]+)\s*\}|export\s+\*\s+from\s+["']\.\/([^"']+)["'])/g;
 
 function namesFromFile(file) {
@@ -62,6 +63,7 @@ const entries = discovered.map((entry) => ({
         ? "TECHNICAL_EXCLUSION"
         : "INFORMATIONAL"
 }));
+entries.push(...plannedBlocked);
 const commandEntries = entries.filter((entry) => entry.category === "INVOCABLE_APPLICATION_EXPORT" || entry.category === "EXPLICIT_EXCLUSION");
 const output = {
   schema: "application-capability-inventory-v3",

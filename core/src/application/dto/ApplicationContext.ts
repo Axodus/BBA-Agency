@@ -69,6 +69,23 @@ export interface GetPolicyRequestDto extends QueryDto {}
 export interface ListPoliciesRequestDto extends QueryDto {}
 export interface KnowledgeDto { readonly knowledgeId: string; readonly tenantId: string; readonly status: string; readonly title: string; readonly summary: string; readonly domainArea: string; readonly audience: string; readonly currentRevision: number; readonly version: number; }
 export interface PolicyDto { readonly policyId: string; readonly tenantId: string; readonly status: string; readonly title: string; readonly summary: string; readonly scope: string; readonly currentVersionId: string; readonly version: number; }
+export interface WorkflowCommandRequestDto extends OperationCommandDto {}
+export interface WorkflowRequestDto extends WorkflowCommandRequestDto {}
+export interface GetWorkflowRequestDto extends QueryDto {}
+export interface GetWorkflowExecutionRequestDto extends QueryDto {}
+export interface WorkflowDto { readonly workflowId: string; readonly tenantId: string; readonly status: string; readonly version: number; }
+export interface WorkflowExecutionDto { readonly executionId: string; readonly tenantId: string; readonly status: string; readonly version: number; }
+export interface ReviewCommandRequestDto extends OperationCommandDto {}
+export interface GetReviewRequestDto extends QueryDto {}
+export interface ReviewDto { readonly reviewId: string; readonly tenantId: string; readonly status: string; readonly version: number; }
+export interface PublicationCommandRequestDto extends OperationCommandDto {}
+export interface GetPublicationRequestDto extends QueryDto {}
+export interface PublicationDto { readonly publicationId: string; readonly tenantId: string; readonly status: string; readonly version: number; }
+export interface ConnectorCommandRequestDto extends OperationCommandDto {}
+export interface GetConnectorRequestDto extends QueryDto {}
+export interface GetConnectorExecutionRequestDto extends QueryDto {}
+export interface ConnectorDto { readonly connectorId: string; readonly tenantId: string; readonly status: string; readonly version: number; }
+export interface ConnectorExecutionDto { readonly executionId: string; readonly tenantId: string; readonly status: string; readonly version: number; }
 
 export interface ProvisionAgentResponseDto extends CommittedOperationResultDto {}
 export interface AssignAgentResponseDto extends CommittedOperationResultDto {}

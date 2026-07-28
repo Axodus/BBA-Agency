@@ -1,0 +1,21 @@
+import assert from "node:assert/strict";
+import { test } from "node:test";
+import { KnowledgePolicyApplicationApi } from "../../src/application/bindings/KnowledgePolicyApplicationApi.js";
+import { createKnowledgePolicyBindings } from "../../src/application/bindings/KnowledgePolicyBindings.js";
+import { ApplicationCommandRunner } from "../../src/application/services/ApplicationCommandRunner.js";
+import { ApplicationQueryRunner } from "../../src/application/services/ApplicationQueryRunner.js";
+import { ReferenceApplicationTransactionFactory, ReferenceReadRepositorySessionFactory } from "../../src/infrastructure/persistence/ApplicationTransactionFactory.js";
+import { ReferencePersistenceProvider } from "../../src/infrastructure/persistence/ReferencePersistenceProvider.js";
+import { InMemoryKnowledgeReferenceValidation } from "../../src/modules/knowledge-policy/infrastructure/InMemoryKnowledgeReferenceValidation.js";
+import { AssetId, AssetVersionId, TenantId } from "../../src/shared/identity/index.js";
+import { AssetReference, AssetVersionReference } from "../../src/shared/references/index.js";
+import type { ApplicationCommandContext, OperationCommandDto } from "../../src/application/dto/ApplicationContext.js";
+
+const tenantId = "tenant_knowledge_api";
+const now = "2026-07-27T15:00:00.000Z";
+const context: ApplicationCommandContext = { tenantId, actor: { reference: "steward_knowledge_api" }, correlationId: "correlation_knowledge_api", causationId: "causation_knowledge_api" };
+const audit = { occurredAt: now, evidence: [{ evidenceId: "evidence_knowledge_api", source: "test", type: "fixture", capturedAt: now }], lineage: [{ sourceId: "source_knowledge_api", targetId: "knowledge_knowledge_api", relationship: "references", declaredAt: now }] };
+function knowledgeCommand(): OperationCommandDto { return { idempotencyKey: "create-knowledge-api", reason: "Create Knowledge", payload: { knowledgeId: "knowledge_knowledge_api", metadata: { title: "Knowledge", summary: "Summary", stewardNote: "Steward note", createdAt: now, updatedAt: now }, scope: { domainArea: "Governance", audience: "Stewards", constraints: ["tenant-bound"] }, assetReferences: [{ id: "asset_knowledge_api", tenantId }], assetVersionReferences: [{ assetId: "asset_knowledge_api", versionId: "asset_version_knowledge_api_v1", tenantId }], policyReferences: [], ...audit } }; }
+test("Knowledge/Policy exposes the nine executable bindings", () => { const validation = new InMemoryKnowledgeReferenceValidation(); assert.equal(Object.keys(createKnowledgePolicyBindings(validation)).length, 9); });
+test("Knowledge create commits once, replays generically and projects read-only", async () => { const provider = new ReferencePersistenceProvider(); const validation = new InMemoryKnowledgeReferenceValidation(); const tenant = TenantId.from(tenantId); validation.registerAsset(new AssetReference(AssetId.from("asset_knowledge_api"), tenant)); validation.registerAssetVersion(new AssetVersionReference(AssetId.from("asset_knowledge_api"), AssetVersionId.from("asset_version_knowledge_api_v1"), tenant)); const api = new KnowledgePolicyApplicationApi(new ApplicationCommandRunner(new ReferenceApplicationTransactionFactory(provider)), new ApplicationQueryRunner(new ReferenceReadRepositorySessionFactory(provider)), validation); const first = await api.createKnowledge(knowledgeCommand(), context); assert.deepEqual(await api.createKnowledge(knowledgeCommand(), context), first); assert.equal((await api.getKnowledge({ targetId: "knowledge_knowledge_api" }, { tenantId, correlationId: context.correlationId }))?.status, "PROPOSED"); assert.equal((await api.listKnowledge({}, { tenantId, correlationId: context.correlationId })).length, 1); assert.equal(provider.listAuditRecords(tenantId).length, 1); });
+test("Knowledge validation fails before opening a Unit of Work", () => { const validation = new InMemoryKnowledgeReferenceValidation(); let opened = 0; const api = new KnowledgePolicyApplicationApi(new ApplicationCommandRunner({ open: () => { opened += 1; throw new Error("must not open"); } }), new ApplicationQueryRunner({ open: () => { throw new Error("must not read"); } }), validation); assert.throws(() => api.createKnowledge({ idempotencyKey: "invalid", reason: "invalid", payload: {} }, context), /knowledgeId/u); assert.equal(opened, 0); });

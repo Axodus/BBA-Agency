@@ -82,11 +82,11 @@ or permissive adapter was introduced.
 | Governance | 6 / 6 | 2 / 2 | 100% |
 | AI Workforce | 4 / 4 | 2 / 2 | 100% |
 | Institutional Assets | 3 / 3 executable | 2 / 2 | 100% executable; 1 planned blocked |
-| Knowledge/Policy | Not Started | Not Started | Not Started |
-| Workflow | Not Started | Not Started | Not Started |
-| Review | Not Started | Not Started | Not Started |
-| Publication | Not Started | Not Started | Not Started |
-| Connector | Not Started | Not Started | Not Started |
+| Knowledge/Policy | 5 / 5 | 4 / 4 | IMPLEMENTED; focused integration PASS |
+| Workflow | 12 / 12 | 2 / 2 | IMPLEMENTED; focused integration PASS |
+| Review | 9 / 9 | 1 / 1 | IMPLEMENTED; focused integration PASS |
+| Publication | 5 / 5 | 1 / 1 | IMPLEMENTED; focused integration PASS |
+| Connector | 9 / 9 | 2 / 2 | IMPLEMENTED; focused integration PASS |
 
 ## Evidence
 
@@ -109,13 +109,13 @@ EPIC-IMP-012B.1 — Governance: PASS
 Mission: 100%
 Governance: 100%
 
-AI Workforce: Not Started
-Institutional Assets: Not Started
-Knowledge/Policy: Not Started
-Workflow: Not Started
-Review: Not Started
-Publication: Not Started
-Connector: Not Started
+AI Workforce: PASS
+Institutional Assets: PARTIAL
+Knowledge/Policy: PARTIAL
+Workflow: PARTIAL
+Review: PARTIAL
+Publication: PARTIAL
+Connector: PARTIAL
 
 ```
 
@@ -150,6 +150,13 @@ The test covers bindings, DTO mapping and validation, authorization rejection,
 single transaction behavior, atomic Agent/Execution start, generic replay,
 read-only projections and context propagation. Domain, M11, `demo/` and
 legacy `src/` remain unchanged.
+
+## B.4 — Remaining Application API Surface
+
+Typed public ports and bindings are now present for Knowledge / Policy,
+Workflow, Review, Publication and Connector. Connector `executeTransport`
+remains OUT OF SCOPE as a technical runtime operation. Final B.4 status is
+still PARTIAL until the literal pnpm gate is executable in the environment.
 
 ## B.3 — Institutional Assets Application API
 

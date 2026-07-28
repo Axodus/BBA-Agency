@@ -188,7 +188,7 @@ test("Governance validation rejects invalid commands before opening a Unit of Wo
   let opened = 0;
   const application = new GovernanceApplicationApi(
     new ApplicationCommandRunner({ open: () => { opened += 1; throw new Error("Unit of Work must not open"); } }),
-    new ApplicationQueryRunner({ open: () => ({ mission: {} as ReadRepositorySession["mission"], authority: {} as ReadRepositorySession["authority"], decision: {} as ReadRepositorySession["decision"], agent: {} as ReadRepositorySession["agent"], execution: {} as ReadRepositorySession["execution"], asset: {} as ReadRepositorySession["asset"], knowledge: {} as ReadRepositorySession["knowledge"], policy: {} as ReadRepositorySession["policy"] }) })
+    new ApplicationQueryRunner({ open: () => ({ mission: {} as ReadRepositorySession["mission"], authority: {} as ReadRepositorySession["authority"], decision: {} as ReadRepositorySession["decision"], agent: {} as ReadRepositorySession["agent"], execution: {} as ReadRepositorySession["execution"], asset: {} as ReadRepositorySession["asset"], knowledge: {} as ReadRepositorySession["knowledge"], policy: {} as ReadRepositorySession["policy"], workflow: {} as ReadRepositorySession["workflow"], workflowExecution: {} as ReadRepositorySession["workflowExecution"], review: {} as ReadRepositorySession["review"], publication: {} as ReadRepositorySession["publication"], connector: {} as ReadRepositorySession["connector"], connectorExecution: {} as ReadRepositorySession["connectorExecution"] }) })
   );
   assert.throws(
     () => application.createAuthority({ idempotencyKey: "invalid-authority", reason: "Invalid authority", payload: {} }, context),

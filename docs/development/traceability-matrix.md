@@ -192,6 +192,18 @@ in the M0 report.
 | REQ-IMP-012B.3-004 | GDE-081 | Read-only Asset projections | `ReadRepositorySession.asset` | `institutional-assets-application-api.test.ts` | ADR-IMP-0039 | DONE |
 | REQ-IMP-012B.3-005 | GDE-081 | `assignAsset` blocked without use case | inventory and API contract | document review | ADR-IMP-0037 | BLOCKED |
 
+## EPIC-IMP-012B.4 — Remaining Application API Surface
+
+| Requirement | Source document | Invariant / responsibility | Code path | Test path | ADR | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+| REQ-IMP-012B.4-001 | GDE-081 | Knowledge / Policy public surface | `KnowledgePolicyApplicationApi` | `knowledge-policy-application-api.test.ts` | ADR-IMP-0037 | DONE |
+| REQ-IMP-012B.4-002 | GDE-081 | Workflow public surface | `WorkflowApplicationApi` | `workflow-application-api.test.ts` | ADR-IMP-0037 | DONE |
+| REQ-IMP-012B.4-003 | GDE-081 | Review public surface | `ReviewApplicationApi` | `review-application-api.test.ts` | ADR-IMP-0037 | DONE |
+| REQ-IMP-012B.4-004 | GDE-081 | Publication public surface | `PublicationApplicationApi` | `publication-application-api.test.ts` | ADR-IMP-0037 | DONE |
+| REQ-IMP-012B.4-005 | GDE-081 | Connector public surface excluding transport runtime | `ConnectorApplicationApi` | `connector-application-api.test.ts` | ADR-IMP-0037 | DONE |
+| REQ-IMP-012B.4-006 | GDE-080 | Generic committed replay and idempotency | Application binding descriptors | Core application regression | ADR-IMP-0038 | DONE |
+| REQ-IMP-012B.4-007 | GDE-081 | Read-only public projections | `ReadRepositorySession` | Core application regression | ADR-IMP-0039 | DONE |
+
 ## EPIC-IMP-010 — Connector Framework
 
 | Requirement | Source document | Invariant / responsibility | Code path | Test path | ADR | Status |

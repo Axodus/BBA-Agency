@@ -19,3 +19,7 @@ providers, stores, HTTP types or transport serializers.
 Exports from bounded-context `application/index.ts` files are available
 capabilities, not automatic public API obligations. Expansion of the public
 surface belongs to `EPIC-IMP-012B`.
+
+Knowledge / Policy, Workflow, Review, Publication and Connector are exposed
+through bounded-context-specific typed ports. Connector `executeTransport`
+remains a technical runtime exclusion from the public Application API.
