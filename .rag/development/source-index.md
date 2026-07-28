@@ -4,7 +4,7 @@
 
 The implementation authority is the certified documentation corpus at:
 
-`../Documentation/.rag/bba-platform/`
+`../../../Documentation/.rag/bba-platform/`
 
 On this workspace, the path resolves to the sibling repository
 `/mnt/d/Rede/Github/Axodus/Documentation/.rag/bba-platform/`. A clean clone

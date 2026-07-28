@@ -2,7 +2,7 @@
 
 This directory is the local implementation index for the BBA Platform Core.
 The normative source remains the governed corpus in the sibling
-`../Documentation/.rag/bba-platform/` checkout. These documents are local
+`../../../Documentation/.rag/bba-platform/` checkout. These documents are local
 execution controls and must not be treated as a replacement or public
 projection of that corpus.
 

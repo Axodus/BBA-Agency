@@ -10,6 +10,7 @@ REQ: `REQ-IMP-000-001`
 | `demo/` | `REFERENCE_DEMO` | Static, deterministic browser reference implementation; must remain independent. |
 | `src/` | `LEGACY` | Earlier TypeScript and campaign-oriented experiments; not the target Core. |
 | `.rag/development/` | `CORE_TARGET` | Local implementation governance and traceability records. |
+| `.rag/architecture/` | `CORE_TARGET` | Local implementation architecture and EPIC-level architecture records. |
 | `.rag/adr/` | `CORE_TARGET` | Local durable implementation decisions. |
 | `.instructions/` | `REVIEW_REQUIRED` | Historical/recovery instruction surface; not the certified BBA Platform corpus. |
 | `.rag/plans/` | `LEGACY` | Historical implementation plans and status reports; not architectural authority. |
@@ -18,7 +19,6 @@ REQ: `REQ-IMP-000-001`
 | `package-lock.json` | `REVIEW_REQUIRED` | Existing npm lockfile retained; no forced repository-wide package-manager migration. |
 | `tsconfig.json` | `LEGACY` | Existing root TypeScript configuration targets `src/`; Core owns its own config. |
 | `.github/` | `CORE_TARGET` | No workflow existed at baseline; M0 adds a Core validation workflow. |
-| `docs/` | `CORE_TARGET` | Directory did not contain the local Core Development index before this Epic. |
 | generated artifacts | `GENERATED` | `node_modules/`, `dist/`, and `core/.tmp/` are not source inputs. |
 | secrets | `PROHIBITED_FOR_CORE_DEPENDENCY` | `.env` is ignored; no secret is required for M0. |
 
