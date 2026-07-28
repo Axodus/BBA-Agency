@@ -1,0 +1,595 @@
+[
+  {
+    "operationId": "missionCreateMission",
+    "method": "POST",
+    "path": "/api/v1/missions",
+    "boundedContext": "mission",
+    "applicationMethod": "createMission",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "missionActivateMission",
+    "method": "POST",
+    "path": "/api/v1/missions/{missionId}:activate",
+    "boundedContext": "mission",
+    "applicationMethod": "activateMission",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "missionRenameMission",
+    "method": "POST",
+    "path": "/api/v1/missions/{missionId}:rename",
+    "boundedContext": "mission",
+    "applicationMethod": "renameMission",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "missionCompleteMission",
+    "method": "POST",
+    "path": "/api/v1/missions/{missionId}:complete",
+    "boundedContext": "mission",
+    "applicationMethod": "completeMission",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "missionGetMission",
+    "method": "GET",
+    "path": "/api/v1/missions/{missionId}",
+    "boundedContext": "mission",
+    "applicationMethod": "getMission",
+    "applicationKind": "query"
+  },
+  {
+    "operationId": "governanceCreateAuthority",
+    "method": "POST",
+    "path": "/api/v1/authorities",
+    "boundedContext": "governance",
+    "applicationMethod": "createAuthority",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "governanceAssignAuthority",
+    "method": "POST",
+    "path": "/api/v1/authorities/{authorityId}:assign",
+    "boundedContext": "governance",
+    "applicationMethod": "assignAuthority",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "governanceGetAuthority",
+    "method": "GET",
+    "path": "/api/v1/authorities/{authorityId}",
+    "boundedContext": "governance",
+    "applicationMethod": "getAuthority",
+    "applicationKind": "query"
+  },
+  {
+    "operationId": "governanceCreateDecision",
+    "method": "POST",
+    "path": "/api/v1/decisions",
+    "boundedContext": "governance",
+    "applicationMethod": "createDecision",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "governanceApproveDecision",
+    "method": "POST",
+    "path": "/api/v1/decisions/{decisionId}:approve",
+    "boundedContext": "governance",
+    "applicationMethod": "approveDecision",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "governanceRejectDecision",
+    "method": "POST",
+    "path": "/api/v1/decisions/{decisionId}:reject",
+    "boundedContext": "governance",
+    "applicationMethod": "rejectDecision",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "governanceFinalizeDecision",
+    "method": "POST",
+    "path": "/api/v1/decisions/{decisionId}:finalize",
+    "boundedContext": "governance",
+    "applicationMethod": "finalizeDecision",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "governanceGetDecision",
+    "method": "GET",
+    "path": "/api/v1/decisions/{decisionId}",
+    "boundedContext": "governance",
+    "applicationMethod": "getDecision",
+    "applicationKind": "query"
+  },
+  {
+    "operationId": "aiWorkforceProvisionAgent",
+    "method": "POST",
+    "path": "/api/v1/ai-workforce/agents",
+    "boundedContext": "ai-workforce",
+    "applicationMethod": "provisionAgent",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "aiWorkforceAssignAgent",
+    "method": "POST",
+    "path": "/api/v1/ai-workforce/agents/{agentId}:assign",
+    "boundedContext": "ai-workforce",
+    "applicationMethod": "assignAgent",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "aiWorkforceStartExecution",
+    "method": "POST",
+    "path": "/api/v1/ai-workforce/agents/{agentId}:start-execution",
+    "boundedContext": "ai-workforce",
+    "applicationMethod": "startExecution",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "aiWorkforceCompleteExecution",
+    "method": "POST",
+    "path": "/api/v1/ai-workforce/executions/{executionId}:complete",
+    "boundedContext": "ai-workforce",
+    "applicationMethod": "completeExecution",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "aiWorkforceGetAgent",
+    "method": "GET",
+    "path": "/api/v1/ai-workforce/agents/{agentId}",
+    "boundedContext": "ai-workforce",
+    "applicationMethod": "getAgent",
+    "applicationKind": "query"
+  },
+  {
+    "operationId": "aiWorkforceGetExecution",
+    "method": "GET",
+    "path": "/api/v1/ai-workforce/executions/{executionId}",
+    "boundedContext": "ai-workforce",
+    "applicationMethod": "getExecution",
+    "applicationKind": "query"
+  },
+  {
+    "operationId": "institutionalAssetsCreateAsset",
+    "method": "POST",
+    "path": "/api/v1/institutional-assets",
+    "boundedContext": "institutional-assets",
+    "applicationMethod": "createAsset",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "institutionalAssetsRegisterAsset",
+    "method": "POST",
+    "path": "/api/v1/institutional-assets:register",
+    "boundedContext": "institutional-assets",
+    "applicationMethod": "registerAsset",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "institutionalAssetsRetireAsset",
+    "method": "POST",
+    "path": "/api/v1/institutional-assets/{assetId}:retire",
+    "boundedContext": "institutional-assets",
+    "applicationMethod": "retireAsset",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "institutionalAssetsGetAsset",
+    "method": "GET",
+    "path": "/api/v1/institutional-assets/{assetId}",
+    "boundedContext": "institutional-assets",
+    "applicationMethod": "getAsset",
+    "applicationKind": "query"
+  },
+  {
+    "operationId": "institutionalAssetsListAssets",
+    "method": "GET",
+    "path": "/api/v1/institutional-assets",
+    "boundedContext": "institutional-assets",
+    "applicationMethod": "listAssets",
+    "applicationKind": "query"
+  },
+  {
+    "operationId": "knowledgePolicyCreateKnowledge",
+    "method": "POST",
+    "path": "/api/v1/knowledge",
+    "boundedContext": "knowledge-policy",
+    "applicationMethod": "createKnowledge",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "knowledgePolicyCurateKnowledge",
+    "method": "POST",
+    "path": "/api/v1/knowledge/{knowledgeId}:curate",
+    "boundedContext": "knowledge-policy",
+    "applicationMethod": "curateKnowledge",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "knowledgePolicyLinkKnowledgeAsset",
+    "method": "POST",
+    "path": "/api/v1/knowledge/{knowledgeId}:link-asset",
+    "boundedContext": "knowledge-policy",
+    "applicationMethod": "linkKnowledgeAsset",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "knowledgePolicyGetKnowledge",
+    "method": "GET",
+    "path": "/api/v1/knowledge/{knowledgeId}",
+    "boundedContext": "knowledge-policy",
+    "applicationMethod": "getKnowledge",
+    "applicationKind": "query"
+  },
+  {
+    "operationId": "knowledgePolicyListKnowledge",
+    "method": "GET",
+    "path": "/api/v1/knowledge",
+    "boundedContext": "knowledge-policy",
+    "applicationMethod": "listKnowledge",
+    "applicationKind": "query"
+  },
+  {
+    "operationId": "knowledgePolicyCreatePolicy",
+    "method": "POST",
+    "path": "/api/v1/policies",
+    "boundedContext": "knowledge-policy",
+    "applicationMethod": "createPolicy",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "knowledgePolicyCreatePolicyVersion",
+    "method": "POST",
+    "path": "/api/v1/policies/{policyId}/versions",
+    "boundedContext": "knowledge-policy",
+    "applicationMethod": "createPolicyVersion",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "knowledgePolicyGetPolicy",
+    "method": "GET",
+    "path": "/api/v1/policies/{policyId}",
+    "boundedContext": "knowledge-policy",
+    "applicationMethod": "getPolicy",
+    "applicationKind": "query"
+  },
+  {
+    "operationId": "knowledgePolicyListPolicies",
+    "method": "GET",
+    "path": "/api/v1/policies",
+    "boundedContext": "knowledge-policy",
+    "applicationMethod": "listPolicies",
+    "applicationKind": "query"
+  },
+  {
+    "operationId": "workflowCreateWorkflow",
+    "method": "POST",
+    "path": "/api/v1/workflows",
+    "boundedContext": "workflow",
+    "applicationMethod": "createWorkflow",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "workflowActivateWorkflow",
+    "method": "POST",
+    "path": "/api/v1/workflows/{workflowId}:activate",
+    "boundedContext": "workflow",
+    "applicationMethod": "activateWorkflow",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "workflowArchiveWorkflow",
+    "method": "POST",
+    "path": "/api/v1/workflows/{workflowId}:archive",
+    "boundedContext": "workflow",
+    "applicationMethod": "archiveWorkflow",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "workflowStartWorkflow",
+    "method": "POST",
+    "path": "/api/v1/workflows/{workflowId}:start",
+    "boundedContext": "workflow",
+    "applicationMethod": "startWorkflow",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "workflowGetWorkflow",
+    "method": "GET",
+    "path": "/api/v1/workflows/{workflowId}",
+    "boundedContext": "workflow",
+    "applicationMethod": "getWorkflow",
+    "applicationKind": "query"
+  },
+  {
+    "operationId": "workflowAdvanceStage",
+    "method": "POST",
+    "path": "/api/v1/workflow-executions/{executionId}:advance-stage",
+    "boundedContext": "workflow",
+    "applicationMethod": "advanceStage",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "workflowPauseWorkflow",
+    "method": "POST",
+    "path": "/api/v1/workflow-executions/{executionId}:pause",
+    "boundedContext": "workflow",
+    "applicationMethod": "pauseWorkflow",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "workflowResumeWorkflow",
+    "method": "POST",
+    "path": "/api/v1/workflow-executions/{executionId}:resume",
+    "boundedContext": "workflow",
+    "applicationMethod": "resumeWorkflow",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "workflowRecordTaskState",
+    "method": "POST",
+    "path": "/api/v1/workflow-executions/{executionId}:record-task-state",
+    "boundedContext": "workflow",
+    "applicationMethod": "recordTaskState",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "workflowRecordTaskFailure",
+    "method": "POST",
+    "path": "/api/v1/workflow-executions/{executionId}:record-task-failure",
+    "boundedContext": "workflow",
+    "applicationMethod": "recordTaskFailure",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "workflowCompleteWorkflow",
+    "method": "POST",
+    "path": "/api/v1/workflow-executions/{executionId}:complete",
+    "boundedContext": "workflow",
+    "applicationMethod": "completeWorkflow",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "workflowCancelWorkflow",
+    "method": "POST",
+    "path": "/api/v1/workflow-executions/{executionId}:cancel",
+    "boundedContext": "workflow",
+    "applicationMethod": "cancelWorkflow",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "workflowFailWorkflowExecution",
+    "method": "POST",
+    "path": "/api/v1/workflow-executions/{executionId}:fail",
+    "boundedContext": "workflow",
+    "applicationMethod": "failWorkflowExecution",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "workflowGetWorkflowExecution",
+    "method": "GET",
+    "path": "/api/v1/workflow-executions/{executionId}",
+    "boundedContext": "workflow",
+    "applicationMethod": "getWorkflowExecution",
+    "applicationKind": "query"
+  },
+  {
+    "operationId": "reviewCreateReview",
+    "method": "POST",
+    "path": "/api/v1/reviews",
+    "boundedContext": "review",
+    "applicationMethod": "createReview",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "reviewStartReview",
+    "method": "POST",
+    "path": "/api/v1/reviews/{reviewId}:start",
+    "boundedContext": "review",
+    "applicationMethod": "startReview",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "reviewPlanSession",
+    "method": "POST",
+    "path": "/api/v1/reviews/{reviewId}:plan-session",
+    "boundedContext": "review",
+    "applicationMethod": "planSession",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "reviewOpenSession",
+    "method": "POST",
+    "path": "/api/v1/reviews/{reviewId}:open-session",
+    "boundedContext": "review",
+    "applicationMethod": "openSession",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "reviewRecordFinding",
+    "method": "POST",
+    "path": "/api/v1/reviews/{reviewId}:record-finding",
+    "boundedContext": "review",
+    "applicationMethod": "recordFinding",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "reviewCloseSession",
+    "method": "POST",
+    "path": "/api/v1/reviews/{reviewId}:close-session",
+    "boundedContext": "review",
+    "applicationMethod": "closeSession",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "reviewCancelSession",
+    "method": "POST",
+    "path": "/api/v1/reviews/{reviewId}:cancel-session",
+    "boundedContext": "review",
+    "applicationMethod": "cancelSession",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "reviewCompleteReview",
+    "method": "POST",
+    "path": "/api/v1/reviews/{reviewId}:complete",
+    "boundedContext": "review",
+    "applicationMethod": "completeReview",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "reviewArchiveReview",
+    "method": "POST",
+    "path": "/api/v1/reviews/{reviewId}:archive",
+    "boundedContext": "review",
+    "applicationMethod": "archiveReview",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "reviewGetReview",
+    "method": "GET",
+    "path": "/api/v1/reviews/{reviewId}",
+    "boundedContext": "review",
+    "applicationMethod": "getReview",
+    "applicationKind": "query"
+  },
+  {
+    "operationId": "publicationCreatePublication",
+    "method": "POST",
+    "path": "/api/v1/publications",
+    "boundedContext": "publication",
+    "applicationMethod": "createPublication",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "publicationPreparePublication",
+    "method": "POST",
+    "path": "/api/v1/publications/{publicationId}:prepare",
+    "boundedContext": "publication",
+    "applicationMethod": "preparePublication",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "publicationAuthorizePublication",
+    "method": "POST",
+    "path": "/api/v1/publications/{publicationId}:authorize",
+    "boundedContext": "publication",
+    "applicationMethod": "authorizePublication",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "publicationRecordPublicationOutcome",
+    "method": "POST",
+    "path": "/api/v1/publications/{publicationId}:record-outcome",
+    "boundedContext": "publication",
+    "applicationMethod": "recordPublicationOutcome",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "publicationArchivePublication",
+    "method": "POST",
+    "path": "/api/v1/publications/{publicationId}:archive",
+    "boundedContext": "publication",
+    "applicationMethod": "archivePublication",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "publicationGetPublication",
+    "method": "GET",
+    "path": "/api/v1/publications/{publicationId}",
+    "boundedContext": "publication",
+    "applicationMethod": "getPublication",
+    "applicationKind": "query"
+  },
+  {
+    "operationId": "connectorRegisterConnector",
+    "method": "POST",
+    "path": "/api/v1/connectors",
+    "boundedContext": "connector",
+    "applicationMethod": "registerConnector",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "connectorActivateConnector",
+    "method": "POST",
+    "path": "/api/v1/connectors/{connectorId}:activate",
+    "boundedContext": "connector",
+    "applicationMethod": "activateConnector",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "connectorSuspendConnector",
+    "method": "POST",
+    "path": "/api/v1/connectors/{connectorId}:suspend",
+    "boundedContext": "connector",
+    "applicationMethod": "suspendConnector",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "connectorRetireConnector",
+    "method": "POST",
+    "path": "/api/v1/connectors/{connectorId}:retire",
+    "boundedContext": "connector",
+    "applicationMethod": "retireConnector",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "connectorGetConnector",
+    "method": "GET",
+    "path": "/api/v1/connectors/{connectorId}",
+    "boundedContext": "connector",
+    "applicationMethod": "getConnector",
+    "applicationKind": "query"
+  },
+  {
+    "operationId": "connectorCreateExecution",
+    "method": "POST",
+    "path": "/api/v1/connector-executions",
+    "boundedContext": "connector",
+    "applicationMethod": "createExecution",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "connectorStartExecution",
+    "method": "POST",
+    "path": "/api/v1/connector-executions/{executionId}:start",
+    "boundedContext": "connector",
+    "applicationMethod": "startExecution",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "connectorCompleteExecution",
+    "method": "POST",
+    "path": "/api/v1/connector-executions/{executionId}:complete",
+    "boundedContext": "connector",
+    "applicationMethod": "completeExecution",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "connectorFailExecution",
+    "method": "POST",
+    "path": "/api/v1/connector-executions/{executionId}:fail",
+    "boundedContext": "connector",
+    "applicationMethod": "failExecution",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "connectorCancelExecution",
+    "method": "POST",
+    "path": "/api/v1/connector-executions/{executionId}:cancel",
+    "boundedContext": "connector",
+    "applicationMethod": "cancelExecution",
+    "applicationKind": "command"
+  },
+  {
+    "operationId": "connectorGetConnectorExecution",
+    "method": "GET",
+    "path": "/api/v1/connector-executions/{executionId}",
+    "boundedContext": "connector",
+    "applicationMethod": "getConnectorExecution",
+    "applicationKind": "query"
+  }
+]
+

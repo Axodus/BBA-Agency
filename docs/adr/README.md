@@ -50,3 +50,4 @@ upstream documentation review process.
 - [ADR-IMP-0037 — Application transport neutrality](ADR-IMP-0037-APPLICATION-TRANSPORT-NEUTRALITY.md)
 - [ADR-IMP-0038 — Application idempotency fingerprinting](ADR-IMP-0038-IDEMPOTENCY-FINGERPRINTING.md)
 - [ADR-IMP-0039 — Application transaction sessions](ADR-IMP-0039-APPLICATION-TRANSACTION-SESSIONS.md)
+- [ADR-IMP-0040 — Canonical HTTP transport contract](ADR-IMP-0040-HTTP-TRANSPORT-CONTRACT.md)

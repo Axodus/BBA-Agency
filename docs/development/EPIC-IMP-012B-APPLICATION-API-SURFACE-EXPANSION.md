@@ -1,6 +1,6 @@
 # EPIC-IMP-012B — Application API Surface Expansion
 
-Status: INCREMENTAL — B.3 INSTITUTIONAL ASSETS PARTIAL; B.4 REMAINING CONTEXTS IN PROGRESS
+Status: PASS — EXECUTABLE APPLICATION API SURFACE COMPLETE
 Origin: M12 corrective scope decision  
 Dependency: EPIC-IMP-012 = PASS
 
@@ -153,15 +153,15 @@ legacy `src/` remain unchanged.
 
 ## B.4 — Remaining Application API Surface
 
-Typed public ports and bindings are now present for Knowledge / Policy,
-Workflow, Review, Publication and Connector. Connector `executeTransport`
-remains OUT OF SCOPE as a technical runtime operation. Final B.4 status is
-still PARTIAL until the literal pnpm gate is executable in the environment.
+Typed public ports and bindings are present for Knowledge / Policy, Workflow,
+Review, Publication and Connector. Connector `executeTransport` remains OUT OF
+SCOPE as a technical runtime operation. The literal `pnpm --dir core check`
+gate passed on 2026-07-28 after adopting the workspace-local pnpm store.
 
 ## B.3 — Institutional Assets Application API
 
-Status: PARTIAL for implementation closeout. Coverage is `5 / 5` executable
-and `5 / 6` planned. The surface contains `createAsset`, nominal alias
+Status: PASS for the executable surface. Coverage is `5 / 5` executable and
+`5 / 6` planned. The surface contains `createAsset`, nominal alias
 `registerAsset`, `retireAsset`, `getAsset` and `listAssets`. `assignAsset`
 remains BLOCKED because no approved executable use case exists; it is not
 included in the runtime port.

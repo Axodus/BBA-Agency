@@ -739,3 +739,16 @@ in the M0 report.
 | REQ-IMP-009-053 | ARCH-003 | Bounded context map | `BOUNDED-CONTEXT-MAP.md` | architecture test | ADR-IMP-0028 | DONE |
 | REQ-IMP-009-054 | GDE-081/082 | Public API and no lateral imports | barrels / bounded context test | typecheck/architecture test | ADR-IMP-0028/30 | DONE |
 | REQ-IMP-009-055 | GDE-080 | Epic completion evidence | `EPIC-IMP-009-PUBLICATION-REPORT.md` | Core/demo checks | — | DONE |
+
+## EPIC-IMP-013 — Transport Adapters
+
+| REQ | Source | Requirement | Implementation | Verification | Decision | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+| REQ-IMP-013-001 | GDE-079/081 | Closed public Core package subpath | `@bba/platform-core/application` | package export and negative import tests | ADR-IMP-0040 | DONE |
+| REQ-IMP-013-002 | GDE-079 | Canonical OpenAPI 3.1 contract | `contracts/openapi/v1/openapi.yaml` | contract check | ADR-IMP-0040 | DONE |
+| REQ-IMP-013-003 | GDE-079/080 | 74-operation traceability inventory | `operation-inventory.json` | deterministic projection check | ADR-IMP-0040 | DONE |
+| REQ-IMP-013-004 | GDE-081 | Fastify adapter calls only API Ports | `transport/http` | 74-operation binding matrix | ADR-IMP-0004/40 | DONE |
+| REQ-IMP-013-005 | GDE-045/049 | Typed authentication and authorization context | transport security ports | security/context tests | ADR-IMP-0040 | DONE |
+| REQ-IMP-013-006 | GDE-080 | Closed response serialization and public errors | Fastify schemas/error mapper | disclosure and error tests | ADR-IMP-0040 | DONE |
+| REQ-IMP-013-007 | GDE-079/080 | Generated configurable TypeScript SDK | `clients/typescript` | codegen drift and callable-operation checks | ADR-IMP-0040 | DONE |
+| REQ-IMP-013-008 | GDE-080 | Core and boundary regression | workspace gates | Core/transport/client checks | ADR-IMP-0040 | DONE |

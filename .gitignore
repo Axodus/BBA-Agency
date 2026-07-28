@@ -1,6 +1,12 @@
 node_modules/
+.pnpm-store/
 dist/
 /core/.tmp/
+/core/dist/
+/transport/http/dist/
+/transport/http/.tmp/
+/clients/typescript/dist/
+/clients/typescript/.tmp/
 .env
 .trash
 npm-debug.log*

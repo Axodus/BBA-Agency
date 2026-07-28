@@ -1,5 +1,7 @@
 packages:
   - core
+  - transport/*
+  - clients/*
 
 # These are legacy optional build scripts. M0 does not execute runtime or
 # native dependency builds; the policy is explicit so plain `pnpm install`
@@ -12,3 +14,4 @@ allowBuilds:
   onnxruntime-node: true
   protobufjs: true
   sharp: true
+storeDir: .pnpm-store

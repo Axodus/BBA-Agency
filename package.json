@@ -5,6 +5,7 @@
   "description": "AxodusBBA - Unificação dos projetos Axodus e BBA Agency",
   "main": "dist/pipelines/campaign.flow.js",
   "scripts": {
+    "contracts:check": "node contracts/openapi/check-contract.mjs",
     "dev": "ts-node --transpile-only src/pipelines/campaign.flow.ts",
     "dev:axodus": "ts-node --transpile-only src/pipelines/campaign.flow.ts",
     "mcp": "ts-node --transpile-only src/tools/mcp-server.ts",
