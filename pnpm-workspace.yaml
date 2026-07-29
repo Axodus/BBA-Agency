@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 packages:
   - apps/*
   - packages/*
@@ -18,3 +19,22 @@ allowBuilds:
   protobufjs: true
   sharp: true
 storeDir: .pnpm-store
+=======
+packages:
+  - core
+  - static
+
+# These are legacy optional build scripts. M0 does not execute runtime or
+# native dependency builds; the policy is explicit so plain `pnpm install`
+# remains reproducible without approving unrelated scripts.
+ignoredBuiltDependencies:
+  - onnxruntime-node
+  - protobufjs
+  - sharp
+  - unrs-resolver
+allowBuilds:
+  onnxruntime-node: false
+  protobufjs: false
+  sharp: false
+  unrs-resolver: false
+>>>>>>> stag
