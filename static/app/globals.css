@@ -25,17 +25,21 @@ h1 { max-width:830px; margin:0; font:clamp(68px,6.5vw,106px)/.93 "Instrument Ser
 .hero-actions { display:flex; align-items:center; gap:34px; }
 .arrow-link { color:var(--blue); background:none; border:0; border-bottom:1px solid var(--blue); padding:10px 0 12px; min-width:205px; text-align:left; display:flex; justify-content:space-between; }
 .hero-actions a { font-size:14px; border-bottom:1px solid var(--ink); padding-bottom:8px; }
-.process-art { position:relative; min-height:530px; margin-top:-40px; }
-.orbit { position:absolute; width:390px; height:390px; border:1px solid rgba(16,16,15,.35); border-radius:50%; top:30px; left:60px; }
-.paper { position:absolute; border:1px solid rgba(100,90,70,.12); background:rgba(224,215,195,.48); box-shadow:0 10px 40px rgba(50,40,20,.03); }
-.paper-a { width:280px; height:230px; top:120px; left:0; background-image:radial-gradient(rgba(16,16,15,.16) .7px,transparent .7px); background-size:6px 6px; }
-.paper-b { width:280px; height:250px; top:200px; left:175px; background-image:repeating-linear-gradient(90deg,transparent 0 6px,rgba(16,16,15,.05) 6px 7px); }
-.paper-c { width:250px; height:220px; top:340px; left:105px; transform:rotate(-2deg); background-image:repeating-linear-gradient(0deg,transparent 0 18px,rgba(16,16,15,.12) 18px 19px); }
-.blue-block { position:absolute; width:64px; height:84px; background:var(--blue); top:425px; left:298px; }
-.step { position:absolute; display:grid; grid-template-columns:35px auto; align-items:center; gap:6px; text-transform:uppercase; font-size:9px; letter-spacing:.2em; }
-.step b { color:var(--blue); font-size:15px; letter-spacing:0; }
-.step-1 { top:70px; left:345px; }.step-2 { top:270px; left:18px; }.step-3 { top:300px; right:8px; }.step-4 { top:390px; right:0; }.step-5 { bottom:18px; right:20px; }
-.registration { position:absolute; font:30px/1 "Instrument Serif",serif; color:#605d55; }.r1{top:90px;left:160px}.r2{top:290px;left:285px}.r3{right:50px;top:135px}
+.process-artwork { position:relative; width:min(100%,650px); aspect-ratio:1; margin:-58px auto -15px; isolation:isolate; color:var(--ink); }
+.process-artwork__paper,.process-artwork__handwritten { position:absolute; display:block; width:auto; height:auto; object-fit:contain; pointer-events:none; }
+.process-artwork__paper--dots { z-index:1; width:53%; left:7%; top:19%; opacity:.78; filter:saturate(.72) contrast(.94); }
+.process-artwork__paper--cream { z-index:2; width:48%; right:7%; top:32%; opacity:.78; filter:saturate(.72) contrast(.94); }
+.process-artwork__halftone { position:absolute; z-index:3; width:37%; aspect-ratio:1; left:32%; top:31%; opacity:.7; background-image:radial-gradient(circle,rgba(16,16,15,.72) 0 1px,transparent 1.25px); background-size:6px 6px; mask-image:radial-gradient(ellipse at 27% 46%,#000 0 21%,rgba(0,0,0,.7) 38%,transparent 73%); transform:rotate(-2deg); }
+.process-artwork__paper--lined { z-index:4; width:42%; left:23%; top:50%; opacity:.88; filter:saturate(.7) contrast(.96); }
+.process-artwork__handwritten { z-index:5; width:29%; left:30%; top:68%; opacity:.72; mix-blend-mode:multiply; }
+.process-artwork__geometry { position:absolute; z-index:6; inset:0; width:100%; height:100%; overflow:visible; }
+.process-artwork__orbit { fill:none; stroke:currentColor; stroke-width:1; opacity:.34; vector-effect:non-scaling-stroke; }
+.process-artwork__guides line,.process-artwork__dotted-guides line,.process-artwork__crosses path { fill:none; stroke:currentColor; stroke-width:1; opacity:.38; vector-effect:non-scaling-stroke; }
+.process-artwork__dotted-guides line { stroke-dasharray:3 5; }
+.process-artwork__markers rect { fill:currentColor; }
+.process-artwork__number { fill:var(--blue); font-family:"DM Sans",sans-serif; font-size:26px; font-weight:500; letter-spacing:-.04em; }
+.process-artwork__label { fill:currentColor; font-family:"DM Sans",sans-serif; font-size:13px; font-weight:600; letter-spacing:4px; }
+.process-artwork__blue-block { position:absolute; z-index:7; left:56%; bottom:14%; width:12%; aspect-ratio:.82; background:var(--blue); box-shadow:inset 0 0 25px rgba(0,0,0,.1),0 5px 18px rgba(0,0,0,.08); }
 .service-strip { border-top:1px solid var(--line); display:grid; grid-template-columns:repeat(5,1fr); min-height:150px; }
 .service-index { padding:28px 3.2vw; border-right:1px solid var(--line); display:grid; grid-template-columns:1fr auto; transition:background .2s ease; }
 .service-index:hover { background:rgba(255,255,255,.42); }
@@ -44,16 +48,21 @@ h1 { max-width:830px; margin:0; font:clamp(68px,6.5vw,106px)/.93 "Instrument Ser
 .service-index i { grid-column:2; font-style:normal; font-size:25px; }
 @media (max-width:1000px) {
   .public-header { grid-template-columns:1fr auto; margin:0 20px; height:80px; }.public-header nav{display:none}.header-actions .text-button{display:none}
-  .hero { grid-template-columns:1fr; padding:70px 24px 30px; }.process-art{margin:40px auto 0;width:min(100%,520px)}
+  .hero { grid-template-columns:1fr; padding:70px 24px 30px; }.process-artwork{margin:35px auto 0;width:min(100%,620px)}
   .service-strip{grid-template-columns:repeat(2,1fr)}.service-index{min-height:130px}
 }
 @media (max-width:600px) {
   .wordmark{font-size:31px}.button.primary{padding:12px 14px;font-size:13px}
   .hero{padding-top:54px}h1{font-size:57px}.lede{font-size:17px}.hero-actions{align-items:flex-start;flex-direction:column}
-  .process-art{transform:scale(.78);transform-origin:left top;width:125%;margin-bottom:-100px}
+  .process-artwork{width:116%;margin:25px -8% -10%}
   .service-strip{grid-template-columns:1fr}.service-index{min-height:105px}
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+@media (prefers-reduced-motion:no-preference){
+  .process-artwork__paper--dots{animation:paper-float 9s ease-in-out infinite}
+  .process-artwork__paper--lined{animation:paper-float 11s ease-in-out infinite reverse}
+}
+@keyframes paper-float{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(0,-7px,0)}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
 
 .button-reset,.app-header nav button,.under-button,.service-index,.filter-row button,.back-link,.project-breadcrumb button,.project-tabs button,.wizard-head button,.wizard-footer>button,.section-head button,.delivery-library button,.catalog-card>button,.outcome-grid button,footer button { border:0;background:none;padding:0; }
 .app-header { height:94px;margin:0 3vw;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:28px;position:relative;z-index:20; }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { ProcessArtwork } from "./components/ProcessArtwork";
 
 type View = "home" | "services" | "service" | "dashboard" | "new" | "project" | "deliveries" | "models";
 
@@ -35,14 +36,6 @@ function AppHeader({view,setView}:{view:View,setView:(v:View)=>void}) {
   </header>;
 }
 
-function ProcessArt() {
-  return <div className="process-art" aria-label="A five-stage process: define, research, analyze, synthesize, deliver">
-    <div className="orbit"/><div className="paper paper-a"/><div className="paper paper-b"/><div className="paper paper-c"/><div className="blue-block"/>
-    {["Define","Research","Analyze","Synthesize","Deliver"].map((s,i)=><div className={`step step-${i+1}`} key={s}><b>0{i+1}</b><span>{s}</span></div>)}
-    <span className="registration r1">+</span><span className="registration r2">+</span><span className="registration r3">+</span>
-  </div>;
-}
-
 function Home({go}:{go:(v:View)=>void}) {
   return <main>
     <section className="hero">
@@ -52,7 +45,7 @@ function Home({go}:{go:(v:View)=>void}) {
         <p className="lede">Choose the outcome you need. BBA Agency coordinates specialized AI agents, keeps you in control, and delivers work ready to use.</p>
         <div className="hero-actions"><button className="arrow-link" onClick={()=>go("new")}>Start a project <span>→</span></button><button className="under-button" onClick={()=>go("services")}>Explore services</button></div>
       </div>
-      <ProcessArt/>
+      <ProcessArtwork/>
     </section>
     <section className="service-strip" aria-label="Service categories">
       {services.map(s=><button className="service-index" key={s.n} onClick={()=>go("service")}><span>{s.n}</span><strong>{s.category}</strong><i>→</i></button>)}
