@@ -3,7 +3,7 @@ import { MemoryRouter } from "react-router-dom";
 import { describe, expect, it } from "vitest";
 import { createTranslator, DEFAULT_LOCALE, FALLBACK_LOCALE, resolveLocale } from "../src/i18n/index.js";
 import { AgencyHome } from "../src/static-publisher/pages/AgencyHome.js";
-import { sanitizeProviderConfiguration } from "../src/static-publisher/pages/StaticAiSettings.js";
+import { sanitizeProviderConfiguration, StaticAiSettings } from "../src/static-publisher/pages/StaticAiSettings.js";
 import { validateDraftStep } from "../src/static-publisher/pages/EditorialContextWizard.js";
 import { projectScenarios } from "../src/static-publisher/fixtures/projects.js";
 import { publisherProjectReducer, visibleStageLabel } from "../src/static-publisher/state-machine.js";
@@ -24,6 +24,7 @@ describe("static Publisher Experience", () => {
   it("regenerates every variant after changes and blocks invalid packages", () => { const revised = publisherProjectReducer(projectScenarios["awaiting-package-approval"], { type: "PACKAGE_CHANGES_REQUESTED", guidance: "Make human governance explicit" }); expect(revised.variants.every((variant) => variant.version === 2)).toBe(true); expect(projectScenarios["package-blocked"].availableActions).not.toContain("APPROVE_PACKAGE"); });
   it("represents recoverable failure and retry without losing completed content", () => { const failed = projectScenarios["recoverable-failure"]; const retried = publisherProjectReducer(failed, { type: "STEP_RETRIED", stage: failed.visibleStage }); expect(retried.status).toBe("RUNNING"); expect(retried.failure).toBeUndefined(); expect(retried.variants).toHaveLength(1); });
   it("sanitizes visual BYOK configuration and never returns the key", () => { const result = sanitizeProviderConfiguration({ provider: "OpenAI", apiKey: "secret-key-value", consent: true }); expect(result).toEqual({ provider: "OpenAI", configured: true, consent: true }); expect(JSON.stringify(result)).not.toContain("secret-key-value"); });
+  it("presents BYOK as a private, expiring product setting with removal", () => { render(<MemoryRouter initialEntries={["/settings/ai?scenario=configured"]}><StaticAiSettings /></MemoryRouter>); expect(screen.getByRole("heading", { name: "AI Models" })).toBeTruthy(); expect(screen.getByText("No credential persistence")).toBeTruthy(); expect(screen.getByText("End of the current session")).toBeTruthy(); expect(screen.getByRole("button", { name: "Remove configuration" })).toBeTruthy(); expect(screen.getByText("This deterministic prototype makes no provider request.")).toBeTruthy(); });
   it("maps technical stages to English customer language", () => { expect(visibleStageLabel("UNDERSTANDING_CONTEXT")).toBe("Understanding context"); expect(visibleStageLabel("PACKAGE_REVIEW")).toBe("Package available for review"); expect(visibleStageLabel("DELIVERY")).toBe("Ready for delivery"); });
   it("keeps Portuguese deliverable content separate from the application locale", () => { expect(portugueseDeliverable.contentLanguage).toBe("pt-BR"); expect(DEFAULT_LOCALE).toBe("en-US"); });
 });
