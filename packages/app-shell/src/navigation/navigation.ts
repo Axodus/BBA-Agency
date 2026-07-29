@@ -4,8 +4,8 @@ export interface NavigationItem {
 }
 
 export const navigationItems: readonly NavigationItem[] = Object.freeze([
-  { label: "Como podemos ajudar?", path: "/" },
-  { label: "Novo Projeto", path: "/projects/new" },
-  { label: "Projetos", path: "/projects" },
-  { label: "Modelos de IA", path: "/settings/ai" }
+  { label: "How can we help?", path: "/" },
+  { label: "New Project", path: "/projects/new" },
+  { label: "Projects", path: "/projects" },
+  { label: "AI Models", path: "/settings/ai" }
 ]);

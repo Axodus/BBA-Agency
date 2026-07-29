@@ -7,7 +7,7 @@ export const publisherAgents: readonly AgentDefinition[] = Object.freeze([
 ]);
 export const publisherProduct: PublisherProductDefinition = Object.freeze({ id: publisherProductId, version: publisherProductVersion, family: "BBA Publisher", categoryId: "AGENCY-SERVICE-CATEGORY-004", categoryName: "Publication Strategy", name: "Multiplatform Publication Package", customerOutcome: "Convert customer Editorial Context into a coherent, reviewed, traceable multiplatform Editorial Package.", agents: publisherAgents, channels: publisherChannels, deliverables: ["Editorial strategy", "Blog content", "LinkedIn content", "Instagram content", "Mandatory human review"], estimatedExecutionUnits: 60, limitations: ["No external publication", "Three illustrative channel profiles", "Prototype execution only"] });
 export const agencyServiceCatalog = Object.freeze([
-  { id: publisherProduct.id, name: "Planejar publicações", status: "AVAILABLE", outcome: publisherProduct.customerOutcome },
-  { id: "bba.campaign", name: "Criar campanha", status: "PLANNED" }, { id: "bba.scientific-writer", name: "Escrever artigo", status: "PLANNED" },
-  { id: "bba.governance", name: "Elaborar proposta", status: "PLANNED" }, { id: "bba.research", name: "Pesquisar mercado", status: "PLANNED" },
+  { id: publisherProduct.id, name: "Plan publications", status: "AVAILABLE", outcome: publisherProduct.customerOutcome },
+  { id: "bba.campaign", name: "Create a campaign", status: "PLANNED" }, { id: "bba.scientific-writer", name: "Write an article", status: "PLANNED" },
+  { id: "bba.governance", name: "Develop a proposal", status: "PLANNED" }, { id: "bba.research", name: "Research a market", status: "PLANNED" },
 ]);
