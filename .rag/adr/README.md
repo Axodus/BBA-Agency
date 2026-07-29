@@ -51,3 +51,7 @@ upstream documentation review process.
 - [ADR-IMP-0038 — Application idempotency fingerprinting](ADR-IMP-0038-IDEMPOTENCY-FINGERPRINTING.md)
 - [ADR-IMP-0039 — Application transaction sessions](ADR-IMP-0039-APPLICATION-TRANSACTION-SESSIONS.md)
 - [ADR-IMP-0040 — Canonical HTTP transport contract](ADR-IMP-0040-HTTP-TRANSPORT-CONTRACT.md)
+- [ADR-IMP-0041 — Agency Product composition](ADR-IMP-0041-AGENCY-PRODUCT-COMPOSITION.md)
+- [ADR-IMP-0042 — Editorial Core](ADR-IMP-0042-EDITORIAL-CORE.md)
+- [ADR-IMP-0043 — Session Runtime and Platform mapping](ADR-IMP-0043-SESSION-RUNTIME-PLATFORM-MAPPING.md)
+- [ADR-IMP-0044 — Hybrid Runtime and BYOK](ADR-IMP-0044-HYBRID-RUNTIME-BYOK.md)

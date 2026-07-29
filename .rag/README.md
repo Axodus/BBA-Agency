@@ -10,6 +10,8 @@ evidence. It is governed repository content, not a generated cache.
   reports, traceability, and local development evidence.
 - `architecture/`: implementation architecture and EPIC-level architecture
   records.
+- `product/`: local, non-normative product narratives that translate the
+  governed Product Vision into implementation-facing customer journeys.
 - `adr/`: durable local Architecture Decision Records. These do not override
   the certified ADRs in the private Axodus Documentation corpus.
 - `plans/`: historical plans and status snapshots for the legacy experimental
@@ -26,4 +28,3 @@ evidence. It is governed repository content, not a generated cache.
   simulated behavior, planned work, and blocked work.
 - Moving a document into `.rag/` does not promote its authority or completion
   status.
-
