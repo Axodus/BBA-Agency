@@ -41,7 +41,7 @@ test("all bounded-context workspaces support direct product deep links", async (
 
 test("shell supports keyboard navigation and reactive theme preference", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name === "mobile", "Desktop shell behavior");
-  await page.goto("/"); await configure(page); await expect(page.getByRole("heading", { name: "AI executes. Humans govern." })).toBeVisible();
+  await page.goto("/"); await configure(page); await expect(page.getByRole("heading", { name: "Como podemos ajudar?" })).toBeVisible();
   await page.keyboard.press("Tab"); await expect(page.getByText("Pular para o conteúdo principal")).toBeFocused();
   await page.getByLabel("Tema").selectOption("dark"); await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
 });
