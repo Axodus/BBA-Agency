@@ -4,8 +4,8 @@ on:
   push:
     paths:
       - "core/**"
-      - "docs/development/**"
-      - "docs/adr/**"
+      - ".rag/development/**"
+      - ".rag/adr/**"
       - "pnpm-workspace.yaml"
       - "package.json"
       - "pnpm-lock.yaml"
@@ -13,8 +13,8 @@ on:
   pull_request:
     paths:
       - "core/**"
-      - "docs/development/**"
-      - "docs/adr/**"
+      - ".rag/development/**"
+      - ".rag/adr/**"
       - "pnpm-workspace.yaml"
       - "package.json"
       - "pnpm-lock.yaml"

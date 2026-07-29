@@ -74,7 +74,8 @@ export class ProviderBackedExecutionRepository extends ProviderBackedRepository<
 export class ProviderBackedAssetRepository extends ProviderBackedRepository<Asset, AssetSnapshot> implements AssetRepository { public constructor(provider: PersistenceProviderPort, context?: TransactionContext) { super(provider, assetCodec, context); } }
 export class ProviderBackedKnowledgeRepository extends ProviderBackedRepository<Knowledge, KnowledgeSnapshot> implements KnowledgeRepository { public constructor(provider: PersistenceProviderPort, context?: TransactionContext) { super(provider, knowledgeCodec, context); } }
 export class ProviderBackedPolicyRepository extends ProviderBackedRepository<Policy, PolicySnapshot> implements PolicyRepository {
-  public constructor(provider: PersistenceProviderPort, context?: TransactionContext) { super(provider, policyCodec, context); }
+  public constructor(provider: PersistenceProviderPort, context?: TransactionContext, activeUnitOfWork?: UnitOfWorkPort) { super(provider, policyCodec, context, activeUnitOfWork); }
+  public override withUnitOfWork(unitOfWork: UnitOfWorkPort): ProviderBackedPolicyRepository { return new ProviderBackedPolicyRepository(this.provider, unitOfWork.context, unitOfWork); }
   public async existsVersion(tenantId: TenantId, policyVersionId: Identity): Promise<boolean> {
     return this.provider.listSnapshots("Policy", tenantId.toString()).some((record) => {
       const versions = record.snapshot.versions as readonly { id?: string }[];
@@ -88,7 +89,8 @@ export class ProviderBackedReviewRepository extends ProviderBackedRepository<Rev
 export class ProviderBackedPublicationRepository extends ProviderBackedRepository<Publication, PublicationSnapshot> implements PublicationRepositoryPort { public constructor(provider: PersistenceProviderPort, context?: TransactionContext) { super(provider, publicationCodec, context); } }
 export class ProviderBackedConnectorRepository extends ProviderBackedRepository<Connector, ConnectorSnapshot> implements ConnectorRepository { public constructor(provider: PersistenceProviderPort, context?: TransactionContext) { super(provider, connectorCodec, context); } }
 export class ProviderBackedConnectorExecutionRepository extends ProviderBackedRepository<ConnectorExecution, ConnectorExecutionSnapshot> implements ConnectorExecutionRepository {
-  public constructor(provider: PersistenceProviderPort, context?: TransactionContext) { super(provider, connectorExecutionCodec, context); }
+  public constructor(provider: PersistenceProviderPort, context?: TransactionContext, activeUnitOfWork?: UnitOfWorkPort) { super(provider, connectorExecutionCodec, context, activeUnitOfWork); }
+  public override withUnitOfWork(unitOfWork: UnitOfWorkPort): ProviderBackedConnectorExecutionRepository { return new ProviderBackedConnectorExecutionRepository(this.provider, unitOfWork.context, unitOfWork); }
   public async findByIdempotencyKey(tenantId: TenantId, connectorId: Identity, operationKey: string, idempotencyKey: string): Promise<ConnectorExecution | null> {
     const records = this.provider.listSnapshots("ConnectorExecution", tenantId.toString());
     for (const record of records) {

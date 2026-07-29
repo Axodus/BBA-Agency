@@ -53,9 +53,9 @@ This area contains earlier platform and campaign-oriented experiments. Before mo
 - do not assume legacy campaign terminology represents the target architecture;
 - avoid coupling the demo to legacy infrastructure without an explicit requirement.
 
-### `docs/`
+### `.rag/`
 
-Documentation must separate domain concerns (what the platform is) from implementation concerns (how it is built). Do not mix aspirational product claims with verified implementation status.
+This is the versioned internal retrieval and governance corpus for plans, implementation documentation, architecture records, and ADRs. It is governed content, not a disposable cache. Documentation must separate domain concerns (what the platform is) from implementation concerns (how it is built). Do not mix aspirational product claims with verified implementation status. `demo/docs/` remains scoped to the deterministic reference demo.
 
 ## Core operating principles
 
