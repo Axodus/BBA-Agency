@@ -1,6 +1,6 @@
 # EPIC-IMP-016 — BBA Publisher Prototype Report
 
-Status: `IMPLEMENTED_PENDING_FINAL_GATE`
+Status: `PASS_WITH_GAPS`
 
 Normative status: local implementation evidence. Product Vision 2.0 remains
 non-normative pending review in the Documentation repository.
@@ -48,5 +48,30 @@ was introduced.
 
 ## Validation record
 
-Final commands and results are recorded when the closure gate completes. A
-PASS cannot be inferred from this interim status.
+- Agency Product: 6/6 tests passed.
+- Agency Runtime HTTP: 5/5 tests passed.
+- sdk-react: 17/17 tests passed; 74 canonical Platform bindings preserved.
+- BBA Web: 5/5 unit/integration tests passed.
+- Playwright: 11 passed; 3 deliberate viewport skips; Publisher journey PASS.
+- Core: 168/168 tests passed; lint, format, and architecture PASS.
+- OpenAPI: 74 operations (57 Commands, 17 Queries) PASS.
+- Browser boundary and bundle baseline: PASS at 177,845 bytes gzip JavaScript
+  and 2,422 bytes gzip CSS.
+- `git diff --check`: PASS for the implementation changes.
+
+## Gaps preventing PASS
+
+1. The runtime requires `PublisherPlatformCompositionPort`, but this Epic does
+   not ship a production composition backed by concrete M12 Application API
+   instances. Integration and lifecycle tests use an explicit collaborator;
+   there is no permissive fallback. A deployment must supply the approved
+   adapter before the Runtime can be considered operational outside the
+   controlled prototype.
+2. Live OpenAI and Anthropic BYOK smoke tests were not run because no customer
+   credential was supplied. The deterministic acceptance path is complete.
+3. The repository worktree is not globally clean because a concurrent,
+   unrelated edit remains in `static/public/assets/Axodus_logo.svg`. It was not
+   modified, staged, or committed by this Epic.
+
+The implemented vertical is demonstrable and tested, but these gaps make
+`PASS_WITH_GAPS` the only truthful closure classification.
