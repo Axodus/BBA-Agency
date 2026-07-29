@@ -100,3 +100,10 @@ transferring institutional Authority.
 Every local traceability claim uses `PASS`, `FAIL`, `NOT_RUN`,
 `NOT_APPLICABLE`, or `BLOCKED`. Local documents never claim that the Core is
 production-ready.
+
+## Agency prototype handoff
+
+EPIC-IMP-016 is informed by Product Vision 2.0 (`BBAPLT-GDE-101`), its
+canonical review (`BBAPLT-RPT-030`), Agency composition ADR `BBA-ADR-0006`,
+the Agency roadmap `BBA-ROAD-004`, and the canonical Ubiquitous Language in
+the Documentation repository. Local evidence does not amend their authority.

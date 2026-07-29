@@ -4,14 +4,8 @@ export interface NavigationItem {
 }
 
 export const navigationItems: readonly NavigationItem[] = Object.freeze([
-  { label: "Overview", path: "/" },
-  { label: "Missions", path: "/missions" },
-  { label: "Human Governance", path: "/governance" },
-  { label: "AI Workforce", path: "/ai-workforce" },
-  { label: "Institutional Assets", path: "/institutional-assets" },
-  { label: "Knowledge / Policy", path: "/knowledge" },
-  { label: "Workflow", path: "/workflows" },
-  { label: "Review", path: "/reviews" },
-  { label: "Publication", path: "/publications" },
-  { label: "Connector", path: "/connectors" }
+  { label: "Como podemos ajudar?", path: "/" },
+  { label: "Novo Projeto", path: "/projects/new" },
+  { label: "Projetos", path: "/projects" },
+  { label: "Modelos de IA", path: "/settings/ai" }
 ]);

@@ -1,10 +1,16 @@
 # BBA Agency
 
-**One Mission. One governed Institutional Asset. Multiple channel-specific variants. Every decision auditable.**
+**Bring a context. Work with an AI-first Agency. Receive a governed, traceable outcome.**
 
-BBA Agency is an AI-first platform concept for governed institutional publishing.
+BBA Agency is an AI-first Agency product concept. Customers choose a service,
+start a Project, follow a coordinated specialist team, govern key decisions,
+and receive a finished package. Mission, Workflow, Knowledge, Review, and
+Publication remain internal Platform capabilities rather than the primary
+customer experience.
 
-The platform is designed to transform institutional knowledge into reviewed, reusable, channel-aware publication assets while keeping human authority, provenance, and auditability explicit.
+The first executable vertical is **BBA Publisher**. It transforms Editorial
+Context into an Editorial Package for Blog, LinkedIn, and Instagram while
+keeping human authority, provenance, and semantic consistency explicit.
 
 This repository contains the current BBA Publisher Reference Demo alongside earlier platform and campaign-oriented experiments. The demo is the recommended entry point for reviewers and contributors who want to understand the current product thesis.
 
@@ -123,10 +129,13 @@ BBA-Agency/
 ├── packages/
 │   ├── ui/
 │   ├── app-shell/
+│   ├── publisher-prototype/
 │   └── sdk-react/
 ├── clients/
 ├── core/
 ├── transport/
+│   ├── http/
+│   └── agency-runtime/
 ├── demo/
 │   ├── index.html
 │   ├── styles.css
@@ -159,9 +168,16 @@ The contents under `src/` include earlier platform and campaign-oriented experim
 
 Contributor and coding-agent instructions are defined in [`AGENTS.md`](AGENTS.md).
 
-## Frontend foundation
+## BBA Publisher prototype
 
-The standalone web foundation lives in `apps/bba-web` and consumes the generated TypeScript SDK exclusively through `@bba/sdk-react`. It currently provides the responsive application shell and a read-only Mission lookup slice. See [EPIC-IMP-014 Frontend Foundation](.rag/architecture/EPIC-IMP-014-FRONTEND-FOUNDATION.md) for package boundaries, local-session constraints, and validation commands.
+The standalone web experience lives in `apps/bba-web`. Its primary navigation
+is service-oriented: **Como podemos ajudar?**, **Novo Projeto**, **Projetos**,
+and **Modelos de IA**. The Publisher captures Editorial Context, coordinates a
+deterministic or optional BYOK execution, records human checkpoints, and
+delivers a traceable Editorial Package. It never publishes externally.
+
+Read the [Product Narrative](.rag/product/BBA-PUBLISHER-PRODUCT-NARRATIVE.md)
+before the [EPIC-IMP-016 technical plan](.rag/architecture/EPIC-IMP-016-BBA-PUBLISHER-PROTOTYPE.md).
 
 ## Important disclosure
 

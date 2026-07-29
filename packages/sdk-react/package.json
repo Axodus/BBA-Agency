@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@bba/api-client": "workspace:*",
+    "@bba/publisher-prototype": "workspace:*",
     "@tanstack/react-query": "5.101.4"
   },
   "peerDependencies": { "react": "19.2.8" },

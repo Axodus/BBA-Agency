@@ -1,6 +1,6 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
-import { type ComponentPropsWithoutRef, type ReactNode, useId } from "react";
+import { cloneElement, isValidElement, type ComponentPropsWithoutRef, type ReactNode, useId } from "react";
 import { Link as RouterLink, NavLink as RouterNavLink, type LinkProps, type NavLinkProps } from "react-router-dom";
 
 function classes(...values: Array<string | false | undefined>): string {
@@ -22,7 +22,8 @@ export function Field({ label, hint, error, id: providedId, children }: { readon
   const generatedId = useId();
   const id = providedId ?? generatedId;
   const descriptionId = `${id}-description`;
-  return <div className="bba-field"><label htmlFor={id}>{label}</label>{children}<div id={descriptionId} className={classes("bba-field__message", error && "bba-field__message--error")}>{error ?? hint}</div></div>;
+  const control = isValidElement<{ id?: string; "aria-describedby"?: string }>(children) ? cloneElement(children, { id: children.props.id ?? id, "aria-describedby": children.props["aria-describedby"] ?? descriptionId }) : children;
+  return <div className="bba-field"><label htmlFor={id}>{label}</label>{control}<div id={descriptionId} className={classes("bba-field__message", error && "bba-field__message--error")}>{error ?? hint}</div></div>;
 }
 
 export function Card({ className, ...props }: ComponentPropsWithoutRef<"section">) {
