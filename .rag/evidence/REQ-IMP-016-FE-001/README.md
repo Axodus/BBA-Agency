@@ -1,5 +1,15 @@
 # REQ-IMP-016-FE-001 visual evidence
 
+```yaml
+canonical_language: English
+default_locale: en-US
+fallback_locale: en-US
+frontend_localization_ready: true
+backend_messages_language: English
+logs_language: English
+deliverable_language: customer-configurable
+```
+
 This directory contains generated evidence from the validated static MVP:
 
 - Agency Home desktop;

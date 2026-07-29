@@ -4,6 +4,21 @@ Status: `IMPLEMENTATION_EVIDENCE`
 
 Requirement: `REQ-IMP-016-FE-001`
 
+```yaml
+canonical_language: English
+default_locale: en-US
+fallback_locale: en-US
+frontend_localization_ready: true
+backend_messages_language: English
+logs_language: English
+deliverable_language: customer-configurable
+```
+
+Application locale and deliverable language are separate contracts. Runtime
+states, events, actions, errors, payload fields, audit messages, and telemetry
+remain English and locale-independent. Customer content uses the explicit
+`contentLanguage` field and may use another BCP 47 language tag.
+
 ## Functional reference
 
 The static BBA Publisher experience in `apps/bba-web/src/static-publisher/`
@@ -49,8 +64,8 @@ variants, review, delivery, agents, decisions, timeline, consumption, and
 available actions. It does not import generated SDK or Platform models.
 
 The local state machine is `static-publisher/state-machine.ts`. Events are
-explicit and form the candidate Runtime event vocabulary; timers are not part
-of the behavioral contract.
+explicit English identifiers and form the candidate Runtime event vocabulary;
+timers and translated labels are not part of the behavioral contract.
 
 ## Action to backend derivation
 

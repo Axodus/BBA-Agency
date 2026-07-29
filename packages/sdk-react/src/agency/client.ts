@@ -1,7 +1,7 @@
 import type { CreatePublisherProjectRequest, EditorialPackage, HumanDecision, PublisherProject } from "@bba/publisher-prototype";
 
 export interface AgencyClientConfiguration { readonly baseUrl: string; readonly getAccessToken: () => Promise<string | undefined>; readonly getTenantId: () => string; readonly getCorrelationId: () => string; readonly fetch?: typeof globalThis.fetch | undefined; }
-type Envelope<T> = { readonly data: T; readonly meta: { readonly correlationId: string; readonly replayed?: boolean } };
+type Envelope<T> = { readonly data: T; readonly meta: { readonly correlationId: string; readonly replayed?: boolean; readonly applicationLocale: "en-US" } };
 export interface AiProviderStatus { readonly provider: "OPENAI" | "ANTHROPIC"; readonly configured: boolean; readonly model?: string | undefined; readonly expiresAt?: string | undefined; }
 
 export class AgencyClient {

@@ -2,6 +2,21 @@
 
 Status: `PASS`
 
+```yaml
+canonical_language: English
+default_locale: en-US
+fallback_locale: en-US
+frontend_localization_ready: true
+backend_messages_language: English
+logs_language: English
+deliverable_language: customer-configurable
+correction: REQ-IMP-016-FE-002
+```
+
+This requirement temporarily moved to `REQUIRES_CORRECTION` after its original
+Portuguese-first interface was identified. Its `PASS` status is restored only
+through the validated English-default correction recorded by FE-002.
+
 ## Delivered
 
 - service-oriented Home and Publisher overview;
@@ -45,3 +60,7 @@ runtime dependency was added for this requirement.
 Visual evidence is versioned under
 `.rag/evidence/REQ-IMP-016-FE-001/`. It demonstrates only the deterministic,
 static Experience described by this requirement.
+
+The evidence and acceptance journeys were regenerated in English by
+REQ-IMP-016-FE-002. Application labels, technical contracts, errors, events,
+and exports now use English while deliverable content remains configurable.

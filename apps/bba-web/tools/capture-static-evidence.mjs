@@ -15,9 +15,9 @@ await capture("/projects/demo-final-review/content", "04-channel-content-desktop
 await capture("/projects/demo-final-review/review", "05-consistency-review-desktop.png");
 await capture("/projects/demo-delivery/delivery", "06-delivery-desktop.png");
 await page.goto("http://127.0.0.1:4173/projects/demo-core-review/context");
-await page.getByRole("button", { name: "Aprovar núcleo editorial" }).click();
+await page.locator('[data-action="approve-core"]').click();
 await page.goto("http://127.0.0.1:4173/projects/demo-final-review/review");
-await page.getByRole("button", { name: "Aprovar pacote" }).click();
+await page.locator('[data-action="approve-package"]').click();
 await page.goto("http://127.0.0.1:4173/projects/demo-final-review/delivery");
 await page.waitForTimeout(750);
 const video = page.video(); await page.close(); if (video) await video.saveAs(resolve(output, "publisher-golden-path.webm")); await desktop.close();
