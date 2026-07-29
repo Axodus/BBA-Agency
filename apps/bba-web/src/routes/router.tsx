@@ -7,10 +7,12 @@ import { EditorialContextWizard } from "../static-publisher/pages/EditorialConte
 import { ProjectWorkspace } from "../static-publisher/pages/ProjectWorkspace.js";
 import { StaticAiSettings } from "../static-publisher/pages/StaticAiSettings.js";
 import { PlatformDiagnostics } from "../static-publisher/pages/PlatformDiagnostics.js";
+import { ServicesPage } from "../static-publisher/pages/ServicesPage.js";
+import { DeliveriesPage } from "../static-publisher/pages/DeliveriesPage.js";
 import { RouteErrorPage } from "../pages/RouteErrorPage.js";
 
 export const router = createBrowserRouter([{ path: "/", element: <StaticAgencyShell />, errorElement: <RouteErrorPage />, children: [
-  { index: true, element: <AgencyHome /> }, { path: "services/publisher", element: <PublisherOverview /> }, { path: "services/publisher/new", element: <EditorialContextWizard /> },
+  { index: true, element: <AgencyHome /> }, { path: "services", element: <ServicesPage /> }, { path: "services/publisher", element: <PublisherOverview /> }, { path: "services/publisher/new", element: <EditorialContextWizard /> },
   { path: "projects", element: <ProjectListPage /> }, { path: "projects/:projectId", element: <Navigate replace to="context" /> }, { path: "projects/:projectId/:section", element: <ProjectWorkspace /> },
-  { path: "settings/ai", element: <StaticAiSettings /> }, { path: "platform-diagnostics", element: <PlatformDiagnostics /> },
+  { path: "deliveries", element: <DeliveriesPage /> }, { path: "settings/ai", element: <StaticAiSettings /> }, { path: "platform-diagnostics", element: <PlatformDiagnostics /> },
 ] }]);

@@ -1,0 +1,66 @@
+.services-page .agency-service-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.services-page .agency-service-grid h2 {
+  margin: 3rem 0 1rem;
+  font: 2.4rem var(--agency-font-display);
+}
+
+.delivery-cards {
+  border-top: 1px solid var(--agency-line);
+}
+
+.delivery-card {
+  display: grid;
+  grid-template-columns: minmax(16rem, 1.5fr) 1fr auto;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--agency-line);
+}
+
+.delivery-card h2 {
+  margin: .4rem 0;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+}
+
+.delivery-card > div > p:last-child {
+  color: var(--agency-muted);
+}
+
+.delivery-card dl {
+  display: grid;
+  gap: .7rem;
+}
+
+.delivery-card dt {
+  color: var(--agency-muted);
+  font-size: .62rem;
+  text-transform: uppercase;
+}
+
+.delivery-card dd {
+  margin: .2rem 0 0;
+}
+
+@media (max-width: 1000px) {
+  .services-page .agency-service-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .delivery-card {
+    grid-template-columns: 1fr auto;
+  }
+
+  .delivery-card dl {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 700px) {
+  .services-page .agency-service-grid,
+  .delivery-card {
+    grid-template-columns: 1fr;
+  }
+}
