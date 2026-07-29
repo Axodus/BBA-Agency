@@ -1,27 +1,16 @@
-import { createBrowserRouter } from "react-router-dom";
-import { RuntimeShell } from "../app/RuntimeShell.js";
-import { MissionsPage } from "../pages/MissionsPage.js";
+import { createBrowserRouter, Navigate } from "react-router-dom";
+import { StaticAgencyShell } from "../static-publisher/components/StaticAgencyShell.js";
+import { AgencyHome } from "../static-publisher/pages/AgencyHome.js";
+import { PublisherOverview } from "../static-publisher/pages/PublisherOverview.js";
+import { ProjectListPage } from "../static-publisher/pages/ProjectListPage.js";
+import { EditorialContextWizard } from "../static-publisher/pages/EditorialContextWizard.js";
+import { ProjectWorkspace } from "../static-publisher/pages/ProjectWorkspace.js";
+import { StaticAiSettings } from "../static-publisher/pages/StaticAiSettings.js";
+import { PlatformDiagnostics } from "../static-publisher/pages/PlatformDiagnostics.js";
 import { RouteErrorPage } from "../pages/RouteErrorPage.js";
-import { MissionCreatePage } from "../features/missions/MissionCreatePage.js";
-import { GovernanceWorkspacePage } from "../features/governance/GovernanceWorkspacePage.js";
-import { AIWorkforceWorkspacePage } from "../features/ai-workforce/AIWorkforceWorkspacePage.js";
-import { InstitutionalAssetsWorkspacePage } from "../features/institutional-assets/InstitutionalAssetsWorkspacePage.js";
-import { KnowledgePolicyWorkspacePage } from "../features/knowledge-policy/KnowledgePolicyWorkspacePage.js";
-import { WorkflowWorkspacePage } from "../features/workflow/WorkflowWorkspacePage.js";
-import { ReviewWorkspacePage } from "../features/review/ReviewWorkspacePage.js";
-import { PublicationWorkspacePage } from "../features/publication/PublicationWorkspacePage.js";
-import { ConnectorWorkspacePage } from "../features/connector/ConnectorWorkspacePage.js";
-import { AgencyHomePage } from "../features/publisher/AgencyHomePage.js";
-import { AiSettingsPage } from "../features/publisher/AiSettingsPage.js";
-import { NewProjectPage } from "../features/publisher/NewProjectPage.js";
-import { ProjectsPage } from "../features/publisher/ProjectsPage.js";
-import { ProjectWorkspacePage } from "../features/publisher/ProjectWorkspacePage.js";
 
-export const router = createBrowserRouter([{ path: "/", element: <RuntimeShell />, errorElement: <RouteErrorPage />, children: [
-  { index: true, element: <AgencyHomePage /> }, { path: "projects", element: <ProjectsPage /> }, { path: "projects/new", element: <NewProjectPage /> }, { path: "projects/:projectId", element: <ProjectWorkspacePage /> }, { path: "settings/ai", element: <AiSettingsPage /> },
-  { path: "missions", element: <MissionsPage /> }, { path: "missions/new", element: <MissionCreatePage /> }, { path: "missions/:missionId", lazy: () => import("../pages/MissionDetailPage.js") },
-  { path: "governance", element: <GovernanceWorkspacePage /> }, { path: "ai-workforce", element: <AIWorkforceWorkspacePage /> },
-  { path: "institutional-assets", element: <InstitutionalAssetsWorkspacePage /> }, { path: "knowledge", element: <KnowledgePolicyWorkspacePage /> },
-  { path: "workflows", element: <WorkflowWorkspacePage /> }, { path: "reviews", element: <ReviewWorkspacePage /> }, { path: "publications", element: <PublicationWorkspacePage /> },
-  { path: "connectors", element: <ConnectorWorkspacePage /> }
+export const router = createBrowserRouter([{ path: "/", element: <StaticAgencyShell />, errorElement: <RouteErrorPage />, children: [
+  { index: true, element: <AgencyHome /> }, { path: "services/publisher", element: <PublisherOverview /> }, { path: "services/publisher/new", element: <EditorialContextWizard /> },
+  { path: "projects", element: <ProjectListPage /> }, { path: "projects/:projectId", element: <Navigate replace to="context" /> }, { path: "projects/:projectId/:section", element: <ProjectWorkspace /> },
+  { path: "settings/ai", element: <StaticAiSettings /> }, { path: "platform-diagnostics", element: <PlatformDiagnostics /> },
 ] }]);

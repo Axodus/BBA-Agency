@@ -1,0 +1,7 @@
+export const serviceProducts = [
+  { id: "bba.publisher.multiplatform-publication", category: "Estratégia de publicação", name: "BBA Publisher", outcome: "Transforme um Contexto Editorial em um Pacote Editorial coerente para Blog, LinkedIn e Instagram.", status: "AVAILABLE", deliverables: "Núcleo editorial · Estratégia · Blog · LinkedIn · Instagram" },
+  { id: "bba.campaign", category: "Publicidade", name: "Criar uma campanha", outcome: "Transformar um desafio de mercado em posicionamento, conceito e plano de campanha.", status: "PLANNED", deliverables: "Estratégia · Conceitos · Copy · Plano de canais" },
+  { id: "bba.scientific-writer", category: "Produção científica", name: "Escrever um artigo", outcome: "Transformar uma pergunta e suas evidências em um artigo estruturado e revisável.", status: "PLANNED", deliverables: "Mapa de evidências · Estrutura · Artigo · Referências" },
+  { id: "bba.governance", category: "Governança", name: "Elaborar uma proposta", outcome: "Transformar um problema institucional em uma proposta pronta para deliberação.", status: "PLANNED", deliverables: "Diagnóstico · Alternativas · Proposta · Riscos" },
+  { id: "bba.research", category: "Pesquisa", name: "Pesquisar mercado", outcome: "Transformar uma pergunta de negócio em evidências, padrões e recomendações.", status: "PLANNED", deliverables: "Plano · Evidências · Insights · Relatório" },
+] as const;

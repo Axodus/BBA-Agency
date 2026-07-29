@@ -1,0 +1,2 @@
+export type ProviderScenario = "provider-not-configured" | "checking" | "configured" | "invalid" | "rate-limit" | "provider-expired";
+export const providerMessages: Record<ProviderScenario, string> = { "provider-not-configured": "Nenhum modelo configurado", checking: "Verificando credencial sem enviá-la", configured: "Configuração simulada concluída", invalid: "A credencial informada parece inválida", "rate-limit": "O provedor informou limite temporário", "provider-expired": "A configuração efêmera expirou" };
