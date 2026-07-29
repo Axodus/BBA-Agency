@@ -11,8 +11,8 @@ describe("BbaAppShell", () => {
   });
 
   test("renders navigation, tenant and session summaries", () => {
-    render(<ThemeProvider><MemoryRouter initialEntries={["/"]}><Routes><Route element={<BbaAppShell runtime={{ status: "READY", tenantId: "tenant_alpha", session: { subject: "steward", actorReference: "person:steward" } }} />}><Route index element={<h1>Overview</h1>} /></Route></Routes></MemoryRouter></ThemeProvider>);
-    expect(screen.getByRole("link", { name: "Missions" })).toBeTruthy();
+    render(<ThemeProvider><MemoryRouter initialEntries={["/"]}><Routes><Route element={<BbaAppShell runtime={{ status: "READY", tenantId: "tenant_alpha", session: { subject: "steward", actorReference: "person:steward" } }} />}><Route index element={<h1>Como podemos ajudar?</h1>} /></Route></Routes></MemoryRouter></ThemeProvider>);
+    expect(screen.getByRole("link", { name: "Projetos" })).toBeTruthy();
     expect(screen.getByText("tenant_alpha")).toBeTruthy();
     expect(screen.getByText("person:steward")).toBeTruthy();
   });

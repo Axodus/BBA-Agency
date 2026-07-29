@@ -2,10 +2,12 @@ import { createBbaClient, type Client } from "@bba/api-client";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { createContext, type ReactNode, useContext, useEffect, useMemo, useState } from "react";
 import { createBbaQueryClient } from "../client/query-client.js";
+import { AgencyClient } from "../agency/client.js";
 import type { AuthAdapter, CorrelationIdProvider, SdkRuntimeState, WorkspaceAdapter } from "./contracts.js";
 
 export interface ReadySdkRuntime {
   readonly client: Client;
+  readonly agency: AgencyClient;
   readonly tenantId: string;
 }
 
@@ -36,7 +38,8 @@ export function BbaSdkProvider({ baseUrl, auth, workspace, correlationIds, child
         setValue({ state: { status: "CONFIGURATION_MISSING", message: "API base URL, token, principal e tenant são obrigatórios para a sessão de desenvolvimento." }, ready: null }); return;
       }
       const client = createBbaClient({ baseUrl, getAccessToken: () => auth.getAccessToken(), getTenantId: () => tenantId, getCorrelationId: () => correlationIds.createCorrelationId(), ...(fetch === undefined ? {} : { fetch }) });
-      setValue({ state: { status: "READY", tenantId, principal }, ready: { client, tenantId } });
+      const agency = new AgencyClient({ baseUrl, getAccessToken: () => auth.getAccessToken(), getTenantId: () => tenantId, getCorrelationId: () => correlationIds.createCorrelationId(), ...(fetch === undefined ? {} : { fetch }) });
+      setValue({ state: { status: "READY", tenantId, principal }, ready: { client, agency, tenantId } });
     }).catch(() => { if (active) setValue({ state: { status: "SESSION_ERROR", message: "O adapter de sessão ou workspace falhou." }, ready: null }); });
     return () => { active = false; };
   }, [auth, baseUrl, correlationIds, fetch, workspace]);

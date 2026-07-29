@@ -44,6 +44,9 @@ importers:
       '@bba/app-shell':
         specifier: workspace:*
         version: link:../../packages/app-shell
+      '@bba/publisher-prototype':
+        specifier: workspace:*
+        version: link:../../packages/publisher-prototype
       '@bba/sdk-react':
         specifier: workspace:*
         version: link:../../packages/sdk-react
@@ -162,11 +165,27 @@ importers:
         specifier: 4.1.10
         version: 4.1.10(@types/node@25.6.0)(jsdom@30.0.0)(msw@2.15.0(@types/node@25.6.0)(typescript@6.0.3))(vite@8.1.5(@types/node@25.6.0)(jiti@2.7.0))
 
+  packages/publisher-prototype:
+    dependencies:
+      zod:
+        specifier: 4.3.6
+        version: 4.3.6
+    devDependencies:
+      typescript:
+        specifier: 6.0.3
+        version: 6.0.3
+      vitest:
+        specifier: 4.1.10
+        version: 4.1.10(@types/node@25.6.0)(jsdom@30.0.0)(msw@2.15.0(@types/node@25.6.0)(typescript@6.0.3))(vite@8.1.5(@types/node@25.6.0)(jiti@2.7.0))
+
   packages/sdk-react:
     dependencies:
       '@bba/api-client':
         specifier: workspace:*
         version: link:../../clients/typescript
+      '@bba/publisher-prototype':
+        specifier: workspace:*
+        version: link:../publisher-prototype
       '@tanstack/react-query':
         specifier: 5.101.4
         version: 5.101.4(react@19.2.8)
@@ -226,6 +245,28 @@ importers:
       jsdom:
         specifier: 30.0.0
         version: 30.0.0
+      typescript:
+        specifier: 6.0.3
+        version: 6.0.3
+      vitest:
+        specifier: 4.1.10
+        version: 4.1.10(@types/node@25.6.0)(jsdom@30.0.0)(msw@2.15.0(@types/node@25.6.0)(typescript@6.0.3))(vite@8.1.5(@types/node@25.6.0)(jiti@2.7.0))
+
+  transport/agency-runtime:
+    dependencies:
+      '@bba/publisher-prototype':
+        specifier: workspace:*
+        version: link:../../packages/publisher-prototype
+      fastify:
+        specifier: 5.10.0
+        version: 5.10.0
+      zod:
+        specifier: 4.3.6
+        version: 4.3.6
+    devDependencies:
+      '@types/node':
+        specifier: 25.6.0
+        version: 25.6.0
       typescript:
         specifier: 6.0.3
         version: 6.0.3
@@ -5967,7 +6008,7 @@ snapshots:
       process-warning: 5.0.0
       rfdc: 1.4.1
       secure-json-parse: 4.1.0
-      semver: 7.7.4
+      semver: 7.8.4
       toad-cache: 3.7.4
 
 =======
@@ -6313,7 +6354,7 @@ snapshots:
       es6-error: 4.1.1
       matcher: 3.0.0
       roarr: 2.15.4
-      semver: 7.7.4
+      semver: 7.8.4
       serialize-error: 7.0.1
 
   globals@14.0.0: {}
@@ -7366,7 +7407,7 @@ snapshots:
     dependencies:
       '@img/colour': 1.1.0
       detect-libc: 2.1.2
-      semver: 7.7.4
+      semver: 7.8.4
     optionalDependencies:
       '@img/sharp-darwin-arm64': 0.34.5
       '@img/sharp-darwin-x64': 0.34.5

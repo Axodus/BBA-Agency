@@ -752,3 +752,14 @@ in the M0 report.
 | REQ-IMP-013-006 | GDE-080 | Closed response serialization and public errors | Fastify schemas/error mapper | disclosure and error tests | ADR-IMP-0040 | DONE |
 | REQ-IMP-013-007 | GDE-079/080 | Generated configurable TypeScript SDK | `clients/typescript` | codegen drift and callable-operation checks | ADR-IMP-0040 | DONE |
 | REQ-IMP-013-008 | GDE-080 | Core and boundary regression | workspace gates | Core/transport/client checks | ADR-IMP-0040 | DONE |
+
+## EPIC-IMP-016 — BBA Publisher Vertical Prototype
+
+| REQ | Source | Requirement | Implementation | Verification | Decision | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+| REQ-IMP-016-001 | BBAPLT-GDE-101 | Service-oriented Agency Experience | Publisher home and Project routes | Agency home/UI tests | ADR-IMP-0041 | DONE |
+| REQ-IMP-016-002 | BBAPLT-GDE-101 | Versioned Agency Product outside Platform Domain | `publisherProduct` | product contract tests | ADR-IMP-0041 | DONE |
+| REQ-IMP-016-003 | BBAPLT-GDE-101 | Editorial Context and canonical Editorial Core | schemas and executor | validation/traceability tests | ADR-IMP-0042 | DONE |
+| REQ-IMP-016-004 | BBAPLT-GDE-101 | Project lifecycle over certified capabilities | Project service and Platform port | lifecycle/isolation tests | ADR-IMP-0043 | DONE |
+| REQ-IMP-016-005 | BBAPLT-GDE-101 | Deterministic and optional BYOK execution | Runtime executors and ephemeral vault | runtime HTTP/security tests | ADR-IMP-0044 | DONE |
+| REQ-IMP-016-006 | BBAPLT-GDE-101 | Human checkpoints and Editorial Package | Project Workspace | lifecycle and E2E tests | ADR-IMP-0042/43 | DONE |

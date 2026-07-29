@@ -1,4 +1,6 @@
 export { createBbaQueryClient } from "./client/query-client.js";
+export { AgencyClient, type AgencyClientConfiguration, type AiProviderStatus } from "./agency/client.js";
+export { projectKeys, useAiSettingsQuery, useConfigureAiCommand, useCreateProjectCommand, useExecuteProjectCommand, useProjectDecisionCommand, useProjectQuery, useProjectsQuery } from "./agency/hooks.js";
 export { CommandOutcomeUnknownError, type CommandExecutionState, type CommandIntent, type CommandReceipt } from "./commands/command-types.js";
 export { commandInvalidationPolicy, invalidateCommittedCommand, type CommandInvalidationRule, type InvalidationResourceIds, type ProductQueryTarget } from "./commands/invalidation-policy.js";
 export { useCommandIntent, type CommandIntentController } from "./commands/use-command-intent.js";
