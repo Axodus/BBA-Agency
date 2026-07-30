@@ -21,7 +21,13 @@ The authenticated external deployment was not publicly accessible during sprint 
 
 These files are referenced rather than copied to avoid duplicating governed binary evidence. Fresh `before` captures must be placed in `before/` if a clean pre-change runtime can be reproduced.
 
-## Required `after` evidence
+## Current screenshot evidence
+
+An automated capture run produced 52 preliminary screenshots across 1440 x 900, 1280 x 800, 768 x 1024, and 390 x 844. These are useful comparison artifacts but are not final acceptance evidence yet because a later no-horizontal-overflow assertion found mobile issues that were fixed in source afterward.
+
+Final acceptance requires re-running apps/bba-web/e2e/visual-convergence.spec.ts after the latest CSS corrections.
+
+## Required final `after` evidence
 
 Capture public Home, authenticated-style Home, Services, Publisher, Projects, wizard confirmation, Workspace Context/Core, Content, Review, Delivery, AI settings, and an error state at:
 
@@ -36,8 +42,8 @@ Stable screenshots belong in `desktop/`, `mobile/`, or `after/`; computed compar
 
 - Source audit: `../../design/SPRINT-IMP-017-STATIC-PROTOTYPE-CONVERGENCE-AUDIT.md`
 - Architecture mapping: `../../architecture/SPRINT-IMP-017-DESIGN-SYSTEM-AND-COMPONENT-MAPPING.md`
-- Baseline functional tests: pending dependency reconciliation.
-- Fresh browser screenshots: pending.
+- Baseline functional tests: desktop and mobile E2E passed for golden, revision, and failure paths; full pnpm check remains pending dependency reconciliation.
+- Fresh browser screenshots: preliminary 52-file set exists; final no-overflow recapture pending.
 - Accessibility evidence: pending.
 - Language and architecture gates: pending.
 - Build and bundle: pending.

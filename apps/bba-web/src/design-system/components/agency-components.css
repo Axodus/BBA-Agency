@@ -44,6 +44,10 @@
   margin: .2rem 0 0;
 }
 
+.strategy-sequence {
+  flex-wrap: wrap;
+}
+
 @media (max-width: 1000px) {
   .services-page .agency-service-grid {
     grid-template-columns: 1fr 1fr;
@@ -63,6 +67,11 @@
   .delivery-card {
     grid-template-columns: 1fr;
   }
+
+  .strategy-sequence {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }
 
 .settings-remove {
@@ -79,6 +88,25 @@
   color: var(--agency-muted);
   font-size: .78rem;
   line-height: 1.5;
+}
+
+.ai-settings,
+.ai-settings * {
+  min-width: 0;
+}
+
+.ai-settings {
+  overflow-wrap: anywhere;
+}
+
+.scenario-switcher {
+  max-width: 100%;
+}
+
+.scenario-switcher button {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: normal;
 }
 
 .settings-boundaries {
