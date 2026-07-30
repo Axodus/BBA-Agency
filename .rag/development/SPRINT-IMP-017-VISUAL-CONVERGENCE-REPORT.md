@@ -70,9 +70,9 @@ Blocked or incomplete:
 - pnpm --filter @bba/bba-web test, pnpm --filter @bba/bba-web typecheck, and pnpm agency:check-language attempted dependency reconciliation and aborted with ERR_PNPM_ABORTED_REMOVE_MODULES_DIR_NO_TTY.
 - node apps/bba-web/tools/check-boundaries.mjs found a pre-existing forbidden browser dependency in src/tools/mcp-server.ts, outside the changed SPRINT-IMP-017 files.
 - node apps/bba-web/tools/check-product-acceptance.mjs failed because it looked for /mnt/d/rede/github/contracts/openapi/v1/operation-inventory.json, which is absent in the current workspace layout.
-- direct app typecheck attempts through local tsc did not produce reliable tool output in this filesystem session; no typecheck PASS is claimed from those attempts.
+- direct app typecheck now passes with the PTY/timeout runner: TSC_EXIT=0.
 - Vitest with pnpm and the default bundled config loader failed on EROFS while trying to write apps/bba-web/node_modules/.vite-temp/*.mjs.
-- Vitest with --configLoader runner avoided the EROFS write but failed to start a worker pool, reporting: [vitest-pool-runner]: Timeout waiting for worker to respond.
+- Vitest with --configLoader runner avoided the EROFS write but failed to start worker pools before test collection, reporting [vitest-pool-runner]: Timeout waiting for worker to respond for forks/threads and timing out for vmForks.
 
 ## Quantitative convergence matrix
 
@@ -97,8 +97,8 @@ These PASS_VISUAL results do not close the sprint by themselves. Full PASS still
 
 ## Known gaps
 
-1. Run the full package checks after dependency reconciliation no longer requires interactive node_modules purging or EROFS access to node_modules.
-2. Obtain reliable typecheck and unit-test output from the local runner.
+1. Run Vitest successfully after the local worker-pool startup issue is resolved.
+2. Run the full package checks after dependency reconciliation no longer requires interactive node_modules purging or EROFS access to node_modules.
 3. Update this report from IN_PROGRESS to PASS/PASS_WITH_GAPS/FAIL only after evidence proves every acceptance criterion.
 
 ## Deployment status

@@ -25,7 +25,7 @@ These files are referenced rather than copied to avoid duplicating governed bina
 
 An automated capture run produced 52 screenshots across 1440 x 900, 1280 x 800, 768 x 1024, and 390 x 844. The final run passed with the no-horizontal-overflow assertion enabled for every captured surface.
 
-Visual acceptance for the captured surfaces is complete. Full sprint acceptance still requires the typecheck/unit-test and workspace-wide gates listed in the development report.
+Visual acceptance for the captured surfaces is complete. Full sprint acceptance still requires the Vitest and workspace-wide gates listed in the development report. Typecheck is now verified with TSC_EXIT=0.
 
 ## Required final `after` evidence
 
