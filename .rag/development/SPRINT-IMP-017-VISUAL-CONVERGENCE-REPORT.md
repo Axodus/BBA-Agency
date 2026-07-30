@@ -71,6 +71,8 @@ Blocked or incomplete:
 - node apps/bba-web/tools/check-boundaries.mjs found a pre-existing forbidden browser dependency in src/tools/mcp-server.ts, outside the changed SPRINT-IMP-017 files.
 - node apps/bba-web/tools/check-product-acceptance.mjs failed because it looked for /mnt/d/rede/github/contracts/openapi/v1/operation-inventory.json, which is absent in the current workspace layout.
 - direct app typecheck attempts through local tsc did not produce reliable tool output in this filesystem session; no typecheck PASS is claimed from those attempts.
+- Vitest with pnpm and the default bundled config loader failed on EROFS while trying to write apps/bba-web/node_modules/.vite-temp/*.mjs.
+- Vitest with --configLoader runner avoided the EROFS write but failed to start a worker pool, reporting: [vitest-pool-runner]: Timeout waiting for worker to respond.
 
 ## Quantitative convergence matrix
 
