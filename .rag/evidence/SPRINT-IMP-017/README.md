@@ -1,6 +1,6 @@
 # SPRINT-IMP-017 Evidence Manifest
 
-Status: `IN_PROGRESS`
+Status: `PASS`
 
 This directory records reproducible evidence for visual convergence. Evidence is separated from product claims: screenshots prove rendered composition at a viewport, while tests and reports prove behavior and contract preservation.
 
@@ -23,9 +23,9 @@ These files are referenced rather than copied to avoid duplicating governed bina
 
 ## Current screenshot evidence
 
-An automated capture run produced 52 screenshots across 1440 x 900, 1280 x 800, 768 x 1024, and 390 x 844. The final run passed with the no-horizontal-overflow assertion enabled for every captured surface.
+An automated capture run produced 52 screenshots across 1440 x 900, 1280 x 800, 768 x 1024, and 390 x 844. The current run passes with the no-horizontal-overflow assertion enabled for every captured surface.
 
-Visual acceptance for the captured surfaces is complete. Full sprint acceptance still requires the Vitest and workspace-wide gates listed in the development report. Typecheck is now verified with TSC_EXIT=0.
+Visual acceptance for the captured surfaces is complete. The current workspace also passes the language gate, package typechecks, product acceptance, boundaries, build, bundle, Vitest unit tests, Playwright browser tests, and the accessibility smoke.
 
 ## Required final `after` evidence
 
@@ -42,10 +42,10 @@ Stable screenshots belong in `desktop/`, `mobile/`, or `after/`; computed compar
 
 - Source audit: `../../design/SPRINT-IMP-017-STATIC-PROTOTYPE-CONVERGENCE-AUDIT.md`
 - Architecture mapping: `../../architecture/SPRINT-IMP-017-DESIGN-SYSTEM-AND-COMPONENT-MAPPING.md`
-- Baseline functional tests: desktop and mobile E2E passed after final overflow fixes for golden, revision, and failure paths; full pnpm check remains pending dependency reconciliation.
+- Baseline functional tests: desktop and mobile E2E passed for golden, revision, and failure paths.
 - Fresh browser screenshots: final 52-file set exists and passed the no-overflow visual harness.
-- Accessibility evidence: pending.
-- Language and architecture gates: pending.
-- Build and bundle: pending.
+- Accessibility evidence: keyboard-accessible home and wizard smoke passed on desktop and mobile.
+- Language and architecture gates: current and green.
+- Build and bundle: current and green.
 
-No PASS is assigned until the final report links every acceptance criterion to current evidence.
+PASS is assigned because the final report and audit now link every acceptance criterion to current evidence.

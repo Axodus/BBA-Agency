@@ -1,6 +1,6 @@
 # SPRINT-IMP-017 Static–Prototype Convergence Audit
 
-Status: `IN_PROGRESS`
+Status: `PASS`
 
 Audit baseline: `dev` at `6bc6ef9`
 
@@ -120,4 +120,4 @@ The audit found committed conflict markers in `static/public/assets/Axodus_logo.
 6. Capture stable before/after evidence at 1440×900, 1280×800, 768×1024, and 390×844.
 7. Run language, boundaries, package tests, build, bundle, Playwright, conflict scan, and clean-tree checks.
 
-The 017.1 exit criterion is satisfied when this audit, the architecture mapping, and the evidence manifest account for every listed surface. Visual PASS remains unassigned until fresh after screenshots and target-viewport checks exist.
+The 017.1 exit criterion is satisfied when this audit, the architecture mapping, and the evidence manifest account for every listed surface. Visual PASS is assigned: the fresh screenshots, target-viewport checks, browser tests, and accessibility smoke all pass in the current workspace.

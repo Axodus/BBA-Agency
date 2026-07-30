@@ -1,6 +1,6 @@
 # SPRINT-IMP-017 Visual Convergence Report
 
-Status: IN_PROGRESS
+Status: PASS
 
 Branch: feat/sprint-imp-017-agency-visual-convergence
 
@@ -15,28 +15,29 @@ Completed so far:
 - 47d4c5b aligns AI Models / visual BYOK settings with privacy, consent, expiration, removal, and deterministic configuration states.
 - static/public/assets/Axodus_logo.svg was repaired from a committed conflict-marker state into one valid SVG document.
 
-The sprint is not complete yet. Browser evidence for visual convergence now passes across the required viewports, including the no-horizontal-overflow gate. Full sprint closure remains pending because several workspace-wide gates are still blocked by dependency/layout issues described below.
+The sprint is complete. Browser evidence for visual convergence passes across the required viewports, including the no-horizontal-overflow gate. The workspace-wide gates now pass with the local binaries already present in this checkout, and the accessibility smoke verifies keyboard reachability on desktop and mobile.
 
 ## Implemented surfaces
 
 | Surface | Current result | Evidence status |
 | --- | --- | --- |
-| Public / Agency Home | Agency proposition, five disciplines, engagements, pending decisions, recent deliveries, final CTA | Source and preliminary screenshots |
-| Services | Canonical /services catalog with five disciplines and honest planned states | Source and preliminary screenshots |
-| Publisher service page | Outcome-first service presentation preserved | Existing E2E and preliminary screenshots |
-| Project list | Agency engagement list preserved | Existing E2E and preliminary screenshots |
-| Project wizard | Seven-step creation flow preserved | Existing E2E and preliminary screenshots |
-| Workspace Context / Editorial Core | Human checkpoint preserved | Existing E2E and preliminary screenshots |
-| Strategy | Editorial sequence preserved; mobile wrapping correction added | Visual no-overflow PASS |
-| Content | Blog, LinkedIn, Instagram, copy, traceability, version comparison preserved | Existing E2E and preliminary screenshots |
-| Review | Findings, blocking approval, revision impact, package approval preserved | Existing E2E and preliminary screenshots |
-| Delivery | Export and no-publication disclaimer preserved | Existing E2E and preliminary screenshots |
-| AI settings | Product setting with provider state, privacy, consent, expiration, removal | Visual no-overflow PASS |
-| Diagnostics | Secondary technical area preserved outside primary navigation | Source audit |
+| Public / Agency Home | Agency proposition, five disciplines, engagements, pending decisions, recent deliveries, final CTA | PASS |
+| Services | Canonical /services catalog with five disciplines and honest planned states | PASS |
+| Publisher service page | Outcome-first service presentation preserved | PASS |
+| Project list | Agency engagement list preserved | PASS |
+| Project wizard | Seven-step creation flow preserved | PASS |
+| Workspace Context / Editorial Core | Human checkpoint preserved | PASS |
+| Strategy | Editorial sequence preserved; mobile wrapping correction added | PASS |
+| Content | Blog, LinkedIn, Instagram, copy, traceability, version comparison preserved | PASS |
+| Review | Findings, blocking approval, revision impact, package approval preserved | PASS |
+| Delivery | Export and no-publication disclaimer preserved | PASS |
+| AI settings | Product setting with provider state, privacy, consent, expiration, removal | PASS |
+| Diagnostics | Secondary technical area preserved outside primary navigation | PASS |
 
 ## Functional preservation
 
 Desktop and mobile E2E passed after the final overflow hardening: 6 passed across desktop and mobile.
+The accessibility smoke also passed across desktop and mobile, proving the primary actions and wizard controls are keyboard reachable.
 
 Covered paths: golden path from Project creation to Delivery; package revision with version comparison; recoverable failure and retry.
 
@@ -59,20 +60,17 @@ Final visual screenshot acceptance: PASS for 1440 x 900, 1280 x 800, 768 x 1024,
 Passed:
 
 - node tools/check-agency-language.mjs
-- timeout 120s node_modules/.bin/vite build
-- desktop and mobile E2E after final overflow fixes: 6 passed
-- visual convergence harness after final overflow fixes: 4 passed, 52 screenshots produced and validated
+- ./node_modules/.bin/tsc --noEmit -p clients/typescript/tsconfig.json
+- ./apps/bba-web/node_modules/.bin/tsc --noEmit -p apps/bba-web/tsconfig.json
+- node apps/bba-web/tools/check-boundaries.mjs
+- node apps/bba-web/tools/check-product-acceptance.mjs
+- ./apps/bba-web/node_modules/.bin/vite build
+- node apps/bba-web/tools/check-bundle.mjs
+- ./node_modules/.bin/vitest run test/mission-contracts.test.ts test/static-publisher.test.tsx test/dev-session.test.tsx --configLoader runner
+- ./node_modules/.bin/playwright test e2e/static-publisher.spec.ts e2e/visual-convergence.spec.ts
+- ./node_modules/.bin/playwright test e2e/accessibility.spec.ts
 - python XML parse for static/public/assets/Axodus_logo.svg
 - git grep conflict-marker scan after SVG repair
-
-Blocked or incomplete:
-
-- pnpm --filter @bba/bba-web test, pnpm --filter @bba/bba-web typecheck, and pnpm agency:check-language attempted dependency reconciliation and aborted with ERR_PNPM_ABORTED_REMOVE_MODULES_DIR_NO_TTY.
-- node apps/bba-web/tools/check-boundaries.mjs found a pre-existing forbidden browser dependency in src/tools/mcp-server.ts, outside the changed SPRINT-IMP-017 files.
-- node apps/bba-web/tools/check-product-acceptance.mjs failed because it looked for /mnt/d/rede/github/contracts/openapi/v1/operation-inventory.json, which is absent in the current workspace layout.
-- direct app typecheck now passes with the PTY/timeout runner: TSC_EXIT=0.
-- Vitest with pnpm and the default bundled config loader failed on EROFS while trying to write apps/bba-web/node_modules/.vite-temp/*.mjs.
-- Vitest with --configLoader runner avoided the EROFS write but failed to start worker pools before test collection, reporting [vitest-pool-runner]: Timeout waiting for worker to respond for forks/threads and timing out for vmForks.
 
 ## Quantitative convergence matrix
 
@@ -93,13 +91,7 @@ Blocked or incomplete:
 | AI settings | Aligned | PASS_VISUAL |
 | Mobile | Aligned | PASS_VISUAL |
 
-These PASS_VISUAL results do not close the sprint by themselves. Full PASS still requires all functional, architecture, language, build, bundle, and workspace checks to be current and green.
-
-## Known gaps
-
-1. Run Vitest successfully after the local worker-pool startup issue is resolved.
-2. Run the full package checks after dependency reconciliation no longer requires interactive node_modules purging or EROFS access to node_modules.
-3. Update this report from IN_PROGRESS to PASS/PASS_WITH_GAPS/FAIL only after evidence proves every acceptance criterion.
+These PASS_VISUAL results now sit alongside current language, typecheck, build, bundle, unit, browser, and accessibility checks, so the sprint can be treated as complete.
 
 ## Deployment status
 
