@@ -42,7 +42,7 @@ Stable screenshots belong in `desktop/`, `mobile/`, or `after/`; computed compar
 
 - Source audit: `../../design/SPRINT-IMP-017-STATIC-PROTOTYPE-CONVERGENCE-AUDIT.md`
 - Architecture mapping: `../../architecture/SPRINT-IMP-017-DESIGN-SYSTEM-AND-COMPONENT-MAPPING.md`
-- Baseline functional tests: desktop and mobile E2E passed for golden, revision, and failure paths; full pnpm check remains pending dependency reconciliation.
+- Baseline functional tests: desktop and mobile E2E passed after final overflow fixes for golden, revision, and failure paths; full pnpm check remains pending dependency reconciliation.
 - Fresh browser screenshots: final 52-file set exists and passed the no-overflow visual harness.
 - Accessibility evidence: pending.
 - Language and architecture gates: pending.

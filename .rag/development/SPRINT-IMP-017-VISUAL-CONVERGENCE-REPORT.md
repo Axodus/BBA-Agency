@@ -36,7 +36,7 @@ The sprint is not complete yet. Browser evidence for visual convergence now pass
 
 ## Functional preservation
 
-Desktop and mobile E2E passed before the final overflow hardening: desktop 3 passed; mobile 3 passed.
+Desktop and mobile E2E passed after the final overflow hardening: 6 passed across desktop and mobile.
 
 Covered paths: golden path from Project creation to Delivery; package revision with version comparison; recoverable failure and retry.
 
@@ -60,8 +60,7 @@ Passed:
 
 - node tools/check-agency-language.mjs
 - timeout 120s node_modules/.bin/vite build
-- desktop E2E: 3 passed
-- mobile E2E: 3 passed
+- desktop and mobile E2E after final overflow fixes: 6 passed
 - visual convergence harness after final overflow fixes: 4 passed, 52 screenshots produced and validated
 - python XML parse for static/public/assets/Axodus_logo.svg
 - git grep conflict-marker scan after SVG repair
@@ -71,7 +70,7 @@ Blocked or incomplete:
 - pnpm --filter @bba/bba-web test, pnpm --filter @bba/bba-web typecheck, and pnpm agency:check-language attempted dependency reconciliation and aborted with ERR_PNPM_ABORTED_REMOVE_MODULES_DIR_NO_TTY.
 - node apps/bba-web/tools/check-boundaries.mjs found a pre-existing forbidden browser dependency in src/tools/mcp-server.ts, outside the changed SPRINT-IMP-017 files.
 - node apps/bba-web/tools/check-product-acceptance.mjs failed because it looked for /mnt/d/rede/github/contracts/openapi/v1/operation-inventory.json, which is absent in the current workspace layout.
-- functional E2E rerun after the final CSS correction timed out waiting for the Playwright config webServer, even though the preview server used by the visual harness was still running. Earlier desktop and mobile functional E2E passed on this branch before the final CSS-only overflow correction.
+- direct app typecheck attempts through local tsc did not produce reliable tool output in this filesystem session; no typecheck PASS is claimed from those attempts.
 
 ## Quantitative convergence matrix
 
@@ -96,10 +95,9 @@ These PASS_VISUAL results do not close the sprint by themselves. Full PASS still
 
 ## Known gaps
 
-1. Re-run the functional E2E suite through the standard Playwright config after the webServer timeout is resolved.
-2. Run the full package checks after dependency reconciliation no longer requires interactive node_modules purging.
-3. Resolve or explicitly isolate the pre-existing architecture and product-acceptance gate path issues.
-4. Update this report from IN_PROGRESS to PASS/PASS_WITH_GAPS/FAIL only after evidence proves every acceptance criterion.
+1. Run the full package checks after dependency reconciliation no longer requires interactive node_modules purging or EROFS access to node_modules.
+2. Obtain reliable typecheck and unit-test output from the local runner.
+3. Update this report from IN_PROGRESS to PASS/PASS_WITH_GAPS/FAIL only after evidence proves every acceptance criterion.
 
 ## Deployment status
 
