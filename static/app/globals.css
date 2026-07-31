@@ -662,6 +662,14 @@ footer button {
   line-height: 1.5;
   margin: 0;
 }
+.agency-footer-nav {
+    gap: 44px;
+    font-size: 15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
 
 .agency-footer-nav h3 {
   font-size: 1rem;

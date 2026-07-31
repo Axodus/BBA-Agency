@@ -4,8 +4,8 @@ const footerLinks = {
   social: {
     github: "https://github.com/axodus",
     linkedin: "https://linkedin.com/company/axodus",
-    telegram: "https://t.me/axodus",
-    x: "https://x.com/axodus",
+    telegram: "https://t.me/axodusfinance",
+    x: "https://x.com/axodusfinance",
   },
   version: "Prototype v1",
 };
