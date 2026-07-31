@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
 
 const services = [
-  { n: "01", category: "Publication Strategy", name: "BBA Publisher", outcome: "Turn one editorial context into a coherent multichannel publication package.", deliverables: "Editorial core · Blog · LinkedIn · Instagram", status: "Available", time: "4–7 days" },
-  { n: "02", category: "Advertising", name: "Advertising Campaign", outcome: "Turn a market brief into a structured campaign with strategy, concepts, messaging, and channel guidance.", deliverables: "Positioning · Concepts · Copy · Channel plan", status: "Beta", time: "5–8 days" },
-  { n: "03", category: "Scientific Writing", name: "Scientific Article", outcome: "Turn a question, references, and evidence into a structured, reviewable scientific article.", deliverables: "Evidence map · Structure · Article · References", status: "Preview", time: "7–12 days" },
-  { n: "04", category: "Governance", name: "Governance Proposal", outcome: "Turn an institutional problem and its evidence into a proposal ready for deliberation.", deliverables: "Diagnosis · Alternatives · Proposal · Risk analysis", status: "Beta", time: "6–10 days" },
-  { n: "05", category: "Research", name: "Market Research", outcome: "Turn a business question into structured evidence, patterns, insights, and recommendations.", deliverables: "Research plan · Evidence · Insights · Report", status: "Available", time: "5–9 days" },
+  { category: "Publication Strategy", name: "BBA Publisher", outcome: "Turn one editorial context into a coherent multichannel publication package.", deliverables: "Editorial core · Blog · LinkedIn · Instagram", status: "Available", time: "4–7 days" },
+  { category: "Advertising", name: "Advertising Campaign", outcome: "Turn a market brief into a structured campaign with strategy, concepts, messaging, and channel guidance.", deliverables: "Positioning · Concepts · Copy · Channel plan", status: "Beta", time: "5–8 days" },
+  { category: "Scientific Writing", name: "Scientific Article", outcome: "Turn a question, references, and evidence into a structured, reviewable scientific article.", deliverables: "Evidence map · Structure · Article · References", status: "Preview", time: "7–12 days" },
+  { category: "Governance", name: "Governance Proposal", outcome: "Turn an institutional problem and its evidence into a proposal ready for deliberation.", deliverables: "Diagnosis · Alternatives · Proposal · Risk analysis", status: "Beta", time: "6–10 days" },
+  { category: "Research", name: "Market Research", outcome: "Turn a business question into structured evidence, patterns, insights, and recommendations.", deliverables: "Research plan · Evidence · Insights · Report", status: "Available", time: "5–9 days" },
 ];
 
 export function Services() {
