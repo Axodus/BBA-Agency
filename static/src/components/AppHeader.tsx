@@ -17,11 +17,11 @@ export function AppHeader() {
         <NavLink to="/ai-models">AI Models</NavLink>
       </nav>
       <div className="header-actions">
-        <NavLink className="text-button" to="/projects">
-          Sign in
+        <NavLink className="text-button" to="https://docs.axodus.country/bba-agency/overview">
+          Docs
         </NavLink>
-        <NavLink className="button primary" to="/projects/new">
-          Start a project
+        <NavLink className="button primary" to="https://dev.bba.country">
+          App dev preview
         </NavLink>
       </div>
     </header>
