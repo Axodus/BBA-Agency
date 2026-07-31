@@ -282,14 +282,12 @@ h1 {
 }
 
 .process-artwork__blue-block {
-  position: absolute;
   z-index: 7;
-  left: 56%;
-  bottom: 14%;
-  width: 12%;
   aspect-ratio: .82;
-  background: var(--blue);
-  box-shadow: inset 0 0 25px rgba(0, 0, 0, .1), 0 5px 18px rgba(0, 0, 0, .08);
+  width: 12%;
+  position: absolute;
+  bottom: 50%;
+  left: 40%;
 }
 .process-artwork__hero-logo{
   width: 80px;
