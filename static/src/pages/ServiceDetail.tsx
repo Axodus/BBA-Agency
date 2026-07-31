@@ -1,55 +1,133 @@
-import { useNavigate } from "react-router-dom";
-
-const process = [
-  "Understand context",
-  "Build editorial core",
-  "Plan channels",
-  "Produce content",
-  "Review consistency",
-  "Prepare delivery",
-];
+import { Link } from "react-router-dom";
+import { services, availabilityLabels } from "../content/services.js";
 
 export function ServiceDetail() {
-  const navigate = useNavigate();
+  const service = services[0]!;
+
   return (
     <main className="page-shell product-page">
-      <button className="back-link" onClick={() => { void navigate("/services"); }}>← All services</button>
+      <Link to="/services" className="back-link">
+        ← All services
+      </Link>
+
       <div className="product-hero">
         <div>
-          <p className="section-kicker">Publication strategy / Available</p>
-          <h1>BBA Publisher</h1>
-          <p className="product-outcome">Turn one editorial context into a coherent multichannel publication package.</p>
-          <button className="button primary big" onClick={() => { void navigate("/projects/new"); }}>Create this project</button>
+          <p className="section-kicker">
+            {service.category} / {availabilityLabels[service.availability]}
+          </p>
+          <h1>{service.name}</h1>
+          <p className="product-outcome">{service.customerOutcome}</p>
+
+          <p>
+            This page explains how {service.name} operates inside the
+            functional BBA platform. The operational experience is hosted at
+            the external prototype. This static surface does not create
+            projects, execute work, or make backend calls.
+          </p>
+
+          {service.prototypeHref && (
+            <a
+              href={service.prototypeHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="arrow-link"
+            >
+              Explore the prototype <span aria-hidden="true">→</span>
+            </a>
+          )}
         </div>
+
         <div className="package-preview">
           <span>Final package</span>
-          <strong>Editorial<br />Package</strong>
-          <small>Strategy · Blog · LinkedIn · Instagram</small>
-          <i>Ready for review and export</i>
+          <strong>
+            {service.category === "Publication Strategy"
+              ? "Editorial\nPackage"
+              : "Delivery\nPackage"}
+          </strong>
+          <small>
+            {service.deliverables.slice(0, 4).join(" · ")}
+          </small>
+          <i>Illustrative — not generated from a live run</i>
         </div>
       </div>
+
       <div className="product-facts">
-        {[
-          ["You provide", "Editorial context, source materials, audience, goals, and constraints."],
-          ["The team produces", "An editorial core, channel strategy, adapted content, and consistency report."],
-          ["You participate", "Confirm the outcome, approve the editorial core, review content, release the package."],
-          ["Estimated execution", "4–7 days · 5 checkpoints · technical consumption shown before confirmation."],
-        ].map(x => (
-          <article key={x[0]}><span>{x[0]}</span><p>{x[1]}</p></article>
-        ))}
+        <dl>
+          <dt>You provide</dt>
+          <dd>
+            <ul>
+              {service.customerProvides.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </dd>
+        </dl>
+        <dl>
+          <dt>The Agency performs</dt>
+          <dd>
+            <ul>
+              {service.agencyPerforms.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </dd>
+        </dl>
+        <dl>
+          <dt>You review</dt>
+          <dd>
+            <ul>
+              {service.humanCheckpoints.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </dd>
+        </dl>
+        <dl>
+          <dt>What you receive</dt>
+          <dd>
+            <ul>
+              {service.deliverables.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </dd>
+        </dl>
       </div>
-      <section className="pipeline-section">
+
+      <section className="pipeline-section" aria-labelledby="detail-process-heading">
         <p className="section-kicker">How the work happens</p>
-        <h2>A coordinated team, not a collection of chatbots.</h2>
+        <h2 id="detail-process-heading">
+          A coordinated team, not a collection of chatbots.
+        </h2>
         <div className="pipeline">
-          {process.map((x, i) => (
-            <div key={x}>
+          {[
+            "Understand context",
+            "Build editorial core",
+            "Plan channels",
+            "Produce content",
+            "Review consistency",
+            "Prepare delivery",
+          ].map((x, i) => (
+            <div
+              key={x}
+              className={i === 1 || i === 4 ? "checkpoint" : "agency-stage"}
+            >
               <span>0{i + 1}</span>
               <strong>{x}</strong>
-              <p>{i === 1 || i === 4 ? "Human checkpoint" : "Agency team"}</p>
+              <p>
+                {i === 1 || i === 4 ? (
+                  <>Human checkpoint — <em>your approval is required</em></>
+                ) : (
+                  "Agency team"
+                )}
+              </p>
             </div>
           ))}
         </div>
+        <p className="pipeline-note">
+          This sequence illustrates the prototype flow. No operational action
+          occurs on this static page.
+        </p>
       </section>
     </main>
   );
