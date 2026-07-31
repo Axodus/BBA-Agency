@@ -25,7 +25,7 @@ export function Services() {
       <section className="catalog">
         {services.map(s => (
           <article className="catalog-card" key={s.name}>
-            <div className="card-top"><span>{s.n}</span><em className={`status ${s.status.toLowerCase()}`}>{s.status}</em></div>
+            <div className="card-top"><em className={`status ${s.status.toLowerCase()}`}>{s.status}</em></div>
             <p className="category">{s.category}</p>
             <h2>{s.name}</h2>
             <p className="outcome">{s.outcome}</p>
