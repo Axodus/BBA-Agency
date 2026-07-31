@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ProcessArtwork } from "./components/ProcessArtwork";
+import { AgencyFooter } from "./components/AgencyFooter";
 
 type View = "home" | "services" | "service" | "dashboard" | "new" | "project" | "deliveries" | "models";
 
@@ -64,7 +65,7 @@ function Home({go}:{go:(v:View)=>void}) {
       <div className="control-mark"><span>AI</span><i>+</i><span>H</span></div>
       <div><p className="section-kicker">Human control</p><h2>Nothing important moves forward without you.</h2><p>You approve the strategy, review the work, understand the impact of changes, and decide when the result is ready.</p></div>
     </section>
-    <footer><span className="wordmark">BBA Agency</span><p>Communication, research, and institutional production—coordinated by AI, accountable to people.</p><button onClick={()=>go("new")}>What do you need to produce? →</button></footer>
+    <AgencyFooter />
   </main>;
 }
 
