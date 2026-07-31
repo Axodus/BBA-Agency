@@ -1,7 +1,9 @@
 export const enUS = {
   "navigation.home": "Home",
   "navigation.publisher": "Publisher",
+  "navigation.services": "Services",
   "navigation.projects": "Projects",
+  "navigation.deliveries": "Deliveries",
   "navigation.aiModels": "AI Models",
   "navigation.platformDiagnostics": "Platform diagnostics",
   "actions.createProject": "Create Project",
