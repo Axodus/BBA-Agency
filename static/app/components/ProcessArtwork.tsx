@@ -107,7 +107,8 @@ export function ProcessArtwork() {
         ))}
       </svg>
 
-      <div className="process-artwork__blue-block" aria-hidden="true" ><img className="process-artwork__hero-logo" src="../../public/assets/logo-neurons.png" /> </div>
+      <div className="process-artwork__blue-block" aria-hidden="true" >
+        <img className="process-artwork__hero-logo" src="/assets/logo-neurons.png" /> </div>
     </div>
   );
 }
