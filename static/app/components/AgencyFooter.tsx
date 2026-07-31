@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "react-router-dom";
 
 const footerLinks = {
   social: {
@@ -34,6 +34,18 @@ const TelegramIcon = () => (
   </svg>
 );
 
+function NavItem({ href, children }: { readonly href: string; readonly children: React.ReactNode }) {
+  const isExternal = href.startsWith("http");
+  if (isExternal) {
+    return <li><a href={href} target="_blank" rel="noopener noreferrer">{children}</a></li>;
+  }
+  return <li><Link to={href}>{children}</Link></li>;
+}
+
+function DisabledItem({ children }: { readonly children: React.ReactNode }) {
+  return <li><span aria-disabled="true">{children}</span></li>;
+}
+
 export function AgencyFooter() {
   return (
     <footer className="agency-footer" aria-label="BBA Agency site footer">
@@ -46,51 +58,51 @@ export function AgencyFooter() {
         <nav className="agency-footer-nav" aria-label="Explore">
           <h3>Explore</h3>
           <ul>
-            <li><Link href="/">Home</Link></li>
-            <li><Link href="/services">Services</Link></li>
-            <li><Link href="/projects">Projects</Link></li>
-            <li><Link href="/deliveries">Deliveries</Link></li>
-            <li><Link href="/ai-models">AI Models</Link></li>
-            <li><span aria-disabled="true">Research</span></li>
-            <li><span aria-disabled="true">Campaigns</span></li>
+            <NavItem href="/">Home</NavItem>
+            <NavItem href="/services">Services</NavItem>
+            <NavItem href="/projects">Projects</NavItem>
+            <NavItem href="/deliveries">Deliveries</NavItem>
+            <NavItem href="/ai-models">AI Models</NavItem>
+            <DisabledItem>Research</DisabledItem>
+            <DisabledItem>Campaigns</DisabledItem>
           </ul>
         </nav>
 
         <nav className="agency-footer-nav" aria-label="Services">
           <h3>Services</h3>
           <ul>
-            <li><Link href="/services/publisher">Publisher</Link></li>
-            <li><span aria-disabled="true">Advertising <small>Coming Soon</small></span></li>
-            <li><span aria-disabled="true">Scientific Writing <small>Coming Soon</small></span></li>
-            <li><span aria-disabled="true">Governance <small>Coming Soon</small></span></li>
-            <li><span aria-disabled="true">Research <small>Coming Soon</small></span></li>
+            <NavItem href="/services/publisher">Publisher</NavItem>
+            <DisabledItem>Advertising <small>Coming Soon</small></DisabledItem>
+            <DisabledItem>Scientific Writing <small>Coming Soon</small></DisabledItem>
+            <DisabledItem>Governance <small>Coming Soon</small></DisabledItem>
+            <DisabledItem>Research <small>Coming Soon</small></DisabledItem>
           </ul>
         </nav>
 
         <nav className="agency-footer-nav" aria-label="Resources">
           <h3>Resources</h3>
           <ul>
-            <li><Link href="/docs">Documentation</Link></li>
-            <li><Link href="/narrative">Product Narrative</Link></li>
-            <li><Link href="/architecture">Architecture</Link></li>
-            <li><Link href="/changelog">Changelog</Link></li>
-            <li><Link href="/help">Help Center</Link></li>
+            <NavItem href="/unavailable?destination=docs">Documentation</NavItem>
+            <NavItem href="/unavailable?destination=narrative">Product Narrative</NavItem>
+            <NavItem href="/unavailable?destination=architecture">Architecture</NavItem>
+            <NavItem href="/unavailable?destination=changelog">Changelog</NavItem>
+            <NavItem href="/unavailable?destination=help">Help Center</NavItem>
           </ul>
         </nav>
 
         <nav className="agency-footer-nav" aria-label="Company">
           <h3>Company</h3>
           <ul>
-            <li><Link href="/about">About</Link></li>
-            <li><Link href="/contact">Contact</Link></li>
-            <li><Link href="/privacy">Privacy</Link></li>
-            <li><Link href="/terms">Terms</Link></li>
-            <li><Link href="/cookies">Cookies</Link></li>
+            <NavItem href="/unavailable?destination=about">About</NavItem>
+            <NavItem href="/unavailable?destination=contact">Contact</NavItem>
+            <NavItem href="/unavailable?destination=privacy">Privacy</NavItem>
+            <NavItem href="/unavailable?destination=terms">Terms</NavItem>
+            <NavItem href="/unavailable?destination=cookies">Cookies</NavItem>
           </ul>
         </nav>
       </div>
 
-      <div className="agency-footer-social" aria-label="Social links">
+      <div className="agency-footer-social">
         <a href={footerLinks.social.github} aria-label="BBA Agency on GitHub" target="_blank" rel="noopener noreferrer">
           <GitHubIcon />
         </a>
@@ -106,7 +118,7 @@ export function AgencyFooter() {
       </div>
 
       <div className="agency-footer-bottom">
-        <span>© 2026 BBA Agency. Built with coordinated AI agents.</span>
+        <p>© 2026 BBA Agency · AI executes, humans govern.</p>
         <span>{footerLinks.version}</span>
       </div>
     </footer>
