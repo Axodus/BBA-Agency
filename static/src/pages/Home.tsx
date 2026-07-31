@@ -2,11 +2,11 @@ import { useNavigate } from "react-router-dom";
 import { ProcessArtwork } from "../../app/components/ProcessArtwork.js";
 
 const services = [
-  { category: "Publication Strategy", name: "BBA Publisher", outcome: "Turn one editorial context into a coherent multichannel publication package.", deliverables: "Editorial core · Blog · LinkedIn · Instagram", status: "Available", time: "4–7 days" },
-  { category: "Advertising", name: "Advertising Campaign", outcome: "Turn a market brief into a structured campaign with strategy, concepts, messaging, and channel guidance.", deliverables: "Positioning · Concepts · Copy · Channel plan", status: "Beta", time: "5–8 days" },
-  { category: "Scientific Writing", name: "Scientific Article", outcome: "Turn a question, references, and evidence into a structured, reviewable scientific article.", deliverables: "Evidence map · Structure · Article · References", status: "Preview", time: "7–12 days" },
-  { category: "Governance", name: "Governance Proposal", outcome: "Turn an institutional problem and its evidence into a proposal ready for deliberation.", deliverables: "Diagnosis · Alternatives · Proposal · Risk analysis", status: "Beta", time: "6–10 days" },
-  { category: "Research", name: "Market Research", outcome: "Turn a business question into structured evidence, patterns, insights, and recommendations.", deliverables: "Research plan · Evidence · Insights · Report", status: "Available", time: "5–9 days" },
+  { n: "01", category: "Publication Strategy", name: "BBA Publisher", outcome: "Turn one editorial context into a coherent multichannel publication package.", deliverables: "Editorial core · Blog · LinkedIn · Instagram", status: "Available", time: "4–7 days" },
+  { n: "02", category: "Advertising", name: "Advertising Campaign", outcome: "Turn a market brief into a structured campaign with strategy, concepts, messaging, and channel guidance.", deliverables: "Positioning · Concepts · Copy · Channel plan", status: "Beta", time: "5–8 days" },
+  { n: "03", category: "Scientific Writing", name: "Scientific Article", outcome: "Turn a question, references, and evidence into a structured, reviewable scientific article.", deliverables: "Evidence map · Structure · Article · References", status: "Preview", time: "7–12 days" },
+  { n: "04", category: "Governance", name: "Governance Proposal", outcome: "Turn an institutional problem and its evidence into a proposal ready for deliberation.", deliverables: "Diagnosis · Alternatives · Proposal · Risk analysis", status: "Beta", time: "6–10 days" },
+  { n: "05", category: "Research", name: "Market Research", outcome: "Turn a business question into structured evidence, patterns, insights, and recommendations.", deliverables: "Research plan · Evidence · Insights · Report", status: "Available", time: "5–9 days" },
 ];
 
 export function Home() {
@@ -19,8 +19,8 @@ export function Home() {
           <h1>An intelligence team for communication, research, and strategy.</h1>
           <p className="lede">Choose the outcome you need. BBA Agency coordinates specialized AI agents, keeps you in control, and delivers work ready to use.</p>
           <div className="hero-actions">
-            <button className="arrow-link" onClick={() => { void navigate("/projects/new"); }}>Start a project <span>→</span></button>
-            <button className="under-button" onClick={() => { void navigate("/services"); }}>Explore services</button>
+            <button className="arrow-link" onClick={() => { void navigate("/services"); }}>Explore services <span>→</span></button>
+
           </div>
         </div>
         <ProcessArtwork />
@@ -28,7 +28,7 @@ export function Home() {
       <section className="service-strip" aria-label="Service categories">
         {services.map(s => (
           <button className="service-index" key={s.n} onClick={() => { void navigate("/services"); }}>
-            <span>{s.n}</span><strong>{s.category}</strong><i>→</i>
+            <strong>{s.category}</strong><i>→</i>
           </button>
         ))}
       </section>
