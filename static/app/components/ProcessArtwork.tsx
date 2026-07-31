@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 const steps = [
   { number: "01", label: "DEFINE", x: 650, y: 145 },
   { number: "02", label: "RESEARCH", x: 95, y: 490 },
@@ -15,42 +13,34 @@ export function ProcessArtwork() {
       role="img"
       aria-label="A five-stage process: define, research, analyze, synthesize, and deliver"
     >
-      <Image
+      <img
         className="process-artwork__paper process-artwork__paper--dots"
         src="/assets/hero-process/paper-dots.webp"
         alt=""
         width={1254}
         height={1254}
-        sizes="(max-width: 1000px) 68vw, 28vw"
-        priority
       />
-      <Image
+      <img
         className="process-artwork__paper process-artwork__paper--cream"
         src="/assets/hero-process/paper-cream.webp"
         alt=""
         width={1254}
         height={1254}
-        sizes="(max-width: 1000px) 58vw, 24vw"
-        priority
       />
       <div className="process-artwork__halftone" aria-hidden="true" />
-      <Image
+      <img
         className="process-artwork__paper process-artwork__paper--lined"
         src="/assets/hero-process/paper-lined.webp"
         alt=""
         width={1254}
         height={1254}
-        sizes="(max-width: 1000px) 50vw, 21vw"
-        priority
       />
-      <Image
+      <img
         className="process-artwork__handwritten"
         src="/assets/hero-process/handwritten.webp"
         alt=""
         width={1254}
         height={1254}
-        sizes="(max-width: 1000px) 30vw, 13vw"
-        priority
       />
 
       <svg
@@ -107,8 +97,9 @@ export function ProcessArtwork() {
         ))}
       </svg>
 
-      <div className="process-artwork__blue-block" aria-hidden="true" >
-        <img className="process-artwork__hero-logo" src="/assets/logo-neurons.png" /> </div>
+      <div className="process-artwork__blue-block" aria-hidden="true">
+        <img className="process-artwork__hero-logo" src="/assets/logo-neurons.png" alt="" />
+      </div>
     </div>
   );
 }
