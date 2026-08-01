@@ -475,16 +475,83 @@ footer button {
   gap: 36px;
 }
 
+.app-header nav a,
 .app-header nav button {
+  display: inline-flex;
+  align-items: center;
   font-size: 14px;
   padding: 12px 0;
   border-bottom: 1px solid transparent;
 }
 
+.app-header nav a:hover,
+.app-header nav a.active,
 .app-header nav button:hover,
 .app-header nav button.active {
   color: var(--blue);
   border-color: var(--blue);
+}
+
+.app-header-nav-group {
+  position: relative;
+}
+
+.app-header-nav-trigger {
+  position: relative;
+}
+
+.app-header-submenu {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: -16px;
+  min-width: 280px;
+  padding-top: 6px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
+  z-index: 40;
+}
+
+.app-header-submenu-kicker {
+  margin: 0 0 10px;
+  padding: 0 16px;
+  font-size: 10px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+.app-header-submenu ul {
+  margin: 0;
+  padding: 14px 12px;
+  list-style: none;
+  display: grid;
+  gap: 4px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  box-shadow: 0 18px 50px rgba(16, 16, 15, .14);
+}
+
+.app-header-submenu a {
+  display: block;
+  padding: 10px 12px;
+  line-height: 1.35;
+  border-radius: 4px;
+}
+
+.app-header-submenu a:hover,
+.app-header-submenu a.active {
+  background: rgba(18, 55, 232, .08);
+}
+
+.app-header-nav-group:hover .app-header-submenu,
+.app-header-nav-group:focus-within .app-header-submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .dark-section {
