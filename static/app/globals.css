@@ -1329,6 +1329,29 @@ footer button {
   line-height: 1.45;
 }
 
+.product-detail-package-artwork {
+  position: absolute;
+  inset: auto 0 0 auto;
+  width: min(100%, 520px);
+  height: auto;
+  max-height: 110%;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.28;
+  z-index: 0;
+}
+
+.product-detail-package-artwork img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.product-detail-package > *:not(.product-detail-package-artwork) {
+  position: relative;
+  z-index: 1;
+}
+
 .product-detail-overview-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -2623,6 +2646,11 @@ footer button {
 
   .product-detail-package {
     max-width: 560px;
+  }
+
+  .product-detail-package-artwork {
+    width: min(100%, 420px);
+    opacity: 0.22;
   }
 
   .product-detail-overview-grid,

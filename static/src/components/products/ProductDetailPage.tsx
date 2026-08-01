@@ -5,6 +5,14 @@ import {
 } from "../../content/products/index.js";
 import { ProductContentBlocks } from "./ProductContentBlocks.js";
 
+const productArtworkMap = new Map<string, string>([
+  ["bba-publisher", "publisher-board.svg"],
+  ["advertising-campaign", "advertising-board.svg"],
+  ["scientific-article", "scientific-board.svg"],
+  ["governance-proposal", "governance-board.svg"],
+  ["market-research", "research-board.svg"],
+]);
+
 function AvailabilityBadge({
   label,
   tone,
@@ -132,6 +140,14 @@ export function ProductDetailPage({
         </div>
 
         <aside className="product-detail-package" aria-label="Illustrative package preview">
+          <div className="product-detail-package-artwork" aria-hidden="true">
+            <img
+              src={`/assets/product-heroes/${productArtworkMap.get(product.id) ?? "product-planning-board.svg"}`}
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+            />
+          </div>
           <span>Final package</span>
           <strong>{packageDeliverable?.name ?? "Structured Package"}</strong>
           <small>
