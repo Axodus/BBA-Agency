@@ -18,7 +18,8 @@
     "check:project-content": "node tools/check-project-content.mjs",
     "generate:project-content": "node tools/generate-project-content.mjs",
     "check:project-pages": "node tools/check-project-pages.mjs",
-    "capture:project-evidence": "node tools/capture-project-evidence.mjs"
+    "capture:project-evidence": "node tools/capture-project-evidence.mjs",
+    "capture:project-test-evidence": "PROJECT_EVIDENCE_ROOT=.rag/evidence/REQ-TEST-019-001 node tools/capture-project-evidence.mjs"
   },
   "dependencies": {
     "react": "19.2.8",
