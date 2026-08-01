@@ -3,7 +3,7 @@ import { AppHeader } from "./components/AppHeader.js";
 import { AgencyFooter } from "../app/components/AgencyFooter.js";
 import { Home } from "./pages/Home.js";
 import { Services } from "./pages/Services.js";
-import { ServiceDetail } from "./pages/ServiceDetail.js";
+import { ProductDetail } from "./pages/ProductDetail.js";
 import { Dashboard } from "./pages/Dashboard.js";
 import { NewProject } from "./pages/NewProject.js";
 import { Project } from "./pages/Project.js";
@@ -42,10 +42,10 @@ export function App() {
           }
         />
         <Route
-          path="/services/publisher"
+          path="/services/:serviceSlug"
           element={
             <Shell>
-              <ServiceDetail />
+              <ProductDetail />
             </Shell>
           }
         />

@@ -803,6 +803,13 @@ footer button {
   max-width: 600px;
 }
 
+.services-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 34px;
+}
+
 .filter-row {
   display: flex;
   gap: 8px;
@@ -874,6 +881,12 @@ footer button {
   font-size: 18px;
   line-height: 1.55;
   max-width: 720px
+}
+
+.catalog-card .catalog-headline {
+  font-size: 20px;
+  line-height: 1.45;
+  margin: 4px 0 18px;
 }
 
 .deliverables {
@@ -1118,6 +1131,12 @@ footer button {
   margin: 0
 }
 
+.service-details p {
+  margin: 8px 0 0;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
 .catalog-card ul {
   margin: 8px 0 0;
   padding-left: 18px;
@@ -1218,6 +1237,362 @@ footer button {
 .product-facts article {
   padding: 28px;
   border-right: 1px solid var(--line)
+}
+
+.product-detail-page {
+  overflow-wrap: anywhere;
+}
+
+.product-detail-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr);
+  gap: 5vw;
+  align-items: start;
+  padding-bottom: 72px;
+}
+
+.product-detail-headline {
+  font: 34px/1.16 "Instrument Serif", serif;
+  margin: 24px 0 18px;
+  max-width: 760px;
+}
+
+.product-detail-summary {
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 720px;
+}
+
+.product-detail-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 28px 0 22px;
+}
+
+.product-detail-hero-meta span {
+  border: 1px solid var(--line);
+  padding: 9px 12px;
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.product-detail-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.product-detail-disclosure {
+  margin-top: 20px;
+  max-width: 620px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.product-detail-package {
+  aspect-ratio: .92;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 34px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 18px 18px 0 var(--blue);
+}
+
+.product-detail-package span,
+.product-detail-package small {
+  font-size: 10px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+.product-detail-package strong {
+  font: 58px/1 "Instrument Serif", serif;
+  margin: auto 0 30px;
+}
+
+.product-detail-package small {
+  color: #bbb;
+  line-height: 1.7;
+}
+
+.product-detail-package i {
+  margin-top: 22px;
+  border-top: 1px solid #555;
+  padding-top: 18px;
+  color: #8da0ff;
+  font-style: normal;
+  line-height: 1.45;
+}
+
+.product-detail-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--line);
+  margin-bottom: 80px;
+}
+
+.product-detail-overview-grid article {
+  padding: 24px 26px;
+  border-right: 1px solid var(--line);
+}
+
+.product-detail-overview-grid article:last-child {
+  border-right: 0;
+}
+
+.product-detail-overview-grid p {
+  margin: 12px 0 0;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.product-detail-section,
+.product-detail-problem-outcome,
+.product-detail-related {
+  padding: 82px 0;
+  border-top: 1px solid var(--line);
+}
+
+.product-detail-section h2,
+.product-detail-problem-outcome h2,
+.product-detail-related h2 {
+  max-width: 900px;
+  margin-bottom: 22px;
+}
+
+.product-detail-copy,
+.product-detail-example {
+  max-width: 920px;
+}
+
+.product-detail-copy p,
+.product-detail-copy li,
+.product-detail-copy blockquote,
+.product-detail-example p,
+.product-detail-example li,
+.product-detail-faq-item p,
+.product-detail-related-card p {
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.product-detail-copy ul,
+.product-detail-copy ol,
+.product-detail-example ul,
+.product-detail-example ol {
+  padding-left: 22px;
+}
+
+.product-detail-copy code,
+.product-detail-faq-item code {
+  font-size: .95em;
+  background: rgba(18, 55, 232, .08);
+  padding: 2px 6px;
+}
+
+.product-detail-copy blockquote,
+.product-detail-example blockquote {
+  margin: 28px 0;
+  padding-left: 22px;
+  border-left: 3px solid var(--blue);
+  font: 30px/1.35 "Instrument Serif", serif;
+}
+
+.product-detail-problem-outcome-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  margin-top: 28px;
+}
+
+.product-detail-problem-outcome-grid article,
+.product-detail-example,
+.product-detail-limitations .product-detail-copy,
+.product-detail-related-card {
+  border: 1px solid var(--line);
+  padding: 28px;
+  background: rgba(255, 255, 255, .24);
+}
+
+.product-detail-audience-list,
+.product-detail-checkpoint-list {
+  margin: 24px 0 0;
+  padding-left: 20px;
+}
+
+.product-detail-workflow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 30px;
+}
+
+.product-detail-workflow-stage,
+.product-detail-agent-card,
+.product-detail-deliverable-card,
+.product-detail-faq-item {
+  border: 1px solid var(--line);
+  padding: 24px;
+  background: rgba(255, 255, 255, .18);
+}
+
+.product-detail-workflow-stage.checkpoint {
+  border-top: 3px solid var(--blue);
+}
+
+.product-detail-workflow-stage>span,
+.product-detail-agent-card>span,
+.product-detail-deliverable-card>span {
+  display: inline-block;
+  color: var(--blue);
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.product-detail-workflow-stage h3,
+.product-detail-agent-card h3,
+.product-detail-deliverable-card h3,
+.product-detail-faq-item h3,
+.product-detail-related-card h3 {
+  font: 28px/1.16 "Instrument Serif", serif;
+  margin: 18px 0 14px;
+}
+
+.product-detail-workflow-stage dl {
+  margin: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.product-detail-workflow-stage dt {
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 5px;
+}
+
+.product-detail-workflow-stage dd {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.product-detail-agent-grid,
+.product-detail-deliverables-grid,
+.product-detail-related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 30px;
+}
+
+.product-detail-agent-card p,
+.product-detail-deliverable-card p,
+.product-detail-faq-item p,
+.product-detail-related-card p {
+  margin: 0;
+}
+
+.product-detail-agent-card small,
+.product-detail-deliverable-card small,
+.product-detail-deliverable-card i {
+  display: block;
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+  font-style: normal;
+}
+
+.product-detail-checkpoint-band {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.product-detail-checkpoint-band span {
+  border: 1px solid var(--line);
+  padding: 8px 12px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+}
+
+.product-detail-checkpoint-list li {
+  margin-bottom: 14px;
+}
+
+.product-detail-checkpoint-list p {
+  margin: 6px 0 0;
+}
+
+.product-detail-limitations .product-detail-copy {
+  max-width: 100%;
+}
+
+.product-detail-availability-link {
+  margin-top: 22px;
+}
+
+.product-detail-faq-list {
+  display: grid;
+  gap: 18px;
+}
+
+.product-detail-related-card p:first-child {
+  color: var(--blue);
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.product-detail-related-card a,
+.product-detail-nav a {
+  color: var(--blue);
+  text-decoration: underline;
+}
+
+.product-detail-nav {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.product-detail-nav a,
+.product-detail-nav span {
+  border: 1px solid var(--line);
+  padding: 16px 18px;
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+}
+
+.product-detail-table-wrap {
+  overflow-x: auto;
+}
+
+.product-detail-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+}
+
+.product-detail-table th,
+.product-detail-table td {
+  border: 1px solid var(--line);
+  padding: 14px 16px;
+  text-align: left;
+  vertical-align: top;
 }
 
 .dashboard-top {
@@ -2234,12 +2609,35 @@ footer button {
     grid-template-columns: 1fr
   }
 
+  .product-detail-hero {
+    grid-template-columns: 1fr;
+  }
+
   .package-preview {
     max-width: 500px
   }
 
   .product-facts {
     grid-template-columns: 1fr 1fr
+  }
+
+  .product-detail-package {
+    max-width: 560px;
+  }
+
+  .product-detail-overview-grid,
+  .product-detail-agent-grid,
+  .product-detail-deliverables-grid,
+  .product-detail-related-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .product-detail-workflow {
+    grid-template-columns: 1fr;
+  }
+
+  .product-detail-nav {
+    grid-template-columns: 1fr;
   }
 
   .pipeline {
@@ -2353,6 +2751,31 @@ footer button {
 
   .product-facts {
     grid-template-columns: 1fr
+  }
+
+  .services-hero-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .product-detail-headline {
+    font-size: 29px;
+  }
+
+  .product-detail-summary {
+    font-size: 18px;
+  }
+
+  .product-detail-overview-grid,
+  .product-detail-problem-outcome-grid,
+  .product-detail-agent-grid,
+  .product-detail-deliverables-grid,
+  .product-detail-related-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-detail-package strong {
+    font-size: 42px;
   }
 
   .pipeline {

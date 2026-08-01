@@ -7,6 +7,7 @@ export interface InformationalAgencyService {
   id: string;
   category: string;
   name: string;
+  headline: string;
   customerProblem: string;
   customerOutcome: string;
   customerProvides: string[];
@@ -23,6 +24,7 @@ export const services: InformationalAgencyService[] = [
     id: "publisher",
     category: "Publication Strategy",
     name: "BBA Publisher",
+    headline: "Turn trusted context into a coordinated editorial package.",
     customerProblem:
       "Publishing the same message across several channels is not a copy-and-paste task. Each channel has a different format, rhythm, audience expectation, and call to action, and independent generation often introduces unsupported claims, contradictions, or drift in positioning.",
     customerOutcome:
@@ -67,6 +69,8 @@ export const services: InformationalAgencyService[] = [
     id: "advertising",
     category: "Advertising",
     name: "Advertising Campaign",
+    headline:
+      "Transform a campaign objective into a coordinated creative and channel strategy.",
     customerProblem:
       "Converting a business or communication objective into a coherent campaign strategy with clear messages, concepts, channel selection, and creative directions is complex and easy to fragment across disconnected outputs.",
     customerOutcome:
@@ -106,11 +110,14 @@ export const services: InformationalAgencyService[] = [
       "Campaign Package",
     ],
     availability: "PLANNED",
+    detailHref: "/services/advertising",
   },
   {
     id: "scientific-writing",
     category: "Scientific Writing",
     name: "Scientific Article",
+    headline:
+      "Organize evidence into a structured and reviewable scientific manuscript.",
     customerProblem:
       "Transforming a research question, evidence, or technical context into a structured, credible, and reviewable publication requires careful organization of evidence, argument, and references without overstating claims.",
     customerOutcome:
@@ -148,11 +155,14 @@ export const services: InformationalAgencyService[] = [
       "Scientific Package",
     ],
     availability: "PLANNED",
+    detailHref: "/services/scientific-writing",
   },
   {
     id: "governance",
     category: "Governance",
     name: "Governance Proposal",
+    headline:
+      "Turn institutional context into a clear, evidence-based proposal.",
     customerProblem:
       "Transforming institutional context, evidence, alternatives, and constraints into a clear and defensible proposal that stakeholders can deliberate and decide on requires explicit framing, analysis, and risk articulation.",
     customerOutcome:
@@ -191,11 +201,14 @@ export const services: InformationalAgencyService[] = [
       "Institutional Package",
     ],
     availability: "PLANNED",
+    detailHref: "/services/governance",
   },
   {
     id: "research",
     category: "Research",
     name: "Market Research",
+    headline:
+      "Turn a strategic question into evidence, insights, and actionable recommendations.",
     customerProblem:
       "Transforming a strategic question into structured evidence, patterns, insights, and recommendations requires disciplined question decomposition, source handling, and interpretation that remains connected to the original decision context.",
     customerOutcome:
@@ -232,6 +245,7 @@ export const services: InformationalAgencyService[] = [
       "Research Package",
     ],
     availability: "PLANNED",
+    detailHref: "/services/research",
   },
 ];
 

@@ -1,15 +1,25 @@
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { services, availabilityLabels } from "../content/services.js";
 import type { InformationalAgencyService } from "../content/services.js";
 
 export function Services() {
+  useEffect(() => {
+    document.title = "Services | BBA Agency";
+    return () => {
+      document.title = "BBA Agency";
+    };
+  }, []);
+
   return (
     <main className="page-shell">
       <ServiceIndex />
       <HowEveryServiceWorks />
       <ServiceCatalog />
-      <PrototypeDisclosure />
       <ServiceVsTechnology />
       <HumanControl />
+      <PrototypeDisclosure />
+      <RelatedInformationalCta />
     </main>
   );
 }
@@ -20,11 +30,9 @@ function ServiceIndex() {
       <p className="section-kicker">Agency services / 05 disciplines</p>
       <h1>Services designed around the outcome you need</h1>
       <p>
-        BBA Agency offers communication, marketing, research, publishing, and
-        institutional content services executed by coordinated AI agents under
-        human direction and review. Choose the result you want to produce. The
-        Agency will organize the context, specialized AI agents, human
-        checkpoints, and deliverables required to complete the work.
+        Choose the result you want to produce. BBA Agency organizes the
+        context, specialized AI roles, human checkpoints, and deliverables
+        required to complete the work.
       </p>
       <p>
         The services described here explain how the future BBA platform
@@ -39,6 +47,23 @@ function ServiceIndex() {
         , an external environment. The static site you are viewing now does not
         execute work, create projects, or call any backend.
       </p>
+      <div className="services-hero-actions">
+        <a href="#services-catalog" className="arrow-link">
+          Explore products <span aria-hidden="true">→</span>
+        </a>
+        <a href="#workflow-heading" className="arrow-link">
+          Learn how the Agency works <span aria-hidden="true">→</span>
+        </a>
+        <a
+          href="https://dev.bba.country"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="arrow-link"
+          aria-label="View the Publisher prototype in an external environment"
+        >
+          View the Publisher prototype <span aria-hidden="true">→</span>
+        </a>
+      </div>
     </div>
   );
 }
@@ -115,7 +140,7 @@ function ServiceCatalog() {
     >
       <p className="section-kicker">The five disciplines</p>
       <h2 id="catalog-heading">Five service categories, one accountable team.</h2>
-      <div className="catalog">
+      <div className="catalog" id="services-catalog">
         {services.map((s) => (
           <ServiceCard key={s.id} service={s} featured={s.id === "publisher"} />
         ))}
@@ -143,61 +168,36 @@ function ServiceCard({
       data-service-id={service.id}
     >
       <div className="card-top">
-        <em
+        <span
           className={`status ${availabilityTone} ${service.availability.toLowerCase()}`}
           aria-label={availabilityLabel}
         >
           {availabilityLabel}
-        </em>
+        </span>
       </div>
 
       <p className="category">{service.category}</p>
       <h2>{service.name}</h2>
-
-      <p className="problem">{service.customerProblem}</p>
+      <p className="catalog-headline">{service.headline}</p>
 
       <p className="outcome-label">Customer outcome</p>
       <p className="outcome">{service.customerOutcome}</p>
 
       <dl className="service-details">
         <div>
-          <dt>What you provide</dt>
+          <dt>Representative deliverables</dt>
           <dd>
             <ul>
-              {service.customerProvides.map((item) => (
+              {service.deliverables.slice(0, 3).map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
           </dd>
         </div>
         <div>
-          <dt>The Agency performs</dt>
+          <dt>Human review</dt>
           <dd>
-            <ul>
-              {service.agencyPerforms.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </dd>
-        </div>
-        <div>
-          <dt>Human checkpoints</dt>
-          <dd>
-            <ul>
-              {service.humanCheckpoints.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </dd>
-        </div>
-        <div>
-          <dt>Typical deliverables</dt>
-          <dd>
-            <ul>
-              {service.deliverables.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
+            <p>{service.humanCheckpoints[0]}</p>
           </dd>
         </div>
       </dl>
@@ -208,18 +208,16 @@ function ServiceCard({
       </div>
 
       {service.detailHref && (
-        <a
-          href={service.detailHref}
+        <Link
+          to={service.detailHref}
           className="card-action"
           aria-label={`View service details for ${service.name}`}
         >
-          Learn how it works <span aria-hidden="true">→</span>
-        </a>
-      )}
-      {!service.detailHref && service.availability === "PLANNED" && (
-        <span className="card-action card-action--disabled" aria-label={`Service ${service.name} is planned`}>
-          Coming soon <span aria-hidden="true">→</span>
-        </span>
+          {service.availability === "PROTOTYPE_AVAILABLE"
+            ? "Learn how it works"
+            : "View product details"}{" "}
+          <span aria-hidden="true">→</span>
+        </Link>
       )}
     </article>
   );
@@ -243,9 +241,9 @@ function PrototypeDisclosure() {
           href="https://dev.bba.country"
           target="_blank"
           rel="noopener noreferrer"
-          className="arrow-link"
-        >
-          Explore the Publisher prototype <span aria-hidden="true">→</span>
+        className="arrow-link"
+      >
+          Explore the functional prototype <span aria-hidden="true">→</span>
         </a>
       </p>
       <p className="disclosure-note">
@@ -253,6 +251,25 @@ function PrototypeDisclosure() {
         Not every service listed on this page is operational today. Only BBA
         Publisher is available in the prototype; the remaining services are
         planned.
+      </p>
+    </section>
+  );
+}
+
+function RelatedInformationalCta() {
+  return (
+    <section className="prototype-disclosure editorial-section" aria-labelledby="related-cta-heading">
+      <p className="section-kicker">Continue exploring</p>
+      <h2 id="related-cta-heading">Read the product details before using the prototype.</h2>
+      <p>
+        Each product page explains the problem, the expected outcome, the
+        customer inputs, the Agency team, the human checkpoints, and the
+        limitations of the experience.
+      </p>
+      <p>
+        <Link to="/services/publisher" className="arrow-link">
+          Read the Publisher product page <span aria-hidden="true">→</span>
+        </Link>
       </p>
     </section>
   );
