@@ -1,0 +1,10 @@
+Command: pnpm --dir static check:project-content
+
+Project content validation passed: 5 files, schemaVersion 1.0.
+EXIT: 0
+
+Validated: schema parseability, five-source inventory, fixed Markdown section
+hierarchy, unique IDs and routes, canonical Product references, status and
+disclosure boundaries, internal workflow references, human decisions,
+revisions, deliverables, traceability, limitations, FAQs, and placeholder or
+operational-metadata rejection.

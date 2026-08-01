@@ -8,13 +8,15 @@
   },
   "scripts": {
     "dev": "vite",
-    "prebuild": "pnpm check:product-content",
+    "prebuild": "pnpm check:product-content && pnpm check:project-content",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "lint": "node ../tools/workspace-quality-check.mjs --lint src",
     "format:check": "node ../tools/workspace-quality-check.mjs --format src",
-    "check:product-content": "node tools/check-product-content.mjs"
+    "check:product-content": "node tools/check-product-content.mjs",
+    "check:project-content": "node tools/check-project-content.mjs",
+    "generate:project-content": "node tools/generate-project-content.mjs"
   },
   "dependencies": {
     "react": "19.2.8",
