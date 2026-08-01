@@ -1,0 +1,66 @@
+projects:
+  - id: neurons-protocol-launch
+    productId: bba-publisher
+    route: /projects/neurons-protocol-launch
+    exampleStatus: PROTOTYPE_BACKED
+    workflowStageCount: 9
+    agentRoleCount: 5
+    humanDecisionCount: 2
+    revisionCount: 1
+    deliverableCount: 8
+    traceabilityRecordCount: 1
+    faqCount: 8
+    wordCount: 1963
+    validation: PASS
+  - id: responsible-ai-awareness-campaign
+    productId: advertising-campaign
+    route: /projects/responsible-ai-awareness-campaign
+    exampleStatus: ILLUSTRATIVE_PLANNED
+    workflowStageCount: 9
+    agentRoleCount: 6
+    humanDecisionCount: 3
+    revisionCount: 1
+    deliverableCount: 9
+    traceabilityRecordCount: 1
+    faqCount: 5
+    wordCount: 1827
+    validation: PASS
+  - id: ai-publishing-research-article
+    productId: scientific-article
+    route: /projects/ai-publishing-research-article
+    exampleStatus: ILLUSTRATIVE_PLANNED
+    workflowStageCount: 9
+    agentRoleCount: 6
+    humanDecisionCount: 3
+    revisionCount: 1
+    deliverableCount: 9
+    traceabilityRecordCount: 1
+    faqCount: 5
+    wordCount: 1880
+    validation: PASS
+  - id: ai-content-governance-proposal
+    productId: governance-proposal
+    route: /projects/ai-content-governance-proposal
+    exampleStatus: ILLUSTRATIVE_PLANNED
+    workflowStageCount: 9
+    agentRoleCount: 6
+    humanDecisionCount: 3
+    revisionCount: 1
+    deliverableCount: 9
+    traceabilityRecordCount: 1
+    faqCount: 5
+    wordCount: 1826
+    validation: PASS
+  - id: enterprise-ai-publishing-market-study
+    productId: market-research
+    route: /projects/enterprise-ai-publishing-market-study
+    exampleStatus: ILLUSTRATIVE_PLANNED
+    workflowStageCount: 9
+    agentRoleCount: 6
+    humanDecisionCount: 3
+    revisionCount: 1
+    deliverableCount: 10
+    traceabilityRecordCount: 1
+    faqCount: 5
+    wordCount: 1886
+    validation: PASS

@@ -1,0 +1,8 @@
+Command: pnpm --dir static generate:project-content
+
+Generated typed Project content module for 5 files.
+SHA-256: baa7ce3a75e0bb54b420a62b6a3451fc6827dce73a65393f37173bb7b0d5caba
+
+The generated module is derived from sorted source filenames and canonical
+content only. It contains no timestamp, absolute path, environment metadata,
+or random identifier.
