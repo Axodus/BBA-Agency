@@ -1,4 +1,5 @@
 import { NavLink, useNavigate } from "react-router-dom";
+import { agencyProducts } from "../content/products/index.js";
 
 export function AppHeader() {
   const navigate = useNavigate();
@@ -11,7 +12,21 @@ export function AppHeader() {
         BBA Agency
       </button>
       <nav aria-label="Primary navigation">
-        <NavLink to="/services">Services</NavLink>
+        <div className="app-header-nav-group">
+          <NavLink to="/services" className="app-header-nav-trigger">
+            Services
+          </NavLink>
+          <div className="app-header-submenu" aria-label="Services submenu">
+            <p className="app-header-submenu-kicker">Direct access</p>
+            <ul>
+              {agencyProducts.map((product) => (
+                <li key={product.id}>
+                  <NavLink to={product.route}>{product.name}</NavLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
         <NavLink to="/projects">Projects</NavLink>
         <NavLink to="/deliveries">Deliveries</NavLink>
         <NavLink to="/ai-models">AI Models</NavLink>

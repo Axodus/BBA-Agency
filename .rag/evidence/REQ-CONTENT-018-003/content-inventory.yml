@@ -1,0 +1,48 @@
+requirement: REQ-CONTENT-018-003
+validation: PASS
+products:
+  - file: static/content/products/bba-publisher.md
+    id: bba-publisher
+    wordCount: 1347
+    sectionCount: 15
+    faqCount: 7
+    availability: PROTOTYPE_AVAILABLE
+    workflowStageCount: 8
+    humanCheckpointCount: 2
+    deliverableCount: 5
+  - file: static/content/products/advertising-campaign.md
+    id: advertising-campaign
+    wordCount: 1119
+    sectionCount: 15
+    faqCount: 5
+    availability: PLANNED
+    workflowStageCount: 8
+    humanCheckpointCount: 3
+    deliverableCount: 4
+  - file: static/content/products/scientific-article.md
+    id: scientific-article
+    wordCount: 1097
+    sectionCount: 15
+    faqCount: 5
+    availability: PLANNED
+    workflowStageCount: 8
+    humanCheckpointCount: 3
+    deliverableCount: 4
+  - file: static/content/products/governance-proposal.md
+    id: governance-proposal
+    wordCount: 1036
+    sectionCount: 15
+    faqCount: 5
+    availability: PLANNED
+    workflowStageCount: 8
+    humanCheckpointCount: 3
+    deliverableCount: 4
+  - file: static/content/products/market-research.md
+    id: market-research
+    wordCount: 1090
+    sectionCount: 15
+    faqCount: 5
+    availability: PLANNED
+    workflowStageCount: 7
+    humanCheckpointCount: 3
+    deliverableCount: 4

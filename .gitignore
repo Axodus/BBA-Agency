@@ -17,3 +17,7 @@ dist/
 .trash
 npm-debug.log*
 .backup_*
+
+
+#Ignore vscode AI rules
+.github/instructions/codacy.instructions.md

@@ -1,0 +1,14 @@
+REQ-CONTENT-018-003 terminology check
+Scope: static/content/products/*-*.md (five product sources only)
+
+Checks performed:
+- no unresolved markers: TODO, TBD, Lorem ipsum, Insert copy here, Coming later
+- no pricing or financial meaning for $Neurons
+- planned products disclose PLANNED status and CONCEPTUAL agent teams
+- product files state that the static site is informational and does not execute work
+- BBA Publisher states that no external publication is performed and that the separate prototype is current product experience
+
+Result: PASS
+
+The directory README deliberately names the prohibited terms as policy guidance;
+it is not a product source and is not interpreted as product copy.
