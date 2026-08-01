@@ -1313,7 +1313,7 @@ footer button {
 }
 
 .product-detail-package strong {
-  font: 58px/1 "Instrument Serif", serif;
+  font: 50px/1 "Instrument Serif", serif;
   margin: auto 0 30px;
 }
 
@@ -1332,15 +1332,15 @@ footer button {
 }
 
 .product-detail-package-artwork {
-  position: absolute;
-  inset: auto 0 0 auto;
-  width: min(100%, 520px);
-  height: auto;
-  max-height: 110%;
-  pointer-events: none;
-  user-select: none;
-  opacity: 0.28;
-  z-index: 0;
+    position: absolute;
+    width: stretch;
+    height: fit-content;
+    max-height: 110%;
+    pointer-events: none;
+    user-select: none;
+    opacity: 1;
+    z-index: 1;
+    margin: 5% auto;
 }
 
 .product-detail-package-artwork img {
