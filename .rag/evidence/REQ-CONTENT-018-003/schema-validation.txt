@@ -1,0 +1,15 @@
+REQ-CONTENT-018-003 schema validation
+Command: pnpm --dir static check:product-content
+Result: Product content validation passed: 5 files, schemaVersion 1.0.
+Exit status: 0
+
+Validated conditions:
+- required product inventory, unique IDs, and unique routes
+- frontmatter delimiter and restricted YAML shape parsing
+- schemaVersion 1.0 and required frontmatter fields
+- availability and static-site informational boundary
+- workflow ordering, output fields, and human checkpoints
+- agent-role and deliverable shapes
+- planned-product CTA prohibition and conceptual agent status
+- Publisher prototype URL and implemented agent-team status
+- fixed Markdown section hierarchy, FAQ minimum, and template-marker absence
