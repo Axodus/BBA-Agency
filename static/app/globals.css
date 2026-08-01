@@ -1294,6 +1294,8 @@ footer button {
 }
 
 .product-detail-package {
+  position: relative;
+  overflow: hidden;
   aspect-ratio: .92;
   background: var(--ink);
   color: var(--paper);
@@ -2649,8 +2651,8 @@ footer button {
   }
 
   .product-detail-package-artwork {
-    width: min(100%, 420px);
-    opacity: 0.22;
+    width: min(100%, 400px);
+    opacity: 0.2;
   }
 
   .product-detail-overview-grid,
