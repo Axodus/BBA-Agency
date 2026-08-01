@@ -12,7 +12,8 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "lint": "node ../../tools/workspace-quality-check.mjs --lint src",
-    "format:check": "node ../../tools/workspace-quality-check.mjs --format src"
+    "format:check": "node ../../tools/workspace-quality-check.mjs --format src",
+    "check:product-content": "node tools/check-product-content.mjs"
   },
   "dependencies": {
     "react": "19.2.8",

@@ -1,0 +1,141 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+$id: https://bba.country/schemas/product-content-1.0.yml
+title: BBA Agency Product Content
+description: >-
+  JSON Schema, expressed as YAML, for the YAML frontmatter of a detailed BBA
+  Agency product source. Markdown body sections are validated separately.
+type: object
+additionalProperties: false
+required:
+  - schemaVersion
+  - id
+  - name
+  - category
+  - slug
+  - route
+  - status
+  - eyebrow
+  - headline
+  - summary
+  - customerProblem
+  - customerOutcome
+  - primaryAudience
+  - contentLanguage
+  - applicationLanguage
+  - availability
+  - seo
+  - navigation
+  - relatedProducts
+  - keywords
+  - agentTeamStatus
+  - agentTeam
+  - workflow
+  - deliverables
+properties:
+  schemaVersion:
+    const: '1.0'
+  id:
+    type: string
+    pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'
+  name: { type: string, minLength: 1 }
+  category: { type: string, minLength: 1 }
+  slug:
+    type: string
+    pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'
+  route:
+    type: string
+    pattern: '^/services/[a-z0-9-]+$'
+  status:
+    enum: [PROTOTYPE_AVAILABLE, PLANNED, CONCEPT_PREVIEW]
+  prototypeUrl:
+    type: string
+    format: uri
+  prototypeDisclosure: { type: string }
+  eyebrow: { type: string, minLength: 1 }
+  headline: { type: string, minLength: 1 }
+  summary: { type: string, minLength: 1 }
+  customerProblem: { type: string, minLength: 1 }
+  customerOutcome: { type: string, minLength: 1 }
+  primaryAudience:
+    type: array
+    minItems: 1
+    items: { type: string }
+  contentLanguage: { const: English }
+  applicationLanguage: { const: English }
+  availability:
+    type: object
+    required: [label, code, operationalOnStaticSite]
+    properties:
+      label: { type: string }
+      code: { enum: [PROTOTYPE_AVAILABLE, PLANNED, CONCEPT_PREVIEW] }
+      operationalOnStaticSite: { const: false }
+  seo:
+    type: object
+    required: [title, description, canonicalPath]
+    properties:
+      title: { type: string }
+      description: { type: string }
+      canonicalPath: { type: string, pattern: '^/services/' }
+  navigation:
+    type: object
+    required: [previousProduct, nextProduct]
+    properties:
+      previousProduct:
+        type: [string, 'null']
+      nextProduct:
+        type: [string, 'null']
+  relatedProducts:
+    type: array
+    items: { type: string }
+  keywords:
+    type: array
+    minItems: 1
+    items: { type: string }
+  agentTeamStatus:
+    enum: [PROTOTYPE_IMPLEMENTED, CONCEPTUAL]
+  agentTeam:
+    type: array
+    minItems: 1
+    items:
+      type: object
+      required: [id, name, responsibility, stage]
+      properties:
+        id: { type: string, pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$' }
+        name: { type: string }
+        responsibility: { type: string }
+        stage: { type: string }
+  workflow:
+    type: array
+    minItems: 1
+    items:
+      type: object
+      required: [order, id, label, customerRole, agencyRole, checkpoint, expectedOutput]
+      properties:
+        order: { type: integer, minimum: 1 }
+        id: { type: string, pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$' }
+        label: { type: string }
+        customerRole: { type: string }
+        agencyRole: { type: string }
+        checkpoint: { type: boolean }
+        expectedOutput: { type: string }
+  deliverables:
+    type: array
+    minItems: 1
+    items:
+      type: object
+      required: [id, name, description, format, requiresApproval]
+      properties:
+        id: { type: string, pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$' }
+        name: { type: string }
+        description: { type: string }
+        format:
+          type: array
+          minItems: 1
+          items: { type: string }
+        requiresApproval: { type: boolean }
+
+# Versioning rules
+# - schemaVersion 1.0 is the only supported version for this content set.
+# - Additive fields require a schema version increment when they become required.
+# - IDs and routes are stable public identifiers and must not be localized.
+# - previousProduct and nextProduct are intentionally nullable at the ends of navigation.
