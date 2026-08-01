@@ -1,0 +1,25 @@
+desktop /projects: one h1, one main, no horizontal overflow
+desktop /projects/neurons-protocol-launch: one h1, one main, no horizontal overflow
+desktop /projects/responsible-ai-awareness-campaign: one h1, one main, no horizontal overflow
+desktop /projects/ai-publishing-research-article: one h1, one main, no horizontal overflow
+desktop /projects/ai-content-governance-proposal: one h1, one main, no horizontal overflow
+desktop /projects/enterprise-ai-publishing-market-study: one h1, one main, no horizontal overflow
+laptop /projects: one h1, one main, no horizontal overflow
+laptop /projects/neurons-protocol-launch: one h1, one main, no horizontal overflow
+laptop /projects/responsible-ai-awareness-campaign: one h1, one main, no horizontal overflow
+laptop /projects/ai-publishing-research-article: one h1, one main, no horizontal overflow
+laptop /projects/ai-content-governance-proposal: one h1, one main, no horizontal overflow
+laptop /projects/enterprise-ai-publishing-market-study: one h1, one main, no horizontal overflow
+tablet /projects: one h1, one main, no horizontal overflow
+tablet /projects/neurons-protocol-launch: one h1, one main, no horizontal overflow
+tablet /projects/responsible-ai-awareness-campaign: one h1, one main, no horizontal overflow
+tablet /projects/ai-publishing-research-article: one h1, one main, no horizontal overflow
+tablet /projects/ai-content-governance-proposal: one h1, one main, no horizontal overflow
+tablet /projects/enterprise-ai-publishing-market-study: one h1, one main, no horizontal overflow
+mobile /projects: one h1, one main, no horizontal overflow
+mobile /projects/neurons-protocol-launch: one h1, one main, no horizontal overflow
+mobile /projects/responsible-ai-awareness-campaign: one h1, one main, no horizontal overflow
+mobile /projects/ai-publishing-research-article: one h1, one main, no horizontal overflow
+mobile /projects/ai-content-governance-proposal: one h1, one main, no horizontal overflow
+mobile /projects/enterprise-ai-publishing-market-study: one h1, one main, no horizontal overflow
+Keyboard navigation uses native links with the shared visible focus style.

@@ -1,0 +1,26 @@
+desktop /projects: PASS
+desktop /projects/neurons-protocol-launch: PASS
+desktop /projects/responsible-ai-awareness-campaign: PASS
+desktop /projects/ai-publishing-research-article: PASS
+desktop /projects/ai-content-governance-proposal: PASS
+desktop /projects/enterprise-ai-publishing-market-study: PASS
+desktop /projects/new: fallback PASS
+desktop /projects/unknown: fallback PASS
+laptop /projects: PASS
+laptop /projects/neurons-protocol-launch: PASS
+laptop /projects/responsible-ai-awareness-campaign: PASS
+laptop /projects/ai-publishing-research-article: PASS
+laptop /projects/ai-content-governance-proposal: PASS
+laptop /projects/enterprise-ai-publishing-market-study: PASS
+tablet /projects: PASS
+tablet /projects/neurons-protocol-launch: PASS
+tablet /projects/responsible-ai-awareness-campaign: PASS
+tablet /projects/ai-publishing-research-article: PASS
+tablet /projects/ai-content-governance-proposal: PASS
+tablet /projects/enterprise-ai-publishing-market-study: PASS
+mobile /projects: PASS
+mobile /projects/neurons-protocol-launch: PASS
+mobile /projects/responsible-ai-awareness-campaign: PASS
+mobile /projects/ai-publishing-research-article: PASS
+mobile /projects/ai-content-governance-proposal: PASS
+mobile /projects/enterprise-ai-publishing-market-study: PASS

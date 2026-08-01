@@ -4,9 +4,8 @@ import { AgencyFooter } from "../app/components/AgencyFooter.js";
 import { Home } from "./pages/Home.js";
 import { Services } from "./pages/Services.js";
 import { ProductDetail } from "./pages/ProductDetail.js";
-import { Dashboard } from "./pages/Dashboard.js";
-import { NewProject } from "./pages/NewProject.js";
-import { Project } from "./pages/Project.js";
+import { Projects } from "./pages/Projects.js";
+import { ProjectDetail } from "./pages/ProjectDetail.js";
 import { Deliveries } from "./pages/Deliveries.js";
 import { Models } from "./pages/Models.js";
 import { Unavailable } from "./pages/Unavailable.js";
@@ -53,7 +52,7 @@ export function App() {
           path="/projects"
           element={
             <Shell>
-              <Dashboard />
+              <Projects />
             </Shell>
           }
         />
@@ -61,15 +60,15 @@ export function App() {
           path="/projects/new"
           element={
             <Shell>
-              <NewProject />
+              <Unavailable />
             </Shell>
           }
         />
         <Route
-          path="/projects/:id"
+          path="/projects/:projectSlug"
           element={
             <Shell>
-              <Project />
+              <ProjectDetail />
             </Shell>
           }
         />
