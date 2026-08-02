@@ -1,0 +1,12 @@
+Command: pnpm --dir static check:delivery-content
+Result: PASS
+
+Schema: static/content/deliveries/schema.yml
+Schema draft: JSON Schema draft 2020-12 expressed in YAML
+Canonical source count: 5
+Required Markdown hierarchy: PASS
+Frontmatter parse: PASS
+Stable IDs, slugs, routes, status values, non-operational boundary, artifacts,
+ordered human review, approval, revision policy, illustrative version records,
+traceability, quality gates, limitations, and FAQs: PASS
+Generated module drift: 0
