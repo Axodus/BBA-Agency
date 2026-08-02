@@ -28,7 +28,7 @@ export function Projects() {
   const featuredProject = agencyProjects.find((project) => project.id === "neurons-protocol-launch");
   return (
     <main className="page-shell projects-page">
-      <section className="projects-hero" aria-labelledby="projects-heading">
+      <section className="projects-hero container" aria-labelledby="projects-heading">
         <div>
           <p className="section-kicker">Project examples</p>
           <h1 id="projects-heading">See how an outcome becomes a coordinated Agency Project</h1>
@@ -40,7 +40,7 @@ export function Projects() {
         </aside>
       </section>
 
-      <section className="projects-section" aria-labelledby="project-definition-heading">
+      <section className="projects-section container" aria-labelledby="project-definition-heading">
         <p className="section-kicker">What a Project contains</p>
         <h2 id="project-definition-heading">A structured Agency engagement, not a record in a dashboard</h2>
         <div className="projects-anatomy-grid">
@@ -48,7 +48,7 @@ export function Projects() {
         </div>
       </section>
 
-      <section className="projects-section" aria-labelledby="execution-model-heading">
+      <section className="projects-section container" aria-labelledby="execution-model-heading">
         <p className="section-kicker">Common execution model</p>
         <h2 id="execution-model-heading">How a defined outcome becomes a reviewed delivery</h2>
         <ol className="projects-execution-model">
@@ -57,18 +57,18 @@ export function Projects() {
       </section>
 
       {featuredProject && (
-        <section className="projects-section projects-featured" aria-labelledby="featured-project-heading">
+        <section className="projects-section projects-featured container" aria-labelledby="featured-project-heading">
           <p className="section-kicker">Featured Project example</p>
           <h2 id="featured-project-heading">The current Publisher prototype in context</h2>
           <ProjectExampleCard project={featuredProject} featured />
           <div className="projects-featured-note">
             <p>The example explains Editorial Context, Context Analysis, an approved Editorial Core, publication strategy, Blog, LinkedIn, and Instagram adaptation, semantic consistency review, final Package review, and an Editorial Package without external publication.</p>
-            <a href="https://dev.bba.country" target="_blank" rel="noopener noreferrer" aria-label="Explore the functional Publisher prototype at dev.bba.country in a new tab">Explore the functional Publisher prototype at dev.bba.country <span aria-hidden="true">→</span></a>
+            <a className="button secondary" href="https://dev.bba.country" target="_blank" rel="noopener noreferrer" aria-label="Explore the functional Publisher prototype at dev.bba.country in a new tab">Check Dev Prototype <span aria-hidden="true">→</span></a>
           </div>
         </section>
       )}
 
-      <section className="projects-section" aria-labelledby="project-catalog-heading">
+      <section className="projects-section container" aria-labelledby="project-catalog-heading">
         <p className="section-kicker">Examples by service</p>
         <h2 id="project-catalog-heading">Five product-specific Project structures</h2>
         <div className="projects-catalog">
@@ -76,7 +76,7 @@ export function Projects() {
         </div>
       </section>
 
-      <section className="projects-closing-grid" aria-label="Review and delivery explanation">
+      <section className="projects-closing-grid container" aria-label="Review and delivery explanation">
         <article><p className="section-kicker">Human review and revision</p><h2>Important interpretation stays with people</h2><p>Each example shows where the customer validates an interpretation, provides direction, requests changes, and reviews the final Package. The static site explains those checkpoints without making decisions.</p></article>
         <article><p className="section-kicker">Package delivery</p><h2>Delivery retains its context</h2><p>A Package groups the final deliverables with visible source relationships, quality findings, limitations, versions, and human decisions. It does not imply external publication or an active export.</p></article>
       </section>
@@ -85,7 +85,7 @@ export function Projects() {
         <p className="section-kicker">Static site and functional platform</p>
         <h2 id="projects-platform-heading">The examples explain the experience; the prototype demonstrates Publisher behavior</h2>
         <p>Only the Neurons Protocol Launch example is backed by the separately hosted BBA Publisher prototype. The other examples illustrate planned BBA Agency Products and are not operational implementations.</p>
-        <Link to="/services">Explore BBA Agency Products <span aria-hidden="true">→</span></Link>
+        <Link to="/services" >Explore BBA Agency Products <span aria-hidden="true">→</span></Link>
       </section>
     </main>
   );

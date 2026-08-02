@@ -26,7 +26,7 @@ export function Services() {
 
 function ServiceIndex() {
   return (
-    <div className="page-intro">
+    <div className="page-intro container">
       <p className="section-kicker">Agency services / 05 disciplines</p>
       <h1>Services designed around the outcome you need</h1>
       <p>
@@ -34,9 +34,9 @@ function ServiceIndex() {
         context, specialized AI roles, human checkpoints, and deliverables
         required to complete the work.
       </p>
-      <p>
+      <div className="disclosure-note">
         The services described here explain how the future BBA platform
-        experience will work. The operational prototype is hosted separately at
+        experience will work. The operational prototype is hosted separately at 
         <a
           href="https://dev.bba.country"
           target="_blank"
@@ -46,31 +46,15 @@ function ServiceIndex() {
         </a>
         , an external environment. The static site you are viewing now does not
         execute work, create projects, or call any backend.
-      </p>
-      <div className="services-hero-actions">
-        <a href="#services-catalog" className="arrow-link">
-          Explore products <span aria-hidden="true">→</span>
-        </a>
-        <a href="#workflow-heading" className="arrow-link">
-          Learn how the Agency works <span aria-hidden="true">→</span>
-        </a>
-        <a
-          href="https://dev.bba.country"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="arrow-link"
-          aria-label="View the Publisher prototype in an external environment"
-        >
-          View the Publisher prototype <span aria-hidden="true">→</span>
-        </a>
       </div>
+      
     </div>
   );
 }
 
 function HowEveryServiceWorks() {
   return (
-    <section className="workflow-section" aria-labelledby="workflow-heading">
+    <section className="workflow-section container" aria-labelledby="workflow-heading">
       <p className="section-kicker">How every service works</p>
       <h2 id="workflow-heading">One common journey for every service.</h2>
       <p className="workflow-intro">
@@ -135,7 +119,7 @@ function WorkflowStep({
 function ServiceCatalog() {
   return (
     <section
-      className="service-catalog"
+      className="service-catalog container"
       aria-labelledby="catalog-heading"
     >
       <p className="section-kicker">The five disciplines</p>
@@ -210,7 +194,7 @@ function ServiceCard({
       {service.detailHref && (
         <Link
           to={service.detailHref}
-          className="card-action"
+          className="button secondary right"
           aria-label={`View service details for ${service.name}`}
         >
           {service.availability === "PROTOTYPE_AVAILABLE"
@@ -226,7 +210,7 @@ function ServiceCard({
 function PrototypeDisclosure() {
   return (
     <section
-      className="prototype-disclosure editorial-section"
+      className="prototype-disclosure container"
       aria-labelledby="prototype-heading"
     >
       <p className="section-kicker">Where the platform experience lives</p>
@@ -236,15 +220,10 @@ function PrototypeDisclosure() {
         Project, provide Editorial Context, follow a coordinated AI team,
         review key decisions, and receive a final delivery package.
       </p>
-      <p>
-        <a
-          href="https://dev.bba.country"
-          target="_blank"
-          rel="noopener noreferrer"
-        className="arrow-link"
-      >
-          Explore the functional prototype <span aria-hidden="true">→</span>
-        </a>
+      <button className="arrow-link" onClick={() => { window.open("https://dev.bba.country", "_blank", "noopener,noreferrer"); }}>
+        Explore the BBA Publisher prototype <span aria-hidden="true">→</span>
+      </button>
+      <p className="disclosure-note">
       </p>
       <p className="disclosure-note">
         This link opens the external functional prototype at dev.bba.country.
@@ -258,7 +237,7 @@ function PrototypeDisclosure() {
 
 function RelatedInformationalCta() {
   return (
-    <section className="prototype-disclosure editorial-section" aria-labelledby="related-cta-heading">
+    <section className="prototype-disclosure container" aria-labelledby="related-cta-heading">
       <p className="section-kicker">Continue exploring</p>
       <h2 id="related-cta-heading">Read the product details before using the prototype.</h2>
       <p>
@@ -266,11 +245,9 @@ function RelatedInformationalCta() {
         customer inputs, the Agency team, the human checkpoints, and the
         limitations of the experience.
       </p>
-      <p>
-        <Link to="/services/publisher" className="arrow-link">
-          Read the Publisher product page <span aria-hidden="true">→</span>
-        </Link>
-      </p>
+      <button className="arrow-link" onClick={() => { void window.open("https://dev.bba.country", "_blank", "noopener,noreferrer"); }}>
+        Explore the BBA Publisher prototype <span aria-hidden="true">→</span>
+      </button>
     </section>
   );
 }
@@ -278,7 +255,7 @@ function RelatedInformationalCta() {
 function ServiceVsTechnology() {
   return (
     <section
-      className="service-vs-technology"
+      className="service-vs-technology container"
       aria-labelledby="distinction-heading"
     >
       <h2 id="distinction-heading">
