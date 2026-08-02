@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { ProjectDetailPage } from "../components/projects/ProjectDetailPage.js";
+import { ProjectDetailPage } from ".../components/projects/ProjectDetailPage.js
 import { getAgencyProjectByRouteSegment } from "../content/projects/index.js";
 import { Unavailable } from "./Unavailable.js";
 
