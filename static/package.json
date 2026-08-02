@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "prebuild": "pnpm check:product-content && pnpm check:project-content && pnpm check:delivery-content && pnpm check:project-pages",
+    "prebuild": "pnpm check:product-content && pnpm check:project-content && pnpm check:delivery-content && pnpm check:delivery-pages && pnpm check:project-pages",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
@@ -19,6 +19,8 @@
     "generate:project-content": "node tools/generate-project-content.mjs",
     "generate:delivery-content": "node tools/generate-delivery-content.mjs",
     "check:delivery-content": "node tools/check-delivery-content.mjs",
+    "check:delivery-pages": "node tools/check-delivery-pages.mjs",
+    "capture:delivery-evidence": "node tools/capture-delivery-evidence.mjs",
     "check:project-pages": "node tools/check-project-pages.mjs",
     "capture:project-evidence": "node tools/capture-project-evidence.mjs",
     "capture:project-test-evidence": "PROJECT_EVIDENCE_ROOT=.rag/evidence/REQ-TEST-019-001 node tools/capture-project-evidence.mjs"

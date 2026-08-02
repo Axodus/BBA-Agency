@@ -1,0 +1,34 @@
+routes:
+  - path: /deliveries
+    component: Deliveries
+    source: agencyDeliveryPackages
+    status: PASS
+  - path: /deliveries/editorial-package
+    component: DeliveryDetail -> DeliveryPackagePage
+    source: generated delivery content
+    status: PASS
+  - path: /deliveries/campaign-package
+    component: DeliveryDetail -> DeliveryPackagePage
+    source: generated delivery content
+    status: PASS
+  - path: /deliveries/scientific-package
+    component: DeliveryDetail -> DeliveryPackagePage
+    source: generated delivery content
+    status: PASS
+  - path: /deliveries/institutional-package
+    component: DeliveryDetail -> DeliveryPackagePage
+    source: generated delivery content
+    status: PASS
+  - path: /deliveries/research-package
+    component: DeliveryDetail -> DeliveryPackagePage
+    source: generated delivery content
+    status: PASS
+fallbacks:
+  - path: /deliveries/new
+    component: Unavailable
+    returnPath: /deliveries
+    status: PASS
+  - path: /deliveries/unknown
+    component: Unavailable
+    returnPath: /deliveries
+    status: PASS

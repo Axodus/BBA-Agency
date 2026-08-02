@@ -1,0 +1,35 @@
+pnpm --dir static check:product-content
+Product content validation passed: 5 files, schemaVersion 1.0.
+
+pnpm --dir static check:project-content
+Project content validation passed: 5 files, schemaVersion 1.0.
+
+pnpm --dir static check:delivery-content
+Delivery Package content validation passed: 5 files, schemaVersion 1.0.
+
+pnpm --dir static check:delivery-pages
+Delivery page integration check passed: 6 valid routes, 2 fallback scenarios, and 1 shared informational template.
+
+pnpm --dir static typecheck
+tsc --noEmit
+EXIT: 0
+
+pnpm --dir static lint
+Lint check passed.
+
+pnpm --dir static format:check
+Format check passed.
+
+pnpm --dir static build
+Product, Project, Delivery content, Delivery page, and Project page prebuild checks passed.
+tsc --noEmit && vite build
+EXIT: 0
+
+node tools/check-agency-language.mjs
+Agency language check passed: canonical English, default locale en-US, fallback locale en-US.
+
+node tools/check-frontend-boundaries.mjs
+Frontend package graph check passed.
+
+git diff --check
+EXIT: 0

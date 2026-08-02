@@ -1,0 +1,28 @@
+desktop /deliveries: PASS (one h1, one main, no horizontal overflow)
+desktop /deliveries/editorial-package: PASS (one h1, one main, no horizontal overflow)
+desktop /deliveries/campaign-package: PASS (one h1, one main, no horizontal overflow)
+desktop /deliveries/scientific-package: PASS (one h1, one main, no horizontal overflow)
+desktop /deliveries/institutional-package: PASS (one h1, one main, no horizontal overflow)
+desktop /deliveries/research-package: PASS (one h1, one main, no horizontal overflow)
+desktop /deliveries/new: fallback PASS
+desktop /deliveries/unknown: fallback PASS
+laptop /deliveries: PASS (one h1, one main, no horizontal overflow)
+laptop /deliveries/editorial-package: PASS (one h1, one main, no horizontal overflow)
+laptop /deliveries/campaign-package: PASS (one h1, one main, no horizontal overflow)
+laptop /deliveries/scientific-package: PASS (one h1, one main, no horizontal overflow)
+laptop /deliveries/institutional-package: PASS (one h1, one main, no horizontal overflow)
+laptop /deliveries/research-package: PASS (one h1, one main, no horizontal overflow)
+tablet /deliveries: PASS (one h1, one main, no horizontal overflow)
+tablet /deliveries/editorial-package: PASS (one h1, one main, no horizontal overflow)
+tablet /deliveries/campaign-package: PASS (one h1, one main, no horizontal overflow)
+tablet /deliveries/scientific-package: PASS (one h1, one main, no horizontal overflow)
+tablet /deliveries/institutional-package: PASS (one h1, one main, no horizontal overflow)
+tablet /deliveries/research-package: PASS (one h1, one main, no horizontal overflow)
+mobile /deliveries: PASS (one h1, one main, no horizontal overflow)
+mobile /deliveries/editorial-package: PASS (one h1, one main, no horizontal overflow)
+mobile /deliveries/campaign-package: PASS (one h1, one main, no horizontal overflow)
+mobile /deliveries/scientific-package: PASS (one h1, one main, no horizontal overflow)
+mobile /deliveries/institutional-package: PASS (one h1, one main, no horizontal overflow)
+mobile /deliveries/research-package: PASS (one h1, one main, no horizontal overflow)
+
+Network boundary: PASS; 13 local asset requests and no backend, provider, or prototype requests.
