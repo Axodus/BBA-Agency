@@ -1,0 +1,11 @@
+Command sequence:
+  sha256sum static/src/content/deliveries/generated/delivery-content.generated.ts
+  pnpm --dir static generate:delivery-content
+  sha256sum static/src/content/deliveries/generated/delivery-content.generated.ts
+
+Before: 45b6d1514c93da5276628d4d50a9fe7c1bdef890fde4511259b9dfcd5b75daac
+After:  45b6d1514c93da5276628d4d50a9fe7c1bdef890fde4511259b9dfcd5b75daac
+Result: PASS (byte-identical output)
+
+The generator serializes sorted canonical Markdown sources and does not add
+timestamps, absolute paths, environment values, or random identifiers.

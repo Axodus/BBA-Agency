@@ -1,0 +1,14 @@
+Command: pnpm --dir static check:delivery-content
+Result: PASS
+
+The Delivery validator loaded canonical Product and Project inventories.
+
+editorial-package -> bba-publisher -> neurons-protocol-launch -> Editorial Package
+campaign-package -> advertising-campaign -> responsible-ai-awareness-campaign -> Campaign Package
+scientific-package -> scientific-article -> ai-publishing-research-article -> Scientific Package
+institutional-package -> governance-proposal -> ai-content-governance-proposal -> Institutional Package
+research-package -> market-research -> enterprise-ai-publishing-market-study -> Research Package
+
+Validated: Product ID, Product name, Product route, Project ID, Project name,
+Project route, Project-to-Product relationship, expected Package name, unique
+Product and Project assignment, and reciprocal ordered Package navigation.

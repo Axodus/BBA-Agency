@@ -1,0 +1,12 @@
+Canonical language: English
+Default locale: en-US
+Language gate: PASS
+
+Static boundary: PASS
+- Every Package declares operationalOnStaticSite: false.
+- Approval descriptions are narrative only; no executable controls are encoded.
+- No Package defines download URLs, ZIP archives, storage paths, upload status,
+  export handlers, API endpoints, persistence, or publication actions.
+- Only Editorial Package is PROTOTYPE_BACKED.
+- Planned Packages are visibly illustrative and do not claim operational implementation.
+- No financial meaning is assigned to $Neurons.
