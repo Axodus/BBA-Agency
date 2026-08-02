@@ -284,7 +284,7 @@ export function DeliveryPackagePage({ deliveryPackage }: { readonly deliveryPack
         <p className="delivery-package-lead container">
           {sectionBody(deliveryPackage, "Version history")}
         </p>
-        <div className="delivery-version-list">
+        <div className="delivery-version-list delivery-quality-grid">
           {deliveryPackage.versionHistory.map((version) => (
             <article key={version.version}>
               <span>Illustrative version history</span>
@@ -445,7 +445,7 @@ export function DeliveryPackagePage({ deliveryPackage }: { readonly deliveryPack
           <span aria-hidden="true">→</span>
         </Link>
       </Section>
-      <Section
+      <Section className="bkg-pink"
         eyebrow="Future operational workflow"
         title="What a future platform may support"
       >
