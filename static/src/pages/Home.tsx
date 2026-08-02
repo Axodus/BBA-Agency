@@ -32,7 +32,7 @@ export function Home() {
           </button>
         ))}
       </section>
-      <section className="editorial-section dark-section">
+      <section className="editorial-section dark-section grid-2c-08-12">
         <div><p className="section-kicker">A different operating model</p><h2>You choose the result.<br />The Agency organizes the work.</h2></div>
         <div className="method-list">
           {["Choose a service", "Provide your context", "Follow the team", "Review key decisions", "Receive the final package"].map((x, i) => (
