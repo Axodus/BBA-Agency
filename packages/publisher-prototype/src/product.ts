@@ -1,0 +1,13 @@
+import { publisherChannels, publisherProductId, publisherProductVersion, type AgentDefinition, type PublisherProductDefinition } from "./types.js";
+export const publisherAgents: readonly AgentDefinition[] = Object.freeze([
+  { id: "publisher-context-analyst-v1", role: "Context Analyst", objective: "Materialize a factual and traceable Editorial Core", allowedTools: ["context-read"], modelPolicy: "balanced-editorial-v1", requiresHumanReview: true, inputSchemaVersion: "1", outputSchemaVersion: "1" },
+  { id: "publisher-editorial-strategist-v1", role: "Editorial Strategist", objective: "Plan a coherent three-channel editorial sequence", allowedTools: ["editorial-core-read"], modelPolicy: "balanced-editorial-v1", requiresHumanReview: false, inputSchemaVersion: "1", outputSchemaVersion: "1" },
+  { id: "publisher-platform-adapter-v1", role: "Platform Adapter", objective: "Adapt the approved message without changing its claims", allowedTools: ["editorial-core-read", "channel-profile-read"], modelPolicy: "balanced-editorial-v1", requiresHumanReview: true, inputSchemaVersion: "1", outputSchemaVersion: "1" },
+  { id: "publisher-semantic-reviewer-v1", role: "Semantic Consistency Reviewer", objective: "Verify factual and semantic consistency across variants", allowedTools: ["editorial-core-read", "variant-read"], modelPolicy: "balanced-editorial-v1", requiresHumanReview: true, inputSchemaVersion: "1", outputSchemaVersion: "1" },
+]);
+export const publisherProduct: PublisherProductDefinition = Object.freeze({ id: publisherProductId, version: publisherProductVersion, family: "BBA Publisher", categoryId: "AGENCY-SERVICE-CATEGORY-004", categoryName: "Publication Strategy", name: "Multiplatform Publication Package", customerOutcome: "Convert customer Editorial Context into a coherent, reviewed, traceable multiplatform Editorial Package.", agents: publisherAgents, channels: publisherChannels, deliverables: ["Editorial strategy", "Blog content", "LinkedIn content", "Instagram content", "Mandatory human review"], estimatedExecutionUnits: 60, limitations: ["No external publication", "Three illustrative channel profiles", "Prototype execution only"] });
+export const agencyServiceCatalog = Object.freeze([
+  { id: publisherProduct.id, name: "Plan publications", status: "AVAILABLE", outcome: publisherProduct.customerOutcome },
+  { id: "bba.campaign", name: "Create a campaign", status: "PLANNED" }, { id: "bba.scientific-writer", name: "Write an article", status: "PLANNED" },
+  { id: "bba.governance", name: "Develop a proposal", status: "PLANNED" }, { id: "bba.research", name: "Research a market", status: "PLANNED" },
+]);

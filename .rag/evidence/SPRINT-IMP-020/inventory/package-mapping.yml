@@ -1,0 +1,26 @@
+packages:
+  - package: Editorial Package
+    product: BBA Publisher
+    project: Neurons Protocol Launch
+    status: PROTOTYPE_BACKED
+  - package: Campaign Package
+    product: Advertising Campaign
+    project: Responsible AI Awareness Campaign
+    status: ILLUSTRATIVE_PLANNED
+  - package: Scientific Package
+    product: Scientific Article
+    project: AI-Assisted Publishing Research Article
+    status: ILLUSTRATIVE_PLANNED
+  - package: Institutional Package
+    product: Governance Proposal
+    project: Institutional AI Content Governance Proposal
+    status: ILLUSTRATIVE_PLANNED
+  - package: Research Package
+    product: Market Research
+    project: Enterprise AI Publishing Market Study
+    status: ILLUSTRATIVE_PLANNED
+validation:
+  sourceFiles: 5
+  schema: PASS
+  crossCatalogReferences: PASS
+  generatedModuleDrift: 0

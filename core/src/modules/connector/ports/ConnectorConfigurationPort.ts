@@ -1,0 +1,1 @@
+export interface ConnectorConfigurationPort { validateConfiguration(input: { readonly connectorId: string; readonly technicalAttributes: Readonly<Record<string, string | number | boolean | null>> }): Promise<void>; }

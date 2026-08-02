@@ -1,9 +1,15 @@
 {
   "name": "bba-agency",
   "version": "1.0.0",
+  "packageManager": "pnpm@11.1.2",
   "description": "AxodusBBA - Unificação dos projetos Axodus e BBA Agency",
   "main": "dist/pipelines/campaign.flow.js",
   "scripts": {
+    "contracts:check": "node contracts/openapi/check-contract.mjs",
+    "agency:check-language": "node tools/check-agency-language.mjs",
+    "agency:check": "pnpm agency:check-language && pnpm --filter @bba/publisher-prototype check && pnpm --filter @bba/agency-runtime-http check",
+    "frontend:build": "pnpm --filter @bba/bba-web build",
+    "frontend:check": "pnpm agency:check-language && node tools/check-frontend-boundaries.mjs && pnpm --dir clients/typescript build && pnpm --filter @bba/ui check && pnpm --filter @bba/app-shell check && pnpm --filter @bba/sdk-react check && pnpm --filter @bba/bba-web check",
     "dev": "ts-node --transpile-only src/pipelines/campaign.flow.ts",
     "dev:axodus": "ts-node --transpile-only src/pipelines/campaign.flow.ts",
     "mcp": "ts-node --transpile-only src/tools/mcp-server.ts",

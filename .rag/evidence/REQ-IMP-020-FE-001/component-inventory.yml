@@ -1,0 +1,24 @@
+components:
+  - name: Deliveries
+    responsibility: Informational index, anatomy, lifecycle, catalog, and static-platform disclosure.
+  - name: DeliveryDetail
+    responsibility: Resolve a generated Package by route segment or render Unavailable.
+  - name: DeliveryPackagePage
+    responsibility: Shared template for all five Package pages.
+    renders:
+      - hero and disclosure
+      - overview and business objective
+      - contents and artifacts
+      - ordered review process and approval summary
+      - revision policy and illustrative version history
+      - traceability and quality gates
+      - visible limitations
+      - related Project and Product
+      - future workflow, FAQ, and navigation
+contentImports:
+  - agencyDeliveryPackages
+  - getAgencyDeliveryPackageByRouteSegment
+  - getAgencyProductById
+  - getAgencyProjectById
+reusableTemplateCount: 1
+status: PASS

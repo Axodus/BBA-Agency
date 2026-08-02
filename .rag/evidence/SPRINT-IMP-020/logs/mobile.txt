@@ -1,0 +1,9 @@
+/deliveries: direct load, refresh, heading, semantics, responsive layout PASS
+/deliveries/editorial-package: direct load, refresh, heading, semantics, responsive layout PASS
+/deliveries/campaign-package: direct load, refresh, heading, semantics, responsive layout PASS
+/deliveries/scientific-package: direct load, refresh, heading, semantics, responsive layout PASS
+/deliveries/institutional-package: direct load, refresh, heading, semantics, responsive layout PASS
+/deliveries/research-package: direct load, refresh, heading, semantics, responsive layout PASS
+consoleErrors: 0
+failedRequests: 0
+network: PASS (11 local requests)

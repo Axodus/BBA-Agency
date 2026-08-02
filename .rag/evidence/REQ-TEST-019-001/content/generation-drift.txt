@@ -1,0 +1,1 @@
+The deterministic generated Project module was regenerated and matched its committed source before this QA request. Browser acceptance remains blocked and is not inferred from this drift result.

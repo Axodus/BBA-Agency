@@ -1,0 +1,1 @@
+The static `check:project-pages` gate verifies generated route use, fallback behavior, semantic ordered timeline, removed legacy operational pages, and absence of forms, click handlers, fetch, browser storage, and XML HTTP requests in the Projects components.

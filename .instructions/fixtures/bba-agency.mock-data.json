@@ -1,0 +1,496 @@
+{
+  "metadata": {
+    "fixtureId": "bba-agency-mock-local-baseline-2026-06-06",
+    "sourceRequest": "BBA-REQ-02",
+    "purpose": "Mock/local fixture baseline for BBA-Agency L2 to L3 recovery.",
+    "dataClass": "synthetic",
+    "productionUse": false,
+    "externalExecution": false,
+    "billingEnabled": false,
+    "paymentFlowEnabled": false,
+    "campaignDispatchEnabled": false,
+    "containsRealClientData": false,
+    "containsSecrets": false
+  },
+  "nucleus": {
+    "services": [
+      {
+        "id": "mock-service-governance-comms-001",
+        "title": "Mock Governance Communications Package",
+        "slug": "mock-governance-communications",
+        "category": "Governance Communication",
+        "subcategory": "Mock stakeholder updates",
+        "description": "Synthetic service package for local governance communication planning.",
+        "shortDescription": "Mock governance communications planning.",
+        "governanceStatus": "planning",
+        "constitutionalStanding": "pending",
+        "pricingModel": "mock-only-no-price",
+        "deliveryModel": "local-draft-only",
+        "targetAudience": ["mock DAO operators", "mock ecosystem reviewers"],
+        "treasuryCompatible": false,
+        "active": false,
+        "maturity": "L3 mock/local candidate evidence",
+        "institutionalCategory": "documentation-governance",
+        "publicReputationRisk": "medium",
+        "createdAt": "2026-06-06T00:00:00Z",
+        "updatedAt": "2026-06-06T00:00:00Z"
+      },
+      {
+        "id": "mock-service-creative-kit-001",
+        "title": "Mock Creative Campaign Kit",
+        "slug": "mock-creative-campaign-kit",
+        "category": "Creative Production",
+        "subcategory": "Mock launch assets",
+        "description": "Synthetic creative planning service for local-only fixture validation.",
+        "shortDescription": "Mock creative package planning.",
+        "governanceStatus": "planning",
+        "constitutionalStanding": "pending",
+        "pricingModel": "mock-only-no-billing",
+        "deliveryModel": "local-candidate-assets",
+        "targetAudience": ["mock brand reviewer"],
+        "treasuryCompatible": false,
+        "active": false,
+        "maturity": "L3 mock/local candidate evidence",
+        "institutionalCategory": "creative-planning",
+        "publicReputationRisk": "low",
+        "createdAt": "2026-06-06T00:00:00Z",
+        "updatedAt": "2026-06-06T00:00:00Z"
+      }
+    ],
+    "campaigns": [
+      {
+        "id": "mock-campaign-draft-001",
+        "title": "Mock Draft Awareness Campaign",
+        "type": "awareness",
+        "status": "planning",
+        "clientId": "mock-client-alpha",
+        "ecosystemLinked": true,
+        "governanceValidated": false,
+        "constitutionalStanding": "pending",
+        "objective": "Prepare a local-only awareness concept for validation.",
+        "channels": ["mock website", "mock newsletter"],
+        "metrics": { "mockReach": 0, "status": "draft" },
+        "budgetModel": "no-budget-mock-only",
+        "treasuryExposure": "none",
+        "publicReputationRisk": "medium",
+        "complianceRisks": ["requires claim review before public use"],
+        "startDate": "2026-06-10",
+        "endDate": "2026-06-30",
+        "createdAt": "2026-06-06T00:00:00Z"
+      },
+      {
+        "id": "mock-campaign-review-001",
+        "title": "Mock Pending Approval Campaign",
+        "type": "governance update",
+        "status": "under-review",
+        "clientId": "mock-client-alpha",
+        "ecosystemLinked": true,
+        "governanceValidated": false,
+        "constitutionalStanding": "under-review",
+        "objective": "Model a campaign pending governance and claim review.",
+        "channels": ["mock community", "mock social-media"],
+        "metrics": { "mockReviewItems": 4, "status": "pending approval" },
+        "budgetModel": "no-budget-review-only",
+        "treasuryExposure": "none",
+        "publicReputationRisk": "high",
+        "complianceRisks": ["governance claim review required", "no public release"],
+        "startDate": "2026-06-12",
+        "endDate": "2026-07-01",
+        "createdAt": "2026-06-06T00:00:00Z"
+      },
+      {
+        "id": "mock-campaign-approved-local-001",
+        "title": "Mock Approved Local Campaign",
+        "type": "internal launch rehearsal",
+        "status": "under-review",
+        "clientId": "mock-client-alpha",
+        "ecosystemLinked": false,
+        "governanceValidated": true,
+        "constitutionalStanding": "compliant",
+        "objective": "Represent an approved local-only campaign scenario with no execution or publication authority.",
+        "channels": ["mock internal workspace"],
+        "metrics": { "mockTasksComplete": 3, "status": "approved mock only" },
+        "budgetModel": "mock-only-no-spend",
+        "treasuryExposure": "none",
+        "publicReputationRisk": "low",
+        "complianceRisks": ["approval is mock only"],
+        "startDate": "2026-06-15",
+        "endDate": "2026-07-15",
+        "createdAt": "2026-06-06T00:00:00Z"
+      },
+      {
+        "id": "mock-campaign-paused-001",
+        "title": "Mock Paused Campaign",
+        "type": "creative test",
+        "status": "paused",
+        "clientId": "mock-client-incomplete-001",
+        "ecosystemLinked": false,
+        "governanceValidated": false,
+        "constitutionalStanding": "restricted",
+        "objective": "Represent a paused campaign blocked by incomplete client profile.",
+        "channels": ["mock design review"],
+        "metrics": { "mockBlockedItems": 2, "status": "paused" },
+        "budgetModel": "no-budget-paused",
+        "treasuryExposure": "none",
+        "publicReputationRisk": "medium",
+        "complianceRisks": ["incomplete profile", "blocked from dispatch"],
+        "startDate": "2026-06-18",
+        "endDate": "2026-07-18",
+        "createdAt": "2026-06-06T00:00:00Z"
+      },
+      {
+        "id": "mock-campaign-completed-001",
+        "title": "Mock Completed Retrospective Campaign",
+        "type": "retrospective",
+        "status": "completed",
+        "clientId": "mock-client-alpha",
+        "ecosystemLinked": false,
+        "governanceValidated": true,
+        "constitutionalStanding": "compliant",
+        "objective": "Represent a completed synthetic retrospective with no performance claim.",
+        "channels": ["mock report"],
+        "metrics": { "mockLessons": 5, "performanceClaim": "none" },
+        "budgetModel": "mock-only-no-spend",
+        "treasuryExposure": "none",
+        "publicReputationRisk": "low",
+        "complianceRisks": [],
+        "startDate": "2026-05-01",
+        "endDate": "2026-05-15",
+        "createdAt": "2026-06-06T00:00:00Z"
+      }
+    ],
+    "clientPartners": [
+      {
+        "id": "mock-client-alpha",
+        "name": "Mock Client Alpha",
+        "type": "Internal Axodus Nucleus",
+        "governanceStanding": "pending",
+        "constitutionalBound": true,
+        "partnershipLevel": "mock-local-review",
+        "servicesActive": ["mock-service-governance-comms-001"],
+        "treasuryCompatible": false,
+        "riskScore": 45,
+        "description": "Synthetic internal client used for mock/local validation only."
+      },
+      {
+        "id": "mock-client-incomplete-001",
+        "name": "Mock Client Incomplete Profile",
+        "type": "Company",
+        "governanceStanding": "restricted",
+        "constitutionalBound": false,
+        "partnershipLevel": "incomplete-mock-profile",
+        "servicesActive": [],
+        "treasuryCompatible": false,
+        "riskScore": 82,
+        "description": "Synthetic incomplete profile with no contact, billing, or execution data."
+      }
+    ],
+    "proposals": [
+      {
+        "id": "mock-proposal-draft-001",
+        "clientId": "mock-client-alpha",
+        "title": "Mock Draft Proposal",
+        "scope": "Draft local communications concept.",
+        "status": "draft",
+        "governanceReviewRequired": true,
+        "treasuryReviewRequired": false,
+        "operationalComplexity": "low",
+        "publicReputationRisk": "medium",
+        "deliveryEstimate": "mock estimate only",
+        "createdAt": "2026-06-06T00:00:00Z"
+      },
+      {
+        "id": "mock-proposal-review-001",
+        "clientId": "mock-client-alpha",
+        "title": "Mock Pending Review Proposal",
+        "scope": "Campaign concept requiring governance and claim review.",
+        "status": "under-review",
+        "governanceReviewRequired": true,
+        "treasuryReviewRequired": true,
+        "operationalComplexity": "medium",
+        "publicReputationRisk": "high",
+        "deliveryEstimate": "blocked until review",
+        "createdAt": "2026-06-06T00:00:00Z"
+      },
+      {
+        "id": "mock-proposal-approved-local-001",
+        "clientId": "mock-client-alpha",
+        "title": "Mock Approved Local Proposal",
+        "scope": "Local-only approved candidate workflow.",
+        "status": "approved",
+        "governanceReviewRequired": false,
+        "treasuryReviewRequired": false,
+        "operationalComplexity": "low",
+        "publicReputationRisk": "low",
+        "deliveryEstimate": "mock local sprint",
+        "createdAt": "2026-06-06T00:00:00Z"
+      },
+      {
+        "id": "mock-proposal-blocked-001",
+        "clientId": "mock-client-incomplete-001",
+        "title": "Mock Blocked Proposal",
+        "scope": "Rejected/blocked scenario due to incomplete profile and claim risk.",
+        "status": "blocked",
+        "governanceReviewRequired": true,
+        "treasuryReviewRequired": true,
+        "operationalComplexity": "high",
+        "publicReputationRisk": "high",
+        "deliveryEstimate": "not eligible",
+        "createdAt": "2026-06-06T00:00:00Z"
+      }
+    ],
+    "workflows": [
+      {
+        "id": "mock-workflow-intake-001",
+        "title": "Mock Intake Workflow",
+        "phase": "intake",
+        "assignedAgents": ["BriefInterpreter", "AudienceProfiler"],
+        "governanceStatus": "planning",
+        "operationalRisk": "medium",
+        "blockers": ["claim review required"],
+        "validationRequired": true,
+        "createdAt": "2026-06-06T00:00:00Z",
+        "updatedAt": "2026-06-06T00:00:00Z"
+      },
+      {
+        "id": "mock-workflow-validation-001",
+        "title": "Mock Validation Workflow",
+        "phase": "validation",
+        "assignedAgents": ["BrandStrategist", "CampaignPlanner"],
+        "governanceStatus": "under-review",
+        "operationalRisk": "high",
+        "blockers": ["governance approval not granted"],
+        "validationRequired": true,
+        "createdAt": "2026-06-06T00:00:00Z",
+        "updatedAt": "2026-06-06T00:00:00Z"
+      },
+      {
+        "id": "mock-workflow-approval-001",
+        "title": "Mock Approval Workflow",
+        "phase": "approval",
+        "assignedAgents": ["MockCoordinator", "MockGovernanceReviewer"],
+        "governanceStatus": "compliant",
+        "operationalRisk": "low",
+        "blockers": ["approval is mock only"],
+        "validationRequired": true,
+        "createdAt": "2026-06-06T00:00:00Z",
+        "updatedAt": "2026-06-06T00:00:00Z"
+      },
+      {
+        "id": "mock-workflow-monitoring-001",
+        "title": "Mock Monitoring Workflow",
+        "phase": "monitoring",
+        "assignedAgents": ["DataAnalyst"],
+        "governanceStatus": "restricted",
+        "operationalRisk": "medium",
+        "blockers": ["synthetic metrics only"],
+        "validationRequired": true,
+        "createdAt": "2026-06-06T00:00:00Z",
+        "updatedAt": "2026-06-06T00:00:00Z"
+      }
+    ],
+    "brandAssets": [
+      {
+        "id": "mock-brand-asset-guidelines-001",
+        "title": "Mock Brand Guidelines",
+        "type": "guidelines",
+        "format": "markdown",
+        "owner": "mock-creative-agent",
+        "status": "draft",
+        "governanceStatus": "planning",
+        "constitutionalStanding": "pending",
+        "publicReputationRisk": "medium",
+        "usageContext": ["mock internal review"],
+        "updatedAt": "2026-06-06T00:00:00Z"
+      },
+      {
+        "id": "mock-brand-asset-campaign-visuals-001",
+        "title": "Mock Campaign Visuals",
+        "type": "campaign-visuals",
+        "format": "local-placeholder",
+        "owner": "mock-visual-designer",
+        "status": "review-ready",
+        "governanceStatus": "review-ready",
+        "constitutionalStanding": "under-review",
+        "publicReputationRisk": "medium",
+        "usageContext": ["mock campaign review"],
+        "updatedAt": "2026-06-06T00:00:00Z"
+      }
+    ],
+    "institutionalChannels": [
+      {
+        "id": "mock-channel-docs-001",
+        "title": "Mock Documentation Channel",
+        "type": "website",
+        "status": "planned",
+        "owner": "mock-coordinator",
+        "governanceStatus": "planning",
+        "audience": "internal mock reviewers",
+        "publicReputationRisk": "low",
+        "complianceNotes": ["not published", "mock-only"]
+      },
+      {
+        "id": "mock-channel-public-campaign-001",
+        "title": "Mock Public Campaign Channel",
+        "type": "public-campaigns",
+        "status": "review-gated",
+        "owner": "mock-governance-reviewer",
+        "governanceStatus": "under-review",
+        "audience": "hypothetical public audience",
+        "publicReputationRisk": "high",
+        "complianceNotes": ["publication forbidden", "requires coordinator approval"]
+      }
+    ],
+    "deliverables": [
+      {
+        "id": "mock-deliverable-landing-001",
+        "title": "Mock Landing Page Draft",
+        "type": "landing-page",
+        "status": "planned",
+        "campaignId": "mock-campaign-draft-001",
+        "clientId": "mock-client-alpha",
+        "governanceReviewRequired": true,
+        "publicReputationRisk": "medium",
+        "dueDate": "2026-06-20"
+      },
+      {
+        "id": "mock-deliverable-social-pack-001",
+        "title": "Mock Social Pack Candidate",
+        "type": "social-pack",
+        "status": "review-ready",
+        "campaignId": "mock-campaign-review-001",
+        "clientId": "mock-client-alpha",
+        "governanceReviewRequired": true,
+        "publicReputationRisk": "high",
+        "dueDate": "2026-06-22"
+      },
+      {
+        "id": "mock-deliverable-report-001",
+        "title": "Mock Launch Report",
+        "type": "launch-report",
+        "status": "approved",
+        "campaignId": "mock-campaign-approved-local-001",
+        "clientId": "mock-client-alpha",
+        "governanceReviewRequired": false,
+        "publicReputationRisk": "low",
+        "dueDate": "2026-06-25"
+      },
+      {
+        "id": "mock-deliverable-blocked-001",
+        "title": "Mock Blocked Proposal Document",
+        "type": "proposal-document",
+        "status": "blocked",
+        "campaignId": "mock-campaign-paused-001",
+        "clientId": "mock-client-incomplete-001",
+        "governanceReviewRequired": true,
+        "publicReputationRisk": "high",
+        "dueDate": "2026-06-30"
+      }
+    ]
+  },
+  "mockScenarios": [
+    {
+      "id": "mock-scenario-draft-campaign",
+      "description": "Draft campaign intake with no approval and no execution.",
+      "records": ["mock-campaign-draft-001", "mock-proposal-draft-001"],
+      "executionAllowed": false
+    },
+    {
+      "id": "mock-scenario-pending-approval",
+      "description": "Campaign and proposal pending governance and claim review.",
+      "records": ["mock-campaign-review-001", "mock-proposal-review-001"],
+      "executionAllowed": false
+    },
+    {
+      "id": "mock-scenario-approved-local",
+      "description": "Approved local-only candidate; not publication or production approval.",
+      "records": ["mock-campaign-approved-local-001", "mock-proposal-approved-local-001"],
+      "executionAllowed": false
+    },
+    {
+      "id": "mock-scenario-rejected",
+      "description": "Blocked/rejected path for incomplete profile and claim risk.",
+      "records": ["mock-proposal-blocked-001", "mock-deliverable-blocked-001"],
+      "executionAllowed": false
+    },
+    {
+      "id": "mock-scenario-paused",
+      "description": "Paused campaign with blocked dispatch.",
+      "records": ["mock-campaign-paused-001"],
+      "executionAllowed": false
+    },
+    {
+      "id": "mock-scenario-incomplete-client",
+      "description": "Incomplete synthetic client profile with no real contact or billing data.",
+      "records": ["mock-client-incomplete-001"],
+      "executionAllowed": false
+    },
+    {
+      "id": "mock-scenario-permission-denied",
+      "description": "Ads execution request denied by mock permission boundary.",
+      "records": ["mock-permission-denied-ads-execution-001"],
+      "executionAllowed": false
+    }
+  ],
+  "permissionClaims": [
+    {
+      "id": "mock-permission-read-docs-001",
+      "actor": "MockCoordinator",
+      "action": "read instructions and fixtures",
+      "classification": "allowed",
+      "requiresApproval": false
+    },
+    {
+      "id": "mock-permission-simulate-proposal-001",
+      "actor": "MockStrategist",
+      "action": "simulate proposal approval state",
+      "classification": "simulated",
+      "requiresApproval": true
+    },
+    {
+      "id": "mock-permission-denied-ads-execution-001",
+      "actor": "AdsSpecialist",
+      "action": "execute ad platform campaign",
+      "classification": "forbidden",
+      "requiresApproval": true,
+      "reason": "Production campaign execution is disabled."
+    },
+    {
+      "id": "mock-permission-denied-billing-001",
+      "actor": "MockCoordinator",
+      "action": "create invoice or payment link",
+      "classification": "forbidden",
+      "requiresApproval": true,
+      "reason": "Real billing and payment flows are disabled."
+    },
+    {
+      "id": "mock-claim-denied-performance-001",
+      "actor": "MockPerformanceReviewer",
+      "action": "claim guaranteed performance or revenue",
+      "classification": "forbidden",
+      "requiresApproval": true,
+      "reason": "Performance, revenue, APY, yield, and risk-free claims are forbidden."
+    }
+  ],
+  "validationExpectations": {
+    "jsonSyntax": "python -m json.tool .instructions/fixtures/bba-agency.mock-data.json >/dev/null",
+    "schemaTarget": "nucleus should align with BbaNucleusSchema",
+    "knownSafeCommands": [
+      "npm run typecheck",
+      "npm run test:contracts",
+      "npm run test:permissions",
+      "npm run test:cost"
+    ],
+    "blockedCommands": [
+      "npm run dev",
+      "npm run dev:axodus",
+      "npm run mcp",
+      "npm run memory:up",
+      "npm run memory:down",
+      "npm run build",
+      "npm run tests"
+    ],
+    "publicationAllowed": false,
+    "productionExecutionAllowed": false
+  }
+}

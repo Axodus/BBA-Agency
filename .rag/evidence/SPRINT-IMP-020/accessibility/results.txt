@@ -1,0 +1,6 @@
+Accessibility and keyboard smoke: PASS
+
+All 24 valid route and viewport combinations reported exactly one main landmark, one h1, and no horizontal overflow.
+Every detail route exposed semantic ordered review content and visible limitations.
+Desktop smoke validated the Delivery fallback return link, Services submenu on a Delivery route, keyboard focus on the Product link, Product and Project navigation, browser back navigation, and footer visibility.
+Package statuses are textual. Artifact, review, traceability, quality, limitation, FAQ, and navigation content use semantic list, heading, link, and section structures.

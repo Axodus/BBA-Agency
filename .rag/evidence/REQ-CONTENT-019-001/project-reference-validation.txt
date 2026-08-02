@@ -1,0 +1,9 @@
+Product references are loaded from static/content/products/ through the existing
+canonical product-content pipeline, not from a duplicated Project inventory.
+
+PASS
+- neurons-protocol-launch -> bba-publisher -> /services/publisher
+- responsible-ai-awareness-campaign -> advertising-campaign -> /services/advertising
+- ai-publishing-research-article -> scientific-article -> /services/scientific-writing
+- ai-content-governance-proposal -> governance-proposal -> /services/governance
+- enterprise-ai-publishing-market-study -> market-research -> /services/research

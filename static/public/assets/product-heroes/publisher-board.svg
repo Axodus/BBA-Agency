@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320" fill="none" role="presentation" aria-hidden="true" focusable="false">
+  <title id="bba-publisher-title">Decorative abstract planning board</title>
+  
+  <style>
+    .bba-line{stroke:#fff;stroke-opacity:.28;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+    .bba-soft{stroke:#fff;stroke-opacity:.14;stroke-width:1}
+    .bba-mid{stroke:#e8e8e8;stroke-opacity:.22;stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round}
+    .bba-fill{fill:#fff;fill-opacity:.07;stroke:#fff;stroke-opacity:.22;stroke-width:1.2}
+    .bba-dot{fill:#fff;fill-opacity:.32}
+    .bba-faint{fill:#fff;fill-opacity:.05;stroke:#fff;stroke-opacity:.12;stroke-width:1}
+  </style>
+
+  <g id="bba-theme-grid" class="bba-soft">
+    <path d="M40 72H760M40 150H760M40 228H760M110 30V290M260 30V290M410 30V290M560 30V290M710 30V290"/>
+  </g>
+
+  <g id="bba-publisher-flow" class="bba-line">
+    <rect x="60" y="96" width="165" height="105" rx="4"/>
+    <path d="M82 118H196M82 140H170M82 162H192"/>
+    <rect x="300" y="70" width="120" height="56" rx="4"/>
+    <rect x="300" y="166" width="120" height="56" rx="4"/>
+    <rect x="540" y="76" width="180" height="138" rx="4"/>
+    <path d="M565 104H694M565 129H676M565 154H705M565 179H654"/>
+    <path d="M225 148H300M420 98C480 98 480 115 540 115M420 194C480 194 480 175 540 175"/>
+  </g>
+  <circle cx="262" cy="148" r="10" class="bba-fill"/>
+  <circle cx="485" cy="115" r="8" class="bba-fill"/>
+  <circle cx="485" cy="175" r="8" class="bba-fill"/>
+
+</svg>

@@ -1,0 +1,29 @@
+{
+  "name": "@bba/bba-web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -p ../../clients/typescript/tsconfig.json && tsc --noEmit -p tsconfig.json && vite build && node tools/check-bundle.mjs",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run",
+    "test:browser": "playwright test",
+    "lint": "node ../../tools/workspace-quality-check.mjs --lint src test e2e tools vite.config.ts playwright.config.ts",
+    "format:check": "node ../../tools/workspace-quality-check.mjs --format src test e2e tools vite.config.ts playwright.config.ts",
+    "architecture": "node tools/check-boundaries.mjs",
+    "bundle:check": "node tools/check-bundle.mjs",
+    "product:check": "node tools/check-product-acceptance.mjs",
+    "check": "pnpm run product:check && pnpm run typecheck && pnpm run test && pnpm run lint && pnpm run format:check && pnpm run architecture && pnpm run build && pnpm run test:browser"
+  },
+  "dependencies": {
+    "@bba/app-shell": "workspace:*", "@bba/publisher-prototype": "workspace:*", "@bba/sdk-react": "workspace:*", "@bba/ui": "workspace:*", "@hookform/resolvers": "5.5.7",
+    "react": "19.2.8", "react-dom": "19.2.8", "react-hook-form": "7.83.0", "react-router-dom": "7.18.1", "zod": "4.3.6"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.62.0", "@testing-library/react": "16.3.2", "@testing-library/user-event": "14.6.1",
+    "@types/react": "19.2.17", "@types/react-dom": "19.2.3", "@vitejs/plugin-react": "6.0.4", "jsdom": "30.0.0",
+    "msw": "2.15.0", "typescript": "6.0.3", "vite": "8.1.5", "vitest": "4.1.10"
+  }
+}
