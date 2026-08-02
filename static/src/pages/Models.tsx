@@ -4,14 +4,14 @@ export function Models() {
   const [own, setOwn] = useState(false);
   return (
     <main className="page-shell">
-      <div className="page-intro split">
+      <div className="page-intro split container">
         <div>
           <p className="section-kicker">Service configuration</p>
           <h1>AI models &amp; privacy</h1>
         </div>
         <p>Choose how the Agency executes your work. Model configuration stays optional and never replaces the service experience.</p>
       </div>
-      <section className="settings-grid">
+      <section className="settings-grid container">
         <article className="setting-card">
           <div><span>01 / Recommended</span><em>Active</em></div>
           <h2>BBA managed models</h2>
@@ -35,7 +35,7 @@ export function Models() {
           <button className="button" onClick={() => { setOwn(!own); }}>{own ? "Remove configuration" : "Configure provider"}</button>
         </article>
       </section>
-      <section className="privacy-note">
+      <section className="privacy-note container">
         <span>Privacy note</span>
         <h2>Your project context is work material, not a product.</h2>
         <p>Credentials, materials, and outputs remain scoped to the execution mode you confirm. Model details and technical receipts are available as a secondary traceability layer.</p>

@@ -6,6 +6,7 @@
   --blue: #1237e8;
   --line: #b9b4a9;
   --muted: #625f58;
+  --lilas: #8da0ff;
 }
 
 * {
@@ -97,6 +98,23 @@ nav a:hover,
   background: var(--blue);
   border-color: var(--blue);
   color: white;
+}
+
+.button.secondary {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: white;
+  width: fit-content;
+}
+
+.button.right {
+  align-self: flex-end;
+
+}
+
+.button.muted {
+  background: var(--paper);
+  color: var(--ink);
 }
 
 .hero {
@@ -561,17 +579,23 @@ footer button {
 
 .editorial-section {
   padding: 120px 5vw;
+  padding-bottom: 0;
   display: grid;
-  grid-template-columns: .8fr 1.2fr;
+  grid-template-columns: 1fr;
   gap: 8vw;
   border-bottom: 1px solid var(--line);
+}
+
+.editorial-section.grid-2c-08-12 {
+  grid-template-columns: 0.8fr 1.2fr;
+  padding-bottom: 120px;
 }
 
 .section-kicker {
   font-size: 10px;
   letter-spacing: .2em;
   text-transform: uppercase;
-  color: var(--blue);
+  color: var(--lilas);
   margin: 0 0 24px;
 }
 
@@ -836,7 +860,10 @@ footer button {
 .page-shell,
 .workspace-shell,
 .project-shell {
-  padding: 65px 4.5vw 100px;
+  padding: 65px 0 100px;
+}
+.container {
+  padding: 0 4.5vw;
 }
 
 .page-intro {
@@ -1110,9 +1137,11 @@ footer button {
   color: var(--muted)
 }
 
-.workflow-section {
-  padding: 100px 0;
-  border-top: 1px solid var(--line)
+.workflow-section, .service-catalog, .service-vs-technology, .prototype-disclosure  {
+    padding-top: 75px;
+    padding-bottom: 100px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
 }
 
 .workflow-intro {
@@ -1153,10 +1182,6 @@ footer button {
   font-size: 16px;
   line-height: 1.55;
   color: var(--muted)
-}
-
-.service-catalog {
-  padding: 100px 0
 }
 
 .service-catalog .section-kicker {
@@ -1260,11 +1285,6 @@ footer button {
   margin-top: 15px
 }
 
-.service-vs-technology {
-  padding: 100px 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line)
-}
 
 .distinction-grid {
   display: grid;
@@ -1446,7 +1466,8 @@ footer button {
 .product-detail-section,
 .product-detail-problem-outcome,
 .product-detail-related {
-  padding: 82px 0;
+  padding-top: 75px;
+  padding-bottom: 75px;
   border-top: 1px solid var(--line);
 }
 
@@ -1756,7 +1777,8 @@ footer button {
 .projects-section,
 .project-example-section {
   border-top: 1px solid var(--line);
-  padding: 82px 0;
+  padding-top: 75px;
+  padding-bottom: 75px;
 }
 
 .projects-section > h2,
@@ -1826,26 +1848,31 @@ footer button {
   margin: 34px 0 0;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--line);
+  border-right: 1px solid var(--line);
 }
 
 .projects-execution-model li {
   min-height: 150px;
-  padding: 22px;
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  padding: 0px;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
   display: flex;
   flex-direction: column;
   gap: 28px;
 }
 
 .projects-execution-model span {
-  color: var(--blue);
-  font-size: 12px;
+    color: var(--paper);
+    font-size: 20px;
+    background-color: var(--ink);
+    width: fit-content;
+    padding: 10px;
 }
 
 .projects-execution-model strong {
   font: 25px/1.15 "Instrument Serif", serif;
+  padding: 0 25px;
 }
 
 .projects-featured > .project-example-card {
@@ -1857,8 +1884,8 @@ footer button {
   justify-content: space-between;
   gap: 32px;
   border: 1px solid var(--line);
-  border-top: 0;
   padding: 24px 28px;
+  margin: 30px auto;
 }
 
 .projects-featured-note p {
@@ -1874,7 +1901,7 @@ footer button {
 .project-example-related a {
   align-self: flex-start;
   color: var(--blue);
-  text-decoration: underline;
+  text-decoration: none;
   line-height: 1.5;
 }
 
@@ -1905,7 +1932,7 @@ footer button {
   justify-content: space-between;
   align-items: flex-start;
   gap: 15px;
-  color: var(--blue);
+  color: var(--lilas);
   font-size: 11px;
   letter-spacing: .12em;
   text-transform: uppercase;
@@ -1988,7 +2015,9 @@ footer button {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 22px;
   border-top: 1px solid var(--line);
-  padding: 82px 0;
+  padding-top: 75px;
+  padding-bottom: 75px;
+
 }
 
 .projects-closing-grid article {
@@ -3342,12 +3371,12 @@ footer button {
 .settings-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  border: 1px solid var(--line)
+  gap: 20px;
 }
 
 .setting-card {
   padding: 38px;
-  border-right: 1px solid var(--line);
+  border: 1px solid var(--line);
   min-height: 480px;
   display: flex;
   flex-direction: column
@@ -3397,8 +3426,8 @@ footer button {
 .privacy-note {
   display: grid;
   grid-template-columns: 150px 1fr 1fr;
-  gap: 40px;
-  padding: 65px 0
+  gap: 20px;
+  padding: 65px;
 }
 
 .privacy-note>span {

@@ -25,8 +25,8 @@ export function ProjectExampleCard({
         <div><dt>Human review</dt><dd>{project.humanDecisions.length} documented checkpoints</dd></div>
         <div><dt>Final Package</dt><dd>{project.packageName}</dd></div>
       </dl>
-      <Link className="project-example-card-link" to={project.route}>
-        View how this Project works <span aria-hidden="true">→</span>
+      <Link className="button muted right" to={project.route}>
+        How this works <span aria-hidden="true">→</span>
       </Link>
     </article>
   );
