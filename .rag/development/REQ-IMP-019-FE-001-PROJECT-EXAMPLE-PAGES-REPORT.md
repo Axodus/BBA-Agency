@@ -18,7 +18,7 @@ website does not execute Projects. `/projects/new` and unknown Project slugs
 render the existing accessible unavailable fallback with a return to Project
 examples.
 
-The five detail routes use one `ProjectExamplePage` template. They render
+The five detail routes use one `ProjectDetailPage` template. They render
 canonical context, outcome, semantic timeline, coordinated roles, explanatory
 human checkpoints, illustrative revision, deliverables, traceability, quality,
 limitations, FAQ, Product relationship, and Project navigation. There are no

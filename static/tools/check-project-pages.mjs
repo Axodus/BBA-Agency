@@ -29,8 +29,8 @@ const [app, projectsPage, detailPage, examplePage, card, unavailable, generated]
   source("src/App.tsx"),
   source("src/pages/Projects.tsx"),
   source("src/pages/ProjectDetail.tsx"),
-  source("src/components/projects/ProjectExamplePage.tsx"),
-  source("src/components/projects/ProjectExampleCard.tsx"),
+  source("src/components/projects/ProjectDetailPage.tsx"),
+  source("src/components/projects/ProjectContentCard.tsx"),
   source("src/pages/Unavailable.tsx"),
   source("src/content/projects/generated/project-content.generated.ts"),
 ]);
@@ -44,8 +44,8 @@ if (!app.includes('path="/projects/new"') || !app.includes("<Unavailable />")) e
 if (!app.includes('path="/projects/:projectSlug"')) errors.push("Project detail route does not use a slug");
 if (!detailPage.includes("getAgencyProjectByRouteSegment") || !detailPage.includes("<Unavailable />")) errors.push("unknown Project slugs do not resolve to the fallback");
 if (!unavailable.includes('"/projects"')) errors.push("Project fallback does not provide a return path to Project examples");
-if (!projectsPage.includes("ProjectExampleCard") || !projectsPage.includes("agencyProjects")) errors.push("Projects catalog is not generated from canonical content");
-if (!examplePage.includes("ProjectExamplePage") || !examplePage.includes("project.workflow.map") || !examplePage.includes("project.humanDecisions.map") || !examplePage.includes("project.traceability.map")) errors.push("reusable Project detail template does not render canonical execution content");
+if (!projectsPage.includes("ProjectContentCard") || !projectsPage.includes("agencyProjects")) errors.push("Projects catalog is not generated from canonical content");
+if (!examplePage.includes("ProjectDetailPage") || !examplePage.includes("project.workflow.map") || !examplePage.includes("project.humanDecisions.map") || !examplePage.includes("project.traceability.map")) errors.push("reusable Project detail template does not render canonical execution content");
 if (!examplePage.includes("<ol className=\"project-example-timeline\"")) errors.push("Project timeline is not semantic ordered-list content");
 
 for (const [name, content] of [["Projects", projectsPage], ["Project detail", examplePage], ["Project card", card]]) {

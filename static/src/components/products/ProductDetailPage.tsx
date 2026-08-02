@@ -43,7 +43,7 @@ function ProductSection({
   return (
     <section
       id={id}
-      className={`product-detail-section ${className ?? ""}`.trim()}
+      className={`product-detail-section container ${className ?? ""}`.trim()}
       aria-labelledby={id ? `${id}-heading` : undefined}
     >
       <p className="section-kicker">{eyebrow}</p>
@@ -84,11 +84,11 @@ export function ProductDetailPage({
 
   return (
     <main className="page-shell product-detail-page">
-      <Link to="/services" className="back-link">
+      <Link to="/services" className="back-link container">
         ← Return to Services
       </Link>
 
-      <section className="product-detail-hero">
+      <section className="product-detail-hero container">
         <div className="product-detail-hero-copy">
           <p className="section-kicker">{product.category}</p>
           <h1>{product.name}</h1>
@@ -157,7 +157,7 @@ export function ProductDetailPage({
         </aside>
       </section>
 
-      <section className="product-detail-overview-grid" aria-label="Product overview facts">
+      <section className="product-detail-overview-grid bkg-white" aria-label="Product overview facts">
         <article>
           <span className="section-kicker">Availability</span>
           <p>{product.availability.label}</p>
@@ -180,7 +180,7 @@ export function ProductDetailPage({
         <ProductContentBlocks blocks={product.sections.overview.blocks} />
       </ProductSection>
 
-      <section className="product-detail-problem-outcome" aria-labelledby="problem-outcome-heading">
+      <section className="product-detail-problem-outcome bkg-pink container" aria-labelledby="problem-outcome-heading">
         <p className="section-kicker">Problem and outcome</p>
         <h2 id="problem-outcome-heading">What this product solves and what it produces</h2>
         <div className="product-detail-problem-outcome-grid">
@@ -247,7 +247,7 @@ export function ProductDetailPage({
 
       <ProductSection eyebrow="Agent team" title={product.sections.agentTeam.title}>
         <ProductContentBlocks blocks={product.sections.agentTeam.blocks} />
-        <div className="product-detail-agent-grid">
+        <div className="product-detail-agent-grid grid2">
           {product.agentTeam.map((role) => (
             <article key={role.id} className="product-detail-agent-card">
               <span>{role.stage}</span>
@@ -282,7 +282,7 @@ export function ProductDetailPage({
 
       <ProductSection eyebrow="Deliverables" title={product.sections.customerReceives.title}>
         <ProductContentBlocks blocks={product.sections.customerReceives.blocks} />
-        <div className="product-detail-deliverables-grid">
+        <div className="product-detail-deliverables-grid grid4">
           {product.deliverables.map((deliverable) => (
             <article key={deliverable.id} className="product-detail-deliverable-card">
               <span>{deliverable.requiresApproval ? "Approval required" : "Reviewable output"}</span>
@@ -347,7 +347,7 @@ export function ProductDetailPage({
         </div>
       </ProductSection>
 
-      <section className="product-detail-related" aria-labelledby="related-products-heading">
+      <section className="product-detail-related container" aria-labelledby="related-products-heading">
         <p className="section-kicker">Related products</p>
         <h2 id="related-products-heading">Explore adjacent Agency outcomes</h2>
         <div className="product-detail-related-grid">
@@ -362,7 +362,7 @@ export function ProductDetailPage({
         </div>
       </section>
 
-      <nav className="product-detail-nav" aria-label="Product navigation">
+      <nav className="product-detail-nav container" aria-label="Product navigation">
         <Link to="/services">All services</Link>
         {previousProduct ? (
           <Link to={previousProduct.route}>Previous: {previousProduct.name}</Link>
