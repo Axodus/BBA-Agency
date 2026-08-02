@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import type { AgencyProjectContent } from "../../content/projects/index.js";
 
-export function ProjectExampleCard({
+export function ProjectContentCard({
   project,
   featured = false,
 }: {

@@ -45,7 +45,7 @@ function requiredSection(project: AgencyProjectContent, title: string): ProjectM
   return section;
 }
 
-export function ProjectExamplePage({ project }: { readonly project: AgencyProjectContent }) {
+export function ProjectDetailPage({ project }: { readonly project: AgencyProjectContent }) {
   const relatedProduct = getAgencyProductById(project.relatedProductId);
   const rolesById = new Map(project.agentTeam.roles.map((role) => [role.id, role]));
   const decisionsById = new Map(project.humanDecisions.map((decision) => [decision.id, decision]));
@@ -70,9 +70,9 @@ export function ProjectExamplePage({ project }: { readonly project: AgencyProjec
 
   return (
     <main className="page-shell project-example-page">
-      <Link className="back-link" to="/projects">← Return to Project examples</Link>
+      <Link className="back-link container" to="/projects">← Return to Project examples</Link>
 
-      <section className="project-example-hero" aria-labelledby="project-example-heading">
+      <section className="project-example-hero container" aria-labelledby="project-example-heading">
         <div>
           <p className="section-kicker">{project.eyebrow}</p>
           <StatusBadge project={project} />
@@ -95,25 +95,25 @@ export function ProjectExamplePage({ project }: { readonly project: AgencyProjec
         </aside>
       </section>
 
-      <section className="project-example-overview" aria-label="Project overview">
+      <section className="project-example-overview bkg-white" aria-label="Project overview">
         <article><span>Customer objective</span><p>{project.customerObjective}</p></article>
         <article><span>Audience</span><p>{project.audience.join(" · ")}</p></article>
         <article><span>Human checkpoints</span><p>{project.humanDecisions.length} documented decisions</p></article>
         <article><span>Final Package</span><p>{project.packageName}</p></article>
       </section>
 
-      <Section eyebrow="Overview" title={overview.title}>
+      <Section className="container" eyebrow="Overview" title={overview.title}>
         <ContentLead content={overview.body} />
       </Section>
 
-      <Section eyebrow="Customer objective" title={customerObjectiveSection.title}>
+      <Section className="container" eyebrow="Customer objective" title={customerObjectiveSection.title}>
         <div className="project-example-objective-grid">
           <article><span>What the customer needs to achieve</span><p>{project.customerObjective}</p></article>
           <article><span>Why this Project matters</span><p>{whyItMatters.body}</p></article>
         </div>
       </Section>
 
-      <Section eyebrow="Context and materials" title={contextAndMaterials.title}>
+      <Section className="container" eyebrow="Context and materials" title={contextAndMaterials.title}>
         <ContentLead content={contextAndMaterials.body} />
         <div className="project-example-context-grid">
           <article><h3>Objectives</h3><ul>{project.context.objectives.map((objective) => <li key={objective}>{objective}</li>)}</ul></article>
@@ -123,7 +123,7 @@ export function ProjectExamplePage({ project }: { readonly project: AgencyProjec
         </div>
       </Section>
 
-      <Section eyebrow="Expected outcome" title={expectedOutcome.title}>
+      <Section className="container" eyebrow="Expected outcome" title={expectedOutcome.title}>
         <ContentLead content={expectedOutcome.body} />
         <div className="project-example-outcome-panel">
           <article><span>Agreed result</span><p>{project.expectedOutcome.description}</p></article>
@@ -133,7 +133,7 @@ export function ProjectExamplePage({ project }: { readonly project: AgencyProjec
         </div>
       </Section>
 
-      <Section eyebrow="Execution timeline" title={execution.title}>
+      <Section className="container" eyebrow="Execution timeline" title={execution.title}>
         <ContentLead content={execution.body} />
         <ol className="project-example-timeline">
           {project.workflow.map((stage) => (
@@ -152,40 +152,40 @@ export function ProjectExamplePage({ project }: { readonly project: AgencyProjec
         </ol>
       </Section>
 
-      <Section eyebrow={project.agentTeam.status === "PROTOTYPE_IMPLEMENTED" ? "Prototype team" : "Illustrative proposed team"} title={agentTeam.title}>
+      <Section className="container" eyebrow={project.agentTeam.status === "PROTOTYPE_IMPLEMENTED" ? "Prototype team" : "Illustrative proposed team"} title={agentTeam.title}>
         <ContentLead content={agentTeam.body} />
         <div className="project-example-agent-grid">
           {project.agentTeam.roles.map((role) => <article key={role.id}><span>{role.stageIds.length} stages</span><h3>{role.name}</h3><p>{role.responsibility}</p><small><strong>Stages:</strong> {role.stageIds.map((id) => project.workflow.find((stage) => stage.id === id)?.label ?? id).join(" · ")}</small><small><strong>Artifacts:</strong> <ArtifactNames ids={role.artifactIds} deliverables={project.deliverables} /></small></article>)}
         </div>
       </Section>
 
-      <Section eyebrow="Human checkpoints" title={checkpoints.title}>
+      <Section className="container" eyebrow="Human checkpoints" title={checkpoints.title}>
         <ContentLead content={checkpoints.body} />
         <div className="project-example-checkpoint-grid">
           {project.humanDecisions.map((decision) => <article key={decision.id}><span>Human checkpoint</span><h3>{decision.name}</h3><p>{decision.purpose}</p><dl><div><dt>Related stage</dt><dd>{project.workflow.find((stage) => stage.id === decision.stageId)?.label ?? decision.stageId}</dd></div><div><dt>Available in the functional platform</dt><dd>{decision.availableResponses.map((response) => response.toLowerCase().replaceAll("_", " ")).join(", ")}</dd></div><div><dt>Effect</dt><dd>{decision.effect}</dd></div></dl></article>)}
         </div>
       </Section>
 
-      <Section eyebrow="Illustrative revision" title={revision.title}>
+      <Section className="container" eyebrow="Illustrative revision" title={revision.title}>
         <ContentLead content={revision.body} />
         <article className="project-example-revision"><span>Illustrative revision</span><h3>{project.revisionExample.title}</h3><dl><div><dt>Customer request</dt><dd>{project.revisionExample.request}</dd></div><div><dt>Reason</dt><dd>{project.revisionExample.reason}</dd></div><div><dt>Affected artifacts</dt><dd><ArtifactNames ids={project.revisionExample.affectedArtifactIds} deliverables={project.deliverables} /></dd></div><div><dt>Repeated stages</dt><dd>{project.revisionExample.repeatedStageIds.map((id) => project.workflow.find((stage) => stage.id === id)?.label ?? id).join(" · ")}</dd></div><div><dt>Preserved artifacts</dt><dd><ArtifactNames ids={project.revisionExample.preservedArtifactIds} deliverables={project.deliverables} /></dd></div><div><dt>Resulting version</dt><dd>Version {project.revisionExample.resultingVersion}</dd></div></dl><p>{project.revisionExample.traceabilityNote}</p></article>
       </Section>
 
-      <Section eyebrow="Deliverables and final Package" title={deliverables.title}>
+      <Section className="container" eyebrow="Deliverables and final Package" title={deliverables.title}>
         <ContentLead content={deliverables.body} />
         <div className="project-example-deliverable-grid">
           {project.deliverables.map((deliverable) => <article key={deliverable.id}><span>{deliverable.requiresApproval ? "Human approval applies" : "Reviewable output"}</span><h3>{deliverable.name}</h3><p>{deliverable.description}</p><small><strong>Purpose:</strong> {deliverable.purpose}</small><small><strong>Format:</strong> {deliverable.format.join(" · ")}</small><i>{deliverable.includedInFinalPackage ? `Included in ${project.packageName}` : "Not included in final Package"}</i></article>)}
         </div>
       </Section>
 
-      <Section eyebrow="Traceability" title={traceability.title}>
+      <Section className="container" eyebrow="Traceability" title={traceability.title}>
         <ContentLead content={traceability.body} />
         <div className="project-example-traceability-list">
           {project.traceability.map((record) => <article key={record.id}><span>Illustrative trace record</span><h3>{materialById.get(record.sourceReference)?.name ?? record.sourceReference}</h3><p>{record.contextItem}</p><dl><div><dt>Workflow stage</dt><dd>{project.workflow.find((stage) => stage.id === record.workflowStageId)?.label ?? record.workflowStageId}</dd></div><div><dt>Agent role</dt><dd>{rolesById.get(record.agentRoleId)?.name ?? record.agentRoleId}</dd></div><div><dt>Artifact and version</dt><dd>{project.deliverables.find((item) => item.id === record.artifactId)?.name ?? record.artifactId} · v{record.artifactVersion}</dd></div><div><dt>Human decision</dt><dd>{decisionsById.get(record.decisionId)?.name ?? record.decisionId}</dd></div><div><dt>Rationale</dt><dd>{record.rationale}</dd></div></dl></article>)}
         </div>
       </Section>
 
-      <Section eyebrow="Quality considerations" title={quality.title}>
+      <Section className="container" eyebrow="Quality considerations" title={quality.title}>
         <ContentLead content={quality.body} />
       </Section>
 
@@ -194,15 +194,15 @@ export function ProjectExamplePage({ project }: { readonly project: AgencyProjec
         <ul>{project.limitations.map((limitation) => <li key={limitation}>{limitation}</li>)}</ul>
       </Section>
 
-      <Section eyebrow="Functional platform relationship" title={platformRelationship.title}>
+      <Section className="container" eyebrow="Functional platform relationship" title={platformRelationship.title}>
         <ContentLead content={platformRelationship.body} />
       </Section>
 
-      <Section eyebrow="Frequently asked questions" title={faq.title}>
-        <div className="project-example-faq-list">{project.faq.map((item) => <article key={item.question}><h3>{item.question}</h3><p>{item.answer}</p></article>)}</div>
+      <Section className="container" eyebrow="Frequently asked questions" title={faq.title}>
+        <div className="project-example-faq-list">{project.faq.map((item) => <article className="bkg-white" key={item.question}><h3>{item.question}</h3><p>{item.answer}</p></article>)}</div>
       </Section>
 
-      <section className="project-example-related" aria-label="Related Product and Project navigation">
+      <section className="project-example-related container" aria-label="Related Product and Project navigation">
         <article><p className="section-kicker">Related Product</p><h2>{relatedProduct?.name ?? project.productName}</h2><p>{relatedProduct?.customerOutcome ?? project.customerOutcome}</p><Link to={relatedProduct?.route ?? project.productRoute}>View Product details →</Link></article>
         <nav aria-label="Project navigation"><Link to="/projects">All Project examples</Link>{previous ? <Link to={`/projects/${previous}`}>Previous Project</Link> : <span>Previous Project: none</span>}{next ? <Link to={`/projects/${next}`}>Next Project</Link> : <span>Next Project: none</span>}</nav>
       </section>

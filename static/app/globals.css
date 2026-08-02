@@ -8,6 +8,7 @@
   --muted: #625f58;
   --lilas: #8da0ff;
   --pink: #f5d1d1;
+  --white: #ffffff;
 }
 
 @media (max-width: 1100px) {
@@ -1527,7 +1528,7 @@ footer button {
 
 .product-detail-copy,
 .product-detail-example {
-  max-width: 920px;
+  width: 100%;
 }
 
 .product-detail-copy p,
@@ -1648,9 +1649,28 @@ footer button {
 .product-detail-deliverables-grid,
 .product-detail-related-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 22px;
   margin-top: 30px;
+}
+
+.grid2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.grid5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.grid6 {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
 .product-detail-agent-card p,
@@ -3372,7 +3392,7 @@ footer button {
 .deliveries-hero,
 .delivery-package-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(290px, .55fr);
+  grid-template-columns: minmax(0, 1.05fr) minmax(290px, .55fr);
   gap: 56px;
   padding-top: 72px;
   padding-bottom: 76px;
@@ -3693,6 +3713,9 @@ footer button {
 
 .bkg-pink {
   background: var(--pink);
+}
+.bkg-white {
+  background: var(--white);
 }
 
 .setting-card>div {

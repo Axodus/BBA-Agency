@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ProjectExampleCard } from "../components/projects/ProjectExampleCard.js";
+import { ProjectContentCard } from "../components/projects/ProjectContentCard.js";
 import { agencyProjects } from "../content/projects/index.js";
 
 const anatomy = [
@@ -60,7 +60,7 @@ export function Projects() {
         <section className="projects-section projects-featured container" aria-labelledby="featured-project-heading">
           <p className="section-kicker">Featured Project example</p>
           <h2 id="featured-project-heading">The current Publisher prototype in context</h2>
-          <ProjectExampleCard project={featuredProject} featured />
+          <ProjectContentCard project={featuredProject} featured />
           <div className="projects-featured-note">
             <p>The example explains Editorial Context, Context Analysis, an approved Editorial Core, publication strategy, Blog, LinkedIn, and Instagram adaptation, semantic consistency review, final Package review, and an Editorial Package without external publication.</p>
             <a className="button secondary" href="https://dev.bba.country" target="_blank" rel="noopener noreferrer" aria-label="Explore the functional Publisher prototype at dev.bba.country in a new tab">Check Dev Prototype <span aria-hidden="true">→</span></a>
@@ -72,7 +72,7 @@ export function Projects() {
         <p className="section-kicker">Examples by service</p>
         <h2 id="project-catalog-heading">Five product-specific Project structures</h2>
         <div className="projects-catalog">
-          {agencyProjects.map((project) => <ProjectExampleCard key={project.id} project={project} />)}
+          {agencyProjects.map((project) => <ProjectContentCard key={project.id} project={project} />)}
         </div>
       </section>
 

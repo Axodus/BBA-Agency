@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { ProjectExamplePage } from "../components/projects/ProjectExamplePage.js";
+import { ProjectDetailPage } from "../components/projects/ProjectDetailPage.js";
 import { getAgencyProjectByRouteSegment } from "../content/projects/index.js";
 import { Unavailable } from "./Unavailable.js";
 
@@ -13,5 +13,5 @@ export function ProjectDetail() {
     return () => { document.title = "BBA Agency"; };
   }, [project]);
 
-  return project ? <ProjectExamplePage project={project} /> : <Unavailable />;
+  return project ? <ProjectDetailPage project={project} /> : <Unavailable />;
 }
