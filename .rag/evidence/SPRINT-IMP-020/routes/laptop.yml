@@ -1,0 +1,48 @@
+- route: /deliveries
+  viewport: { width: 1280, height: 800 }
+  file: laptop/deliveries-index.png
+  heading: "See what a completed BBA Agency Project delivers"
+  horizontalOverflow: false
+  consoleErrors: 0
+  failedRequests: 0
+  result: PASS
+- route: /deliveries/editorial-package
+  viewport: { width: 1280, height: 800 }
+  file: laptop/editorial-package.png
+  heading: "Editorial Package"
+  horizontalOverflow: false
+  consoleErrors: 0
+  failedRequests: 0
+  result: PASS
+- route: /deliveries/campaign-package
+  viewport: { width: 1280, height: 800 }
+  file: laptop/campaign-package.png
+  heading: "Campaign Package"
+  horizontalOverflow: false
+  consoleErrors: 0
+  failedRequests: 0
+  result: PASS
+- route: /deliveries/scientific-package
+  viewport: { width: 1280, height: 800 }
+  file: laptop/scientific-package.png
+  heading: "Scientific Package"
+  horizontalOverflow: false
+  consoleErrors: 0
+  failedRequests: 0
+  result: PASS
+- route: /deliveries/institutional-package
+  viewport: { width: 1280, height: 800 }
+  file: laptop/institutional-package.png
+  heading: "Institutional Package"
+  horizontalOverflow: false
+  consoleErrors: 0
+  failedRequests: 0
+  result: PASS
+- route: /deliveries/research-package
+  viewport: { width: 1280, height: 800 }
+  file: laptop/research-package.png
+  heading: "Research Package"
+  horizontalOverflow: false
+  consoleErrors: 0
+  failedRequests: 0
+  result: PASS

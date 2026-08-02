@@ -1,0 +1,61 @@
+deliveryPackages:
+  - id: editorial-package
+    productId: bba-publisher
+    projectId: neurons-protocol-launch
+    route: /deliveries/editorial-package
+    status: PROTOTYPE_BACKED
+    artifactCount: 8
+    reviewCheckpointCount: 3
+    versionRecordCount: 2
+    traceabilityRecordCount: 1
+    qualityGateCount: 2
+    faqCount: 5
+    validation: PASS
+  - id: campaign-package
+    productId: advertising-campaign
+    projectId: responsible-ai-awareness-campaign
+    route: /deliveries/campaign-package
+    status: ILLUSTRATIVE_PLANNED
+    artifactCount: 8
+    reviewCheckpointCount: 3
+    versionRecordCount: 2
+    traceabilityRecordCount: 1
+    qualityGateCount: 2
+    faqCount: 5
+    validation: PASS
+  - id: scientific-package
+    productId: scientific-article
+    projectId: ai-publishing-research-article
+    route: /deliveries/scientific-package
+    status: ILLUSTRATIVE_PLANNED
+    artifactCount: 8
+    reviewCheckpointCount: 3
+    versionRecordCount: 2
+    traceabilityRecordCount: 1
+    qualityGateCount: 2
+    faqCount: 5
+    validation: PASS
+  - id: institutional-package
+    productId: governance-proposal
+    projectId: ai-content-governance-proposal
+    route: /deliveries/institutional-package
+    status: ILLUSTRATIVE_PLANNED
+    artifactCount: 8
+    reviewCheckpointCount: 3
+    versionRecordCount: 2
+    traceabilityRecordCount: 1
+    qualityGateCount: 2
+    faqCount: 5
+    validation: PASS
+  - id: research-package
+    productId: market-research
+    projectId: enterprise-ai-publishing-market-study
+    route: /deliveries/research-package
+    status: ILLUSTRATIVE_PLANNED
+    artifactCount: 9
+    reviewCheckpointCount: 3
+    versionRecordCount: 2
+    traceabilityRecordCount: 1
+    qualityGateCount: 2
+    faqCount: 5
+    validation: PASS

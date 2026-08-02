@@ -7,6 +7,7 @@ import { ProductDetail } from "./pages/ProductDetail.js";
 import { Projects } from "./pages/Projects.js";
 import { ProjectDetail } from "./pages/ProjectDetail.js";
 import { Deliveries } from "./pages/Deliveries.js";
+import { DeliveryDetail } from "./pages/DeliveryDetail.js";
 import { Models } from "./pages/Models.js";
 import { Unavailable } from "./pages/Unavailable.js";
 
@@ -77,6 +78,22 @@ export function App() {
           element={
             <Shell>
               <Deliveries />
+            </Shell>
+          }
+        />
+        <Route
+          path="/deliveries/new"
+          element={
+            <Shell>
+              <Unavailable />
+            </Shell>
+          }
+        />
+        <Route
+          path="/deliveries/:deliverySlug"
+          element={
+            <Shell>
+              <DeliveryDetail />
             </Shell>
           }
         />

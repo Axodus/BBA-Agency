@@ -1,0 +1,6 @@
+Static boundary result: PASS
+
+check:delivery-content validates operationalOnStaticSite: false, rejects operational metadata, placeholders, and financial $Neurons claims.
+check:delivery-pages rejects forms, inputs, handlers, fetch, Axios, storage, XHR, API-client references, and legacy delivery manager styles.
+Browser evidence recorded only local static assets. No backend, provider, API, download, export, or dev.bba.country request occurred automatically.
+No changes were made under apps/bba-web.
