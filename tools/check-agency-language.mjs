@@ -3,8 +3,8 @@ import { extname, join, relative, resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
 const targets = [
-  "apps/bba-web/src/app", "apps/bba-web/src/i18n", "apps/bba-web/src/routes", "apps/bba-web/src/static-publisher",
-  "apps/bba-web/test/static-publisher.test.tsx", "apps/bba-web/e2e/static-publisher.spec.ts",
+  "apps/web/src/app", "apps/web/src/i18n", "apps/web/src/routes", "apps/web/src/static-publisher",
+  "apps/web/test/static-publisher.test.tsx", "apps/web/e2e/static-publisher.spec.ts",
   "packages/app-shell/src", "packages/app-shell/test", "packages/ui/src", "packages/ui/test",
   "packages/publisher-prototype/src", "packages/publisher-prototype/test", "packages/sdk-react/src/agency", "packages/sdk-react/test/agency-client.test.ts",
   "transport/agency-runtime/src", "transport/agency-runtime/test",

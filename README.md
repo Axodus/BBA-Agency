@@ -125,7 +125,8 @@ BBA-Agency/
 ├── README.md
 ├── AGENTS.md
 ├── apps/
-│   └── bba-web/
+│   ├── web/                 # Browser UI (React + Vite)
+│   └── api/                 # Private Fastify composition
 ├── packages/
 │   ├── ui/
 │   ├── app-shell/
@@ -155,6 +156,23 @@ BBA-Agency/
 
 The contents under `src/` include earlier platform and campaign-oriented experiments. They are not the same thing as the current reference demo and must not be presented as a completed BBA Platform implementation.
 
+## Application deployment boundary
+
+The app UI lives in `apps/web`; it is the only application deployed to Vercel
+from this branch. Its root-level [`vercel.json`](vercel.json) installs the
+workspace, runs `pnpm web:build`, and publishes `apps/web/dist`, so the Vercel
+Root Directory remains `/`.
+
+The `static` branch is a separate Vite application with its own root-level
+configuration and remains the institutional website surface. It is not a
+runtime dependency of `apps/web`.
+
+`apps/api` is a private, container-ready Fastify composition. It persists
+Publisher Projects and idempotency records in MongoDB transactions and is not
+activated as a public service. It starts only with
+`BBA_API_PRIVATE_PREVIEW=true`; real authentication and an encrypted BYOK
+credential vault are required before any public activation.
+
 ## Development principles
 
 - AI first, human governed.
@@ -170,7 +188,7 @@ Contributor and coding-agent instructions are defined in [`AGENTS.md`](AGENTS.md
 
 ## BBA Publisher prototype
 
-The standalone web experience lives in `apps/bba-web`. Its primary navigation
+The standalone web experience lives in `apps/web`. Its primary navigation
 is service-oriented: **Como podemos ajudar?**, **Novo Projeto**, **Projetos**,
 and **Modelos de IA**. The Publisher captures Editorial Context, coordinates a
 deterministic or optional BYOK execution, records human checkpoints, and

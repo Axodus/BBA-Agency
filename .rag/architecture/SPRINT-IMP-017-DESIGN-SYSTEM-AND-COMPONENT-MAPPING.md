@@ -4,14 +4,14 @@ Status: `PROPOSED_FOR_IMPLEMENTATION`
 
 ## Decision
 
-The canonical Agency frontend will derive reusable foundations from `static/` and apply them to the route-aware, stateful Publisher application in `apps/bba-web`. Static markup is a visual specification, not an application implementation. The Publisher reducer, typed fixtures, UI view models, and backend-facing contracts remain unchanged.
+The canonical Agency frontend will derive reusable foundations from `static/` and apply them to the route-aware, stateful Publisher application in `apps/web`. Static markup is a visual specification, not an application implementation. The Publisher reducer, typed fixtures, UI view models, and backend-facing contracts remain unchanged.
 
 ## Foundation boundary
 
 The frontend will use a single Agency foundation rooted under:
 
 ```text
-apps/bba-web/src/design-system/
+apps/web/src/design-system/
 ├── tokens/
 ├── components/
 └── patterns/

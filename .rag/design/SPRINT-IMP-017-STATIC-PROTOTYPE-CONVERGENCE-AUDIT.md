@@ -8,7 +8,7 @@ Implementation branch: `feat/sprint-imp-017-agency-visual-convergence`
 
 Visual authority: `static/` and the approved `bba.country` composition
 
-Functional authority: `apps/bba-web/src/static-publisher/`
+Functional authority: `apps/web/src/static-publisher/`
 
 ## Scope and method
 

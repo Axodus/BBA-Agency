@@ -5,9 +5,9 @@
   "type": "module",
   "exports": { ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" } },
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "typecheck": "tsc --noEmit -p tsconfig.json",
-    "test": "vitest run",
+    "build": "pnpm --filter @bba/publisher-prototype build && tsc -p tsconfig.json",
+    "typecheck": "pnpm --filter @bba/publisher-prototype build && tsc --noEmit -p tsconfig.json",
+    "test": "pnpm run build && vitest run",
     "lint": "node ../../tools/workspace-quality-check.mjs --lint src test",
     "format:check": "node ../../tools/workspace-quality-check.mjs --format src test",
     "check": "pnpm run typecheck && pnpm run test && pnpm run lint && pnpm run format:check"

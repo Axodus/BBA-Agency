@@ -45,7 +45,7 @@ The state machine, fixtures, typed view models, and backend/transport boundaries
 
 ## Visual evidence
 
-The visual evidence harness apps/bba-web/e2e/visual-convergence.spec.ts captures Home, Services, Publisher, Projects, wizard confirmation, Editorial Core, Strategy, Content, Review, Delivery, AI settings, failure state, and version comparison at 1440 x 900, 1280 x 800, 768 x 1024, and 390 x 844.
+The visual evidence harness apps/web/e2e/visual-convergence.spec.ts captures Home, Services, Publisher, Projects, wizard confirmation, Editorial Core, Strategy, Content, Review, Delivery, AI settings, failure state, and version comparison at 1440 x 900, 1280 x 800, 768 x 1024, and 390 x 844.
 
 It also asserts no horizontal overflow on every captured surface.
 
@@ -61,11 +61,11 @@ Passed:
 
 - node tools/check-agency-language.mjs
 - ./node_modules/.bin/tsc --noEmit -p clients/typescript/tsconfig.json
-- ./apps/bba-web/node_modules/.bin/tsc --noEmit -p apps/bba-web/tsconfig.json
-- node apps/bba-web/tools/check-boundaries.mjs
-- node apps/bba-web/tools/check-product-acceptance.mjs
-- ./apps/bba-web/node_modules/.bin/vite build
-- node apps/bba-web/tools/check-bundle.mjs
+- ./apps/web/node_modules/.bin/tsc --noEmit -p apps/web/tsconfig.json
+- node apps/web/tools/check-boundaries.mjs
+- node apps/web/tools/check-product-acceptance.mjs
+- ./apps/web/node_modules/.bin/vite build
+- node apps/web/tools/check-bundle.mjs
 - ./node_modules/.bin/vitest run test/mission-contracts.test.ts test/static-publisher.test.tsx test/dev-session.test.tsx --configLoader runner
 - ./node_modules/.bin/playwright test e2e/static-publisher.spec.ts e2e/visual-convergence.spec.ts
 - ./node_modules/.bin/playwright test e2e/accessibility.spec.ts

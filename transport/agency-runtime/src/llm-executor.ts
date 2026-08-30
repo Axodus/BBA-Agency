@@ -1,11 +1,11 @@
 import { contentVariantSchema, editorialCoreSchema, publicationPlanSchema, reviewConsistency, type AgentDefinition, type AgentExecutionResult, type AgentExecutorPort, type EditorialCore, type LlmProvider, type PlatformContentVariant, type PublisherChannelId } from "@bba/publisher-prototype";
-import type { EphemeralProviderCredential } from "./memory.js";
+import type { ProviderCredential } from "./contracts.js";
 function extractJson(text: string) { const fenced = /```(?:json)?\s*([\s\S]*?)```/u.exec(text)?.[1]; return JSON.parse((fenced ?? text).trim()) as unknown; }
 function schemaFor(agentId: string) { if (agentId.includes("context-analyst")) return editorialCoreSchema; if (agentId.includes("editorial-strategist")) return publicationPlanSchema; if (agentId.includes("platform-adapter")) return contentVariantSchema; return undefined; }
 function prompt(definition: AgentDefinition, input: unknown, channelId?: PublisherChannelId) { return `You are the ${definition.role}. Return only valid JSON. Preserve facts, evidence references, prohibited claims, and human authority. ${channelId === undefined ? "" : `Adapt for ${channelId}.`} Input:\n${JSON.stringify(input)}`; }
 function providerError(status: number) { return status === 401 || status === 403 ? "LLM_AUTHENTICATION_FAILED" : status === 429 ? "LLM_RATE_LIMITED" : "APPLICATION_FAILURE"; }
 export class ByokAgentExecutor implements AgentExecutorPort {
-  public constructor(private readonly credential: EphemeralProviderCredential, private readonly request: typeof fetch = fetch) {}
+  public constructor(private readonly credential: ProviderCredential, private readonly request: typeof fetch = fetch) {}
   public async execute<T>(definition: AgentDefinition, input: unknown, context: { readonly projectId: string; readonly channelId?: PublisherChannelId | undefined }): Promise<AgentExecutionResult<T>> {
     const started = Date.now();
     if (definition.id.includes("semantic-reviewer")) return { output: reviewConsistency(input as { core: EditorialCore; variants: readonly PlatformContentVariant[] }, new Date().toISOString()) as T, metadata: { provider: this.credential.provider, model: `${this.credential.model}+deterministic-review`, durationMs: Date.now() - started } };

@@ -2,7 +2,7 @@
 
 ## Decision
 
-The BBA web foundation is a Vite and React single-page application under `apps/bba-web`. Reusable browser concerns are separated into `@bba/ui`, `@bba/app-shell`, and `@bba/sdk-react`.
+The BBA web foundation is a Vite and React single-page application under `apps/web`. Reusable browser concerns are separated into `@bba/ui`, `@bba/app-shell`, and `@bba/sdk-react`.
 
 Only `@bba/sdk-react` may import `@bba/api-client`. Browser pages never call HTTP directly and never import Core, Transport, generated client types, handlers, or repositories. Its public hooks expose stable view models and errors owned by the React integration package.
 
@@ -17,7 +17,7 @@ The browser may persist only the non-sensitive theme preference. Access tokens, 
 ```bash
 pnpm install
 pnpm --dir clients/typescript build
-pnpm --filter @bba/bba-web dev
+pnpm --filter @bba/web dev
 ```
 
 The development setup screen accepts API URL, bearer token, tenant, subject, and actor reference. Values disappear on reload. `VITE_BBA_API_BASE_URL` may provide only the non-secret API origin.

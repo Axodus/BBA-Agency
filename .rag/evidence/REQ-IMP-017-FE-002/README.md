@@ -15,9 +15,9 @@
 | File | Change |
 |---|---|
 | `config/footer.ts` | New — canonical shared URL configuration |
-| `apps/bba-web/src/config/footer.ts` | New — prototype-local copy of URL config |
-| `apps/bba-web/src/design-system/components/AgencyShell.tsx` | Updated — full canonical `AgencyFooter` replaces stub |
-| `apps/bba-web/src/styles.css` | Updated — `.agency-footer-*` canonical layout styles |
+| `apps/web/src/config/footer.ts` | New — prototype-local copy of URL config |
+| `apps/web/src/design-system/components/AgencyShell.tsx` | Updated — full canonical `AgencyFooter` replaces stub |
+| `apps/web/src/styles.css` | Updated — `.agency-footer-*` canonical layout styles |
 | `static/app/components/AgencyFooter.tsx` | New — Next.js server component replica |
 | `static/app/components/globals.css` | Updated — `.agency-footer-*` canonical layout styles |
 | `static/app/page.tsx` | Updated — renders `<AgencyFooter />` |

@@ -15,6 +15,7 @@ ignoredBuiltDependencies:
   - sharp
   - unrs-resolver
 allowBuilds:
+  esbuild: true
   msw: true
   onnxruntime-node: true
   protobufjs: true

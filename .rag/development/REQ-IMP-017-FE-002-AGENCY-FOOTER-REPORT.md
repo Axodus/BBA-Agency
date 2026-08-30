@@ -2,17 +2,17 @@
 
 ## Summary
 
-Implemented the canonical **BBA Agency Footer** across `static/` (Next.js) and `apps/bba-web` (React/Vite prototype) as specified by REQ-IMP-017-FE-002 under EPIC-IMP-016 / SPRINT-IMP-017.
+Implemented the canonical **BBA Agency Footer** across `static/` (Next.js) and `apps/web` (React/Vite prototype) as specified by REQ-IMP-017-FE-002 under EPIC-IMP-016 / SPRINT-IMP-017.
 
 ## What was implemented
 
 ### Shared configuration
 
-`config/footer.ts` (repo root) and `apps/bba-web/src/config/footer.ts` centralize all external URLs and the version label. Components import from this config; no URLs are hardcoded in markup.
+`config/footer.ts` (repo root) and `apps/web/src/config/footer.ts` centralize all external URLs and the version label. Components import from this config; no URLs are hardcoded in markup.
 
-### Prototype — `apps/bba-web`
+### Prototype — `apps/web`
 
-`AgencyFooter` in `apps/bba-web/src/design-system/components/AgencyShell.tsx` was expanded from a three-element stub into the full canonical component. It uses `NavLink` from react-router-dom for internal routes and standard `<a>` with `target="_blank" rel="noopener noreferrer"` for external links. It is already rendered by `AgencyShell` which wraps every route — so the footer appears on Home, Services, Projects, Deliveries, Publisher, Workspace, and all other pages automatically.
+`AgencyFooter` in `apps/web/src/design-system/components/AgencyShell.tsx` was expanded from a three-element stub into the full canonical component. It uses `NavLink` from react-router-dom for internal routes and standard `<a>` with `target="_blank" rel="noopener noreferrer"` for external links. It is already rendered by `AgencyShell` which wraps every route — so the footer appears on Home, Services, Projects, Deliveries, Publisher, Workspace, and all other pages automatically.
 
 ### Static site — `static/`
 
@@ -20,7 +20,7 @@ Implemented the canonical **BBA Agency Footer** across `static/` (Next.js) and `
 
 ### CSS
 
-Both `apps/bba-web/src/styles.css` and `static/app/globals.css` were updated to carry the canonical `.agency-footer-*` class hierarchy. The old monolithic `footer {}` selector in globals.css was replaced. Responsive breakpoints collapse to single-column at ≤768px and two-column at ≤1024px.
+Both `apps/web/src/styles.css` and `static/app/globals.css` were updated to carry the canonical `.agency-footer-*` class hierarchy. The old monolithic `footer {}` selector in globals.css was replaced. Responsive breakpoints collapse to single-column at ≤768px and two-column at ≤1024px.
 
 ## Sections implemented
 
@@ -60,5 +60,5 @@ All copy is English. `pnpm agency:check-language` passes.
 ## Limitations
 
 - Visual parity between `bba.country` and `dev.bba.country` must be confirmed in a live browser session.
-- The `config/footer.ts` at repo root exists for reference; the prototype imports its own copy at `apps/bba-web/src/config/footer.ts`. A shared workspace package could unify these in a future iteration.
+- The `config/footer.ts` at repo root exists for reference; the prototype imports its own copy at `apps/web/src/config/footer.ts`. A shared workspace package could unify these in a future iteration.
 - Community section (Discord, GitHub text link, X, LinkedIn, Telegram) is represented in the Social row; a separate Community nav column may be added if the REQ is extended.

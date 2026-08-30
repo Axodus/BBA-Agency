@@ -21,7 +21,7 @@ remain English and locale-independent. Customer content uses the explicit
 
 ## Functional reference
 
-The static BBA Publisher experience in `apps/bba-web/src/static-publisher/`
+The static BBA Publisher experience in `apps/web/src/static-publisher/`
 is the functional reference for deriving the future Agency Runtime API. It
 uses no HTTP client, generated Platform DTO, authentication adapter, provider
 credential, timer-based orchestration, or browser persistence.

@@ -6,7 +6,7 @@ const rules = [
   { root: "packages/ui/src", pattern: /@bba\/(?:app-shell|sdk-react|api-client|platform-core|http-transport)/u },
   { root: "packages/app-shell/src", pattern: /@bba\/(?:sdk-react|api-client|platform-core|http-transport)/u },
   { root: "packages/sdk-react/src", pattern: /@bba\/(?:ui|app-shell|platform-core|http-transport)/u },
-  { root: "apps/bba-web/src", pattern: /@bba\/(?:api-client|platform-core|http-transport)|\bfetch\s*\(/u }
+  { root: "apps/web/src", pattern: /@bba\/(?:api-client|platform-core|http-transport)|\bfetch\s*\(/u }
 ];
 const violations = [];
 for (const rule of rules) for (const file of await files(resolve(process.cwd(), rule.root))) if (rule.pattern.test(await readFile(file, "utf8"))) violations.push(file);

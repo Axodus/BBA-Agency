@@ -1,0 +1,29 @@
+{
+  "name": "@bba/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/main.ts",
+    "prepare:runtime": "pnpm --filter @bba/publisher-prototype build && pnpm --filter @bba/agency-runtime-http build",
+    "build": "pnpm run prepare:runtime && tsc -p tsconfig.json",
+    "start": "node dist/main.js",
+    "typecheck": "pnpm run prepare:runtime && tsc --noEmit -p tsconfig.json",
+    "test": "pnpm run prepare:runtime && vitest run",
+    "lint": "node ../../tools/workspace-quality-check.mjs --lint src test",
+    "format:check": "node ../../tools/workspace-quality-check.mjs --format src test",
+    "check": "pnpm run typecheck && pnpm run test && pnpm run lint && pnpm run format:check && pnpm run build"
+  },
+  "dependencies": {
+    "@bba/agency-runtime-http": "workspace:*",
+    "@bba/publisher-prototype": "workspace:*",
+    "fastify": "5.10.0",
+    "mongodb": "7.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "25.6.0",
+    "tsx": "4.21.0",
+    "typescript": "6.0.3",
+    "vitest": "4.1.10"
+  }
+}

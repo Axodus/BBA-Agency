@@ -2,7 +2,7 @@ import Fastify, { type FastifyInstance, type FastifyRequest } from "fastify";
 import { DeterministicAgentExecutor, PublisherProjectService, agencyServiceCatalog, type AgentExecutorPort, type HumanDecision, type PublisherPlatformCompositionPort, type PublisherProjectRepository } from "@bba/publisher-prototype";
 import { z } from "zod";
 import { ByokAgentExecutor } from "./llm-executor.js";
-import { EphemeralCredentialVault } from "./memory.js";
+import type { CommandIdempotencyStore, ProviderCredentialVault } from "./contracts.js";
 
 export interface AgencyPrincipal { readonly subject: string; readonly actorReference: string; }
 export interface AgencyAuthenticationPort { authenticate(bearerToken: string): Promise<AgencyPrincipal | undefined>; }
@@ -12,7 +12,8 @@ export interface AgencyRuntimeHttpDependencies {
   readonly authorization: AgencyAuthorizationPort;
   readonly projects: PublisherProjectRepository;
   readonly platform: PublisherPlatformCompositionPort;
-  readonly credentials: EphemeralCredentialVault;
+  readonly credentials: ProviderCredentialVault;
+  readonly idempotency: CommandIdempotencyStore;
   readonly request?: typeof fetch;
   readonly clock?: () => Date;
 }
@@ -34,17 +35,18 @@ const publicErrors = {
   LLM_AUTHENTICATION_FAILED: { status: 502, message: "The AI provider rejected the configured credential." },
   LLM_RATE_LIMITED: { status: 503, message: "The AI provider temporarily rate limited this request." },
   LLM_OUTPUT_INVALID: { status: 502, message: "The AI provider returned an invalid output." },
+  BYOK_DISABLED: { status: 503, message: "BYOK configuration is not available in this environment." },
   APPLICATION_FAILURE: { status: 500, message: "The application could not complete the operation." },
   INTERNAL_FAILURE: { status: 500, message: "An unexpected internal failure occurred." },
 } as const;
 type PublicErrorCode = keyof typeof publicErrors;
 
 function token(request: FastifyRequest) { return String(request.headers.authorization ?? "").replace(/^Bearer\s+/u, ""); }
-function errorCode(error: unknown): PublicErrorCode { const value = error instanceof Error ? error.message.split(":")[0] : undefined; if (value === "UNAUTHENTICATED" || value === "FORBIDDEN" || value === "IDEMPOTENCY_CONFLICT") return value; if (value === "PROJECT_NOT_FOUND") return "NOT_FOUND"; if (value === "PROJECT_NOT_EXECUTABLE" || value?.includes("AWAITING") || value === "PROJECT_ALREADY_EXISTS" || value === "PACKAGE_NOT_READY") return "INVALID_PROJECT_STATE"; if (value === "PROVIDER_CREDENTIAL_MISSING" || value === "PROVIDER_NOT_SELECTED") return "LLM_NOT_CONFIGURED"; if (value === "LLM_AUTHENTICATION_FAILED" || value === "LLM_RATE_LIMITED" || value === "LLM_OUTPUT_INVALID") return value; if (value === "SEMANTIC_CONSISTENCY_FAILED" || value === "EDITORIAL_CORE_MISSING" || value === "APPLICATION_FAILURE") return "APPLICATION_FAILURE"; return "INTERNAL_FAILURE"; }
+function errorCode(error: unknown): PublicErrorCode { const value = error instanceof Error ? error.message.split(":")[0] : undefined; if (value === "UNAUTHENTICATED" || value === "FORBIDDEN" || value === "IDEMPOTENCY_CONFLICT" || value === "BYOK_DISABLED") return value; if (value === "PROJECT_NOT_FOUND") return "NOT_FOUND"; if (value === "PROJECT_NOT_EXECUTABLE" || value?.includes("AWAITING") || value === "PROJECT_ALREADY_EXISTS" || value === "PACKAGE_NOT_READY") return "INVALID_PROJECT_STATE"; if (value === "PROVIDER_CREDENTIAL_MISSING" || value === "PROVIDER_NOT_SELECTED") return "LLM_NOT_CONFIGURED"; if (value === "LLM_AUTHENTICATION_FAILED" || value === "LLM_RATE_LIMITED" || value === "LLM_OUTPUT_INVALID") return value; if (value === "SEMANTIC_CONSISTENCY_FAILED" || value === "EDITORIAL_CORE_MISSING" || value === "APPLICATION_FAILURE") return "APPLICATION_FAILURE"; return "INTERNAL_FAILURE"; }
 
 export function createAgencyRuntimeHttp(dependencies: AgencyRuntimeHttpDependencies): FastifyInstance {
-  if (!dependencies.authentication || !dependencies.authorization || !dependencies.projects || !dependencies.platform || !dependencies.credentials) throw new Error("AGENCY_RUNTIME_COMPOSITION_INCOMPLETE");
-  const app = Fastify({ logger: false }); const service = new PublisherProjectService(dependencies.projects, dependencies.platform); const replay = new Map<string, { fingerprint: string; body: unknown }>(); const now = dependencies.clock ?? (() => new Date());
+  if (!dependencies.authentication || !dependencies.authorization || !dependencies.projects || !dependencies.platform || !dependencies.credentials || !dependencies.idempotency) throw new Error("AGENCY_RUNTIME_COMPOSITION_INCOMPLETE");
+  const app = Fastify({ logger: false }); const service = new PublisherProjectService(dependencies.projects, dependencies.platform); const now = dependencies.clock ?? (() => new Date());
 
   async function identify(request: FastifyRequest, operationId: string, command: boolean, projectId?: string): Promise<RequestIdentity> {
     const parsed = (command ? commandHeaders : queryHeaders).parse(request.headers); const principal = await dependencies.authentication.authenticate(token(request));
@@ -54,9 +56,8 @@ export function createAgencyRuntimeHttp(dependencies: AgencyRuntimeHttpDependenc
   }
   function context(identity: RequestIdentity) { return { tenantId: identity.tenantId, subject: identity.principal.subject, actorReference: identity.principal.actorReference, correlationId: identity.correlationId, now: now().toISOString() }; }
   async function command<T>(identity: RequestIdentity, operationId: string, payload: unknown, execute: () => Promise<T>) {
-    const replayKey = `${identity.tenantId}:${identity.principal.subject}:${operationId}:${identity.idempotencyKey}`; const fingerprint = JSON.stringify(payload); const previous = replay.get(replayKey);
-    if (previous) { if (previous.fingerprint !== fingerprint) throw new Error("IDEMPOTENCY_CONFLICT"); return { data: previous.body, meta: { replayed: true, correlationId: identity.correlationId, applicationLocale } }; }
-    const body = await execute(); replay.set(replayKey, { fingerprint, body }); return { data: body, meta: { replayed: false, correlationId: identity.correlationId, applicationLocale } };
+    const result = await dependencies.idempotency.execute({ tenantId: identity.tenantId, subject: identity.principal.subject, operationId, key: identity.idempotencyKey!, fingerprint: JSON.stringify(payload), createdAt: now().toISOString() }, execute);
+    return { data: result.body, meta: { replayed: result.replayed, correlationId: identity.correlationId, applicationLocale } };
   }
 
   app.setErrorHandler((error, _request, reply) => { const code: PublicErrorCode = error instanceof z.ZodError ? "INVALID_REQUEST" : errorCode(error); const descriptor = publicErrors[code]; void reply.status(descriptor.status).send({ error: { code, message: descriptor.message } }); });

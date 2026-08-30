@@ -1,6 +1,6 @@
 {
   "extends": "../../tsconfig.json",
-  "compilerOptions": { "target": "ES2022", "lib": ["ES2022", "DOM"], "module": "ESNext", "moduleResolution": "Bundler", "rootDir": ".", "outDir": "dist", "declaration": true, "declarationMap": false, "noEmit": false, "types": ["node"], "exactOptionalPropertyTypes": true, "noUncheckedIndexedAccess": true },
+  "compilerOptions": { "target": "ES2022", "lib": ["ES2022", "DOM"], "module": "ESNext", "moduleResolution": "Bundler", "rootDir": "src", "outDir": "dist", "declaration": true, "declarationMap": false, "noEmit": false, "types": ["node"], "exactOptionalPropertyTypes": true, "noUncheckedIndexedAccess": true },
   "include": ["src/**/*.ts"],
   "exclude": ["test", "dist"]
 }

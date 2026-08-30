@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "BBA Agency Runtime API",
+    "version": "1.0.0",
+    "description": "Private preview contract. This API is not activated for public use."
+  },
+  "paths": {
+    "/agency/v1/services": { "get": { "operationId": "agencyListServices", "responses": { "200": { "$ref": "#/components/responses/Envelope" } } } },
+    "/agency/v1/projects": {
+      "get": { "operationId": "agencyListProjects", "responses": { "200": { "$ref": "#/components/responses/Envelope" } } },
+      "post": { "operationId": "agencyCreateProject", "parameters": [{ "$ref": "#/components/parameters/IdempotencyKey" }], "requestBody": { "$ref": "#/components/requestBodies/JsonPayload" }, "responses": { "200": { "$ref": "#/components/responses/Envelope" }, "409": { "$ref": "#/components/responses/Error" } } }
+    },
+    "/agency/v1/projects/{projectId}": { "get": { "operationId": "agencyGetProject", "parameters": [{ "$ref": "#/components/parameters/ProjectId" }], "responses": { "200": { "$ref": "#/components/responses/Envelope" }, "404": { "$ref": "#/components/responses/Error" } } } },
+    "/agency/v1/projects/{projectId}/execute": { "post": { "operationId": "agencyExecuteProject", "parameters": [{ "$ref": "#/components/parameters/ProjectId" }, { "$ref": "#/components/parameters/IdempotencyKey" }], "requestBody": { "$ref": "#/components/requestBodies/JsonPayload" }, "responses": { "200": { "$ref": "#/components/responses/Envelope" }, "409": { "$ref": "#/components/responses/Error" } } } },
+    "/agency/v1/projects/{projectId}/decisions": { "post": { "operationId": "agencyRecordDecision", "parameters": [{ "$ref": "#/components/parameters/ProjectId" }, { "$ref": "#/components/parameters/IdempotencyKey" }], "requestBody": { "$ref": "#/components/requestBodies/JsonPayload" }, "responses": { "200": { "$ref": "#/components/responses/Envelope" }, "409": { "$ref": "#/components/responses/Error" } } } },
+    "/agency/v1/projects/{projectId}/package": { "get": { "operationId": "agencyGetEditorialPackage", "parameters": [{ "$ref": "#/components/parameters/ProjectId" }], "responses": { "200": { "$ref": "#/components/responses/Envelope" }, "409": { "$ref": "#/components/responses/Error" } } } },
+    "/agency/v1/settings/ai": {
+      "get": { "operationId": "agencyGetAiSettings", "responses": { "200": { "$ref": "#/components/responses/Envelope" } } },
+      "put": { "operationId": "agencyConfigureAi", "parameters": [{ "$ref": "#/components/parameters/IdempotencyKey" }], "requestBody": { "$ref": "#/components/requestBodies/JsonPayload" }, "responses": { "200": { "$ref": "#/components/responses/Envelope" }, "503": { "$ref": "#/components/responses/Error" } } }
+    },
+    "/agency/v1/settings/ai/{provider}": { "delete": { "operationId": "agencyDeleteAiSettings", "parameters": [{ "$ref": "#/components/parameters/Provider" }, { "$ref": "#/components/parameters/IdempotencyKey" }], "responses": { "200": { "$ref": "#/components/responses/Envelope" }, "503": { "$ref": "#/components/responses/Error" } } } }
+  },
+  "components": {
+    "parameters": {
+      "ProjectId": { "name": "projectId", "in": "path", "required": true, "schema": { "type": "string" } },
+      "Provider": { "name": "provider", "in": "path", "required": true, "schema": { "type": "string", "enum": ["OPENAI", "ANTHROPIC"] } },
+      "IdempotencyKey": { "name": "idempotency-key", "in": "header", "required": true, "schema": { "type": "string", "minLength": 8, "maxLength": 128 } }
+    },
+    "requestBodies": { "JsonPayload": { "required": true, "content": { "application/json": { "schema": { "type": "object", "additionalProperties": true } } } } },
+    "responses": {
+      "Envelope": { "description": "Successful application response.", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Envelope" } } } },
+      "Error": { "description": "Public error response.", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+    },
+    "schemas": {
+      "Envelope": { "type": "object", "required": ["data", "meta"], "properties": { "data": {}, "meta": { "type": "object", "required": ["correlationId", "applicationLocale"], "properties": { "correlationId": { "type": "string" }, "applicationLocale": { "const": "en-US" }, "replayed": { "type": "boolean" } } } } },
+      "Error": { "type": "object", "required": ["error"], "properties": { "error": { "type": "object", "required": ["code", "message"], "properties": { "code": { "type": "string" }, "message": { "type": "string" } } } } }
+    }
+  }
+}

@@ -11,7 +11,7 @@ if (product.some((entry) => !entry.route || !entry.reactBinding || entry.operati
 if (product.some((entry) => entry.status !== "IMPLEMENTED")) throw new Error("Product inventory still contains placeholders or blocked bindings");
 async function sourceTree(directory) { const entries = await readdir(directory, { withFileTypes: true }); const sources = []; for (const entry of entries) { const path = resolve(directory, entry.name); if (entry.isDirectory()) sources.push(...await sourceTree(path)); else if (/\.tsx?$/u.test(entry.name)) sources.push(await readFile(path, "utf8")); } return sources; }
 const sdkSource = (await sourceTree(resolve(process.cwd(), "src"))).join("\n");
-const appSource = (await sourceTree(resolve(process.cwd(), "../../apps/bba-web/src"))).join("\n");
+const appSource = (await sourceTree(resolve(process.cwd(), "../../apps/web/src"))).join("\n");
 for (const entry of product) {
   if (!sdkSource.includes(entry.reactBinding)) throw new Error(`Public React binding missing for ${entry.operationId}: ${entry.reactBinding}`);
   if (!appSource.includes(entry.operationId) && !appSource.includes(entry.reactBinding)) throw new Error(`Product binding missing for ${entry.operationId}`);

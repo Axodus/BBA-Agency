@@ -26,7 +26,7 @@ Content, Review, and Delivery. Platform concepts remain behind the experience.
 | Platform composition | required `PublisherPlatformCompositionPort` |
 | Runtime HTTP | `transport/agency-runtime` |
 | Browser client/hooks | `packages/sdk-react/src/agency/` |
-| Agency Experience | `apps/bba-web/src/features/publisher/` |
+| Agency Experience | `apps/web/src/features/publisher/` |
 | Human Governance | two explicit, attributed and timestamped decisions |
 | Security | authenticated tenant authorization and ephemeral write-only BYOK vault |
 

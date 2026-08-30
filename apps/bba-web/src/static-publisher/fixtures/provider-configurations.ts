@@ -1,2 +1,0 @@
-export type ProviderScenario = "provider-not-configured" | "checking" | "configured" | "invalid" | "rate-limit" | "provider-expired";
-export const providerMessages: Record<ProviderScenario, string> = { "provider-not-configured": "No model configured", checking: "Checking the credential without sending it", configured: "Simulated configuration completed", invalid: "The provided credential appears to be invalid", "rate-limit": "The provider reported a temporary rate limit", "provider-expired": "The temporary configuration expired" };
