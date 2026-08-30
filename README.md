@@ -31,3 +31,15 @@ of a completed BBA Platform or active external Connectors.
 The deployed website serves [`/llms.txt`](/llms.txt), a Markdown index that
 describes the website's scope, limitations, and primary canonical routes for
 AI agents.
+
+## Search indexing
+
+The build generates [`/sitemap.xml`](/sitemap.xml) from fixed public routes and
+the canonical Product, Project, and Delivery Package content routes. The static
+[`/robots.txt`](/robots.txt) points crawlers to the sitemap.
+
+Run the generator manually with:
+
+```bash
+npm run generate:sitemap
+```

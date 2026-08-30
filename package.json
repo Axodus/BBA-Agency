@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "prebuild": "node tools/check-product-content.mjs && node tools/check-project-content.mjs && node tools/check-delivery-content.mjs && node tools/check-delivery-pages.mjs && node tools/check-project-pages.mjs",
+    "prebuild": "node tools/check-product-content.mjs && node tools/check-project-content.mjs && node tools/check-delivery-content.mjs && node tools/check-delivery-pages.mjs && node tools/check-project-pages.mjs && node tools/generate-sitemap.mjs",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
@@ -16,6 +16,7 @@
     "format:check": "node ../tools/workspace-quality-check.mjs --format src",
     "check:product-content": "node tools/check-product-content.mjs",
     "check:project-content": "node tools/check-project-content.mjs",
+    "generate:sitemap": "node tools/generate-sitemap.mjs",
     "generate:project-content": "node tools/generate-project-content.mjs",
     "generate:delivery-content": "node tools/generate-delivery-content.mjs",
     "check:delivery-content": "node tools/check-delivery-content.mjs",

@@ -29,6 +29,7 @@ The website explains BBA Agency Products, illustrative Project examples, and Del
 
 ## Related resource
 
+- [Sitemap](https://bba.country/sitemap.xml): Machine-readable list of canonical public routes generated from fixed pages and content sources.
 - [BBA Publisher prototype](https://dev.bba.country): Separately hosted functional prototype. It demonstrates a limited BBA Publisher experience and does not prove a completed BBA Platform, external publication, live autonomous agents, or active external Connectors.
 
 ## Scope and limitations
