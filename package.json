@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "prebuild": "pnpm check:product-content && pnpm check:project-content && pnpm check:delivery-content && pnpm check:delivery-pages && pnpm check:project-pages",
+    "prebuild": "node tools/check-product-content.mjs && node tools/check-project-content.mjs && node tools/check-delivery-content.mjs && node tools/check-delivery-pages.mjs && node tools/check-project-pages.mjs",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
@@ -34,6 +34,7 @@
     "react-router-dom": "7.18.1"
   },
   "devDependencies": {
+    "@types/node": "25.6.0",
     "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "6.0.4",
