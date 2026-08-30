@@ -43,3 +43,12 @@ Run the generator manually with:
 ```bash
 npm run generate:sitemap
 ```
+
+## WebMCP
+
+When a supporting browser exposes `document.modelContext`, the website
+registers two progressive WebMCP tools: one returns the canonical public site
+map and one visibly opens a selected public informational page. They use JSON
+Schema inputs and do not expose Project creation, approvals, credential
+configuration, external Connectors, or publication. Browsers without WebMCP
+continue to use the website normally.
