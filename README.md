@@ -1,7 +1,9 @@
 # BBA Agency
 
-High-fidelity, navigable frontend prototype for the BBA Agency standalone
-experience.
+Static, informational reference website for the BBA Agency standalone
+experience. It explains the BBA Agency concept, Products, illustrative Project
+examples, and Delivery Packages. It does not execute Projects, retain customer
+data, or publish externally.
 
 ## Local development
 
@@ -16,9 +18,16 @@ Open `http://localhost:3000`.
 
 1. Push this directory to the root of a Git repository.
 2. Import the repository in Vercel.
-3. Keep the detected framework as **Next.js**.
+3. Keep the detected framework as **Vite**.
 4. Use `npm run build` as the build command.
 5. No environment variables are required for this prototype.
 
-The current project is a frontend mockup. Project creation, approvals, and
-navigation are simulated in the browser and do not persist to a backend.
+The separately hosted BBA Publisher prototype is available at
+`https://dev.bba.country`. It is a limited functional prototype, not evidence
+of a completed BBA Platform or active external Connectors.
+
+## AI agent map
+
+The deployed website serves [`/llms.txt`](/llms.txt), a Markdown index that
+describes the website's scope, limitations, and primary canonical routes for
+AI agents.

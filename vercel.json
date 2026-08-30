@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/llms.txt",
+      "destination": "/llms.txt"
+    },
+    {
       "source": "/assets/(.*)",
       "destination": "/assets/$1"
     },

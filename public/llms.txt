@@ -1,0 +1,36 @@
+# BBA Agency
+
+> BBA Agency is an informational website for an AI-first platform concept that organizes institutional knowledge, Missions, AI Workforce execution, Human Governance, Institutional Assets, Channel Variants, Distribution Packages, and Audit Records.
+
+The website explains BBA Agency Products, illustrative Project examples, and Delivery Packages. It is a static reference website: it does not create Projects, perform approvals, retain customer data, execute external Connectors, or publish to third-party channels.
+
+## Primary pages
+
+- [BBA Agency home](https://bba.country/): Overview of the BBA Agency concept and the customer outcomes it describes.
+- [Products](https://bba.country/services): Catalog of BBA Agency Products and their scope.
+- [Project examples](https://bba.country/projects): Informational examples of how a customer outcome can be organized.
+- [Delivery Packages](https://bba.country/deliveries): Informational examples of reviewed deliverables and their traceability.
+
+## Products
+
+- [BBA Publisher](https://bba.country/services/publisher): The first functional product experience, explained on this informational site.
+- [Advertising Campaign](https://bba.country/services/advertising): Planned Product for coordinated strategy and creative direction.
+- [Scientific Article](https://bba.country/services/scientific-writing): Planned Product for structured, reviewable manuscript preparation.
+- [Governance Proposal](https://bba.country/services/governance): Planned Product for evidence-based institutional proposals.
+- [Market Research](https://bba.country/services/research): Planned Product for evidence-based market analysis and recommendations.
+
+## Representative examples
+
+- [Neurons Protocol Launch](https://bba.country/projects/neurons-protocol-launch): Informational Project example associated with BBA Publisher.
+- [AI Publishing Research Article](https://bba.country/projects/ai-publishing-research-article): Informational Project example for the Scientific Article Product.
+- [Enterprise AI Publishing Market Study](https://bba.country/projects/enterprise-ai-publishing-market-study): Informational Project example for the Market Research Product.
+- [Scientific Package](https://bba.country/deliveries/scientific-package): Illustrative Delivery Package for a Scientific Article outcome.
+- [Research Package](https://bba.country/deliveries/research-package): Illustrative Delivery Package for a Market Research outcome.
+
+## Related resource
+
+- [BBA Publisher prototype](https://dev.bba.country): Separately hosted functional prototype. It demonstrates a limited BBA Publisher experience and does not prove a completed BBA Platform, external publication, live autonomous agents, or active external Connectors.
+
+## Scope and limitations
+
+Human Governance remains responsible for important decisions. Channel constraints described on the site are illustrative, not guaranteed current third-party platform rules. External publication is not performed through this website or the BBA Publisher prototype.
