@@ -159,9 +159,10 @@ The contents under `src/` include earlier platform and campaign-oriented experim
 ## Application deployment boundary
 
 The app UI lives in `apps/web`; it is the only application deployed to Vercel
-from this branch. Its root-level [`vercel.json`](vercel.json) installs the
-workspace, runs `pnpm web:build`, and publishes `apps/web/dist`, so the Vercel
-Root Directory remains `/`.
+from this branch. Its root-level [`vercel.json`](vercel.json) explicitly runs
+`pnpm web:build` and publishes `apps/web/dist`, so the Vercel Root Directory
+remains `/` even though the generic root `build` and `start` scripts target the
+API container.
 
 The `static` branch is a separate Vite application with its own root-level
 configuration and remains the institutional website surface. It is not a
@@ -172,6 +173,10 @@ Publisher Projects and idempotency records in MongoDB transactions and is not
 activated as a public service. It starts only with
 `BBA_API_PRIVATE_PREVIEW=true`; real authentication and an encrypted BYOK
 credential vault are required before any public activation.
+
+Generic Node/container platforms should execute the repository-root commands
+`pnpm build` and `pnpm start`. Both resolve to `apps/api`; the obsolete legacy
+entrypoint under `dist/pipelines/` is never used for application deployment.
 
 ## Development principles
 

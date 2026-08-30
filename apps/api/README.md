@@ -20,3 +20,13 @@ BBA_API_ALLOWED_ORIGINS=http://localhost:5173
 The MongoDB deployment must support transactions (replica set or managed
 equivalent). Do not expose this service publicly until a real authentication
 adapter and an encrypted credential vault are implemented.
+
+From the repository root, container-oriented builders may use:
+
+```bash
+pnpm build
+pnpm start
+```
+
+Vercel does not use these generic commands; the root `vercel.json` explicitly
+selects the separate `apps/web` build.

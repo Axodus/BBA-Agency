@@ -4,7 +4,7 @@
   "private": true,
   "packageManager": "pnpm@11.1.2",
   "description": "AxodusBBA - Unificação dos projetos Axodus e BBA Agency",
-  "main": "dist/pipelines/campaign.flow.js",
+  "main": "apps/api/dist/main.js",
   "scripts": {
     "contracts:check": "node contracts/openapi/check-contract.mjs && node contracts/agency/check-contract.mjs",
     "agency:contracts:check": "node contracts/agency/check-contract.mjs",
@@ -16,6 +16,7 @@
     "api:dev": "pnpm --filter @bba/api dev",
     "api:build": "pnpm --filter @bba/api build",
     "api:check": "pnpm --filter @bba/api check",
+    "api:start": "pnpm --filter @bba/api start",
     "frontend:build": "pnpm web:build",
     "frontend:check": "pnpm web:check",
     "dev": "pnpm web:dev",
@@ -47,7 +48,8 @@
     "test:creative": "ts-node --transpile-only src/utils/test-creative-director.ts",
     "typecheck": "tsc --noEmit",
     "legacy:build": "tsc",
-    "build": "pnpm web:build"
+    "build": "pnpm api:build",
+    "start": "node apps/api/dist/main.js"
   },
   "repository": {
     "type": "git",
