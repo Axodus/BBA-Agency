@@ -1,8 +1,0 @@
-{
-  "id": "SRC-2026-001",
-  "title": "Technical Note: Governed Publishing Workflow",
-  "type": "technical_note",
-  "author": "BBA Reference Team",
-  "content": "BBA Agency is exploring a governed publishing workflow in which a mission retrieves relevant policies, coordinates AI-assisted editorial production, routes findings for review, and requires an authorized human decision before an institutional asset can be released. This reference demo uses synthetic data and deterministic sample outputs. It does not perform external publication and is not a production-ready implementation.",
-  "keywords": ["publishing", "mission", "review", "authorization", "asset", "policy", "product"]
-}

@@ -1,1 +1,0 @@
-export type AssignmentStatus = "UNASSIGNED" | "ASSIGNED" | "ACTIVE" | "AWAITING_REVIEW" | "COMPLETED" | "REJECTED" | "BLOCKED" | "REFUSED" | "CANCELLED" | "FAILED";
