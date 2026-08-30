@@ -38,6 +38,11 @@ The build generates [`/sitemap.xml`](/sitemap.xml) from fixed public routes and
 the canonical Product, Project, and Delivery Package content routes. The static
 [`/robots.txt`](/robots.txt) points crawlers to the sitemap.
 
+The fixed public routes also include the canonical Resources and Company pages
+linked from the footer. The Company / About page states the direct relationship:
+BBA Agency is an Axodus product; Axodus provides the broader institutional
+context at `https://axodus.country`.
+
 Run the generator manually with:
 
 ```bash

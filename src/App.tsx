@@ -10,6 +10,8 @@ import { Deliveries } from "./pages/Deliveries.js";
 import { DeliveryDetail } from "./pages/DeliveryDetail.js";
 import { Models } from "./pages/Models.js";
 import { Unavailable } from "./pages/Unavailable.js";
+import { InstitutionalPage } from "./pages/InstitutionalPage.js";
+import { institutionalPages } from "./content/institutional.js";
 
 function Shell({ children }: { readonly children: React.ReactNode }) {
   return (
@@ -105,6 +107,16 @@ export function App() {
             </Shell>
           }
         />
+        <Route path="/resources/documentation" element={<Shell><InstitutionalPage page={institutionalPages.documentation} /></Shell>} />
+        <Route path="/resources/product-narrative" element={<Shell><InstitutionalPage page={institutionalPages.productNarrative} /></Shell>} />
+        <Route path="/resources/architecture" element={<Shell><InstitutionalPage page={institutionalPages.architecture} /></Shell>} />
+        <Route path="/resources/changelog" element={<Shell><InstitutionalPage page={institutionalPages.changelog} /></Shell>} />
+        <Route path="/resources/help-center" element={<Shell><InstitutionalPage page={institutionalPages.helpCenter} /></Shell>} />
+        <Route path="/company/about" element={<Shell><InstitutionalPage page={institutionalPages.about} /></Shell>} />
+        <Route path="/company/contact" element={<Shell><InstitutionalPage page={institutionalPages.contact} /></Shell>} />
+        <Route path="/company/privacy" element={<Shell><InstitutionalPage page={institutionalPages.privacy} /></Shell>} />
+        <Route path="/company/terms" element={<Shell><InstitutionalPage page={institutionalPages.terms} /></Shell>} />
+        <Route path="/company/cookies" element={<Shell><InstitutionalPage page={institutionalPages.cookies} /></Shell>} />
         <Route
           path="/unavailable"
           element={

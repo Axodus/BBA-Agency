@@ -5,7 +5,23 @@ import { loadProductContent } from "./product-content-lib.mjs";
 import { loadProjectContent } from "./project-content-lib.mjs";
 
 const DEFAULT_SITE_URL = "https://bba.country";
-const FIXED_ROUTES = ["/", "/services", "/projects", "/deliveries", "/ai-models"];
+const FIXED_ROUTES = [
+  "/",
+  "/services",
+  "/projects",
+  "/deliveries",
+  "/ai-models",
+  "/resources/documentation",
+  "/resources/product-narrative",
+  "/resources/architecture",
+  "/resources/changelog",
+  "/resources/help-center",
+  "/company/about",
+  "/company/contact",
+  "/company/privacy",
+  "/company/terms",
+  "/company/cookies",
+];
 
 function normalizeSiteUrl(value) {
   const siteUrl = value?.trim() || DEFAULT_SITE_URL;

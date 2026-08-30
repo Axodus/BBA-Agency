@@ -52,7 +52,8 @@ export function AgencyFooter() {
       <div className="agency-footer-top">
         <div className="agency-footer-brand">
           <strong>BBA Agency</strong>
-          <p>AI-powered communication and marketing services built around coordinated intelligence, human review, and trusted knowledge.</p>
+          <p>BBA Agency is an Axodus product reference experience for coordinated AI-assisted work under Human Governance.</p>
+          <a className="agency-footer-axodus-link" href="https://axodus.country" target="_blank" rel="noopener noreferrer">Explore Axodus institutional context <span aria-hidden="true">↗</span></a>
         </div>
 
         <nav className="agency-footer-nav" aria-label="Explore">
@@ -82,22 +83,22 @@ export function AgencyFooter() {
         <nav className="agency-footer-nav" aria-label="Resources">
           <h3>Resources</h3>
           <ul>
-            <NavItem href="/unavailable?destination=docs">Documentation</NavItem>
-            <NavItem href="/unavailable?destination=narrative">Product Narrative</NavItem>
-            <NavItem href="/unavailable?destination=architecture">Architecture</NavItem>
-            <NavItem href="/unavailable?destination=changelog">Changelog</NavItem>
-            <NavItem href="/unavailable?destination=help">Help Center</NavItem>
+            <NavItem href="/resources/documentation">Documentation</NavItem>
+            <NavItem href="/resources/product-narrative">Product Narrative</NavItem>
+            <NavItem href="/resources/architecture">Architecture</NavItem>
+            <NavItem href="/resources/changelog">Changelog</NavItem>
+            <NavItem href="/resources/help-center">Help Center</NavItem>
           </ul>
         </nav>
 
         <nav className="agency-footer-nav" aria-label="Company">
           <h3>Company</h3>
           <ul>
-            <NavItem href="/unavailable?destination=about">About</NavItem>
-            <NavItem href="/unavailable?destination=contact">Contact</NavItem>
-            <NavItem href="/unavailable?destination=privacy">Privacy</NavItem>
-            <NavItem href="/unavailable?destination=terms">Terms</NavItem>
-            <NavItem href="/unavailable?destination=cookies">Cookies</NavItem>
+            <NavItem href="/company/about">About</NavItem>
+            <NavItem href="/company/contact">Contact</NavItem>
+            <NavItem href="/company/privacy">Privacy</NavItem>
+            <NavItem href="/company/terms">Terms</NavItem>
+            <NavItem href="/company/cookies">Cookies</NavItem>
           </ul>
         </nav>
       </div>

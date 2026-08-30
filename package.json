@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "prebuild": "node tools/check-product-content.mjs && node tools/check-project-content.mjs && node tools/check-delivery-content.mjs && node tools/check-delivery-pages.mjs && node tools/check-project-pages.mjs && node tools/generate-sitemap.mjs",
+    "prebuild": "node tools/check-product-content.mjs && node tools/check-project-content.mjs && node tools/check-delivery-content.mjs && node tools/check-delivery-pages.mjs && node tools/check-project-pages.mjs && node tools/check-institutional-pages.mjs && node tools/generate-sitemap.mjs",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
@@ -26,6 +26,7 @@
     "assemble:delivery-test-evidence": "node tools/assemble-delivery-test-evidence.mjs",
     "check:delivery-test-evidence": "node tools/check-delivery-test-evidence.mjs",
     "check:project-pages": "node tools/check-project-pages.mjs",
+    "check:institutional-pages": "node tools/check-institutional-pages.mjs",
     "capture:project-evidence": "node tools/capture-project-evidence.mjs",
     "capture:project-test-evidence": "PROJECT_EVIDENCE_ROOT=.rag/evidence/REQ-TEST-019-001 node tools/capture-project-evidence.mjs"
   },

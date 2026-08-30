@@ -32,6 +32,18 @@ The website explains BBA Agency Products, illustrative Project examples, and Del
 - [Sitemap](https://bba.country/sitemap.xml): Machine-readable list of canonical public routes generated from fixed pages and content sources.
 - [BBA Publisher prototype](https://dev.bba.country): Separately hosted functional prototype. It demonstrates a limited BBA Publisher experience and does not prove a completed BBA Platform, external publication, live autonomous agents, or active external Connectors.
 
+## Institutional resources
+
+- [Documentation](https://bba.country/resources/documentation): Relationship between BBA Agency information and the Axodus institutional record.
+- [Product Narrative](https://bba.country/resources/product-narrative): Customer-outcome framing and Human Governance boundary.
+- [Architecture](https://bba.country/resources/architecture): Conceptual model and explicit implementation limits.
+- [Changelog](https://bba.country/resources/changelog): Material reference-site changes, not a production-release ledger.
+- [Help Center](https://bba.country/resources/help-center): How to use the informational Product, Project, and Delivery Package pages.
+- [About BBA Agency](https://bba.country/company/about): Direct relationship between BBA Agency and Axodus.
+- [Privacy notice](https://bba.country/company/privacy): Limited information-site data practices and analytics notice.
+- [Terms](https://bba.country/company/terms): Terms for using this informational reference website.
+- [Cookie notice](https://bba.country/company/cookies): Cookie and analytics technology notice.
+
 ## Scope and limitations
 
 Human Governance remains responsible for important decisions. Channel constraints described on the site are illustrative, not guaranteed current third-party platform rules. External publication is not performed through this website or the BBA Publisher prototype.

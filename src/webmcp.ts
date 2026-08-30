@@ -1,6 +1,7 @@
 import { agencyDeliveryPackages } from "./content/deliveries/index.js";
 import { agencyProducts } from "./content/products/index.js";
 import { agencyProjects } from "./content/projects/index.js";
+import { institutionalPageList } from "./content/institutional.js";
 
 type JsonSchema = Record<string, unknown>;
 
@@ -49,6 +50,11 @@ const FIXED_PAGES = [
     title: "AI models and privacy",
     description: "Informational explanation of execution-model options.",
   },
+  ...institutionalPageList.map((page) => ({
+    route: page.route,
+    title: page.label,
+    description: page.summary,
+  })),
 ] as const;
 
 const SITE_PAGES = [
