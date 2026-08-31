@@ -3,8 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": ">=24.0.0"
+  },
   "scripts": {
-    "dev": "tsx watch src/main.ts",
+    "dev": "node --env-file=../../.env.local --import tsx --watch src/main.ts",
     "prepare:runtime": "pnpm --filter @bba/publisher-prototype build && pnpm --filter @bba/agency-runtime-http build",
     "build": "pnpm run prepare:runtime && tsc -p tsconfig.json",
     "start": "node dist/main.js",

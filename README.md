@@ -177,6 +177,12 @@ credential vault are required before any public activation.
 Generic Node/container platforms should execute the repository-root commands
 `pnpm build` and `pnpm start`. Both resolve to `apps/api`; the obsolete legacy
 entrypoint under `dist/pipelines/` is never used for application deployment.
+They do not load `.env` files: container secrets must be injected by the
+platform. For local API development only, copy `.env.example` to `.env.local`
+then run `pnpm api:infra:up` followed by `pnpm api:dev`; Node loads that file
+explicitly and shell environment variables take precedence. The local
+infrastructure starts MongoDB as a replica set because the API uses
+transactions.
 
 ## Development principles
 

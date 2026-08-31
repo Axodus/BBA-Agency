@@ -11,7 +11,6 @@ export interface ApiRuntimeConfiguration {
   readonly allowedOrigins: readonly string[];
 }
 
-export function assertPrivatePreview(value: string | undefined) { if (value !== "true") throw new Error("API_PUBLIC_ACTIVATION_BLOCKED"); }
 export function isAllowedOrigin(origin: string, allowedOrigins: readonly string[]) { return allowedOrigins.includes(origin); }
 
 class DisabledCredentialVault implements ProviderCredentialVault {

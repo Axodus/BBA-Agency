@@ -13,7 +13,8 @@ dist/
 /apps/*/test-results/
 /packages/*/dist/
 /packages/*/.tmp/
-.env
+.env.*
+!.env.example
 .trash
 npm-debug.log*
 .backup_*

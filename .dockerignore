@@ -1,0 +1,3 @@
+# Secrets are injected by the container platform. Never send local env files to Docker.
+.env*
+**/.env*
