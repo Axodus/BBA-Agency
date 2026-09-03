@@ -55,3 +55,4 @@ upstream documentation review process.
 - [ADR-IMP-0042 — Editorial Core](ADR-IMP-0042-EDITORIAL-CORE.md)
 - [ADR-IMP-0043 — Session Runtime and Platform mapping](ADR-IMP-0043-SESSION-RUNTIME-PLATFORM-MAPPING.md)
 - [ADR-IMP-0044 — Hybrid Runtime and BYOK](ADR-IMP-0044-HYBRID-RUNTIME-BYOK.md)
+- [ADR-IMP-0045 — Active Development Workspace Application Boundary](ADR-IMP-0045-DEV-WORKSPACE-APPLICATION-BOUNDARY.md)

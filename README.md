@@ -1,230 +1,83 @@
 # BBA Agency
 
-**Bring a context. Work with an AI-first Agency. Receive a governed, traceable outcome.**
+BBA Agency is an AI-first platform concept for governed publishing preparation:
+institutional knowledge, Missions, AI Workforce execution, Human Governance,
+Institutional Assets, Channel Variants, Distribution Packages, and Audit
+Records.
 
-BBA Agency is an AI-first Agency product concept. Customers choose a service,
-start a Project, follow a coordinated specialist team, govern key decisions,
-and receive a finished package. Mission, Workflow, Knowledge, Review, and
-Publication remain internal Platform capabilities rather than the primary
-customer experience.
+This dev workspace contains the active BBA application. The institutional
+website is maintained independently in the static branch and is not a workspace
+package or runtime dependency here.
 
-The first executable vertical is **BBA Publisher**. It transforms Editorial
-Context into an Editorial Package for Blog, LinkedIn, and Instagram while
-keeping human authority, provenance, and semantic consistency explicit.
+## Active delivery paths
 
-This repository contains the current BBA Publisher Reference Demo alongside earlier platform and campaign-oriented experiments. The demo is the recommended entry point for reviewers and contributors who want to understand the current product thesis.
+| Area | Responsibility | Deployment boundary |
+| --- | --- | --- |
+| apps/web | BBA Publisher application UI | Vercel, built from repository root by vercel.json |
+| apps/api | Private, transitional Publisher API runtime | Railway/container runtime |
+| packages/publisher-prototype + transport/agency-runtime | Current Publisher domain implementation and HTTP composition | Used by apps/api |
+| core + transport/http + contracts/openapi | Canonical BBA Platform API direction | Planned; no executable host is mounted |
+| contracts/agency | Current private Publisher API contract | Used by the active API runtime |
 
-## Why BBA Agency?
+packages/publisher-prototype is a future candidate for integration with the
+Core. It is not currently a vertical implemented over the Core. Any such
+integration needs its own adaptation contract, compatibility tests, and
+migration plan for the ten private endpoints.
 
-Institutional publishing is not only a content-generation problem. It requires a governed path from source knowledge to an approved canonical asset and then to channel-specific adaptations. BBA Agency models that path explicitly:
+## Development
 
-```text
-Governed knowledge
-→ Mission
-→ policy retrieval
-→ AI-assisted production
-→ core Institutional Asset
-→ human approval
-→ channel selection
-→ channel-specific adaptation
-→ independent variant review
-→ Distribution Package
-→ audit record
-```
+Use Node 24+ and pnpm 11:
 
-The design principle is simple: **AI executes; humans govern.**
+~~~bash
+corepack enable
+pnpm install --frozen-lockfile
+~~~
 
-## Reference demo
+Start the web application:
 
-The hackathon reference implementation is a bounded, deterministic, browser-based workflow. It runs locally and demonstrates:
+~~~bash
+pnpm web:dev
+~~~
 
-- governed source knowledge and deterministic policy retrieval;
-- a structured Mission with explicit state transitions;
-- an AI Workforce representation for specialized roles;
-- a canonical Institutional Asset with human approval or rejection;
-- illustrative Channel Profiles for X, Medium, DEV Community, Forum / Community, and Telegram;
-- deterministic channel-specific adaptation with preserved lineage;
-- independent review and decision-making for each Channel Variant;
-- a Distribution Package with aggregate status;
-- a chronological Audit Timeline and complete JSON export.
+For local API development, copy .env.example to .env.local, provide local
+values, then start the MongoDB replica set and API:
 
-The demo does not connect to or publish on external platforms. Its channel constraints are illustrative configuration data, not guarantees about current third-party platform rules.
+~~~bash
+cp .env.example .env.local
+pnpm api:infra:up
+pnpm api:dev
+~~~
 
-## Product model
+Only api:dev loads .env.local, explicitly through Node's --env-file option.
+Shell variables take precedence. Builds and container starts never load .env*;
+Railway or another secret manager must inject container values. See
+[apps/api/README.md](apps/api/README.md).
 
-The current BBA domain is organized around five concepts:
+## Validation
 
-| Concept | Meaning |
-| --- | --- |
-| **Mission** | The central unit of work. It carries the objective, source knowledge, policies, execution state, decisions, and resulting assets. |
-| **AI Workforce** | Specialized AI roles for research, policy retrieval, planning, composition, review, and distribution preparation. |
-| **Human Governance** | Authorized humans define objectives, approve or reject outputs, change direction, and retain decision authority. |
-| **Institutional Asset** | The canonical governed output of a Mission, such as an article, technical note, paper, newsletter, release, campaign, documentation, or educational material. |
-| **Distribution Package** | A structured set of channel-specific variants derived from an approved Institutional Asset, with independent review decisions and full lineage. |
+~~~bash
+pnpm workspace:check
+pnpm contracts:check
+pnpm api:check
+pnpm --filter @bba/platform-core check
+pnpm web:build
+~~~
 
-## Run the demo
+pnpm web:build includes the web bundle boundary check. It must not expose API
+tokens, MongoDB credentials, or other private container values to the browser.
 
-The demo loads JSON files and native ES modules over HTTP. Do not open `demo/index.html` directly with `file://`.
+## Archive
 
-```bash
-cd demo
-python -m http.server 8080
-```
+The legacy deterministic demo, earlier src/ experiments, memory compose stack,
+and root artifacts were removed from this active workspace on September 3,
+2026. Their preserved source snapshot is
+archive/dev-legacy-demo-src-2026-09-03.
 
-Then open [http://localhost:8080](http://localhost:8080).
+## Scope and claims
 
-### Demo walkthrough
+The current API is private and transitional. The repository does not claim a
+public production API, autonomous external publishing, active external
+Connectors, real multi-tenancy, or a completed BBA Platform.
 
-1. Click **Run governed workflow**.
-2. Review the source, retrieved policies, Mission, and AI Workforce representation.
-3. Review and approve or reject the core Institutional Asset.
-4. Select distribution channels.
-5. Generate channel-specific variants.
-6. Review and decide each variant independently.
-7. Inspect the Distribution Package and Audit Timeline.
-8. Export the complete structured JSON record.
-
-For detailed operating notes and troubleshooting, see [`demo/README.md`](demo/README.md).
-
-## Validate the demo
-
-From the repository root:
-
-```bash
-node --check demo/src/app.js
-node --check demo/src/retrieval.js
-node --check demo/src/workflow.js
-node --check demo/src/audit.js
-node --check demo/src/channels.js
-node --check demo/src/adaptation.js
-node --check demo/src/review.js
-node --check demo/src/distribution.js
-
-python -m json.tool demo/data/sample-source.json >/dev/null
-python -m json.tool demo/data/policies.json >/dev/null
-python -m json.tool demo/data/reference-output.json >/dev/null
-python -m json.tool demo/data/channels.json >/dev/null
-```
-
-Then run the static server and complete these smoke scenarios:
-
-- core asset approval;
-- core asset rejection;
-- complete multichannel approval;
-- partial channel approval;
-- reset and second execution;
-- audit JSON export;
-- missing or invalid data-file failure.
-
-The demo has no build step and no external runtime dependency. When browser automation is unavailable, validation should be reported as static or manual rather than as cross-browser visual validation.
-
-## Repository structure
-
-```text
-BBA-Agency/
-├── README.md
-├── AGENTS.md
-├── apps/
-│   ├── web/                 # Browser UI (React + Vite)
-│   └── api/                 # Private Fastify composition
-├── packages/
-│   ├── ui/
-│   ├── app-shell/
-│   ├── publisher-prototype/
-│   └── sdk-react/
-├── clients/
-├── core/
-├── transport/
-│   ├── http/
-│   └── agency-runtime/
-├── demo/
-│   ├── index.html
-│   ├── styles.css
-│   ├── package.json
-│   ├── data/
-│   ├── docs/
-│   └── src/
-├── .rag/
-│   ├── development/
-│   ├── architecture/
-│   ├── adr/
-│   └── plans/
-├── src/
-├── package.json
-└── tsconfig.json
-```
-
-The contents under `src/` include earlier platform and campaign-oriented experiments. They are not the same thing as the current reference demo and must not be presented as a completed BBA Platform implementation.
-
-## Application deployment boundary
-
-The app UI lives in `apps/web`; it is the only application deployed to Vercel
-from this branch. Its root-level [`vercel.json`](vercel.json) explicitly runs
-`pnpm web:build` and publishes `apps/web/dist`, so the Vercel Root Directory
-remains `/` even though the generic root `build` and `start` scripts target the
-API container.
-
-The `static` branch is a separate Vite application with its own root-level
-configuration and remains the institutional website surface. It is not a
-runtime dependency of `apps/web`.
-
-`apps/api` is a private, container-ready Fastify composition. It persists
-Publisher Projects and idempotency records in MongoDB transactions and is not
-activated as a public service. It starts only with
-`BBA_API_PRIVATE_PREVIEW=true`; real authentication and an encrypted BYOK
-credential vault are required before any public activation.
-
-Generic Node/container platforms should execute the repository-root commands
-`pnpm build` and `pnpm start`. Both resolve to `apps/api`; the obsolete legacy
-entrypoint under `dist/pipelines/` is never used for application deployment.
-They do not load `.env` files: container secrets must be injected by the
-platform. For local API development only, copy `.env.example` to `.env.local`
-then run `pnpm api:infra:up` followed by `pnpm api:dev`; Node loads that file
-explicitly and shell environment variables take precedence. The local
-infrastructure starts MongoDB as a replica set because the API uses
-transactions.
-
-## Development principles
-
-- AI first, human governed.
-- Mission driven execution.
-- Institutional Assets as governed outputs.
-- Dynamic workflow with explicit state transitions.
-- Traceability before automation.
-- Channel adaptation instead of blind duplication.
-- No production-readiness claims without evidence.
-- Domain concepts remain separate from implementation details.
-
-Contributor and coding-agent instructions are defined in [`AGENTS.md`](AGENTS.md).
-
-## BBA Publisher prototype
-
-The standalone web experience lives in `apps/web`. Its primary navigation
-is service-oriented: **Como podemos ajudar?**, **Novo Projeto**, **Projetos**,
-and **Modelos de IA**. The Publisher captures Editorial Context, coordinates a
-deterministic or optional BYOK execution, records human checkpoints, and
-delivers a traceable Editorial Package. It never publishes externally.
-
-Read the [Product Narrative](.rag/product/BBA-PUBLISHER-PRODUCT-NARRATIVE.md)
-before the [EPIC-IMP-016 technical plan](.rag/architecture/EPIC-IMP-016-BBA-PUBLISHER-PROTOTYPE.md).
-
-## Important disclosure
-
-GPT-5.6 was used during the reference build to reason over the product model and generate or validate sample editorial assets.
-
-Codex was used to help design, implement, debug, validate, and document the reference workflow.
-
-The browser demo replays deterministic reference data while executing policy retrieval, state transitions, channel adaptation, human decisions, and audit logging locally.
-
-This repository must not be interpreted as a production-ready autonomous publishing platform. It does not claim autonomous publishing, live external connectors, a multi-tenant runtime, or multiple live autonomous agents.
-
-## Hackathon
-
-The reference implementation was created for **OpenAI Build Week** and submitted on Devpost as **Axodus BBA Agency**.
-
-- Demo video: [youtu.be/kU0z4TbK-fQ](https://youtu.be/kU0z4TbK-fQ)
-- Devpost project: [Axodus BBA Agency](https://devpost.com/software/axodus-bba)
-
-## License
-
-See the repository license and the license included under [`demo/`](demo/).
+See [AGENTS.md](AGENTS.md) for repository instructions and [.rag/](.rag/) for
+governed implementation documentation.

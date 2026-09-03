@@ -4,11 +4,9 @@ packages:
   - core
   - transport/*
   - clients/*
-  - static
 
-# These are legacy optional build scripts. M0 does not execute runtime or
-# native dependency builds; the policy is explicit so plain `pnpm install`
-# remains reproducible without approving unrelated scripts.
+# Build-script policy is explicit so installation remains reproducible without
+# approving unrelated native dependency scripts.
 ignoredBuiltDependencies:
   - onnxruntime-node
   - protobufjs

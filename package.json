@@ -6,13 +6,13 @@
   "engines": {
     "node": ">=24.0.0"
   },
-  "description": "AxodusBBA - Unificação dos projetos Axodus e BBA Agency",
-  "main": "apps/api/dist/main.js",
+  "description": "BBA Agency application workspace",
   "scripts": {
     "contracts:check": "node contracts/openapi/check-contract.mjs && node contracts/agency/check-contract.mjs",
     "agency:contracts:check": "node contracts/agency/check-contract.mjs",
     "agency:check-language": "node tools/check-agency-language.mjs",
     "agency:check": "pnpm agency:check-language && pnpm --filter @bba/publisher-prototype check && pnpm --filter @bba/agency-runtime-http check",
+    "workspace:check": "node tools/check-active-workspace.mjs",
     "web:dev": "pnpm --filter @bba/web dev",
     "web:build": "pnpm --filter @bba/web build",
     "web:check": "pnpm agency:check-language && node tools/check-frontend-boundaries.mjs && pnpm --dir clients/typescript build && pnpm --filter @bba/publisher-prototype build && pnpm --filter @bba/ui check && pnpm --filter @bba/app-shell check && pnpm --filter @bba/sdk-react check && pnpm --filter @bba/web check",
@@ -22,39 +22,10 @@
     "api:build": "pnpm --filter @bba/api build",
     "api:check": "pnpm --filter @bba/api check",
     "api:start": "pnpm --filter @bba/api start",
-    "frontend:build": "pnpm web:build",
-    "frontend:check": "pnpm web:check",
     "dev": "pnpm web:dev",
-    "legacy:dev": "ts-node --transpile-only src/pipelines/campaign.flow.ts",
-    "legacy:dev:axodus": "ts-node --transpile-only src/pipelines/campaign.flow.ts",
-    "mcp": "ts-node --transpile-only src/tools/mcp-server.ts",
-    "memory:init": "ts-node --transpile-only src/memory/init.ts",
-    "memory:health": "ts-node --transpile-only src/utils/test-memory-namespaces.ts",
-    "memory:up": "docker compose -f docker-compose.memory.yml up -d",
-    "memory:down": "docker compose -f docker-compose.memory.yml down",
-    "tests": "npm run test:agent && npm run test:brief && npm run test:audience && npm run test:trend && npm run test:brand && npm run test:planner && npm run test:design && npm run test:motion && npm run test:ux && npm run test:ads && npm run test:growth && npm run test:contracts && npm run test:permissions && npm run test:ideation && npm run test:memory && npm run test:hitl && npm run test:cost",
-    "test:agent": "ts-node --transpile-only src/utils/test-agent.ts",
-    "test:brief": "ts-node --transpile-only src/utils/test-brief-interpreter.ts",
-    "test:audience": "ts-node --transpile-only src/utils/test-audience-profiler.ts",
-    "test:trend": "ts-node --transpile-only src/utils/test-trend-analyst.ts",
-    "test:brand": "ts-node --transpile-only src/utils/test-brand-strategist.ts",
-    "test:planner": "ts-node --transpile-only src/utils/test-campaign-planner.ts",
-    "test:design": "ts-node --transpile-only src/utils/test-visual-designer.ts",
-    "test:motion": "ts-node --transpile-only src/utils/test-motion-designer.ts",
-    "test:ux": "ts-node --transpile-only src/utils/test-ux-creative.ts",
-    "test:ads": "ts-node --transpile-only src/utils/test-ads-specialist.ts",
-    "test:growth": "ts-node --transpile-only src/utils/test-growth-hacker.ts",
-    "test:contracts": "ts-node --transpile-only src/utils/test-contract-violation.ts",
-    "test:permissions": "ts-node --transpile-only src/utils/test-permission-denied.ts",
-    "test:ideation": "ts-node --transpile-only src/utils/test-parallel-ideation.ts",
-    "test:memory": "ts-node --transpile-only src/utils/test-memory-namespaces.ts",
-    "test:hitl": "ts-node --transpile-only src/utils/test-hitl-flow.ts",
-    "test:cost": "ts-node --transpile-only src/utils/test-cost-overflow.ts",
-    "test:creative": "ts-node --transpile-only src/utils/test-creative-director.ts",
-    "typecheck": "tsc --noEmit",
-    "legacy:build": "tsc",
     "build": "pnpm api:build",
-    "start": "node apps/api/dist/main.js"
+    "start": "node apps/api/dist/main.js",
+    "check": "pnpm workspace:check && pnpm contracts:check && pnpm api:check && pnpm --filter @bba/platform-core check && pnpm web:build"
   },
   "repository": {
     "type": "git",
@@ -67,17 +38,5 @@
   "bugs": {
     "url": "https://github.com/Axodus/BBA-Agency/issues"
   },
-  "homepage": "https://github.com/Axodus/BBA-Agency#readme",
-  "dependencies": {
-    "@anthropic-ai/sdk": "^0.122.0",
-    "@chroma-core/default-embed": "^0.1.9",
-    "@types/node": "^25.6.0",
-    "chromadb": "^3.4.3",
-    "dotenv": "^17.4.2",
-    "mongodb": "^7.6.0",
-    "ts-node": "^10.9.2",
-    "typescript": "^6.0.3",
-    "uuid": "^14.0.0",
-    "zod": "^4.3.6"
-  }
+  "homepage": "https://github.com/Axodus/BBA-Agency#readme"
 }

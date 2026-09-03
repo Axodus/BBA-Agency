@@ -1,40 +1,36 @@
-# BBA API
+# BBA Publisher API
 
-`@bba/api` is the private, container-ready composition of the Agency Runtime.
-It persists Publisher Projects and command idempotency records in MongoDB. It
-is intentionally not a public API deployment: production startup requires an
-explicit private-preview flag, and BYOK credential persistence is disabled.
+@bba/api is the container-ready Railway runtime for the private, transitional
+Publisher API. It composes packages/publisher-prototype with
+transport/agency-runtime, persists Publisher Projects and idempotency records
+in MongoDB, and exposes the contract in contracts/agency/v1/openapi.yaml.
+
+It is not the canonical BBA Platform API. The planned canonical direction is
+core plus transport/http plus contracts/openapi; no executable Core HTTP host
+is mounted or deployed today.
 
 ## Local development
 
-The repository runtime is Node 24 or later. Copy the repository-root
-`.env.example` to a repository-root `.env.local`, fill in the required values,
-then start the local MongoDB replica set and API:
+The repository requires Node 24+. Copy the repository-root .env.example to
+.env.local and provide local, non-production values:
 
-```bash
+~~~bash
 cp .env.example .env.local
 pnpm api:infra:up
 pnpm api:dev
-```
+~~~
 
-`api:infra:up` starts an API-specific MongoDB 7 replica set named `rs0` and
-waits until it is ready. It is intentionally separate from
-`docker-compose.memory.yml`, whose standalone MongoDB instance is unsuitable
-for the API transaction boundary. Stop the local API database with
-`pnpm api:infra:down`; its named volume remains unless you explicitly remove it
-with Docker.
+api:infra:up starts MongoDB 7 as replica set rs0, which is required because the
+runtime uses transactions. Stop it with pnpm api:infra:down. Its named volume
+is retained unless explicitly removed with Docker.
 
-`api:dev` (and `pnpm --filter @bba/api dev`) explicitly loads only
-`../../.env.local` through Node's `--env-file` option. It does not scan or load
-other `.env.*` files. `.env.example` remains a committed reference only, while
-`.env.local` is developer-local and ignored by Git.
+api:dev explicitly loads only ../../.env.local with Node --env-file. Existing
+shell variables take precedence; .env.local supplies only absent values. No
+other .env.* file is discovered or loaded.
 
-Precedence is deterministic: values already injected into the shell environment
-take precedence; `.env.local` fills values that are otherwise absent. `PORT`
-defaults to `3000`; every variable below is required and startup reports
-`API_CONFIGURATION_MISSING:<VARIABLE>` when one is absent.
+Required API variables:
 
-```text
+~~~text
 MONGODB_URI=mongodb://127.0.0.1:27017/bba-agency?replicaSet=rs0
 BBA_API_PRIVATE_PREVIEW=true
 BBA_API_DEV_ACCESS_TOKEN=replace-with-a-local-secret
@@ -42,36 +38,29 @@ BBA_API_TENANT_ID=tenant-local
 BBA_API_SUBJECT=steward-local
 BBA_API_ACTOR_REFERENCE=person:steward-local
 BBA_API_ALLOWED_ORIGINS=http://localhost:5173
-```
+~~~
+
+PORT is optional and defaults to 3000. Startup fails explicitly with
+API_PUBLIC_ACTIVATION_BLOCKED when the private preview is not enabled,
+API_CONFIGURATION_MISSING:<VARIABLE> when a required variable is absent, or
+API_CONFIGURATION_INVALID:PORT for an invalid port.
 
 ## Container deployment
 
-`pnpm build` and `pnpm start` do not load `.env` files. The Docker context
-excludes every `.env*` file, and production/container values must be injected
-by the deployment platform or secret manager.
+pnpm build and pnpm start do not load .env files. .dockerignore excludes all
+.env* files. Production/container values must come from Railway or another
+secret manager, never from a copied environment file.
 
-Required container variables:
+The MongoDB deployment must support transactions through a replica set or
+managed equivalent. Do not expose this service publicly until a real
+authentication adapter and encrypted credential vault are implemented.
 
-```text
-MONGODB_URI=mongodb://127.0.0.1:27017/bba-agency?replicaSet=rs0
-BBA_API_PRIVATE_PREVIEW=true
-BBA_API_DEV_ACCESS_TOKEN=replace-with-a-local-secret
-BBA_API_TENANT_ID=tenant-local
-BBA_API_SUBJECT=steward-local
-BBA_API_ACTOR_REFERENCE=person:steward-local
-BBA_API_ALLOWED_ORIGINS=http://localhost:5173
-```
+From repository root:
 
-The MongoDB deployment must support transactions (replica set or managed
-equivalent). Do not expose this service publicly until a real authentication
-adapter and an encrypted credential vault are implemented.
-
-From the repository root, container-oriented builders may use:
-
-```bash
+~~~bash
 pnpm build
 pnpm start
-```
+~~~
 
-Vercel does not use these generic commands; the root `vercel.json` explicitly
-selects the separate `apps/web` build.
+Vercel is separate: its root vercel.json builds apps/web and does not deploy
+this API.
