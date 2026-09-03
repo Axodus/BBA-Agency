@@ -1,38 +1,35 @@
 # BBA Platform Core
 
-This directory is the isolated implementation boundary for the BBA Platform Core.
+core is the transport-neutral, canonical BBA Platform application boundary. It
+contains application contracts and domain modules for Missions, Human
+Governance, AI Workforce, Institutional Assets, Knowledge Policy, Workflow,
+Review, Publication, and Connector boundaries.
 
-It is intentionally independent from:
+It is not an executable server and is not the Railway deployment. The planned
+canonical API path is:
 
-- `demo/`, the deterministic browser reference implementation;
-- `src/`, preserved legacy experiments.
+~~~text
+core -> transport/http -> contracts/openapi
+~~~
 
-The Core now contains the Shared Kernel, Tenant Context, and Mission Aggregate
-foundations. It does not yet implement Human Governance, AI Workforce,
-Institutional Assets, APIs, Connectors, production persistence, authentication,
-authorization, or publication.
-
-## Toolchain
-
-- Node.js `24.14.1` baseline used for M0 validation;
-- pnpm `11.1.2`;
-- TypeScript `6.0.3`;
-- native `node:test`;
-- ESM with strict TypeScript settings.
+That path is intentionally not mounted in this workspace yet. The active
+private Publisher runtime instead uses packages/publisher-prototype and
+transport/agency-runtime through apps/api. publisher-prototype is a candidate
+for future Core integration, not a Core vertical today.
 
 ## Commands
 
-From the repository root:
+From repository root:
 
-```bash
+~~~bash
 pnpm --dir core typecheck
 pnpm --dir core test
 pnpm --dir core lint
 pnpm --dir core format:check
 pnpm --dir core architecture
 pnpm --dir core check
-```
+~~~
 
-Mission implementation is governed by EPIC-IMP-002 and the canonical Mission
-State Model. Full Human Governance and authority resolution remain assigned to
-EPIC-IMP-003.
+Core changes must keep application concerns transport-neutral. Do not couple
+Core directly to the active Publisher runtime, database drivers, browser UI, or
+external Connector implementations without an approved contract and migration.
