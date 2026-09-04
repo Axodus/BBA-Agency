@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import { describe, expect, it } from "vitest";
-import { FoundationOverview, SettingsPage, UiKitPage } from "../src/design-system/foundation/FoundationPages.js";
+import { FoundationOverview, SettingsPage, SurfaceTemplate, UiKitPage, surfaces } from "../src/design-system/foundation/FoundationPages.js";
 import { MissionWorkspace } from "../src/design-system/foundation/MissionWorkspace.js";
 
 describe("BBA App UI Foundation", () => {
@@ -35,10 +35,19 @@ describe("BBA App UI Foundation", () => {
     expect(screen.getByText("Falha visível")).toBeTruthy();
   });
 
+  it("keeps controlled records, empty states, loading and failures visible on each core surface", () => {
+    render(<MemoryRouter><SurfaceTemplate surface={surfaces.packages} /></MemoryRouter>);
+    expect(screen.getByText("DP — LinkedIn Brief Set 2026")).toBeTruthy();
+    expect(screen.getByText("Preparação não equivale a publicação externa.")).toBeTruthy();
+    expect(screen.getByText("Nenhum Distribution Package constituído")).toBeTruthy();
+    expect(screen.getByText("Não foi possível carregar")).toBeTruthy();
+    expect(screen.getByText("Uma decisão de Human Governance é necessária.")).toBeTruthy();
+  });
+
   it("switches between settings sections with accessible tabs", async () => {
     const user = userEvent.setup();
     render(<MemoryRouter><SettingsPage /></MemoryRouter>);
     await user.click(screen.getByRole("tab", { name: "Governança" }));
-    expect(screen.getByText("As regras são somente exibidas nesta sprint e não podem ser alteradas.")).toBeTruthy();
+    expect(screen.getByText("As regras são somente exibidas nesta referência e não podem ser alteradas por esta interface.")).toBeTruthy();
   });
 });

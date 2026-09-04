@@ -1,6 +1,6 @@
 import type { ComponentType, ReactNode } from "react";
-import { FileText, Flag, LockSimple, PaperPlaneTilt, Target } from "@phosphor-icons/react";
-import { StatusBadge, type SemanticState } from "@bba/ui";
+import { FileText, Flag, LockSimple, Package, Target } from "@phosphor-icons/react";
+import { Lineage, StatusBadge, type LineageItem, type SemanticState } from "@bba/ui";
 import type { AuditEntry, CanonicalReference } from "./contracts.js";
 
 type FoundationIcon = ComponentType<{ size?: number; weight?: "regular" | "bold" }>;
@@ -9,7 +9,7 @@ const entityIcons: Record<CanonicalReference["type"], FoundationIcon> = {
   Mission: Target,
   "Institutional Asset": FileText,
   "Channel Variant": Flag,
-  "Distribution Package": PaperPlaneTilt,
+  "Distribution Package": Package,
   "Audit Record": LockSimple,
 };
 
@@ -39,22 +39,11 @@ export function MetadataStrip({ items }: { items: ReadonlyArray<{ label: string;
 }
 
 export function LineageRail({ items }: { items: ReadonlyArray<CanonicalReference> }) {
-  return <section className="foundation-lineage" aria-labelledby="lineage-title">
-    <div className="foundation-section-heading">
-      <div><p className="foundation-kicker">Canonicidade</p><h2 id="lineage-title">Cadeia institucional</h2></div>
-      <span className="foundation-lock-label"><LockSimple size={14} weight="bold" /> lineage preservada</span>
-    </div>
-    <ol>
-      {items.map((item) => {
-        const Icon = entityIcons[item.type];
-        return <li key={item.id}>
-          <div className="foundation-lineage-icon"><Icon size={18} weight="bold" /></div>
-          <div><span>{item.type}</span><strong>{item.label}</strong><small>{item.id}</small></div>
-          <StatusBadge state={item.state}>{item.stateLabel}</StatusBadge>
-        </li>;
-      })}
-    </ol>
-  </section>;
+  const lineageItems: readonly LineageItem[] = items.map((item) => {
+    const Icon = entityIcons[item.type];
+    return { ...item, icon: <Icon size={18} weight="bold" /> };
+  });
+  return <Lineage title="Cadeia institucional" lockLabel="lineage preservada" items={lineageItems} />;
 }
 
 export function AuditTimeline({ entries }: { entries: ReadonlyArray<AuditEntry> }) {

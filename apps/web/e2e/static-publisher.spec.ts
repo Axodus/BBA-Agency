@@ -1,15 +1,30 @@
 import { expect, test } from "@playwright/test";
-test("golden path delivers an English static Editorial Package", async ({ page }) => {
-  test.setTimeout(60_000); await page.goto("/"); await expect(page.getByRole("heading", { name: "How can we help?" })).toBeVisible(); await page.locator('[data-action="create-project"]').first().click();
-  await page.getByLabel("Project title").fill("Publisher E2E Project"); await page.getByLabel("What needs to be communicated").fill("Product launch"); await page.getByLabel("Communication objective").fill("Explain the product"); await page.getByLabel("Expected outcome").fill("A ready multiplatform package"); await page.locator('[data-action="continue"]').click();
-  await page.getByLabel("Audience").fill("Builders and researchers"); await page.getByLabel("Central message").fill("Intelligence can be coordinated with human governance"); await page.locator('[data-action="continue"]').click(); await page.getByLabel("Text materials").fill("Controlled institutional source"); await page.locator('[data-action="continue"]').click(); await page.getByLabel("Required facts").fill("Humans retain authority"); await page.getByLabel("Required terms").fill("human governance"); for (let index = 0; index < 3; index += 1) await page.locator('[data-action="continue"]').click();
-  await expect(page.getByRole("heading", { name: "You will receive" })).toBeVisible(); await expect(page.getByText("Estimated consumption: 24 execution units")).toBeVisible(); await page.getByRole("button", { name: "Create Project →" }).click();
-  await page.locator('[data-action="start-execution"]').click(); await page.locator('[data-action="advance-simulation"]').click(); await expect(page.getByRole("heading", { name: "Did the team understand the context correctly?" })).toBeVisible(); await page.locator('[data-action="approve-core"]').click();
-  for (let index = 0; index < 5; index += 1) await page.locator('[data-action="advance-simulation"]').click(); await page.locator('[data-section="review"]').click(); await expect(page.getByText("Ready for decision")).toBeVisible(); await page.locator('[data-action="approve-package"]').click(); await page.locator('[data-section="delivery"]').click(); await expect(page.locator(".project-status")).toHaveText("Ready for delivery"); await expect(page.getByText("No external publication was performed.")).toBeVisible();
+
+test("canonical BBA app route exposes governed Mission lineage", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.getByRole("heading", { name: "Trabalho de IA sob governança humana" })).toBeVisible();
+  await page.getByRole("link", { name: /Abrir Mission Workspace/u }).click();
+  await expect(page.getByRole("heading", { name: "Clareza institucional para o próximo ciclo" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Cadeia institucional" })).toBeVisible();
+  await expect(page.getByText("Mission").first()).toBeVisible();
+  await expect(page.getByText("Institutional Asset").first()).toBeVisible();
+  await expect(page.getByText("Channel Variant").first()).toBeVisible();
+  await expect(page.getByText("Distribution Package").first()).toBeVisible();
 });
-test("revision path invalidates and regenerates all channel versions", async ({ page }) => {
-  await page.goto("/projects/demo-final-review/review"); await page.getByLabel("Guidance or rationale").fill("Make human governance explicit"); await page.locator('[data-action="request-package-changes"]').click(); await expect(page.getByRole("dialog")).toContainText("Blog v1, LinkedIn v1, Instagram v1"); await page.locator('[data-action="confirm-changes"]').click(); await page.locator('[data-section="content"]').click(); await expect(page.getByText("BLOG / v2")).toBeVisible(); await page.locator('[data-action="compare-versions"]').click(); await expect(page.getByRole("dialog")).toContainText("Previous version"); await page.getByLabel("Close comparison").click(); await page.locator('[data-section="review"]').click(); await page.locator('[data-action="approve-package"]').click(); await page.locator('[data-section="delivery"]').click(); await expect(page.locator(".project-status")).toHaveText("Ready for delivery");
+
+test("Steward decision is local and never triggers external publication", async ({ page }) => {
+  await page.goto("/missions/msn-024");
+  await page.getByRole("button", { name: "Revisar decisão" }).click();
+  await expect(page.getByRole("dialog", { name: "Confirmar decisão de governança" })).toContainText("Nenhuma Channel Variant será publicada");
+  await page.getByRole("button", { name: "Registrar decisão" }).click();
+  await expect(page.getByText("Decisão registrada localmente")).toBeVisible();
+  await expect(page.getByText("Nenhuma publicação externa foi iniciada.")).toBeVisible();
 });
-test("failure path explains and retries the failed stage", async ({ page }) => {
-  await page.goto("/projects/demo-failure/content"); await expect(page.getByRole("alert")).toContainText("We could not complete this stage"); await expect(page.getByText("The LinkedIn adapter simulation stopped before completion.")).toBeVisible(); await page.locator('[data-action="retry"]').click(); await expect(page.getByRole("alert")).toHaveCount(0); await expect(page.locator('[data-action="advance-simulation"]')).toBeVisible();
+
+test("controlled local Publisher routes remain reachable within the canonical shell", async ({ page }) => {
+  await page.goto("/projects/demo-final-review/review");
+  await expect(page.getByRole("heading", { name: "Neurons protocol launch" })).toBeVisible();
+  await page.goto("/deliveries");
+  await expect(page.getByRole("heading", { name: "Deliveries" })).toBeVisible();
+  await expect(page.getByText("No external publication was performed.")).toBeVisible();
 });

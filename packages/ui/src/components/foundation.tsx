@@ -71,6 +71,21 @@ export function Table({ className, children, ...props }: ComponentPropsWithoutRe
   return <div className="bba-table-wrap"><table className={classes("bba-table", className)} {...props}>{children}</table></div>;
 }
 
+export interface LineageItem {
+  readonly type: string;
+  readonly id: string;
+  readonly label: string;
+  readonly state: SemanticState;
+  readonly stateLabel: string;
+  readonly locked?: boolean;
+  readonly icon?: ReactNode;
+}
+
+export function Lineage({ title, eyebrow = "Canonicidade", lockLabel = "lineage preservada", items }: { readonly title: string; readonly eyebrow?: string; readonly lockLabel?: string; readonly items: readonly LineageItem[] }) {
+  const titleId = useId();
+  return <section className="bba-lineage" aria-labelledby={titleId}><header><div><span>{eyebrow}</span><h2 id={titleId}>{title}</h2></div><small>{lockLabel}</small></header><ol>{items.map((item) => <li key={item.id} data-locked={item.locked ? "true" : "false"}><div aria-hidden="true" className="bba-lineage__icon">{item.icon}</div><div><span>{item.type}</span><strong>{item.label}</strong><small>{item.id}</small>{item.locked ? <small className="bba-lineage__lock">Upstream decision pending</small> : null}<StatusBadge state={item.state}>{item.stateLabel}</StatusBadge></div></li>)}</ol></section>;
+}
+
 export function Skeleton({ lines = 3, label = "Carregando conteúdo" }: { readonly lines?: number; readonly label?: string }) {
   return <div aria-busy="true" aria-label={label} className="bba-skeleton" role="status">{Array.from({ length: lines }, (_, index) => <span key={index} />)}</div>;
 }

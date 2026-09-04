@@ -1,12 +1,12 @@
 # BBA App UI Foundation
 
-Status: implemented as a frontend-only reference surface with controlled local data.
+Status: implemented as the active frontend-only application surface with controlled local data.
 
 ## Purpose
 
 This foundation defines the visual and structural contract for BBA application surfaces. It does not represent backend integration, authentication, a configured Connector, or external publication capability.
 
-The reference implementation is available under `/foundation`. Existing Publisher routes remain independent.
+The reference implementation is available at the application root (`/`). The previous `/foundation/*` paths resolve to canonical app surfaces. Controlled local Publisher reference routes remain reachable inside the same persistent App Shell to preserve deterministic behavior and existing deep links; they are not a separate deployment strategy and do not add credential entry, Connector configuration, or external-publication flow.
 
 ## Design principles
 
@@ -50,11 +50,11 @@ Color is never the only signal: each status combines a marker and readable label
 - Button variants: primary, secondary, ghost, and danger.
 - Fields: Input, Textarea, Select, Checkbox, Field hint/error association.
 - State and feedback: StatusBadge, Feedback, Alert, EmptyState, Skeleton, Spinner.
-- Structure: Panel, Card, Table, Tabs.
+- Structure: Panel, Card, Table, Tabs, and the reusable Lineage rail.
 - Overlays: Modal, Drawer, ConfirmationDialog with managed focus.
 - Navigation: Link, NavLink, SkipLink.
 
-Components receive display data and event callbacks. They do not import API clients, runtime configuration, or domain transport types.
+Components receive display data and event callbacks. They do not import API clients, runtime configuration, or domain transport types. Semantic-state tokens are shared in `@bba/ui`; application surfaces do not define a competing color contract.
 
 ## App Shell contract
 
@@ -66,6 +66,19 @@ The persistent shell provides:
 - Steward identity placeholder without implementing authentication;
 - responsive mobile navigation and a keyboard skip link;
 - a consistent main content region for global feedback and route-level states.
+
+## Active route adoption
+
+The active app routes use one persistent App Shell and the shared `@bba/ui` tokens:
+
+- `/` — overview with Mission focus, pending Steward decisions, lineage and semantic-state legend;
+- `/missions/:missionId` — Mission Workspace with Human Governance, AI Workforce, controlled sources and Audit Record;
+- `/institutional-assets`, `/distribution-packages`, `/governance` and `/institution` — controlled records, semantic state, empty, loading, failed and blocked patterns;
+- `/account` — Steward profile and prepared permissions only;
+- `/settings` — local interface, governance-readonly and notification preferences only;
+- `/ui-kit` — the shared component and accessibility reference.
+
+No canonical app route accepts access tokens, provider credentials, tenant configuration, private endpoints, Connector settings or publication instructions. Former credential and technical-diagnostics deep links redirect to the canonical Settings and Institution surfaces. The existing deterministic Publisher reference remains controlled local data with its stated limits and does not establish external-publication capability.
 
 ## Canonical patterns
 

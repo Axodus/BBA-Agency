@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 test("Mission Workspace preserves lineage and governed decision flow", async ({ page }) => {
-  await page.goto("/foundation/missions/msn-024");
+  await page.goto("/missions/msn-024");
   await expect(page.getByRole("heading", { name: "Clareza institucional para o próximo ciclo" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Cadeia institucional" })).toBeVisible();
   await expect(page.getByText("Distribuição não é publicação")).toBeVisible();
@@ -17,9 +17,9 @@ test("Mission Workspace preserves lineage and governed decision flow", async ({ 
 });
 
 test("settings tabs and mobile navigation remain operable", async ({ page }) => {
-  await page.goto("/foundation/settings");
+  await page.goto("/settings");
   await page.getByRole("tab", { name: "Governança" }).click();
-  await expect(page.getByText("As regras são somente exibidas nesta sprint e não podem ser alteradas.")).toBeVisible();
+  await expect(page.getByText("As regras são somente exibidas nesta referência e não podem ser alteradas por esta interface.")).toBeVisible();
 
   const viewportWidth = page.viewportSize()?.width ?? 0;
   if (viewportWidth < 832) {

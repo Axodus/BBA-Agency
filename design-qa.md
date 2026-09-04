@@ -27,11 +27,11 @@
 
 ## Automated evidence
 
-- Focused component tests: 4 passed.
-- Playwright foundation tests: 4 passed across desktop and mobile.
-- Vite production bundle: passed.
-- Private bundle value check: passed.
-- Workspace boundary check: passed.
-- OpenAPI and Agency contract checks: passed.
+- Previous focused component evidence: 4 passed. The current run could not start Vitest workers in the mounted workspace.
+- Previous Playwright evidence: 4 passed across desktop and mobile. The current run could not bind the local preview port (`EPERM`), so fresh browser evidence was not produced.
+- Current direct Vite production bundle: passed to `/tmp/bba-web-dist`.
+- Current private bundle value check: passed.
+- Current workspace boundary check: passed via the direct validator.
+- Current OpenAPI and Agency contract checks: passed via direct validators.
 
-final result: passed
+final result: blocked by environment; fresh browser acceptance is required before this can be marked passed

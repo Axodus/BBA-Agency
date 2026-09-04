@@ -89,6 +89,58 @@
   text-align: center;
 }
 
+.agency-hero-lineage {
+  min-width: min(100%, 38rem);
+  align-self: stretch;
+  padding: clamp(1rem, 2vw, 1.5rem);
+  border: 1px solid var(--agency-line);
+  background: var(--bba-surface);
+}
+
+.agency-hero-lineage .bba-lineage ol {
+  grid-template-columns: 1fr 1fr;
+}
+
+.agency-hero-lineage .bba-lineage li:nth-child(2) {
+  border-right: 0;
+}
+
+.agency-hero-lineage .bba-lineage li:nth-child(-n + 2) {
+  border-bottom: 1px solid var(--agency-line);
+}
+
+.agency-hero-lineage > p {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .75rem;
+  margin: 1rem 0 0;
+  color: var(--agency-muted);
+  font-size: .75rem;
+}
+
+.publisher-boundary-card {
+  min-height: 19rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--agency-ink);
+  background: var(--bba-surface);
+}
+
+.publisher-boundary-card > span,
+.publisher-boundary-card > small {
+  color: var(--agency-muted);
+  font-size: .65rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.publisher-boundary-card > strong {
+  font: 500 clamp(2.5rem, 6vw, 5rem)/.88 var(--agency-font-display);
+}
+
 @media (max-width: 1000px) {
   .agency-engagements > div,
   .agency-decisions > div,
@@ -108,5 +160,13 @@
   .agency-decisions > div,
   .agency-recent-deliveries > div {
     grid-template-columns: 1fr;
+  }
+
+  .agency-hero-lineage .bba-lineage ol {
+    grid-template-columns: 1fr;
+  }
+
+  .agency-hero-lineage .bba-lineage li {
+    border-right: 0;
   }
 }

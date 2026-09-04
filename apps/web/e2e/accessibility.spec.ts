@@ -1,37 +1,34 @@
 import { expect, test } from "@playwright/test";
 
-test("home exposes keyboard-accessible primary actions", async ({ page }) => {
+test("app shell exposes keyboard-accessible navigation and primary actions", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator("main")).toBeVisible();
-  const startProject = page.getByRole("link", { name: "Start a Project →" });
-  await startProject.focus();
-  await expect(startProject).toBeFocused();
+  const missionWorkspace = page.getByRole("link", { name: /Abrir Mission Workspace/u });
+  await missionWorkspace.focus();
+  await expect(missionWorkspace).toBeFocused();
 
   const width = page.viewportSize()?.width ?? 0;
   if (width < 700) {
-    const menu = page.getByRole("button", { name: "Menu" });
+    const menu = page.getByRole("button", { name: "Abrir navegação" });
     await menu.focus();
     await expect(menu).toBeFocused();
   } else {
-    const services = page.getByRole("link", { name: "Services", exact: true });
-    const projects = page.getByRole("link", { name: "Projects", exact: true });
-    await services.focus();
-    await expect(services).toBeFocused();
+    const overview = page.getByRole("link", { name: "Visão geral", exact: true });
+    const missions = page.getByRole("link", { name: "Missões", exact: true });
+    await overview.focus();
+    await expect(overview).toBeFocused();
     await page.keyboard.press("Tab");
-    await expect(projects).toBeFocused();
+    await expect(missions).toBeFocused();
   }
 });
 
-test("wizard fields and continuation controls are reachable by keyboard", async ({ page }) => {
-  await page.goto("/services/publisher/new");
+test("settings fields and governance tabs are reachable by keyboard", async ({ page }) => {
+  await page.goto("/settings");
   await expect(page.locator("main")).toBeVisible();
-  const projectTitle = page.getByLabel("Project title");
-  const communicationNeed = page.getByLabel("What needs to be communicated");
-  const continueButton = page.getByRole("button", { name: /^Continue/u });
-  await projectTitle.focus();
-  await expect(projectTitle).toBeFocused();
-  await page.keyboard.press("Tab");
-  await expect(communicationNeed).toBeFocused();
-  await continueButton.focus();
-  await expect(continueButton).toBeFocused();
+  const interfaceTab = page.getByRole("tab", { name: "Interface" });
+  const density = page.getByLabel("Densidade");
+  await interfaceTab.focus();
+  await expect(interfaceTab).toBeFocused();
+  await density.focus();
+  await expect(density).toBeFocused();
 });

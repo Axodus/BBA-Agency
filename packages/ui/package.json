@@ -10,7 +10,7 @@
   },
   "scripts": {
     "typecheck": "tsc --noEmit -p tsconfig.json",
-    "test": "vitest run",
+    "test": "vitest run --configLoader runner",
     "lint": "node ../../tools/workspace-quality-check.mjs --lint src test",
     "format:check": "node ../../tools/workspace-quality-check.mjs --format src test",
     "check": "pnpm run typecheck && pnpm run test && pnpm run lint && pnpm run format:check"

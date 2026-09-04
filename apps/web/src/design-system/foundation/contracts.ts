@@ -32,6 +32,14 @@ export interface FoundationSurface {
   readonly canonicalOwner: string;
   readonly emptyTitle: string;
   readonly emptyDescription: string;
+  readonly record: {
+    readonly type: string;
+    readonly id: string;
+    readonly label: string;
+    readonly state: SemanticState;
+    readonly stateLabel: string;
+    readonly constraint: string;
+  };
 }
 
 export const semanticStateLabels: Readonly<Record<SemanticState, string>> = Object.freeze({
@@ -40,6 +48,6 @@ export const semanticStateLabels: Readonly<Record<SemanticState, string>> = Obje
   awaiting: "Aguardando decisão",
   approved: "Aprovado",
   rejected: "Rejeitado",
-  failed: "Falho",
+  failed: "Falha",
   attention: "Atenção",
 });
