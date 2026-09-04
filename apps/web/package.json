@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --configLoader runner",
-    "build": "tsc -p ../../clients/typescript/tsconfig.json && pnpm --filter @bba/publisher-prototype build && tsc --noEmit -p tsconfig.json && vite build --configLoader runner && node tools/check-bundle.mjs",
+    "build": "node tools/check-css-structure.mjs && tsc -p ../../clients/typescript/tsconfig.json && pnpm --filter @bba/publisher-prototype build && tsc --noEmit -p tsconfig.json && vite build --configLoader runner && node tools/check-bundle.mjs",
     "preview": "vite preview --configLoader runner",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "test": "vitest run --configLoader runner",
@@ -13,6 +13,7 @@
     "lint": "node ../../tools/workspace-quality-check.mjs --lint src test e2e tools vite.config.ts playwright.config.ts",
     "format:check": "node ../../tools/workspace-quality-check.mjs --format src test e2e tools vite.config.ts playwright.config.ts",
     "architecture": "node tools/check-boundaries.mjs",
+    "css:check": "node tools/check-css-structure.mjs",
     "bundle:check": "node tools/check-bundle.mjs",
     "product:check": "node tools/check-product-acceptance.mjs",
     "check": "pnpm run product:check && pnpm run typecheck && pnpm run test && pnpm run lint && pnpm run format:check && pnpm run architecture && pnpm run build && pnpm run test:browser"
