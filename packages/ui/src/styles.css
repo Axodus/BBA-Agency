@@ -12,10 +12,6 @@
   --bba-motion-fast: 160ms; --bba-motion-standard: 280ms;
   font-family: var(--bba-font); color: var(--bba-text); background: var(--bba-bg);
 }
-:root[data-theme="dark"] {
-  --bba-bg: #0d1220; --bba-surface: #151c2d; --bba-surface-raised: #1b2438; --bba-text: #edf2ff; --bba-muted: #aab6cd;
-  --bba-border: #34415b; --bba-primary: #91a7ff; --bba-primary-contrast: #11182a; --bba-focus: #a7b7ff; --bba-positive: #75d6ab; --bba-warning: #f3c268; --bba-danger: #ff9b91;
-}
 * { box-sizing: border-box; }
 body { margin: 0; min-width: 320px; min-height: 100vh; background: var(--bba-bg); color: var(--bba-text); }
 button, input { font: inherit; }

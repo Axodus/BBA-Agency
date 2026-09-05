@@ -29,6 +29,10 @@ The shared tokens live in `packages/ui/src/styles.css`; the composed application
 | Elevation | Borders define hierarchy; shadow is reserved for overlays and temporary navigation |
 | Motion | Short state transitions; reduced-motion preference disables non-essential motion |
 
+### Canonical theme behavior
+
+The active BBA application theme is light-only: warm paper surfaces, near-black ink, institutional blue actions, and semantic state colors. The UI must not switch automatically from the operating-system color preference, and legacy browser theme preferences are discarded during bootstrap. Dark and system themes are not part of the current design contract; introducing either requires a separately reviewed token set, contrast audit, and reference comparison.
+
 ## Semantic states
 
 | State | Meaning | Typical use |

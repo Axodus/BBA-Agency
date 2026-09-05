@@ -1,15 +1,18 @@
-import { act, render, renderHook } from "@testing-library/react";
+import { render, renderHook } from "@testing-library/react";
 import type { ReactNode } from "react";
 import { describe, expect, test } from "vitest";
 import { Lineage, ThemeProvider, useTheme } from "../src/index.js";
 
 describe("ThemeProvider", () => {
-  test("persists a non-sensitive preference and applies data-theme", () => {
+  test("clears legacy theme preferences and applies the canonical light theme", () => {
+    localStorage.setItem("bba.theme", "dark");
     const wrapper = ({ children }: { readonly children: ReactNode }) => <ThemeProvider>{children}</ThemeProvider>;
     const { result } = renderHook(useTheme, { wrapper });
-    act(() => result.current.setPreference("dark"));
-    expect(document.documentElement.dataset.theme).toBe("dark");
-    expect(localStorage.getItem("bba.theme")).toBe("dark");
+    expect(result.current.preference).toBe("light");
+    expect(result.current.resolvedTheme).toBe("light");
+    expect(document.documentElement.dataset.theme).toBe("light");
+    expect(document.documentElement.style.colorScheme).toBe("light");
+    expect(localStorage.getItem("bba.theme")).toBeNull();
   });
 
   test("keeps a locked lineage stage readable without color", () => {

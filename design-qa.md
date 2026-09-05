@@ -11,6 +11,7 @@
 ## Visual review
 
 - App Shell preserves the selected slim sidebar, persistent global header, warm paper background, black rules, editorial hierarchy, and institutional blue accent.
+- Theme regression review found that system color preference and a legacy `bba.theme` value could override the approved light palette. The bootstrap and shared provider now enforce the canonical light theme, clear the obsolete browser preference, and no longer expose the legacy System/Light/Dark control.
 - Mission identity, metadata, canonical lineage, Institutional Asset sheet, Human Governance decision rail, and Audit Record follow the selected information hierarchy.
 - The first comparison found an oversized desktop Mission title. The final pass reduced its scale and expanded its measure to better match the selected reference.
 - Desktop has no horizontal overflow in the tested Mission Workspace state.
@@ -27,11 +28,12 @@
 
 ## Automated evidence
 
-- Previous focused component evidence: 4 passed. The current run could not start Vitest workers in the mounted workspace.
+- A focused regression test now covers clearing a legacy dark preference and retaining the canonical light theme. The current run could not complete TypeScript or Vitest workers in the mounted workspace.
 - Previous Playwright evidence: 4 passed across desktop and mobile. The current run could not bind the local preview port (`EPERM`), so fresh browser evidence was not produced.
-- Current direct Vite production bundle: passed to `/tmp/bba-web-dist`.
-- Current private bundle value check: passed.
-- Current workspace boundary check: passed via the direct validator.
-- Current OpenAPI and Agency contract checks: passed via direct validators.
+- Current lint check: passed.
+- Current canonical-theme static scan: passed; no system/dark bootstrap, selector option, or dark theme override remains in the active UI paths.
+- Current `pnpm workspace:check`: passed.
+- Current `pnpm contracts:check`: passed (74 canonical operations and 10 Agency operations).
+- Current `pnpm web:build`: CSS structure passed, then the TypeScript stage stalled in the mounted filesystem without reporting a compiler error; the process was terminated and is not claimed as passed.
 
-final result: blocked by environment; fresh browser acceptance is required before this can be marked passed
+final result: blocked by environment; a completed web build and fresh browser comparison against the approved light reference are required before this can be marked passed

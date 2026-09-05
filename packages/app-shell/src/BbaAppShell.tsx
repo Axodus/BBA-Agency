@@ -1,4 +1,4 @@
-import { Alert, Badge, Button, Card, Drawer, NavLink, SkipLink, Spinner, useTheme, type ThemePreference } from "@bba/ui";
+import { Alert, Badge, Button, Card, Drawer, NavLink, SkipLink, Spinner } from "@bba/ui";
 import { useEffect, useRef } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { navigationItems } from "./navigation/navigation.js";
@@ -8,11 +8,6 @@ function Navigation() {
   return <nav aria-label="Primary navigation" className="bba-shell__navigation">{navigationItems.map((item) => item.path === undefined
     ? <span className="bba-shell__planned" key={item.label}>{item.label}<Badge>Planned</Badge></span>
     : <NavLink end={item.path === "/"} key={item.label} to={item.path}>{item.label}</NavLink>)}</nav>;
-}
-
-function ThemeSwitcher() {
-  const { preference, setPreference } = useTheme();
-  return <label className="bba-shell__theme"><span>Theme</span><select value={preference} onChange={(event) => setPreference(event.target.value as ThemePreference)}><option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option></select></label>;
 }
 
 function SessionIdentity({ session }: { readonly session: SessionSummary }) {
@@ -35,5 +30,5 @@ export function BbaAppShell({ runtime }: { readonly runtime: ShellRuntimeState }
     if (location.hash === "") main.current?.focus({ preventScroll: true });
   }, [location]);
   if (runtime.status !== "READY") return <RuntimeBoundary runtime={runtime} />;
-  return <div className="bba-shell"><SkipLink /><header className="bba-shell__header"><div><span className="bba-shell__eyebrow">Axodus</span><strong>BBA Agency</strong></div><div className="bba-shell__header-actions"><Badge>{runtime.tenantId}</Badge><ThemeSwitcher /><SessionIdentity session={runtime.session} /><div className="bba-shell__mobile"><Drawer title="Navigation" description="Available BBA Agency modules" trigger={<Button variant="secondary">Menu</Button>}><Navigation /></Drawer></div></div></header><aside className="bba-shell__sidebar"><Navigation /></aside><main className="bba-shell__main" id="main-content" ref={main} tabIndex={-1}><Outlet /></main></div>;
+  return <div className="bba-shell"><SkipLink /><header className="bba-shell__header"><div><span className="bba-shell__eyebrow">Axodus</span><strong>BBA Agency</strong></div><div className="bba-shell__header-actions"><Badge>{runtime.tenantId}</Badge><SessionIdentity session={runtime.session} /><div className="bba-shell__mobile"><Drawer title="Navigation" description="Available BBA Agency modules" trigger={<Button variant="secondary">Menu</Button>}><Navigation /></Drawer></div></div></header><aside className="bba-shell__sidebar"><Navigation /></aside><main className="bba-shell__main" id="main-content" ref={main} tabIndex={-1}><Outlet /></main></div>;
 }
