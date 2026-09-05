@@ -1,3 +1,3 @@
 import { Alert, Link } from "@bba/ui";
 
-export function RouteErrorPage() { return <main className="bba-shell-state" id="main-content"><Alert title="A página não pôde ser carregada">Tente novamente ou volte para a visão geral.</Alert><Link to="/">Voltar ao início</Link></main>; }
+export function RouteErrorPage() { return <main className="bba-shell-state" id="main-content"><Alert title="The page could not be loaded">Try again or return to the overview.</Alert><Link to="/">Back to overview</Link></main>; }

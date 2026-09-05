@@ -1,2 +1,6 @@
+Failed to create stream fd: Operation not permitted
+Failed to create stream fd: Operation not permitted
+Failed to create stream fd: Operation not permitted
 import { CreateMissionForm } from "./operations/create/Form.js";
-export function MissionCreatePage() { return <div className="bba-page bba-page--narrow"><header><span className="bba-page__eyebrow">Mission</span><h1>Criar Mission</h1><p>Defina a unidade central de trabalho, sua intenção e evidências institucionais.</p></header><CreateMissionForm /></div>; }
+export function MissionCreatePage() { return <div className="bba-page bba-page--narrow"><header><span className="bba-page__eyebrow">Mission</span><h1>Create Mission</h1><p>Define the central unit of work, its intent, and institutional evidence</p></header><CreateMissionForm /></div>; }
+

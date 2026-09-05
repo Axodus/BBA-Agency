@@ -2,9 +2,9 @@ import { expect, test } from "@playwright/test";
 
 test("canonical BBA app route exposes governed Mission lineage", async ({ page }) => {
   await page.goto("/");
-  await expect(page.getByRole("heading", { name: "Trabalho de IA sob governança humana" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "AI work under human governance" })).toBeVisible();
   await page.getByRole("link", { name: /Abrir Mission Workspace/u }).click();
-  await expect(page.getByRole("heading", { name: "Clareza institucional para o próximo ciclo" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Institutional clarity for the next cycle" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Cadeia institucional" })).toBeVisible();
   await expect(page.getByText("Mission").first()).toBeVisible();
   await expect(page.getByText("Institutional Asset").first()).toBeVisible();
@@ -14,11 +14,11 @@ test("canonical BBA app route exposes governed Mission lineage", async ({ page }
 
 test("Steward decision is local and never triggers external publication", async ({ page }) => {
   await page.goto("/missions/msn-024");
-  await page.getByRole("button", { name: "Revisar decisão" }).click();
-  await expect(page.getByRole("dialog", { name: "Confirmar decisão de governança" })).toContainText("Nenhuma Channel Variant será publicada");
-  await page.getByRole("button", { name: "Registrar decisão" }).click();
-  await expect(page.getByText("Decisão registrada localmente")).toBeVisible();
-  await expect(page.getByText("Nenhuma publicação externa foi iniciada.")).toBeVisible();
+  await page.getByRole("button", { name: "Review decision" }).click();
+  await expect(page.getByRole("dialog", { name: "Confirm governance decision" })).toContainText("No Channel Variant will be published");
+  await page.getByRole("button", { name: "Record decision" }).click();
+  await expect(page.getByText("Decision recorded locally")).toBeVisible();
+  await expect(page.getByText("No external publication was initiated.")).toBeVisible();
 });
 
 test("controlled local Publisher routes remain reachable within the canonical shell", async ({ page }) => {

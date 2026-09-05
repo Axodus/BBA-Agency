@@ -2,24 +2,24 @@ import type { AuditEntry, CanonicalReference, WorkforceContribution } from "./co
 
 export const missionFixture = Object.freeze({
   id: "mission-institutional-clarity-2026-3",
-  title: "Clareza institucional para o próximo ciclo",
-  objective: "Estabelecer uma narrativa institucional clara para orientar decisões e comunicações no ciclo 2026.3.",
+  title: "Institutional clarity for the next cycle",
+  objective: "Establish a clear institutional narrative to guide decisions and communications in cycle 2026.3.",
   steward: "Ana Lemos",
   updatedAt: "2026-09-03T14:32:00-03:00",
   dueAt: "2026-09-18",
 });
 
 export const lineageFixture: readonly CanonicalReference[] = Object.freeze([
-  { type: "Mission", id: missionFixture.id, label: "Clareza institucional", state: "awaiting", stateLabel: "Aguardando decisão" },
-  { type: "Institutional Asset", id: "asset-institutional-brief-2026-3-v1", label: "Institutional Brief — Ciclo 2026.3", state: "awaiting", stateLabel: "Aguardando decisão" },
+  { type: "Mission", id: missionFixture.id, label: "Institutional clarity", state: "awaiting", stateLabel: "Awaiting decision" },
+  { type: "Institutional Asset", id: "asset-institutional-brief-2026-3-v1", label: "Institutional Brief — Cycle 2026.3", state: "awaiting", stateLabel: "Awaiting decision" },
   { type: "Channel Variant", id: "variant-linkedin-brief-pending", label: "Brief Executivo · LinkedIn", state: "neutral", stateLabel: "Pendente", locked: true },
   { type: "Distribution Package", id: "package-linkedin-brief-not-constituted", label: "DP — LinkedIn Brief Set 2026", state: "neutral", stateLabel: "Pendente", locked: true },
 ]);
 
 export const workforceFixture: readonly WorkforceContribution[] = Object.freeze([
-  { role: "Analista de Pesquisa", contribution: "Coletou dados e referências", state: "approved" },
-  { role: "Redator Institucional", contribution: "Redigiu narrativa e síntese", state: "approved" },
-  { role: "Estrategista de Conteúdo", contribution: "Definiu posicionamentos", state: "approved" },
+  { role: "Research Analyst", contribution: "Collected data and references", state: "approved" },
+  { role: "Institutional Writer", contribution: "Drafted narrative and synthesis", state: "approved" },
+  { role: "Content Strategist", contribution: "Defined positions", state: "approved" },
 ]);
 
 export const auditFixture: readonly AuditEntry[] = Object.freeze([

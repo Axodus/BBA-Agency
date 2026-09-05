@@ -4,11 +4,11 @@ import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { RouteActionPanel } from "../features/shared/RouteActionPanel.js";
 import { ActivateMissionForm, CompleteMissionForm, RenameMissionForm } from "../features/missions/operations/actions/Forms.js";
 
-const titles = { UNAUTHENTICATED: "Sessão não autenticada", FORBIDDEN: "Acesso negado", NOT_FOUND: "Mission não encontrada", CONFLICT: "Conflito de estado", APPLICATION_FAILURE: "Falha da aplicação", UNKNOWN: "Falha inesperada", CONFIGURATION_MISSING: "Configuração ausente", SESSION_ERROR: "Falha de sessão" } as const;
+const titles = { UNAUTHENTICATED: "Unauthenticated session", FORBIDDEN: "Access denied", NOT_FOUND: "Mission not found", CONFLICT: "State conflict", APPLICATION_FAILURE: "Application failure", UNKNOWN: "Unexpected failure", CONFIGURATION_MISSING: "Missing configuration", SESSION_ERROR: "Session failure" } as const;
 export function Component() {
   const missionId = useParams().missionId ?? ""; const query = useMissionGetMissionQuery(missionId); const [search] = useSearchParams(); const navigate = useNavigate(); const action = search.get("action");
-  if (query.isPending) return <div className="bba-page"><Spinner label="Carregando Mission" /></div>;
-  if (query.error !== undefined) return <div className="bba-page bba-page--narrow"><Alert title={titles[query.error.code]}>{query.error.message}</Alert><Link to="/missions">Voltar para consulta</Link></div>;
+  if (query.isPending) return <div className="bba-page"><Spinner label="Loading Mission" /></div>;
+  if (query.error !== undefined) return <div className="bba-page bba-page--narrow"><Alert title={titles[query.error.code]}>{query.error.message}</Alert><Link to="/missions">Back to Mission query</Link></div>;
   if (query.data === undefined) return null;
   const close = () => { void navigate(`/missions/${encodeURIComponent(missionId)}`); };
   const panel = action === "missionRenameMission" ? <RouteActionPanel title="Rename Mission" description="Change the public Mission title." onClose={close}><RenameMissionForm missionId={missionId} version={query.data.version} /></RouteActionPanel> : action === "missionActivateMission" ? <RouteActionPanel title="Activate Mission" description="Record the governing authority and evidence." onClose={close}><ActivateMissionForm missionId={missionId} version={query.data.version} /></RouteActionPanel> : action === "missionCompleteMission" ? <RouteActionPanel title="Complete Mission" description="Record the final governed outcome." onClose={close}><CompleteMissionForm missionId={missionId} version={query.data.version} /></RouteActionPanel> : null;

@@ -45,9 +45,9 @@ export interface FoundationSurface {
 export const semanticStateLabels: Readonly<Record<SemanticState, string>> = Object.freeze({
   neutral: "Neutro",
   running: "Em andamento",
-  awaiting: "Aguardando decisão",
+  awaiting: "Awaiting decision",
   approved: "Aprovado",
   rejected: "Rejeitado",
   failed: "Falha",
-  attention: "Atenção",
+  attention: "Attention",
 });

@@ -43,7 +43,7 @@ export function Alert({ title, children, tone = "danger" }: { readonly title: st
   return <div className={`bba-alert bba-alert--${tone}`} role="alert"><strong>{title}</strong><div>{children}</div></div>;
 }
 
-export function Spinner({ label = "Carregando" }: { readonly label?: string }) {
+export function Spinner({ label = "Loading" }: { readonly label?: string }) {
   return <span className="bba-spinner" role="status"><span aria-hidden="true" className="bba-spinner__mark" />{label}</span>;
 }
 
@@ -86,7 +86,7 @@ export function Lineage({ title, eyebrow = "Canonicidade", lockLabel = "lineage 
   return <section className="bba-lineage" aria-labelledby={titleId}><header><div><span>{eyebrow}</span><h2 id={titleId}>{title}</h2></div><small>{lockLabel}</small></header><ol>{items.map((item) => <li key={item.id} data-locked={item.locked ? "true" : "false"}><div aria-hidden="true" className="bba-lineage__icon">{item.icon}</div><div><span>{item.type}</span><strong>{item.label}</strong><small>{item.id}</small>{item.locked ? <small className="bba-lineage__lock">Upstream decision pending</small> : null}<StatusBadge state={item.state}>{item.stateLabel}</StatusBadge></div></li>)}</ol></section>;
 }
 
-export function Skeleton({ lines = 3, label = "Carregando conteúdo" }: { readonly lines?: number; readonly label?: string }) {
+export function Skeleton({ lines = 3, label = "Loading content" }: { readonly lines?: number; readonly label?: string }) {
   return <div aria-busy="true" aria-label={label} className="bba-skeleton" role="status">{Array.from({ length: lines }, (_, index) => <span key={index} />)}</div>;
 }
 
@@ -109,5 +109,5 @@ export function Modal({ trigger, title, description, children, open, onOpenChang
 }
 
 export function ConfirmationDialog({ trigger, title, description, confirmLabel, onConfirm }: { readonly trigger: ReactNode; readonly title: string; readonly description: ReactNode; readonly confirmLabel: string; onConfirm(): void }) {
-  return <Dialog.Root><Dialog.Trigger asChild>{trigger}</Dialog.Trigger><Dialog.Portal><Dialog.Overlay className="bba-drawer__overlay" /><Dialog.Content className="bba-confirmation"><Dialog.Title>{title}</Dialog.Title><Dialog.Description asChild><div>{description}</div></Dialog.Description><div className="bba-confirmation__actions"><Dialog.Close asChild><Button variant="secondary">Voltar</Button></Dialog.Close><Dialog.Close asChild><Button onClick={onConfirm}>{confirmLabel}</Button></Dialog.Close></div></Dialog.Content></Dialog.Portal></Dialog.Root>;
+  return <Dialog.Root><Dialog.Trigger asChild>{trigger}</Dialog.Trigger><Dialog.Portal><Dialog.Overlay className="bba-drawer__overlay" /><Dialog.Content className="bba-confirmation"><Dialog.Title>{title}</Dialog.Title><Dialog.Description asChild><div>{description}</div></Dialog.Description><div className="bba-confirmation__actions"><Dialog.Close asChild><Button variant="secondary">Back</Button></Dialog.Close><Dialog.Close asChild><Button onClick={onConfirm}>{confirmLabel}</Button></Dialog.Close></div></Dialog.Content></Dialog.Portal></Dialog.Root>;
 }

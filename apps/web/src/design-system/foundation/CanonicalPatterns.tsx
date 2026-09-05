@@ -65,11 +65,11 @@ export function AuditTimeline({ entries }: { entries: ReadonlyArray<AuditEntry> 
 const legend: ReadonlyArray<{ state: SemanticState; label: string }> = [
   { state: "neutral", label: "Neutro" },
   { state: "running", label: "Em andamento" },
-  { state: "awaiting", label: "Aguardando decisão" },
-  { state: "approved", label: "Aprovado" },
-  { state: "rejected", label: "Rejeitado" },
+  { state: "awaiting", label: "Awaiting decision" },
+  { state: "approved", label: "Approved" },
+  { state: "rejected", label: "Rejected" },
   { state: "failed", label: "Falho" },
-  { state: "attention", label: "Atenção" },
+  { state: "attention", label: "Attention" },
 ];
 
 export function StatusLegend() {
