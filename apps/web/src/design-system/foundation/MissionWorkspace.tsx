@@ -1,6 +1,3 @@
-Failed to create stream fd: Operation not permitted
-Failed to create stream fd: Operation not permitted
-Failed to create stream fd: Operation not permitted
 import { useState } from "react";
 import { Check, FileText, Info, LockSimple, Warning } from "@phosphor-icons/react";
 import { Button, Feedback, Modal, Panel, StatusBadge, Table } from "@bba/ui";

@@ -1,6 +1,3 @@
-Failed to create stream fd: Operation not permitted
-Failed to create stream fd: Operation not permitted
-Failed to create stream fd: Operation not permitted
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Check, FileText, Info, LockSimple, Plus } from "@phosphor-icons/react";

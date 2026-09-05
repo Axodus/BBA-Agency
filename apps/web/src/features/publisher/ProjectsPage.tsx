@@ -1,6 +1,3 @@
-Failed to create stream fd: Operation not permitted
-Failed to create stream fd: Operation not permitted
-Failed to create stream fd: Operation not permitted
 import { Alert, Badge, Card, Link, Spinner } from "@bba/ui";
 import { useProjectsQuery } from "@bba/sdk-react";
 
