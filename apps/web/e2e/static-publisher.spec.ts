@@ -3,13 +3,14 @@ import { expect, test } from "@playwright/test";
 test("canonical BBA app route exposes governed Mission lineage", async ({ page }) => {
   await page.goto("/");
   await expect(page.getByRole("heading", { name: "AI work under human governance" })).toBeVisible();
-  await page.getByRole("link", { name: /Abrir Mission Workspace/u }).click();
+  await page.getByRole("link", { name: /Open Mission Workspace/u }).click();
   await expect(page.getByRole("heading", { name: "Institutional clarity for the next cycle" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Cadeia institucional" })).toBeVisible();
-  await expect(page.getByText("Mission").first()).toBeVisible();
-  await expect(page.getByText("Institutional Asset").first()).toBeVisible();
-  await expect(page.getByText("Channel Variant").first()).toBeVisible();
-  await expect(page.getByText("Distribution Package").first()).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Institutional lineage" })).toBeVisible();
+  const lineage = page.getByRole("region", { name: "Institutional lineage" });
+  await expect(lineage.getByText("Mission", { exact: true })).toBeVisible();
+  await expect(lineage.getByText("Institutional Asset", { exact: true })).toBeVisible();
+  await expect(lineage.getByText("Channel Variant", { exact: true })).toBeVisible();
+  await expect(lineage.getByText("Distribution Package", { exact: true })).toBeVisible();
 });
 
 test("Steward decision is local and never triggers external publication", async ({ page }) => {

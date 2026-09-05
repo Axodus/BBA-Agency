@@ -16,7 +16,7 @@ function record(value: unknown): Record<string, unknown> { return value !== null
 
 export function normalizeSdkError(status: number | undefined, payload: unknown): BbaSdkError {
   const envelope = record(payload); const body = record(envelope.error);
-  const message = text(body.message) ?? "A operação não pôde ser concluída.";
+  const message = text(body.message) ?? "The operation could not be completed.";
   const code = status === 401 ? "UNAUTHENTICATED" : status === 403 ? "FORBIDDEN" : status === 404 ? "NOT_FOUND" : status === 409 ? "CONFLICT" : status === 500 ? "APPLICATION_FAILURE" : "UNKNOWN";
   return new BbaSdkError(code, message, status, text(body.requestId), text(body.correlationId));
 }

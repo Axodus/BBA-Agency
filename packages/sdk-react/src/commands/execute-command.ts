@@ -15,8 +15,8 @@ export async function executeCommand<TPayload>(runtime: ReadySdkRuntime, queryCl
   try { response = await call(); } catch { throw new CommandOutcomeUnknownError(); }
   if (response.error !== undefined) throw normalizeSdkError(response.response?.status, response.error);
   const result = response.data?.data; const transactionId = result?.transactionId; const correlationId = response.data?.meta?.correlationId;
-  if (typeof transactionId !== "string" || typeof correlationId !== "string" || !Array.isArray(result?.resourceReferences)) throw new CommandOutcomeUnknownError("O servidor respondeu sem um receipt público válido.");
-  const resourceReferences = result.resourceReferences.map((value) => { const item = value as { readonly resourceType?: unknown; readonly resourceId?: unknown }; if (typeof item.resourceType !== "string" || typeof item.resourceId !== "string") throw new CommandOutcomeUnknownError("O receipt contém referências inválidas."); return { type: item.resourceType, id: item.resourceId }; });
+  if (typeof transactionId !== "string" || typeof correlationId !== "string" || !Array.isArray(result?.resourceReferences)) throw new CommandOutcomeUnknownError("The server returned no valid public receipt.");
+  const resourceReferences = result.resourceReferences.map((value) => { const item = value as { readonly resourceType?: unknown; readonly resourceId?: unknown }; if (typeof item.resourceType !== "string" || typeof item.resourceId !== "string") throw new CommandOutcomeUnknownError("The receipt contains invalid references."); return { type: item.resourceType, id: item.resourceId }; });
   await invalidateCommittedCommand(queryClient, operationId, runtime.tenantId, ids);
   return { operationId, transactionId, idempotencyKey: intent.idempotencyKey, correlationId, ...(intent.causationId === undefined ? {} : { causationId: intent.causationId }), resourceReferences };
 }
@@ -26,6 +26,6 @@ export function commandHeaders(runtime: ReadySdkRuntime, intent: CommandIntent<u
 }
 
 export function requireReady(runtime: ReadySdkRuntime | null): ReadySdkRuntime {
-  if (runtime === null) throw new BbaSdkError("CONFIGURATION_MISSING", "O SDK ainda não está configurado.", undefined, undefined, undefined);
+  if (runtime === null) throw new BbaSdkError("CONFIGURATION_MISSING", "The SDK is not configured yet.", undefined, undefined, undefined);
   return runtime;
 }

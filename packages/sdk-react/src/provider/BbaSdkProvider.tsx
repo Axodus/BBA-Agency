@@ -35,12 +35,12 @@ export function BbaSdkProvider({ baseUrl, auth, workspace, correlationIds, child
     Promise.all([auth.getAccessToken(), auth.getPrincipal(), workspace.getTenantId()]).then(([token, principal, tenantId]) => {
       if (!active) return;
       if (!baseUrl.trim() || token === undefined || principal === undefined || tenantId === undefined) {
-        setValue({ state: { status: "CONFIGURATION_MISSING", message: "API base URL, token, principal e tenant são obrigatórios para a sessão de desenvolvimento." }, ready: null }); return;
+        setValue({ state: { status: "CONFIGURATION_MISSING", message: "API base URL, token, principal, and tenant are required for the development session." }, ready: null }); return;
       }
       const client = createBbaClient({ baseUrl, getAccessToken: () => auth.getAccessToken(), getTenantId: () => tenantId, getCorrelationId: () => correlationIds.createCorrelationId(), ...(fetch === undefined ? {} : { fetch }) });
       const agency = new AgencyClient({ baseUrl, getAccessToken: () => auth.getAccessToken(), getTenantId: () => tenantId, getCorrelationId: () => correlationIds.createCorrelationId(), ...(fetch === undefined ? {} : { fetch }) });
       setValue({ state: { status: "READY", tenantId, principal }, ready: { client, agency, tenantId } });
-    }).catch(() => { if (active) setValue({ state: { status: "SESSION_ERROR", message: "O adapter de sessão ou workspace falhou." }, ready: null }); });
+    }).catch(() => { if (active) setValue({ state: { status: "SESSION_ERROR", message: "The session or workspace adapter failed." }, ready: null }); });
     return () => { active = false; };
   }, [auth, baseUrl, correlationIds, fetch, workspace]);
   return <BbaSdkContext.Provider value={value}><QueryClientProvider client={queryClient}>{children}</QueryClientProvider></BbaSdkContext.Provider>;

@@ -3,10 +3,9 @@ import { extname, join, relative, resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
 const targets = [
-  "apps/web/src/app", "apps/web/src/i18n", "apps/web/src/routes", "apps/web/src/static-publisher",
-  "apps/web/test/static-publisher.test.tsx", "apps/web/e2e/static-publisher.spec.ts",
+  "apps/web/src", "apps/web/test", "apps/web/e2e",
   "packages/app-shell/src", "packages/app-shell/test", "packages/ui/src", "packages/ui/test",
-  "packages/publisher-prototype/src", "packages/publisher-prototype/test", "packages/sdk-react/src/agency", "packages/sdk-react/test/agency-client.test.ts",
+  "packages/publisher-prototype/src", "packages/publisher-prototype/test", "packages/sdk-react/src", "packages/sdk-react/test",
   "transport/agency-runtime/src", "transport/agency-runtime/test",
   ".rag/development/REQ-IMP-016-FE-001-STATIC-MVP-REPORT.md",
   ".rag/development/REQ-IMP-016-FE-002-ENGLISH-DEFAULT-LANGUAGE-REPORT.md",

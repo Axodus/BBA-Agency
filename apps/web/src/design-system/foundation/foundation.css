@@ -76,8 +76,8 @@
 .foundation-page .bba-lineage li { border-color: var(--foundation-rule); }
 .foundation-page .bba-lineage li:not(:last-child)::after { background: var(--foundation-paper); }
 
-.foundation-workspace-grid { display: grid; grid-template-columns: minmax(0, 1.75fr) minmax(300px, .72fr); border: 1px solid var(--foundation-ink); }
-.foundation-asset-sheet { padding: 30px 34px; background: var(--foundation-sheet); border-right: 1px solid var(--foundation-ink); }
+.foundation-workspace-grid { min-width: 0; display: grid; grid-template-columns: minmax(0, 1.75fr) minmax(300px, .72fr); border: 1px solid var(--foundation-ink); }
+.foundation-asset-sheet { min-width: 0; padding: 30px 34px; background: var(--foundation-sheet); border-right: 1px solid var(--foundation-ink); }
 .foundation-sheet-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; padding-bottom: 25px; border-bottom: 1px solid var(--foundation-ink); }
 .foundation-sheet-header h2 { margin: 0 0 6px; font-family: var(--bba-font-display, Georgia, serif); font-size: 32px; font-weight: 500; line-height: 1.04; }
 .foundation-sheet-header div > span { color: var(--foundation-muted); font: 9px monospace; }
@@ -205,6 +205,8 @@
   .foundation-lineage li { border-right: 0; border-bottom: 1px solid var(--foundation-rule); }
   .foundation-lineage li:not(:last-child)::after { content: "↓"; top: auto; right: 24px; bottom: -10px; }
   .foundation-asset-sheet { padding: 24px 20px; }
+  .foundation-canonical-table { min-width: 0; }
+  .foundation-canonical-table .bba-table-wrap { max-width: calc(100vw - 82px); }
   .foundation-sheet-header { flex-direction: column; }
   .foundation-workforce-sources > section + section { padding-left: 0; border-left: 0; }
   .foundation-audit li { min-height: 105px; }

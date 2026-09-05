@@ -55,8 +55,8 @@ for (const viewport of viewports) {
     }
 
     await page.goto("/missions/msn-024");
-    await page.getByRole("button", { name: "Revisar decisão" }).click();
-    await expect(page.getByRole("dialog", { name: "Confirmar decisão de governança" })).toBeVisible();
+    await page.getByRole("button", { name: "Review decision" }).click();
+    await expect(page.getByRole("dialog", { name: "Confirm governance decision" })).toBeVisible();
     await capture(page, viewport.directory, viewport.name, "governance-dialog");
   });
 }

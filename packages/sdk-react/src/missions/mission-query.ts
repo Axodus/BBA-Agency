@@ -15,7 +15,7 @@ export function useMissionQuery(missionId: string, options: MissionQueryOptions 
     queryKey: missionKeys.detail(tenantId, missionId),
     enabled: runtime.ready !== null && missionId.trim().length > 0 && (options.enabled ?? true),
     queryFn: async (): Promise<MissionView> => {
-      if (runtime.ready === null) throw new BbaSdkError("CONFIGURATION_MISSING", "O SDK ainda não está configurado.", undefined, undefined, undefined);
+      if (runtime.ready === null) throw new BbaSdkError("CONFIGURATION_MISSING", "The SDK is not configured yet.", undefined, undefined, undefined);
       const response = await missionGetMission({ client: runtime.ready.client, path: { missionId }, headers: { "X-Tenant-Id": runtime.ready.tenantId } });
       if (response.error !== undefined) throw normalizeSdkError(response.response?.status, response.error);
       const mission = response.data.data;

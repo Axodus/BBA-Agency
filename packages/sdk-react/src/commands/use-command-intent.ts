@@ -22,7 +22,7 @@ export function useCommandIntent<TPayload>(execute: (intent: CommandIntent<TPayl
   const run = useCallback(async (candidate: CommandIntent<TPayload>) => {
     if (submitting.current) return; submitting.current = true; setState({ status: "SUBMITTING", intent: candidate });
     try { const receipt = await execute(candidate); setState({ status: "COMMITTED", intent: candidate, receipt }); }
-    catch (error) { if (error instanceof CommandOutcomeUnknownError) setState({ status: "OUTCOME_UNKNOWN", intent: candidate, message: error.message }); else setState({ status: "REJECTED", intent: candidate, message: error instanceof BbaSdkError ? error.message : "A operação foi rejeitada." }); }
+    catch (error) { if (error instanceof CommandOutcomeUnknownError) setState({ status: "OUTCOME_UNKNOWN", intent: candidate, message: error.message }); else setState({ status: "REJECTED", intent: candidate, message: error instanceof BbaSdkError ? error.message : "The operation was rejected." }); }
     finally { submitting.current = false; }
   }, [execute]);
   const submit = useCallback(async (payload: TPayload, reason: string, options: { readonly correlationId?: string; readonly causationId?: string } = {}) => {

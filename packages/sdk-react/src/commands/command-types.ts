@@ -23,5 +23,5 @@ export type CommandExecutionState<TPayload> =
   | { readonly status: "COMMITTED"; readonly intent: CommandIntent<TPayload>; readonly receipt: CommandReceipt };
 
 export class CommandOutcomeUnknownError extends Error {
-  public constructor(message = "Não foi possível confirmar o resultado da operação.") { super(message); this.name = "CommandOutcomeUnknownError"; }
+  public constructor(message = "The operation outcome could not be confirmed.") { super(message); this.name = "CommandOutcomeUnknownError"; }
 }

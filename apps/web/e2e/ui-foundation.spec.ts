@@ -2,33 +2,33 @@ import { expect, test } from "@playwright/test";
 
 test("Mission Workspace preserves lineage and governed decision flow", async ({ page }) => {
   await page.goto("/missions/msn-024");
-  await expect(page.getByRole("heading", { name: "Clareza institucional para o próximo ciclo" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Cadeia institucional" })).toBeVisible();
-  await expect(page.getByText("Distribuição não é publicação")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Institutional clarity for the next cycle" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Institutional lineage" })).toBeVisible();
+  await expect(page.getByText("Distribution is not publication")).toBeVisible();
 
   const viewportWidth = await page.evaluate(() => window.innerWidth);
   const documentWidth = await page.evaluate(() => document.documentElement.scrollWidth);
   expect(documentWidth).toBeLessThanOrEqual(viewportWidth);
 
-  await page.getByRole("button", { name: "Revisar decisão" }).click();
-  await expect(page.getByRole("dialog", { name: "Confirmar decisão de governança" })).toBeVisible();
-  await page.getByRole("button", { name: "Registrar decisão" }).click();
-  await expect(page.getByText("Decisão registrada localmente")).toBeVisible();
+  await page.getByRole("button", { name: "Review decision" }).click();
+  await expect(page.getByRole("dialog", { name: "Confirm governance decision" })).toBeVisible();
+  await page.getByRole("button", { name: "Record decision" }).click();
+  await expect(page.getByText("Decision recorded locally")).toBeVisible();
 });
 
 test("settings tabs and mobile navigation remain operable", async ({ page }) => {
   await page.goto("/settings");
-  await page.getByRole("tab", { name: "Governança" }).click();
-  await expect(page.getByText("As regras são somente exibidas nesta referência e não podem ser alteradas por esta interface.")).toBeVisible();
+  await page.getByRole("tab", { name: "Governance" }).click();
+  await expect(page.getByText("Rules are display-only in this reference and cannot be changed through this interface.")).toBeVisible();
 
   const viewportWidth = page.viewportSize()?.width ?? 0;
   if (viewportWidth < 832) {
-    await page.getByRole("button", { name: "Abrir navegação" }).click();
-    const navigation = page.getByRole("dialog", { name: "Navegação" });
+    await page.getByRole("button", { name: "Open navigation" }).click();
+    const navigation = page.getByRole("dialog", { name: "Navigation" });
     await expect(navigation).toBeVisible();
     await navigation.getByRole("link", { name: "UI Kit" }).click();
   } else {
     await page.getByRole("link", { name: "UI Kit" }).click();
   }
-  await expect(page.getByRole("heading", { name: "UI Kit BBA" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "BBA UI Kit" })).toBeVisible();
 });

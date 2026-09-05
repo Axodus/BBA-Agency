@@ -43,18 +43,18 @@ export function LineageRail({ items }: { items: ReadonlyArray<CanonicalReference
     const Icon = entityIcons[item.type];
     return { ...item, icon: <Icon size={18} weight="bold" /> };
   });
-  return <Lineage title="Cadeia institucional" lockLabel="lineage preservada" items={lineageItems} />;
+  return <Lineage title="Institutional lineage" lockLabel="lineage preserved" items={lineageItems} />;
 }
 
 export function AuditTimeline({ entries }: { entries: ReadonlyArray<AuditEntry> }) {
   return <section className="foundation-audit" aria-labelledby="audit-title">
     <div className="foundation-section-heading">
-      <div><p className="foundation-kicker">Auditabilidade</p><h2 id="audit-title">Audit Record</h2></div>
-      <span className="foundation-record-count">{entries.length} registros locais</span>
+      <div><p className="foundation-kicker">Auditability</p><h2 id="audit-title">Audit Record</h2></div>
+      <span className="foundation-record-count">{entries.length} local records</span>
     </div>
     <ol>
       {entries.map((entry) => <li key={entry.id}>
-        <time dateTime={entry.at}>{new Intl.DateTimeFormat("pt-BR", { hour: "2-digit", minute: "2-digit" }).format(new Date(entry.at))}</time>
+        <time dateTime={entry.at}>{new Intl.DateTimeFormat("en-US", { hour: "2-digit", minute: "2-digit" }).format(new Date(entry.at))}</time>
         <div className="foundation-audit-marker" aria-hidden="true" />
         <div><strong>{entry.action}</strong><p>{entry.objectId}</p><small>{entry.actor}</small></div>
       </li>)}
@@ -63,18 +63,18 @@ export function AuditTimeline({ entries }: { entries: ReadonlyArray<AuditEntry> 
 }
 
 const legend: ReadonlyArray<{ state: SemanticState; label: string }> = [
-  { state: "neutral", label: "Neutro" },
-  { state: "running", label: "Em andamento" },
+  { state: "neutral", label: "Neutral" },
+  { state: "running", label: "In progress" },
   { state: "awaiting", label: "Awaiting decision" },
   { state: "approved", label: "Approved" },
   { state: "rejected", label: "Rejected" },
-  { state: "failed", label: "Falho" },
+  { state: "failed", label: "Failed" },
   { state: "attention", label: "Attention" },
 ];
 
 export function StatusLegend() {
-  return <section className="foundation-status-legend" aria-label="Legenda dos estados semânticos">
-    <span>Estados</span>
+  return <section className="foundation-status-legend" aria-label="Semantic state legend">
+    <span>States</span>
     {legend.map((item) => <StatusBadge key={item.state} state={item.state}>{item.label}</StatusBadge>)}
   </section>;
 }

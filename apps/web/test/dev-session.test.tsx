@@ -9,7 +9,7 @@ describe("DevSessionSetup", () => {
     fireEvent.change(screen.getByLabelText("Tenant"), { target: { value: "tenant_test" } });
     fireEvent.change(screen.getByLabelText("Subject"), { target: { value: "steward" } });
     fireEvent.change(screen.getByLabelText("Actor reference"), { target: { value: "person:steward" } });
-    fireEvent.click(screen.getByRole("button", { name: "Iniciar sessão local" }));
+    fireEvent.click(screen.getByRole("button", { name: "Start local session" }));
     expect(configure).toHaveBeenCalledWith({ baseUrl: "https://api.example.test", accessToken: "token", tenantId: "tenant_test", subject: "steward", actorReference: "person:steward" });
     expect(localStorage.getItem("accessToken")).toBeNull(); expect(sessionStorage.length).toBe(0);
   });
