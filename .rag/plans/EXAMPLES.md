@@ -1,3 +1,8 @@
+> [!WARNING]
+> Historical examples for the archived April 2026 AXODUS campaign-agent
+> framework. They are not active product examples or executable instructions.
+> See [`../OPERATIONAL_INDEX.md`](../OPERATIONAL_INDEX.md).
+
 # Exemplos Práticos — BriefInterpreterAgent
 
 ## Exemplo 1: SaaS → Descobrir Real Problem

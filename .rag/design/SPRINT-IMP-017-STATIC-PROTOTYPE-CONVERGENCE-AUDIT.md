@@ -1,3 +1,10 @@
+> [!NOTE]
+> Historical audit of convergence with the former `static/` surface. The
+> institutional site is now maintained on the `static` branch. This audit does
+> not define the active application contract; use
+> [BBA App UI Foundation](BBA-APP-UI-FOUNDATION.md) and the
+> [Operational Documentation Index](../OPERATIONAL_INDEX.md).
+
 # SPRINT-IMP-017 Static–Prototype Convergence Audit
 
 Status: `PASS`

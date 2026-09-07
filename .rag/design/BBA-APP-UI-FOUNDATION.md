@@ -37,11 +37,12 @@ The active BBA application theme is light-only: warm paper surfaces, near-black 
 
 | State | Meaning | Typical use |
 | --- | --- | --- |
-| `neutral` | No active transition | Not started, not constituted, or blocked by upstream lineage |
+| `neutral` | No active transition | Not started or not constituted |
 | `running` | Work is executing | AI Workforce contribution in progress |
 | `awaiting` | Human decision required | Institutional Asset in Steward review |
 | `approved` | Explicit governance approval | Approved object or completed controlled contribution |
 | `rejected` | Explicit human rejection | Object returned or stopped by Steward |
+| `blocked` | An upstream condition prevents progress | A required decision or lineage prerequisite is missing |
 | `failed` | Execution did not complete | Connector, loading, or operation failure |
 | `attention` | Review recommended | Policy finding or approaching constraint |
 

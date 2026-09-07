@@ -4,6 +4,9 @@
 planning, architectural decisions, contracts, traceability, and delivery
 evidence. It is governed repository content, not a generated cache.
 
+For active workspace work, begin with the
+[Operational Documentation Index](OPERATIONAL_INDEX.md).
+
 ## Collections
 
 - `development/`: implementation controls, reports, traceability, private

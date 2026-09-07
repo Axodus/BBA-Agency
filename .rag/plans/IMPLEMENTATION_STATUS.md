@@ -1,3 +1,9 @@
+> [!WARNING]
+> Historical snapshot from April 22, 2026. Its implementation and validation
+> claims apply to archived legacy code and are not evidence for the active
+> `dev` workspace. Use [`../OPERATIONAL_INDEX.md`](../OPERATIONAL_INDEX.md) for
+> current status and verification routes.
+>
 > Atualizacao validada nesta sessao (2026-04-22)
 >
 > Snapshot operacional mais recente:

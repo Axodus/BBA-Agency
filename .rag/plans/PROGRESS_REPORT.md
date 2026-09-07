@@ -1,3 +1,11 @@
+> [!WARNING]
+> Historical snapshot from April 22, 2026. This document describes the archived
+> AXODUS campaign-agent framework and must not be used as an instruction or
+> status source for the active workspace. The referenced `src/`, memory stack,
+> and `npm` scripts were removed from `dev` on September 3, 2026 and remain
+> recoverable from `archive/dev-legacy-demo-src-2026-09-03`. Start with
+> [`../OPERATIONAL_INDEX.md`](../OPERATIONAL_INDEX.md) for current execution.
+>
 > Atualizacao validada nesta sessao (2026-04-22)
 >
 > Progresso confirmado apos a ultima rodada:

@@ -1,3 +1,9 @@
+> [!WARNING]
+> Historical implementation notes for the archived April 2026 AXODUS agent
+> framework. The templates and paths below do not define the current AI
+> Workforce architecture. Use [`../OPERATIONAL_INDEX.md`](../OPERATIONAL_INDEX.md)
+> before planning active work.
+
 # Knowledge Base — AXODUS Agent Implementation
 
 **Última Atualização**: 21 de Abril de 2026  

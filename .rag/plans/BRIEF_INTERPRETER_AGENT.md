@@ -1,3 +1,8 @@
+> [!WARNING]
+> Historical documentation for an archived campaign-oriented agent. This is
+> not an active AI Workforce contract. See
+> [`../OPERATIONAL_INDEX.md`](../OPERATIONAL_INDEX.md) for current documentation.
+
 # BriefInterpreterAgent — Fase 4.1
 
 ## Visão Geral

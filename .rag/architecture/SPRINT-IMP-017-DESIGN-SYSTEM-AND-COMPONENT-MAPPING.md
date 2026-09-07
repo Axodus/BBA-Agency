@@ -1,3 +1,9 @@
+> [!NOTE]
+> Historical design-mapping record. Its references to `static/` describe the
+> former institutional surface, now preserved on the `static` branch. For active
+> app work, use [`../design/BBA-APP-UI-FOUNDATION.md`](../design/BBA-APP-UI-FOUNDATION.md)
+> and [`../OPERATIONAL_INDEX.md`](../OPERATIONAL_INDEX.md).
+
 # SPRINT-IMP-017 Design System and Component Mapping
 
 Status: `PROPOSED_FOR_IMPLEMENTATION`

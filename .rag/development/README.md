@@ -1,15 +1,18 @@
-# BBA Platform Core Development
+# BBA Agency Development Controls
 
-This directory is the local implementation index for the BBA Platform Core.
-The normative source remains the governed corpus in the sibling
-`../../../Documentation/.rag/bba-platform/` checkout. These documents are local
-execution controls and must not be treated as a replacement or public
-projection of that corpus.
+This directory contains local controls, implementation reports, contracts, and
+traceability for the active BBA Agency workspace. Start with the
+[Operational Documentation Index](../OPERATIONAL_INDEX.md) and the
+[repository boundaries](repository-boundaries.md).
 
-Current gate: `EPIC-IMP-005` / `M5 — Institutional Assets Ready`.
+The normative source remains the private corpus referenced by
+[source-index.md](source-index.md). Local documents do not replace it or make
+implementation status public.
 
-The Core is isolated in `core/`. The deterministic reference demo and legacy
-experiments are preserved and validated separately.
+The active workspace contains `apps/web`, `apps/api`, `core`, `packages/*`,
+`transport/*`, and contracts. The former deterministic demo, legacy `src/`,
+and memory stack are historical surfaces preserved in
+`archive/dev-legacy-demo-src-2026-09-03`.
 
 ## Local controls
 
@@ -21,7 +24,6 @@ experiments are preserved and validated separately.
 - [Definition of Done](definition-of-done.md)
 - [Traceability matrix](traceability-matrix.md)
 - [Error and validation taxonomy](error-and-validation-taxonomy.md)
-- [Demo regression contract](demo-regression-contract.md)
 - [M0 report](M0-REPOSITORY-READY-REPORT.md)
 - [Documentation gaps](documentation-gaps.md)
 - [Architecture baseline](architecture-baseline.md)
@@ -41,3 +43,4 @@ experiments are preserved and validated separately.
 - [AssetVersion contract](contracts/AssetVersion.md)
 - [AssetRelationship contract](contracts/AssetRelationship.md)
 - [EPIC-IMP-005 report](EPIC-IMP-005-INSTITUTIONAL-ASSETS-REPORT.md)
+- [UI Foundation verification](UI-FOUNDATION-VERIFICATION-2026-09-06.md)

@@ -1,3 +1,8 @@
+> [!WARNING]
+> Historical merge plan for the archived AXODUS workspace. The merge target and
+> paths below are not part of the active `dev` structure. See
+> [`../OPERATIONAL_INDEX.md`](../OPERATIONAL_INDEX.md) for current boundaries.
+
 # 📋 Plano de Merge: `axodus/` + `src/` → `AxodusBBA`
 
 ## 1. **Objetivo do Merge**

@@ -1,3 +1,8 @@
+> [!WARNING]
+> Historical documentation for an archived campaign-oriented agent. This is
+> not an active AI Workforce contract. See
+> [`../OPERATIONAL_INDEX.md`](../OPERATIONAL_INDEX.md) for current documentation.
+
 # AUDIENCE PROFILER AGENT — Fase 4.2
 
 **Status**: ✅ Implementado | ✅ Compilando | ⏳ Próximo: TrendAnalystAgent (Fase 4.3)

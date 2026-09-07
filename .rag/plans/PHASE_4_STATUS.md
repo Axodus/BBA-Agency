@@ -1,3 +1,9 @@
+> [!WARNING]
+> Historical snapshot from April 22, 2026. It describes the archived AXODUS
+> campaign-agent framework, not the active BBA Agency workspace. Do not execute
+> its `npm`, `src/`, MongoDB, Chroma, or MCP instructions. Use
+> [`../OPERATIONAL_INDEX.md`](../OPERATIONAL_INDEX.md) for current guidance.
+>
 > Atualizacao validada nesta sessao (2026-04-22)
 >
 > Estado real do workspace apos a implementacao dos agentes restantes desta etapa:

@@ -1,3 +1,11 @@
+> [!NOTE]
+> Implementation evidence for the canonical Platform-facing browser surface.
+> The active `apps/web` UI Foundation uses controlled local data and does not
+> establish an executable Core HTTP integration. Read
+> [`../OPERATIONAL_INDEX.md`](../OPERATIONAL_INDEX.md) and
+> [`../development/repository-boundaries.md`](../development/repository-boundaries.md)
+> before treating this record as current runtime behavior.
+
 # EPIC-IMP-015 — BBA Standalone Product Surface
 
 ## Status
