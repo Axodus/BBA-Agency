@@ -1,12 +1,12 @@
 import * as Dialog from "@radix-ui/react-dialog";
-import { cloneElement, isValidElement, type ComponentPropsWithoutRef, type ReactNode, useId } from "react";
+import { cloneElement, isValidElement, type ComponentPropsWithoutRef, type KeyboardEvent, type ReactNode, useId, useRef } from "react";
 import { Link as RouterLink, NavLink as RouterNavLink, type LinkProps, type NavLinkProps } from "react-router-dom";
 
 function classes(...values: Array<string | false | undefined>): string {
   return values.filter(Boolean).join(" ");
 }
 
-export type SemanticState = "neutral" | "running" | "awaiting" | "approved" | "rejected" | "failed" | "attention";
+export type SemanticState = "neutral" | "running" | "awaiting" | "approved" | "rejected" | "blocked" | "failed" | "attention";
 
 export function Button({ className, variant = "primary", ...props }: ComponentPropsWithoutRef<"button"> & { readonly variant?: "primary" | "secondary" | "ghost" | "danger" }) {
   return <button className={classes("bba-button", `bba-button--${variant}`, className)} {...props} />;
@@ -21,7 +21,8 @@ export function Checkbox({ label, ...props }: ComponentPropsWithoutRef<"input"> 
 
 export function Field({ label, hint, error, id: providedId, children }: { readonly label: string; readonly hint?: string; readonly error?: string; readonly id?: string; readonly children: ReactNode }) {
   const generatedId = useId();
-  const id = providedId ?? generatedId;
+  const childId = isValidElement<{ id?: string }>(children) ? children.props.id : undefined;
+  const id = childId ?? providedId ?? generatedId;
   const descriptionId = `${id}-description`;
   const control = isValidElement<{ id?: string; "aria-describedby"?: string }>(children) ? cloneElement(children, { id: children.props.id ?? id, "aria-describedby": children.props["aria-describedby"] ?? descriptionId }) : children;
   return <div className="bba-field"><label htmlFor={id}>{label}</label>{control}<div id={descriptionId} className={classes("bba-field__message", error && "bba-field__message--error")}>{error ?? hint}</div></div>;
@@ -62,13 +63,24 @@ export interface TabItem {
 }
 
 export function Tabs({ items, activeId, onChange, label }: { readonly items: readonly TabItem[]; readonly activeId: string; readonly label: string; onChange(id: string): void }) {
+  const tabsId = useId();
   const active = items.find((item) => item.id === activeId) ?? items[0];
   if (active === undefined) return null;
-  return <div className="bba-tabs"><div aria-label={label} className="bba-tabs__list" role="tablist">{items.map((item) => <button aria-controls={`${item.id}-panel`} aria-selected={item.id === active.id} id={`${item.id}-tab`} key={item.id} onClick={() => onChange(item.id)} role="tab" type="button">{item.label}</button>)}</div><div aria-labelledby={`${active.id}-tab`} className="bba-tabs__panel" id={`${active.id}-panel`} role="tabpanel">{active.content}</div></div>;
+  const move = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
+    const last = items.length - 1;
+    const target = event.key === "ArrowRight" ? (index === last ? 0 : index + 1) : event.key === "ArrowLeft" ? (index === 0 ? last : index - 1) : event.key === "Home" ? 0 : event.key === "End" ? last : undefined;
+    if (target === undefined) return;
+    event.preventDefault();
+    const item = items[target];
+    if (item === undefined) return;
+    onChange(item.id);
+    requestAnimationFrame(() => document.getElementById(`${tabsId}-${item.id}-tab`)?.focus());
+  };
+  return <div className="bba-tabs"><div aria-label={label} className="bba-tabs__list" role="tablist">{items.map((item, index) => <button aria-controls={`${tabsId}-${item.id}-panel`} aria-selected={item.id === active.id} id={`${tabsId}-${item.id}-tab`} key={item.id} onClick={() => onChange(item.id)} onKeyDown={(event) => move(event, index)} role="tab" tabIndex={item.id === active.id ? 0 : -1} type="button">{item.label}</button>)}</div><div aria-labelledby={`${tabsId}-${active.id}-tab`} className="bba-tabs__panel" id={`${tabsId}-${active.id}-panel`} role="tabpanel" tabIndex={0}>{active.content}</div></div>;
 }
 
 export function Table({ className, children, ...props }: ComponentPropsWithoutRef<"table">) {
-  return <div className="bba-table-wrap"><table className={classes("bba-table", className)} {...props}>{children}</table></div>;
+  return <div className="bba-table-wrap" role="region" aria-label="Scrollable data table" tabIndex={0}><table className={classes("bba-table", className)} {...props}>{children}</table></div>;
 }
 
 export interface LineageItem {
@@ -81,9 +93,9 @@ export interface LineageItem {
   readonly icon?: ReactNode;
 }
 
-export function Lineage({ title, eyebrow = "Canonicidade", lockLabel = "lineage preservada", items }: { readonly title: string; readonly eyebrow?: string; readonly lockLabel?: string; readonly items: readonly LineageItem[] }) {
+export function Lineage({ title, eyebrow = "Canonical lineage", lockLabel = "Lineage preserved", items }: { readonly title: string; readonly eyebrow?: string; readonly lockLabel?: string; readonly items: readonly LineageItem[] }) {
   const titleId = useId();
-  return <section className="bba-lineage" aria-labelledby={titleId}><header><div><span>{eyebrow}</span><h2 id={titleId}>{title}</h2></div><small>{lockLabel}</small></header><ol>{items.map((item) => <li key={item.id} data-locked={item.locked ? "true" : "false"}><div aria-hidden="true" className="bba-lineage__icon">{item.icon}</div><div><span>{item.type}</span><strong>{item.label}</strong><small>{item.id}</small>{item.locked ? <small className="bba-lineage__lock">Upstream decision pending</small> : null}<StatusBadge state={item.state}>{item.stateLabel}</StatusBadge></div></li>)}</ol></section>;
+  return <section className="bba-lineage" aria-labelledby={titleId}><header><div><span>{eyebrow}</span><h2 id={titleId}>{title}</h2></div><small>{lockLabel}</small></header><ol>{items.map((item) => <li key={item.id} data-locked={item.locked ? "true" : "false"}><div aria-hidden="true" className="bba-lineage__icon">{item.icon}</div><div><span>{item.type}</span><strong>{item.label}</strong><small>{item.id}</small>{item.locked ? <small className="bba-lineage__lock">Stage unavailable</small> : null}<StatusBadge state={item.state}>{item.stateLabel}</StatusBadge></div></li>)}</ol></section>;
 }
 
 export function Skeleton({ lines = 3, label = "Loading content" }: { readonly lines?: number; readonly label?: string }) {
@@ -100,12 +112,27 @@ export function NavLink({ className, ...props }: NavLinkProps) {
 }
 export function SkipLink({ targetId = "main-content", label = "Skip to main content" }: { readonly targetId?: string; readonly label?: string }) { return <a className="bba-skip-link" href={`#${targetId}`}>{label}</a>; }
 
+function useOverlayFocus() {
+  const opener = useRef<HTMLElement | null>(null);
+  return {
+    onOpenAutoFocus: () => { opener.current = document.activeElement instanceof HTMLElement ? document.activeElement : null; },
+    onCloseAutoFocus: (event: Event) => {
+      event.preventDefault();
+      const target = opener.current;
+      if (target?.isConnected && !target.matches(":disabled")) target.focus();
+      else document.querySelector<HTMLElement>("main")?.focus();
+    },
+  };
+}
+
 export function Drawer({ trigger, title, description, children, open, onOpenChange }: { readonly trigger?: ReactNode; readonly title: string; readonly description?: string; readonly children: ReactNode; readonly open?: boolean; onOpenChange?(open: boolean): void }) {
-  return <Dialog.Root {...(open === undefined ? {} : { open })} {...(onOpenChange === undefined ? {} : { onOpenChange })}>{trigger === undefined ? null : <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>}<Dialog.Portal><Dialog.Overlay className="bba-drawer__overlay" /><Dialog.Content className="bba-drawer__content"><Dialog.Title>{title}</Dialog.Title>{description === undefined ? null : <Dialog.Description>{description}</Dialog.Description>}<div className="bba-drawer__body">{children}</div><Dialog.Close asChild><Button variant="ghost" aria-label="Close navigation">Close</Button></Dialog.Close></Dialog.Content></Dialog.Portal></Dialog.Root>;
+  const focus = useOverlayFocus();
+  return <Dialog.Root {...(open === undefined ? {} : { open })} {...(onOpenChange === undefined ? {} : { onOpenChange })}>{trigger === undefined ? null : <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>}<Dialog.Portal><Dialog.Overlay className="bba-drawer__overlay" /><Dialog.Content {...focus} className="bba-drawer__content"><Dialog.Title>{title}</Dialog.Title>{description === undefined ? null : <Dialog.Description>{description}</Dialog.Description>}<div className="bba-drawer__body">{children}</div><Dialog.Close asChild><Button variant="ghost" aria-label="Close navigation">Close</Button></Dialog.Close></Dialog.Content></Dialog.Portal></Dialog.Root>;
 }
 
 export function Modal({ trigger, title, description, children, open, onOpenChange }: { readonly trigger?: ReactNode; readonly title: string; readonly description?: string; readonly children: ReactNode; readonly open?: boolean; onOpenChange?(open: boolean): void }) {
-  return <Dialog.Root {...(open === undefined ? {} : { open })} {...(onOpenChange === undefined ? {} : { onOpenChange })}>{trigger === undefined ? null : <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>}<Dialog.Portal><Dialog.Overlay className="bba-dialog__overlay" /><Dialog.Content className="bba-dialog__content"><div className="bba-dialog__header"><div><Dialog.Title>{title}</Dialog.Title>{description === undefined ? null : <Dialog.Description>{description}</Dialog.Description>}</div><Dialog.Close asChild><Button aria-label="Fechar modal" variant="ghost">Fechar</Button></Dialog.Close></div><div className="bba-dialog__body">{children}</div></Dialog.Content></Dialog.Portal></Dialog.Root>;
+  const focus = useOverlayFocus();
+  return <Dialog.Root {...(open === undefined ? {} : { open })} {...(onOpenChange === undefined ? {} : { onOpenChange })}>{trigger === undefined ? null : <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>}<Dialog.Portal><Dialog.Overlay className="bba-dialog__overlay" /><Dialog.Content {...focus} className="bba-dialog__content"><div className="bba-dialog__header"><div><Dialog.Title>{title}</Dialog.Title>{description === undefined ? null : <Dialog.Description>{description}</Dialog.Description>}</div><Dialog.Close asChild><Button aria-label="Close modal" variant="ghost">Close</Button></Dialog.Close></div><div className="bba-dialog__body">{children}</div></Dialog.Content></Dialog.Portal></Dialog.Root>;
 }
 
 export function ConfirmationDialog({ trigger, title, description, confirmLabel, onConfirm }: { readonly trigger: ReactNode; readonly title: string; readonly description: ReactNode; readonly confirmLabel: string; onConfirm(): void }) {

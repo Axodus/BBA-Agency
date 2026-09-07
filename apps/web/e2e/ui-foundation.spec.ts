@@ -14,6 +14,9 @@ test("Mission Workspace preserves lineage and governed decision flow", async ({ 
   await expect(page.getByRole("dialog", { name: "Confirm governance decision" })).toBeVisible();
   await page.getByRole("button", { name: "Record decision" }).click();
   await expect(page.getByText("Decision recorded locally")).toBeVisible();
+  await page.goto("/");
+  await page.goto("/missions");
+  await expect(page.getByRole("button", { name: "Decision recorded" }).first()).toBeDisabled();
 });
 
 test("settings tabs and mobile navigation remain operable", async ({ page }) => {

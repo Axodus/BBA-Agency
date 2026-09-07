@@ -15,8 +15,9 @@ describe("ThemeProvider", () => {
     expect(localStorage.getItem("bba.theme")).toBeNull();
   });
 
-  test("keeps a locked lineage stage readable without color", () => {
-    const { getByText } = render(<Lineage title="Canonical lineage" items={[{ type: "Mission", id: "mission-1", label: "Mission", state: "approved", stateLabel: "Approved" }, { type: "Channel Variant", id: "variant-1", label: "Variant", state: "neutral", stateLabel: "Locked", locked: true }]} />);
-    expect(getByText("Upstream decision pending")).toBeTruthy();
+  test("keeps a blocked lineage stage readable without color", () => {
+    const { getByText } = render(<Lineage title="Canonical lineage" items={[{ type: "Mission", id: "mission-1", label: "Mission", state: "approved", stateLabel: "Approved" }, { type: "Channel Variant", id: "variant-1", label: "Variant", state: "blocked", stateLabel: "Blocked", locked: true }]} />);
+    expect(getByText("Stage unavailable")).toBeTruthy();
+    expect(getByText("Blocked")).toBeTruthy();
   });
 });

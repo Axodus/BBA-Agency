@@ -48,6 +48,7 @@ export const semanticStateLabels: Readonly<Record<SemanticState, string>> = Obje
   awaiting: "Awaiting decision",
   approved: "Approved",
   rejected: "Rejected",
+  blocked: "Blocked",
   failed: "Failed",
   attention: "Attention",
 });

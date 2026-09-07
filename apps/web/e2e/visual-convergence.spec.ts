@@ -35,9 +35,15 @@ for (const viewport of viewports) {
   test(`captures converged Agency surfaces at ${viewport.name}`, async ({ page }) => {
     test.setTimeout(120_000);
     await page.setViewportSize({ width: viewport.width, height: viewport.height });
+    const consoleErrors: string[] = [];
+    page.on("pageerror", (error) => consoleErrors.push(error.message));
+    page.on("console", (message) => {
+      if (message.type() === "error") consoleErrors.push(message.text());
+    });
 
     const routes = [
       ["overview", "/"],
+      ["missions", "/missions"],
       ["mission-workspace", "/missions/msn-024"],
       ["institutional-assets", "/institutional-assets"],
       ["distribution-packages", "/distribution-packages"],
@@ -58,5 +64,6 @@ for (const viewport of viewports) {
     await page.getByRole("button", { name: "Review decision" }).click();
     await expect(page.getByRole("dialog", { name: "Confirm governance decision" })).toBeVisible();
     await capture(page, viewport.directory, viewport.name, "governance-dialog");
+    expect(consoleErrors, `Unexpected console errors at ${viewport.name}`).toEqual([]);
   });
 }

@@ -6,9 +6,9 @@ The implementation authority is the certified documentation corpus at:
 
 `../../../Documentation/.rag/bba-platform/`
 
-On this workspace, the path resolves to the sibling repository
-`/mnt/d/Rede/Github/Axodus/Documentation/.rag/bba-platform/`. A clean clone
-that does not include that private checkout must mark source verification as
+This path is a repository-relative reference to a private sibling checkout;
+its absolute location depends on the development environment. A workspace that
+does not include the referenced private corpus must mark source verification as
 `BLOCKED`; it must not invent a substitute document.
 
 The normative hierarchy is:

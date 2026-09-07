@@ -12,8 +12,8 @@ export const missionFixture = Object.freeze({
 export const lineageFixture: readonly CanonicalReference[] = Object.freeze([
   { type: "Mission", id: missionFixture.id, label: "Institutional clarity", state: "awaiting", stateLabel: "Awaiting decision" },
   { type: "Institutional Asset", id: "asset-institutional-brief-2026-3-v1", label: "Institutional Brief — Cycle 2026.3", state: "awaiting", stateLabel: "Awaiting decision" },
-  { type: "Channel Variant", id: "variant-linkedin-brief-pending", label: "Executive Brief · LinkedIn", state: "neutral", stateLabel: "Pending", locked: true },
-  { type: "Distribution Package", id: "package-linkedin-brief-not-constituted", label: "DP — LinkedIn Brief Set 2026", state: "neutral", stateLabel: "Pending", locked: true },
+  { type: "Channel Variant", id: "variant-linkedin-brief-pending", label: "Executive Brief · LinkedIn", state: "blocked", stateLabel: "Blocked", locked: true },
+  { type: "Distribution Package", id: "package-linkedin-brief-not-constituted", label: "DP — LinkedIn Brief Set 2026", state: "blocked", stateLabel: "Blocked", locked: true },
 ]);
 
 export const workforceFixture: readonly WorkforceContribution[] = Object.freeze([
@@ -25,6 +25,6 @@ export const workforceFixture: readonly WorkforceContribution[] = Object.freeze(
 export const auditFixture: readonly AuditEntry[] = Object.freeze([
   { id: "audit-04", at: "2026-09-03T11:07:00-03:00", actor: "AI Workforce", action: "Completed the Institutional Asset and submitted it for a decision.", objectId: "asset-institutional-brief-2026-3-v1" },
   { id: "audit-03", at: "2026-09-03T10:42:00-03:00", actor: "AI Workforce", action: "Completed research and data collection.", objectId: missionFixture.id },
-  { id: "audit-02", at: "2026-09-03T10:15:00-03:00", actor: "AI Workforce", action: "Recorded preparation of the Channel Variant.", objectId: "variant-linkedin-brief-pending" },
+  { id: "audit-02", at: "2026-09-03T10:15:00-03:00", actor: "AI Workforce", action: "Recorded the planned Channel Variant; preparation remains blocked.", objectId: "variant-linkedin-brief-pending" },
   { id: "audit-01", at: "2026-09-03T09:15:00-03:00", actor: "Steward", action: "Created the Mission and defined its objectives.", objectId: missionFixture.id },
 ]);

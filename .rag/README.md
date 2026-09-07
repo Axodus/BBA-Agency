@@ -6,15 +6,21 @@ evidence. It is governed repository content, not a generated cache.
 
 ## Collections
 
-- `development/`: implementation controls, public contract descriptions,
-  reports, traceability, and local development evidence.
+- `development/`: implementation controls, reports, traceability, private
+  Publisher contract records, and planned canonical Platform contract records.
 - `architecture/`: implementation architecture and EPIC-level architecture
   records.
 - `product/`: local, non-normative product narratives that translate the
   governed Product Vision into implementation-facing customer journeys.
 - `adr/`: durable local Architecture Decision Records. These do not override
   the certified ADRs in the private Axodus Documentation corpus.
-- plans/: historical plans and status snapshots. These records are retrieval
+- `design/`: implementation-facing visual contracts, UI foundation records,
+  and design reviews. These records do not establish product or architecture
+  authority by themselves.
+- `evidence/`: versioned validation records and selected visual evidence.
+  Generated or untracked artifacts are not governed evidence until reviewed
+  and intentionally added to the repository.
+- `plans/`: historical plans and status snapshots. These records are retrieval
   context, not current architectural authority or proof of production
   readiness.
 

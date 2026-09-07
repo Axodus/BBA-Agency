@@ -53,8 +53,8 @@ export function AuditTimeline({ entries }: { entries: ReadonlyArray<AuditEntry> 
       <span className="foundation-record-count">{entries.length} local records</span>
     </div>
     <ol>
-      {entries.map((entry) => <li key={entry.id}>
-        <time dateTime={entry.at}>{new Intl.DateTimeFormat("en-US", { hour: "2-digit", minute: "2-digit" }).format(new Date(entry.at))}</time>
+      {[...entries].sort((a, b) => a.at.localeCompare(b.at)).map((entry) => <li key={entry.id}>
+        <time dateTime={entry.at}>{new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit", timeZone: "America/Sao_Paulo" }).format(new Date(entry.at))}</time>
         <div className="foundation-audit-marker" aria-hidden="true" />
         <div><strong>{entry.action}</strong><p>{entry.objectId}</p><small>{entry.actor}</small></div>
       </li>)}
@@ -68,6 +68,7 @@ const legend: ReadonlyArray<{ state: SemanticState; label: string }> = [
   { state: "awaiting", label: "Awaiting decision" },
   { state: "approved", label: "Approved" },
   { state: "rejected", label: "Rejected" },
+  { state: "blocked", label: "Blocked" },
   { state: "failed", label: "Failed" },
   { state: "attention", label: "Attention" },
 ];
