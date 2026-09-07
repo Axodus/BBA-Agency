@@ -20,6 +20,11 @@ Local `.rag/` records use these practical states:
 | Planned | Describes a target that is not yet implemented | Do not present as current behavior |
 | Historical | Preserves prior work or archived surfaces | Do not use as an implementation instruction |
 
+The machine-readable [Execution Manifest](execution-manifest.json) maps each
+executive implementation Epic to its authority, records, implementation area,
+dependencies, validation commands, and blockers. It is checked by
+`pnpm workspace:check`.
+
 ## Start here by task
 
 | Task | Required reading |

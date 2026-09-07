@@ -1,0 +1,156 @@
+{
+  "$schemaVersion": 1,
+  "effectiveDate": "2026-09-07",
+  "purpose": "Machine-readable routing for BBA Agency implementation epics.",
+  "allowedStatuses": ["implemented", "implemented_with_gaps", "planned", "historical"],
+  "epics": [
+    {
+      "id": "EPIC-IMP-001",
+      "status": "implemented",
+      "scope": "Shared Kernel and Tenant Context",
+      "authority": [".rag/development/source-index.md"],
+      "records": [".rag/development/EPIC-IMP-001-IMPLEMENTATION-REPORT.md"],
+      "implementation": ["core"],
+      "validation": ["pnpm --filter @bba/platform-core check"]
+    },
+    {
+      "id": "EPIC-IMP-002",
+      "status": "implemented",
+      "scope": "Mission Core",
+      "dependsOn": ["EPIC-IMP-001"],
+      "authority": [".rag/development/source-index.md", ".rag/development/contracts/MissionAggregate.md"],
+      "records": [".rag/development/EPIC-IMP-002-MISSION-CORE-REPORT.md"],
+      "implementation": ["core"],
+      "validation": ["pnpm --filter @bba/platform-core check"]
+    },
+    {
+      "id": "EPIC-IMP-004",
+      "status": "implemented",
+      "scope": "AI Workforce",
+      "dependsOn": ["EPIC-IMP-002"],
+      "authority": [".rag/development/contracts/AIWorkforceContext.md"],
+      "records": [".rag/development/EPIC-IMP-004-AI-WORKFORCE-REPORT.md"],
+      "implementation": ["core"],
+      "validation": ["pnpm --filter @bba/platform-core check"]
+    },
+    {
+      "id": "EPIC-IMP-005",
+      "status": "implemented",
+      "scope": "Institutional Assets",
+      "dependsOn": ["EPIC-IMP-002"],
+      "authority": [".rag/development/contracts/InstitutionalAssetsContext.md"],
+      "records": [".rag/development/EPIC-IMP-005-INSTITUTIONAL-ASSETS-REPORT.md"],
+      "implementation": ["core"],
+      "validation": ["pnpm --filter @bba/platform-core check"]
+    },
+    {
+      "id": "EPIC-IMP-006",
+      "status": "implemented",
+      "scope": "Knowledge and Policy",
+      "dependsOn": ["EPIC-IMP-005"],
+      "authority": [".rag/development/contracts/KnowledgePolicyContext.md"],
+      "records": [".rag/development/EPIC-IMP-006-KNOWLEDGE-POLICY-REPORT.md"],
+      "implementation": ["core"],
+      "validation": ["pnpm --filter @bba/platform-core check"]
+    },
+    {
+      "id": "EPIC-IMP-007",
+      "status": "implemented",
+      "scope": "Workflow",
+      "dependsOn": ["EPIC-IMP-002"],
+      "authority": [".rag/development/contracts/WorkflowContext.md"],
+      "records": [".rag/development/EPIC-IMP-007-WORKFLOW-REPORT.md"],
+      "implementation": ["core"],
+      "validation": ["pnpm --filter @bba/platform-core check"]
+    },
+    {
+      "id": "EPIC-IMP-008",
+      "status": "implemented",
+      "scope": "Review",
+      "dependsOn": ["EPIC-IMP-005"],
+      "authority": [".rag/development/contracts/ReviewAggregate.md"],
+      "records": [".rag/development/EPIC-IMP-008-REVIEW-REPORT.md"],
+      "implementation": ["core"],
+      "validation": ["pnpm --filter @bba/platform-core check"]
+    },
+    {
+      "id": "EPIC-IMP-009",
+      "status": "implemented",
+      "scope": "Publication preparation",
+      "dependsOn": ["EPIC-IMP-005", "EPIC-IMP-008"],
+      "authority": [".rag/development/contracts/PublicationContext.md"],
+      "records": [".rag/development/EPIC-IMP-009-PUBLICATION-REPORT.md"],
+      "implementation": ["core"],
+      "validation": ["pnpm --filter @bba/platform-core check"]
+    },
+    {
+      "id": "EPIC-IMP-010",
+      "status": "implemented",
+      "scope": "Connector boundary",
+      "dependsOn": ["EPIC-IMP-009"],
+      "authority": [".rag/development/contracts/ConnectorContext.md"],
+      "records": [".rag/development/EPIC-IMP-010-CONNECTOR-REPORT.md"],
+      "implementation": ["core"],
+      "validation": ["pnpm --filter @bba/platform-core check"]
+    },
+    {
+      "id": "EPIC-IMP-011",
+      "status": "implemented",
+      "scope": "Persistence and Auditability",
+      "dependsOn": ["EPIC-IMP-002"],
+      "authority": [".rag/development/contracts/PersistenceArchitecture.md"],
+      "records": [".rag/development/EPIC-IMP-011-PERSISTENCE-REPORT.md"],
+      "implementation": ["core"],
+      "validation": ["pnpm --filter @bba/platform-core check"]
+    },
+    {
+      "id": "EPIC-IMP-012",
+      "status": "implemented",
+      "scope": "Application API",
+      "dependsOn": ["EPIC-IMP-011"],
+      "authority": [".rag/development/contracts/ApplicationApi.md"],
+      "records": [".rag/development/EPIC-IMP-012-APPLICATION-API-REPORT.md"],
+      "implementation": ["core"],
+      "validation": ["pnpm --filter @bba/platform-core check", "pnpm contracts:check"]
+    },
+    {
+      "id": "EPIC-IMP-013",
+      "status": "implemented",
+      "scope": "Canonical HTTP transport adapter",
+      "dependsOn": ["EPIC-IMP-012"],
+      "authority": [".rag/development/http-transport-architecture.md"],
+      "records": [".rag/development/EPIC-IMP-013-TRANSPORT-ADAPTERS.md"],
+      "implementation": ["transport/http", "contracts/openapi"],
+      "validation": ["pnpm contracts:check"]
+    },
+    {
+      "id": "EPIC-IMP-014",
+      "status": "implemented",
+      "scope": "Frontend platform foundation",
+      "authority": [".rag/architecture/EPIC-IMP-014-FRONTEND-FOUNDATION.md", ".rag/design/BBA-APP-UI-FOUNDATION.md"],
+      "records": [".rag/development/UI-FOUNDATION-VERIFICATION-2026-09-06.md"],
+      "implementation": ["apps/web", "packages/ui", "packages/app-shell", "packages/sdk-react"],
+      "validation": ["pnpm web:build", "pnpm --filter @bba/web test"]
+    },
+    {
+      "id": "EPIC-IMP-015",
+      "status": "implemented",
+      "scope": "Platform-facing browser contract evidence",
+      "dependsOn": ["EPIC-IMP-013", "EPIC-IMP-014"],
+      "authority": [".rag/architecture/EPIC-IMP-015-BBA-STANDALONE-PRODUCT-SURFACE.md"],
+      "records": [".rag/architecture/EPIC-IMP-015-BBA-STANDALONE-PRODUCT-SURFACE.md"],
+      "implementation": ["apps/web", "packages/sdk-react"],
+      "validation": ["pnpm contracts:check", "pnpm web:build"]
+    },
+    {
+      "id": "EPIC-IMP-016",
+      "status": "implemented_with_gaps",
+      "scope": "Publisher prototype; Core adaptation remains pending",
+      "authority": [".rag/architecture/EPIC-IMP-016-BBA-PUBLISHER-PROTOTYPE.md", ".rag/development/repository-boundaries.md"],
+      "records": [".rag/development/EPIC-IMP-016-BBA-PUBLISHER-PROTOTYPE-REPORT.md"],
+      "implementation": ["apps/api", "packages/publisher-prototype", "transport/agency-runtime"],
+      "validation": ["pnpm api:check", "pnpm contracts:check"],
+      "blockedBy": ["An approved Publisher-to-Core adaptation contract", "Compatibility tests for the ten private Agency endpoints", "A migration plan for the private Publisher API"]
+    }
+  ]
+}
