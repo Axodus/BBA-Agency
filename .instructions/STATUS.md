@@ -1,5 +1,15 @@
 # BBA-Agency Status
 
+## Scientific Research & Publishing — Product Baseline (2026-11-18)
+
+- Documentary status: `INITIAL_CANONICAL_SPECIFICATION`, v0.1, supplied by the user for local RAG inclusion.
+- Source: [product specification](../.rag/product/BBA-SCIENTIFIC-RESEARCH-AND-PUBLISHING.md), linked from the RAG README and operational index.
+- Scope: BBA capability; Research Paper Development is the initial service; Scientific Writing is an internal stage; Applied Institutional Research is a specialization.
+- Governance: CRO scientific standards, human author approval, and separate publication gates are preserved.
+- Next step: operational workflow and template extraction; not implemented by this documentary addition.
+- Validation and coordination: [local handoff](reports/BBA_SCIENTIFIC_RESEARCH_RAG_HANDOFF_2026-11-18.md).
+- This entry does not promote maturity, activate agents or Connectors, or authorize manuscript publication. Earlier status records below retain their historical scope.
+
 Current Phase: `PLANNING` / `PROTOTYPE`  
 Validation Status: no validation gate executed in REQUEST 05  
 Production Status: `NOT PRODUCTION READY`  

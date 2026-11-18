@@ -2,6 +2,8 @@
 
 Effective date: September 7, 2026
 
+Product routing updated: November 18, 2026
+
 This is the entry point for agents working in the active `dev` workspace. Read
 the documents in the route that matches the task before treating historical
 records as implementation guidance.
@@ -18,6 +20,7 @@ Local `.rag/` records use these practical states:
 | Active control | Describes a current workspace rule or boundary | Follow it |
 | Implemented evidence | Records a completed, locally verified change | Use as evidence; revalidate when scope changes |
 | Planned | Describes a target that is not yet implemented | Do not present as current behavior |
+| Initial canonical product specification | Defines a capability and its governed method | Use for product alignment; do not infer workflow implementation or publication authorization |
 | Historical | Preserves prior work or archived surfaces | Do not use as an implementation instruction |
 
 The machine-readable [Execution Manifest](execution-manifest.json) maps each
@@ -30,6 +33,7 @@ dependencies, validation commands, and blockers. It is checked by
 | Task | Required reading |
 | --- | --- |
 | Any workspace change | [development/repository-boundaries.md](development/repository-boundaries.md), [development/definition-of-ready.md](development/definition-of-ready.md), and [development/definition-of-done.md](development/definition-of-done.md) |
+| Scientific Research & Publishing, Research Paper Development, or Applied Institutional Research | [product/BBA-SCIENTIFIC-RESEARCH-AND-PUBLISHING.md](product/BBA-SCIENTIFIC-RESEARCH-AND-PUBLISHING.md): initial canonical product specification v0.1; scientific writing is a stage, CRO governs scientific standards, and human author approval and publication authorization remain distinct gates. Operational workflow and template extraction are next steps. |
 | Core or canonical Platform API | [development/source-index.md](development/source-index.md), [development/BOUNDED-CONTEXT-MAP.md](development/BOUNDED-CONTEXT-MAP.md), [development/contracts/README.md](development/contracts/README.md), and applicable ADRs |
 | Private Publisher API or Railway runtime | [development/repository-boundaries.md](development/repository-boundaries.md), `contracts/agency/`, and the implementation in `apps/api`, `transport/agency-runtime`, and `packages/publisher-prototype` |
 | Web UI or Vercel surface | [design/BBA-APP-UI-FOUNDATION.md](design/BBA-APP-UI-FOUNDATION.md), [development/UI-FOUNDATION-VERIFICATION-2026-09-06.md](development/UI-FOUNDATION-VERIFICATION-2026-09-06.md), and [architecture/EPIC-IMP-014-FRONTEND-FOUNDATION.md](architecture/EPIC-IMP-014-FRONTEND-FOUNDATION.md) |

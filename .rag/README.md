@@ -13,8 +13,12 @@ For active workspace work, begin with the
   Publisher contract records, and planned canonical Platform contract records.
 - `architecture/`: implementation architecture and EPIC-level architecture
   records.
-- `product/`: local, non-normative product narratives that translate the
-  governed Product Vision into implementation-facing customer journeys.
+- `product/`: product specifications and local implementation narratives.
+  Authority is declared per document: the
+  [Scientific Research & Publishing v0.1 specification](product/BBA-SCIENTIFIC-RESEARCH-AND-PUBLISHING.md)
+  is the initial canonical baseline for that capability, supplied for RAG
+  inclusion on 2026-11-18. Publisher narratives remain non-normative translations
+  of the governed Product Vision. A product baseline is not implementation evidence.
 - `adr/`: durable local Architecture Decision Records. These do not override
   the certified ADRs in the private Axodus Documentation corpus.
 - `design/`: implementation-facing visual contracts, UI foundation records,
