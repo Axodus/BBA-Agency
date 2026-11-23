@@ -52,7 +52,7 @@ importers:
         version: link:../../packages/ui
       '@hookform/resolvers':
         specifier: 5.5.7
-        version: 5.5.7(@standard-schema/spec@1.1.0)(ajv@8.20.0)(react-hook-form@7.83.0(react@19.2.8))(zod@4.3.6)
+        version: 5.5.7(@standard-schema/spec@1.1.0)(ajv@8.20.0)(react-hook-form@7.83.0(react@19.2.8))(zod@4.6.6)
       '@phosphor-icons/react':
         specifier: ^2.1.10
         version: 2.1.10(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
@@ -69,8 +69,8 @@ importers:
         specifier: 7.18.1
         version: 7.18.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       zod:
-        specifier: 4.3.6
-        version: 4.3.6
+        specifier: 4.6.6
+        version: 4.6.6
     devDependencies:
       '@playwright/test':
         specifier: 1.62.0
@@ -170,8 +170,8 @@ importers:
   packages/publisher-prototype:
     dependencies:
       zod:
-        specifier: 4.3.6
-        version: 4.3.6
+        specifier: 4.6.6
+        version: 4.6.6
     devDependencies:
       typescript:
         specifier: 6.0.3
@@ -263,8 +263,8 @@ importers:
         specifier: 5.10.0
         version: 5.10.0
       zod:
-        specifier: 4.3.6
-        version: 4.3.6
+        specifier: 4.6.6
+        version: 4.6.6
     devDependencies:
       '@types/node':
         specifier: 25.6.0
@@ -2140,8 +2140,8 @@ packages:
     resolution: {integrity: sha512-GZtjxm/J/4TSxuL3FNYjCmLktBTnIw/rVmKSIyKeYAZpmJB2ig9VauCC5xsa82GNKVKDAqpOn3KVzNt0zmrU0g==}
     engines: {node: '>=12'}
 
-  zod@4.3.6:
-    resolution: {integrity: sha512-rftlrkhHZOcjDwkGlnUtZZkvaPHCsDATp4pGpuOOMDaTdDDXF91wuVDJoWoPsKX/3YPQ5fHuF3STjcYyKr+Qhg==}
+  zod@4.6.6:
+    resolution: {integrity: sha512-4UmzQUF5fxvfcYHlbjBmejU+w+hbDnWFx4aS8kBx7nPBHcO2SqPbpAG8snbdg+Xse4pRefR98hgjFgIMCI/UhA==}
 
 snapshots:
 
@@ -2367,14 +2367,14 @@ snapshots:
 
   '@hey-api/types@0.1.4': {}
 
-  '@hookform/resolvers@5.5.7(@standard-schema/spec@1.1.0)(ajv@8.20.0)(react-hook-form@7.83.0(react@19.2.8))(zod@4.3.6)':
+  '@hookform/resolvers@5.5.7(@standard-schema/spec@1.1.0)(ajv@8.20.0)(react-hook-form@7.83.0(react@19.2.8))(zod@4.6.6)':
     dependencies:
       '@standard-schema/utils': 0.3.0
       react-hook-form: 7.83.0(react@19.2.8)
     optionalDependencies:
       '@standard-schema/spec': 1.1.0
       ajv: 8.20.0
-      zod: 4.3.6
+      zod: 4.6.6
 
   '@inquirer/ansi@2.0.7': {}
 
@@ -3664,4 +3664,4 @@ snapshots:
       y18n: 5.0.8
       yargs-parser: 21.1.1
 
-  zod@4.3.6: {}
+  zod@4.6.6: {}
